@@ -11,6 +11,9 @@ function CalculatorResult() {
     relationshipStatus: searchParams.get('relationshipStatus') || 'single',
     profession: searchParams.get('profession') || 'student',
     monthlyIncome: searchParams.get('monthlyIncome') || '0',
+    bkashNumber: searchParams.get('bkashNumber') || '',
+    nagadNumber: searchParams.get('nagadNumber') || '',
+    rocketNumber: searchParams.get('rocketNumber') || '',
   };
 
   return <SalamiCalculatorResult {...resultData} />;

@@ -44,6 +44,9 @@ export default function SalamiCalculator() {
     monthlyIncome: z.string().refine(val => !isNaN(parseInt(val, 10)) && parseInt(val, 10) >= 0, {
         message: "Must be a valid number"
     }).optional(),
+    bkashNumber: z.string().optional(),
+    nagadNumber: z.string().optional(),
+    rocketNumber: z.string().optional(),
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -54,12 +57,21 @@ export default function SalamiCalculator() {
       relationshipStatus: 'single',
       profession: 'student',
       monthlyIncome: '0',
+      bkashNumber: '',
+      nagadNumber: '',
+      rocketNumber: '',
     },
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
     setIsSubmitting(true);
-    const params = new URLSearchParams(values as Record<string, string>);
+    const definedValues: Record<string, string> = {};
+    for (const [key, value] of Object.entries(values)) {
+      if (value) {
+        definedValues[key] = value;
+      }
+    }
+    const params = new URLSearchParams(definedValues);
     router.push(`/calculator/result?${params.toString()}`);
   }
 
@@ -176,6 +188,49 @@ export default function SalamiCalculator() {
                   </FormItem>
               )}
             />
+            
+            <FormField
+              control={form.control}
+              name="bkashNumber"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>{translations.form.bkash.label}</FormLabel>
+                  <FormControl>
+                    <Input placeholder={translations.form.bkash.placeholder} {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
+              name="nagadNumber"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>{translations.form.nagad.label}</FormLabel>
+                  <FormControl>
+                    <Input placeholder={translations.form.nagad.placeholder} {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            
+            <FormField
+              control={form.control}
+              name="rocketNumber"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>{translations.form.rocket.label}</FormLabel>
+                  <FormControl>
+                    <Input placeholder={translations.form.rocket.placeholder} {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
 
             <Button type="submit" className="w-full" size="lg" disabled={isSubmitting}>
               {isSubmitting ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : null}

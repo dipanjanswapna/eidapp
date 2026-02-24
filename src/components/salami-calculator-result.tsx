@@ -3,7 +3,7 @@
 import { useLanguage } from '@/contexts/language-context';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { Award, Download, Loader2, Share2, Stamp } from 'lucide-react';
+import { Award, Download, Loader2, Share2, Stamp, Copy } from 'lucide-react';
 import html2canvas from 'html2canvas';
 import { useEffect, useMemo, useState } from 'react';
 import { useToast } from '@/hooks/use-toast';
@@ -16,6 +16,9 @@ type SalamiCalculatorResultProps = {
   relationshipStatus: string;
   profession: string;
   monthlyIncome: string;
+  bkashNumber?: string;
+  nagadNumber?: string;
+  rocketNumber?: string;
 };
 
 type RelationshipStatusKey = keyof (typeof translations.en.calculator.form.relationship.options);
@@ -32,6 +35,9 @@ export default function SalamiCalculatorResult({
   relationshipStatus,
   profession,
   monthlyIncome,
+  bkashNumber,
+  nagadNumber,
+  rocketNumber,
 }: SalamiCalculatorResultProps) {
   const { translations } = useLanguage();
   const { toast } = useToast();
@@ -41,6 +47,12 @@ export default function SalamiCalculatorResult({
   useEffect(() => {
     setIsClient(true);
   }, []);
+
+  const copyToClipboard = (text: string, type: string) => {
+    navigator.clipboard.writeText(text);
+    toast({ title: `${type} ${translations.salamiPage.payment.copied}` });
+  };
+
 
   const income = parseInt(monthlyIncome, 10) || 0;
 
@@ -203,7 +215,6 @@ export default function SalamiCalculatorResult({
                 <div className="absolute inset-0 bg-[url('/receipt-bg.svg')] bg-center opacity-5"></div>
                 <div className="relative text-center">
                 <h1 className="text-xl sm:text-2xl font-bold text-gray-800">{translations.calculator.results.title}</h1>
-                <p className="text-xs sm:text-sm text-gray-500">{translations.calculator.results.serial}: {Date.now()}</p>
                 </div>
                 
                 <div className="relative my-6 grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
@@ -229,6 +240,48 @@ export default function SalamiCalculatorResult({
                     <p className="font-semibold text-gray-600">{translations.calculator.results.verdict}</p>
                     <p className="mt-1 text-base sm:text-lg italic text-gray-800">&ldquo;{verdict}&rdquo;</p>
                 </div>
+                
+                {(bkashNumber || nagadNumber || rocketNumber) && (
+                  <div className="relative mt-6 border-t border-dashed border-gray-400 pt-4">
+                    <h2 className="text-center text-lg font-bold text-gray-700 mb-4">{translations.salamiPage.payment.title}</h2>
+                    <div className="space-y-3">
+                      {bkashNumber && (
+                        <div className="flex items-center justify-between rounded-lg bg-gray-100 p-3">
+                          <span className="font-semibold">bKash:</span>
+                          <div className="flex items-center gap-2">
+                             <span className="font-mono text-gray-800">{bkashNumber}</span>
+                             <Button size="icon" variant="ghost" className="h-7 w-7" onClick={() => copyToClipboard(bkashNumber, 'bKash Number')}>
+                               <Copy className="h-4 w-4" />
+                             </Button>
+                          </div>
+                        </div>
+                      )}
+                      {nagadNumber && (
+                        <div className="flex items-center justify-between rounded-lg bg-gray-100 p-3">
+                          <span className="font-semibold">Nagad:</span>
+                           <div className="flex items-center gap-2">
+                             <span className="font-mono text-gray-800">{nagadNumber}</span>
+                             <Button size="icon" variant="ghost" className="h-7 w-7" onClick={() => copyToClipboard(nagadNumber, 'Nagad Number')}>
+                               <Copy className="h-4 w-4" />
+                             </Button>
+                          </div>
+                        </div>
+                      )}
+                      {rocketNumber && (
+                         <div className="flex items-center justify-between rounded-lg bg-gray-100 p-3">
+                          <span className="font-semibold">Rocket:</span>
+                           <div className="flex items-center gap-2">
+                             <span className="font-mono text-gray-800">{rocketNumber}</span>
+                             <Button size="icon" variant="ghost" className="h-7 w-7" onClick={() => copyToClipboard(rocketNumber, 'Rocket Number')}>
+                               <Copy className="h-4 w-4" />
+                             </Button>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                )}
+
 
                 <div className="relative mt-6 flex flex-col items-center justify-center gap-6">
                     {specialTitle && (

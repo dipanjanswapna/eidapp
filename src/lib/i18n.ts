@@ -49,6 +49,10 @@ export const translations = {
         label: 'Nagad Number (Optional)',
         placeholder: 'e.g., 01800000000',
       },
+      rocket: {
+        label: 'Rocket Number (Optional)',
+        placeholder: 'e.g., 018000000001',
+      },
       submitButton: 'Generate My Link',
       errors: {
         name: {
@@ -490,6 +494,10 @@ export const translations = {
       nagad: {
         label: 'নগদ নম্বর (ঐচ্ছিক)',
         placeholder: 'যেমন, ০১৮০০০০০০০০',
+      },
+      rocket: {
+        label: 'রকেট নম্বর (ঐচ্ছিক)',
+        placeholder: 'যেমন, ০১৮০০০০০০০০১',
       },
       submitButton: 'আমার লিঙ্ক তৈরি করুন',
       errors: {
