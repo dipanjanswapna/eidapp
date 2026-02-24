@@ -11,14 +11,24 @@ type CardProps = {
 }
 
 const getFooterMessage = (user: NGLUser, lang: 'en' | 'bn') => {
-    // A simple dynamic message based on profession
+    type ProfessionFooterKey = keyof typeof translations.en.calculator.results.professionFooter;
+    // Handle 'other' gender case by defaulting to 'male' string if specific one is not available
+    const gender = (user.gender === 'male' || user.gender === 'female') ? user.gender : 'male';
+    const professionFooterKey = `${user.profession}_${gender}` as ProfessionFooterKey;
+    const professionFooters = translations[lang].calculator.results.professionFooter;
+
+    if (professionFooterKey in professionFooters) {
+      return professionFooters[professionFooterKey];
+    }
+    
+    // Fallback message if a specific one isn't found
     const professionKey = user.profession as keyof typeof translations.en.calculator.form.profession.options;
-    const profession = translations[lang].calculator.form.profession.options[professionKey];
+    const profession = translations[lang].calculator.form.profession.options[professionKey] || user.profession;
     
     if (lang === 'bn') {
-        return `একজন ${profession} এর পক্ষ থেকে উত্তর।`;
+        return `একজন ${profession} এর পক্ষ থেকে উত্তর। ঈদের শুভেচ্ছা! সালামিটা পাঠিয়ে দিয়েন।`;
     }
-    return `A reply from a ${profession}.`;
+    return `A reply from a ${profession}. Happy Eid! Don't forget to send the salami.`;
 }
 
 export default function NGLReplyAndShareCard({ user, message }: CardProps) {
