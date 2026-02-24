@@ -1,5 +1,5 @@
+'use client';
 import IftarSpotsClient from '@/components/iftar-spots-client';
-import ConfettiBackground from '@/components/confetti-background';
 
 export default function IftarSpotsPage() {
   return (
