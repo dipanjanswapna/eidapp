@@ -23,7 +23,7 @@ export function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 w-full bg-primary">
-      <div className="container relative flex h-16 items-center justify-between px-4">
+      <div className="container mx-auto relative flex h-16 items-center justify-between px-4">
         {/* Left side: Brand */}
         <Link href="/" className="flex items-center space-x-2 text-primary-foreground">
           <Waves className="h-7 w-7" />
