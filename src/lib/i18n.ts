@@ -220,6 +220,10 @@ export const translations = {
           retired_awami_leaguer_female: 'Salami is our democratic right! Elder brothers, do not abuse your power and quickly fulfill the demand of this receipt.',
           teacher_male: 'Elder brothers, please come out of the class and give the salami. If this receipt is disobeyed, a complaint homework will be assigned in your name!',
           teacher_female: 'Giving salami is now an obligatory subject for you. If brothers-in-law don\'t want to fail, they must provide cash immediately.',
+          businessman_male: 'Business profit or loss, giving salami is mandatory! Making the young ones happy on Eid is also a big investment.',
+          businessman_female: 'Business profit or loss, giving salami is mandatory! Making the young ones happy on Eid is also a big investment.',
+          expat_worker_male: 'You are a remittance warrior! Add a little salami with your dollars or riyals, the Eid of the young ones back home will become colorful.',
+          expat_worker_female: 'You are a remittance warrior! Add a little salami with your dollars or riyals, the Eid of the young ones back home will become colorful.',
         },
         relationshipFooter: {
           single_male: 'If this receipt is shown to an elder brother or brother-in-law, they are obliged to pay. Remember, an unmarried man with an empty pocket is a sign of youth degradation!',
@@ -460,6 +464,10 @@ export const translations = {
           retired_awami_leaguer_female: 'সালামি আমাদের গণতান্ত্রিক অধিকার! বড় ভাইরা ক্ষমতার অপব্যবহার না করে দ্রুত এই রশিদের দাবি পূরণ করুন।',
           teacher_male: 'বড় ভাইরা দয়া করে ক্লাসের বাইরে এসে সালামিটা দিয়ে যান। এই রশিদ অমান্য করলে আপনাদের নামে নালিশের হোমওয়ার্ক দেওয়া হবে!',
           teacher_female: 'সালামি দেওয়াটা এখন আপনার জন্য একটি অবলিগেটরি সাবজেক্ট। দুলাভাইরা ফেল করতে না চাইলে এখনই নগদ অর্থ প্রদান করুন।',
+          businessman_male: 'ব্যবসার লাভ-লোকসান যা-ই হোক, সালামি দেওয়া বাধ্যতামূলক! ঈদের দিনে ছোটদের খুশি করাও একটা বড় বিনিয়োগ।',
+          businessman_female: 'ব্যবসার লাভ-লোকসান যা-ই হোক, সালামি দেওয়া বাধ্যতামূলক! ঈদের দিনে ছোটদের খুশি করাও একটা বড় বিনিয়োগ।',
+          expat_worker_male: 'আপনি তো রেমিট্যান্স যোদ্ধা! আপনার ডলার বা রিয়ালের সাথে এবার একটু সালামি যোগ করুন, দেশের ছোটদের ঈদটা রঙিন হয়ে উঠবে।',
+          expat_worker_female: 'আপনি তো রেমিট্যান্স যোদ্ধা! আপনার ডলার বা রিয়ালের সাথে এবার একটু সালামি যোগ করুন, দেশের ছোটদের ঈদটা রঙিন হয়ে উঠবে।',
         },
         relationshipFooter: {
           single_male: 'এই রশিদ বড় ভাই বা দুলাভাইকে দেখালে টাকা দিতে বাধ্য থাকিবেন। মনে রাখবেন, অবিবাহিত ছেলেদের পকেট খালি থাকা মানেই দেশের যুবসমাজের অবক্ষয়!',

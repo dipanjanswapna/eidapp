@@ -59,7 +59,7 @@ export default function SalamiCalculator() {
   });
 
   const profession = form.watch('profession');
-  const isJobHolder = profession === 'job_holder' || profession === 'govt_job_holder';
+  const isJobHolder = profession === 'job_holder' || profession === 'govt_job_holder' || profession === 'doctor' || profession === 'engineer' || profession === 'teacher' || profession === 'freelancer' || profession === 'businessman' || profession === 'expat_worker';
 
   function onSubmit(values: z.infer<typeof formSchema>) {
     setIsSubmitting(true);
