@@ -10,15 +10,6 @@ import { useState, useEffect } from 'react';
 import { voteOnIftarSpotAction } from '@/lib/actions';
 import { useToast } from '@/hooks/use-toast';
 
-// Fix for default icon not showing in Next.js
-delete (L.Icon.Default.prototype as any)._getIconUrl;
-
-L.Icon.Default.mergeOptions({
-  iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png').default.src,
-  iconUrl: require('leaflet/dist/images/marker-icon.png').default.src,
-  shadowUrl: require('leaflet/dist/images/marker-shadow.png').default.src,
-});
-
 type IftarMapProps = {
   spots: IftarSpot[];
 };
@@ -35,6 +26,15 @@ export default function IftarMap({ spots }: IftarMapProps) {
   const [votedSpots, setVotedSpots] = useState<Record<string, 'like' | 'dislike'>>({});
 
   useEffect(() => {
+    // Fix for default icon not showing in Next.js
+    delete (L.Icon.Default.prototype as any)._getIconUrl;
+
+    L.Icon.Default.mergeOptions({
+      iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png').default.src,
+      iconUrl: require('leaflet/dist/images/marker-icon.png').default.src,
+      shadowUrl: require('leaflet/dist/images/marker-shadow.png').default.src,
+    });
+    
     const saved = localStorage.getItem('votedSpots');
     if (saved) {
       setVotedSpots(JSON.parse(saved));
