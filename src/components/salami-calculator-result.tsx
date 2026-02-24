@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/contexts/language-context";
 import type { CalculatorResultData } from "./salami-calculator";
 import Link from "next/link";
-import { ArrowLeft, Gift, Download, Share2, Award } from "lucide-react";
+import { ArrowLeft, Gift, Download, Share2, Award, Loader2 } from "lucide-react";
 import Confetti from "react-confetti";
 import { useState, useEffect } from "react";
 import html2canvas from "html2canvas";
@@ -21,6 +21,7 @@ export default function SalamiCalculatorResult({ result, onReset }: SalamiCalcul
     const [showConfetti, setShowConfetti] = useState(false);
     const [windowSize, setWindowSize] = useState({width: 0, height: 0});
     const [isDownloading, setIsDownloading] = useState(false);
+    const [isSharing, setIsSharing] = useState(false);
     const [serialNumber, setSerialNumber] = useState('');
 
     useEffect(() => {
@@ -66,7 +67,7 @@ export default function SalamiCalculatorResult({ result, onReset }: SalamiCalcul
         if (rashidElement) {
             html2canvas(rashidElement, { allowTaint: true, useCORS: true, scale: 2 }).then(canvas => {
                 const link = document.createElement('a');
-                link.download = `salami-receipt-${name.toLowerCase().replace(' ', '-')}.png`;
+                link.download = `salami-receipt-${name.toLowerCase().replace(/\s+/g, '-')}.png`;
                 link.href = canvas.toDataURL('image/png');
                 link.click();
                 setIsDownloading(false);
@@ -86,19 +87,65 @@ export default function SalamiCalculatorResult({ result, onReset }: SalamiCalcul
         }
     };
 
-    const handleShare = () => {
-        const shareText = `${translations.calculator.result.rashid.shareText.replace('{name}', name).replace('{prob}', resultData.prob)}`;
-        if(navigator.share) {
-            navigator.share({
-                title: translations.calculator.result.rashid.shareTitle.replace('{name}', name),
-                text: shareText,
-                url: window.location.href,
-            })
-        } else {
-            navigator.clipboard.writeText(`${shareText} ${window.location.href}`);
-            toast({ title: "Link Copied!", description: "Share it with your friends and family." });
+    const handleShare = async () => {
+        setIsSharing(true);
+        try {
+            const rashidElement = document.getElementById('salami-rashid');
+            if (!rashidElement) {
+                setIsSharing(false);
+                return;
+            }
+
+            const canvas = await html2canvas(rashidElement, { allowTaint: true, useCORS: true, scale: 2 });
+            const shareText = translations.calculator.result.rashid.shareText.replace('{name}', name).replace('{prob}', resultData.prob);
+            const shareTitle = translations.calculator.result.rashid.shareTitle.replace('{name}', name);
+            const fileName = `salami-receipt-${name.toLowerCase().replace(/\s+/g, '-')}.png`;
+
+            // Try to share as a file first
+            if (navigator.share && canvas.toBlob) {
+                 const blob = await new Promise<Blob | null>(resolve => canvas.toBlob(resolve, 'image/png'));
+                 if(blob) {
+                    const file = new File([blob], fileName, { type: 'image/png' });
+                    if (navigator.canShare && navigator.canShare({ files: [file] })) {
+                        await navigator.share({
+                            files: [file],
+                            title: shareTitle,
+                            text: shareText,
+                        });
+                        toast({
+                            title: translations.calculator.result.rashid.shareSuccess,
+                        });
+                        return;
+                    }
+                 }
+            }
+            
+            // Fallback: Share link if file sharing is not supported or fails
+            if (navigator.share) {
+                 await navigator.share({
+                    title: shareTitle,
+                    text: shareText,
+                    url: window.location.href,
+                });
+            } else {
+                // Fallback: Copy link if navigator.share is not supported at all
+                navigator.clipboard.writeText(`${shareText} ${window.location.href}`);
+                toast({ title: translations.calculator.result.rashid.copySuccess });
+            }
+        } catch (error) {
+            console.error("Sharing failed:", error);
+            // Don't show toast on user cancel
+            if ((error as Error).name !== 'AbortError') {
+                toast({
+                    variant: "destructive",
+                    title: "Sharing Failed",
+                    description: "Could not share the receipt. Please try downloading it.",
+                });
+            }
+        } finally {
+            setIsSharing(false);
         }
-    }
+    };
 
     return (
         <>
@@ -146,9 +193,9 @@ export default function SalamiCalculatorResult({ result, onReset }: SalamiCalcul
                         <Download className="mr-2 h-4 w-4" />
                         {translations.calculator.result.rashid.downloadButton}
                     </Button>
-                     <Button onClick={handleShare} variant="secondary" className="w-full">
-                        <Share2 className="mr-2 h-4 w-4" />
-                        {translations.salamiPage.share.shareButton}
+                     <Button onClick={handleShare} variant="secondary" className="w-full" disabled={isSharing}>
+                        {isSharing ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Share2 className="mr-2 h-4 w-4" />}
+                        {translations.calculator.result.rashid.shareButton}
                     </Button>
                 </CardFooter>
 

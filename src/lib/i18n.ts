@@ -153,6 +153,9 @@ export const translations = {
             downloadSuccessDescription: 'Show this to your elders to claim your Salami!',
             shareTitle: 'My Eid Salami Forecast!',
             shareText: 'Hey! I just calculated my Salami probability. My chance is {prob}! Calculate yours too!',
+            shareButton: 'Share Receipt',
+            shareSuccess: 'Shared successfully!',
+            copySuccess: 'Link copied to clipboard!',
         },
         statuses: {
           single: 'Single',
@@ -375,6 +378,9 @@ export const translations = {
             downloadSuccessDescription: 'সালামি আদায় করতে আপনার গুরুজনদের দেখান!',
             shareTitle: 'আমার ঈদের সালামি পূর্বাভাস!',
             shareText: 'এই যে! আমি আমার সালামি পাওয়ার সম্ভাবনা বের করেছি। আমার সম্ভাবনা হলো {prob}! তুমিও তোমারটা বের করো!',
+            shareButton: 'রশিদ শেয়ার করুন',
+            shareSuccess: 'সফলভাবে শেয়ার করা হয়েছে!',
+            copySuccess: 'লিঙ্ক ক্লিপবোর্ডে কপি করা হয়েছে!',
         },
         statuses: {
           single: 'সিঙ্গেল',
