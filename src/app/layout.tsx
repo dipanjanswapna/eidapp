@@ -6,9 +6,42 @@ import { Navbar } from '@/components/navbar';
 import { FirebaseClientProvider } from '@/firebase/client-provider';
 import { Footer } from '@/components/footer';
 
+const siteUrl = 'https://eidvibe.vercel.app';
+const title = 'EidVibe (ঈদ ভাইব) - Your Ultimate Eid Companion';
+const description = 'Celebrate Eid with EidVibe! Create anonymous NGL-style messages, calculate Salami, spin the lucky wheel for fun, find Iftar spots, and send beautiful Eid cards. All your Eid fun in one place.';
+const keywords = [
+    'Eid', 'EidVibe', 'ঈদ ভাইব', 'Salami Calculator', 'Eid Card', 'Anonymous Messages', 'NGL', 'Iftar Spots', 'Ramadan', 'Eid Mubarak', 'সালামি ক্যালকুলেটর', 'ঈদ কার্ড', 'গোপন চিঠি', 'ইফতার স্পট'
+];
+const ogImageUrl = 'https://images.unsplash.com/photo-1619525492451-a36543b3425f?w=1200&q=80';
+
+
 export const metadata: Metadata = {
-  title: 'EidVibe (ঈদ ভাইব)',
-  description: 'এবারের ঈদে আপনার আনন্দকে বাড়িয়ে দিতে আমরা নিয়ে এলাম সব ফিচার এক জায়গায়। নাম গোপন রেখে বন্ধুদের মেসেজ পাঠানো, কাস্টম কালারফুল সালামি রশিদ তৈরি করা, কিংবা ম্যাপে ফ্রিতে ইফতার ও সেহরি স্পট খুঁজে পাওয়া—সবই হবে এখন EidVibe-এ!',
+  metadataBase: new URL(siteUrl),
+  title,
+  description,
+  keywords,
+  creator: 'Prangon',
+  openGraph: {
+    type: 'website',
+    url: siteUrl,
+    title,
+    description,
+    images: [
+      {
+        url: ogImageUrl,
+        width: 1200,
+        height: 630,
+        alt: title,
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title,
+    description,
+    images: [ogImageUrl],
+    creator: '@dipanjanswapna',
+  },
 };
 
 export default function RootLayout({

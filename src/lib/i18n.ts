@@ -300,7 +300,7 @@ export const translations = {
           label: 'Choose a Username',
           placeholder: 'e.g., anik_ahmed',
           description:
-            'This will be your unique link: eidvibe.app/ngl/{username}',
+            'This will be your unique link: https://eidvibe.vercel.app/ngl/{username}',
         },
         pin: {
           label: 'Set a 4-6 digit PIN',
@@ -509,7 +509,7 @@ export const translations = {
     nav: {
       home: 'হোম',
       calculator: 'সালামি ক্যালকুলেটর',
-      brand: 'ঈদ ভাইব',
+      brand: 'EidVibe',
       register: 'নিবন্ধন করুন',
       ngl: 'ঈদের চিঠি',
       eidWheel: 'লাকি হুইল',
@@ -517,7 +517,7 @@ export const translations = {
       iftar: 'ইফতার স্পট'
     },
     home: {
-      title: 'ঈদ ভাইব (EidVibe): আপনার ঈদ হোক আরও রঙিন!',
+      title: 'EidVibe (ঈদ ভাইব): আপনার ঈদ হোক আরও রঙিন!',
       subtitle:
         'এবারের ঈদে আপনার আনন্দকে বাড়িয়ে দিতে আমরা নিয়ে এলাম সব ফিচার এক জায়গায়। নাম গোপন রেখে বন্ধুদের মেসেজ পাঠানো, কাস্টম কালারফুল সালামি রশিদ তৈরি করা, কিংবা ম্যাপে ফ্রিতে ইফতার ও সেহরি স্পট খুঁজে পাওয়া—সবই হবে এখন EidVibe-এ!',
       ctaButton: 'আপনার সালামি কার্ড তৈরি করুন',
@@ -806,7 +806,7 @@ export const translations = {
           label: 'একটি ব্যবহারকারীর নাম বাছুন',
           placeholder: 'যেমন, anik_ahmed',
           description:
-            'এটি আপনার ইউনিক লিঙ্ক হবে: eidvibe.app/ngl/{username}',
+            'এটি আপনার ইউনিক লিঙ্ক হবে: https://eidvibe.vercel.app/ngl/{username}',
         },
         pin: {
           label: '৪-৬ সংখ্যার একটি পিন সেট করুন',
