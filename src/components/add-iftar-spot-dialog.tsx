@@ -26,7 +26,7 @@ import {
 } from '@/components/ui/dialog';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { addIftarSpotAction } from '@/lib/actions';
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import { Loader2, Plus } from 'lucide-react';
 import { useLanguage } from '@/contexts/language-context';
 import { useToast } from '@/hooks/use-toast';
@@ -63,12 +63,12 @@ export default function AddIftarSpotDialog({ onSpotAdded }: AddIftarSpotDialogPr
 
   const watchFoodType = form.watch('foodType');
 
-  const handleLocationSelect = (lat: number, lng: number) => {
+  const handleLocationSelect = useCallback((lat: number, lng: number) => {
     setLocation({ lat, lng });
     form.setValue('latitude', lat);
     form.setValue('longitude', lng);
     form.clearErrors('latitude');
-  };
+  }, [form]);
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     if (!location) {
