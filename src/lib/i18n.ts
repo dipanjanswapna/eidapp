@@ -162,6 +162,27 @@ export const translations = {
             shareButton: 'Share Receipt',
             shareSuccess: 'Shared successfully!',
             copySuccess: 'Link copied to clipboard!',
+            dynamic_disclaimers: {
+                relationship: {
+                    single: 'This receipt must be shown to elders or brothers-in-law, as it is their duty to keep a single person\'s pocket warm.',
+                    in_relationship: 'Showing this receipt makes the girlfriend\'s elder brother or brother-in-law obligated to provide Salami immediately.',
+                    engaged: 'The future brother-in-law is obligated to provide Salami upon seeing this receipt, otherwise the wedding invitation is uncertain!',
+                    married: 'Even if your own pocket is empty, you have the legal right to claim Salami from your in-laws upon showing this receipt.',
+                    crush: 'If you dare to show this receipt to your crush\'s elder brother, there is a chance of getting double Salami!',
+                },
+                profession: {
+                    doctor: 'Upon seeing this receipt, elder brothers are obligated to give Salami without a prescription, for the sake of the profession.',
+                    engineer: 'According to the design and structure, this Salami budget will be automatically deducted from the elder brothers\' pockets.',
+                    freelancer: 'If Salami is given according to the dollar rate, elder brothers will be given a 15-year installment facility.',
+                    gen_z: 'Don\'t spoil the vibe; upon seeing this receipt, elder brothers are obligated to send Salami via QR code.',
+                    retired_politician: 'If the demand on this receipt is not met, elder brothers will be expelled from all political gatherings during Eid.',
+                },
+            },
+            dynamic_conditions: {
+                low_income: 'The amount in this receipt will be collected from the elders\' pockets at a 100% discount.',
+                mid_income: 'Considering the financial situation, elder brothers can pay this Salami in 15-year installments.',
+                high_income: 'Since the elder brothers\' pockets are overflowing, if Salami is not given, 50% will be collected as a donation.',
+            }
         },
         statuses: {
           single: 'Single',
@@ -413,6 +434,27 @@ export const translations = {
             shareButton: 'রশিদ শেয়ার করুন',
             shareSuccess: 'সফলভাবে শেয়ার করা হয়েছে!',
             copySuccess: 'লিঙ্ক ক্লিপবোর্ডে কপি করা হয়েছে!',
+            dynamic_disclaimers: {
+                relationship: {
+                    single: 'এই রশিদ বড় ভাই বা দুলাভাইকে দেখালে টাকা দিতে বাধ্য থাকিবেন, কারণ সিঙ্গেলদের পকেট গরম রাখা বড়দের দায়িত্ব।',
+                    in_relationship: 'এই রশিদ দেখালে গার্লফ্রেন্ডের বড় ভাই বা দুলাভাই অতি দ্রুত সালামি দিতে বাধ্য থাকিবেন।',
+                    engaged: 'হবু দুলাভাই এই রশিদ দেখা মাত্রই সালামি প্রদান করিতে বাধ্য থাকিবেন, অন্যথায় বিয়ের দাওয়াত অনিশ্চিত!',
+                    married: 'নিজের পকেট খালি থাকলেও এই রশিদ দেখামাত্রই শ্বশুরবাড়ির বড়দের থেকে সালামি আদায়ের আইনি অধিকার থাকিবে।',
+                    crush: 'ক্রাশের বড় ভাইকেও এই রশিদ দেখানোর সাহস করিলে ডাবল সালামি পাওয়ার সম্ভাবনা থাকিবে!',
+                },
+                profession: {
+                    doctor: 'এই রশিদ দেখামাত্রই পেশার খাতিরে বড় ভাইরা প্রেসক্রিপশন ছাড়াই সালামি দিতে বাধ্য থাকিবেন।',
+                    engineer: 'ডিজাইন এবং স্ট্রাকচার অনুযায়ী এই সালামি বাজেট বড় ভাইদের পকেট থেকে অটোমেটিক ডিডাকশন করা হইবে।',
+                    freelancer: 'ডলারের রেট অনুযায়ী সালামি দিলে বড় ভাইদের ১৫ বছরের কিস্তি সুবিধা প্রদান করা হইবে।',
+                    gen_z: 'ভাইব নষ্ট না করিয়া এই রশিদ দেখা মাত্রই বড় ভাইরা কিউআর কোডে সালামি পাঠাইতে বাধ্য থাকিবেন।',
+                    retired_politician: 'এই রশিদের দাবি পূরণ না করিলে বড় ভাইদের ঈদের সব রাজনৈতিক আড্ডা হইতে বহিষ্কার করা হইবে।',
+                }
+            },
+            dynamic_conditions: {
+                low_income: 'এই রশিদে বর্ণিত টাকার পরিমাণ ১০০% ডিসকাউন্টে বড় ভাইদের পকেট হইতে নগদ আদায় করা হইবে।',
+                mid_income: 'আর্থিক অবস্থার কথা বিবেচনা করিয়া বড় ভাইরা ১৫ বছরের কিস্তিতে এই সালামি পরিশোধ করিতে পারিবেন।',
+                high_income: 'বড় ভাইদের পকেট যেহেতু উপচে পড়িতেছে, তাই সালামি না দিলে ৫০% চাঁদা হিসেবে এই অর্থ আদায় করা হইবে।',
+            }
         },
         statuses: {
           single: 'সিঙ্গেল',

@@ -77,6 +77,29 @@ export default function SalamiCalculatorResult({ result, onReset }: SalamiCalcul
         specialTitle = translations.calculator.result.special_titles.boy_special.title;
     }
 
+    // Dynamic disclaimer and condition logic
+    let disclaimerText = translations.calculator.result.rashid.disclaimer;
+    let conditionText = translations.calculator.result.rashid.condition;
+
+    const professionDisclaimerKey = profession as keyof typeof translations.calculator.result.rashid.dynamic_disclaimers.profession;
+    if (translations.calculator.result.rashid.dynamic_disclaimers.profession[professionDisclaimerKey]) {
+        disclaimerText = translations.calculator.result.rashid.dynamic_disclaimers.profession[professionDisclaimerKey];
+    } else {
+        const relationshipDisclaimerKey = relationshipStatus as keyof typeof translations.calculator.result.rashid.dynamic_disclaimers.relationship;
+        if (translations.calculator.result.rashid.dynamic_disclaimers.relationship[relationshipDisclaimerKey]) {
+            disclaimerText = translations.calculator.result.rashid.dynamic_disclaimers.relationship[relationshipDisclaimerKey];
+        }
+    }
+    
+    if (profession === 'student' || profession === 'unemployed' || (profession === 'job_holder' && income <= 0)) {
+        conditionText = translations.calculator.result.rashid.dynamic_conditions.low_income;
+    } else if (income > 50000) {
+        conditionText = translations.calculator.result.rashid.dynamic_conditions.high_income;
+    } else if (income > 0) {
+        conditionText = translations.calculator.result.rashid.dynamic_conditions.mid_income;
+    }
+
+
     const handleDownload = () => {
         setIsDownloading(true);
         const rashidElement = document.getElementById('salami-rashid');
@@ -198,8 +221,8 @@ export default function SalamiCalculatorResult({ result, onReset }: SalamiCalcul
                         </div>
 
                         <div className="mt-8 pt-4 border-t-2 border-dashed border-amber-800/30 text-center text-xs text-amber-800/80 italic">
-                             <p>{translations.calculator.result.rashid.disclaimer}</p>
-                             <p className="font-bold mt-2">{translations.calculator.result.rashid.condition}</p>
+                             <p>{disclaimerText}</p>
+                             <p className="font-bold mt-2">{conditionText}</p>
                         </div>
                     </div>
                 </div>
