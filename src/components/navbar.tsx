@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { LanguageToggle } from './language-toggle';
-import { Gift, Calculator } from 'lucide-react';
+import { Gift } from 'lucide-react';
 import { useLanguage } from '@/contexts/language-context';
 import { Button } from './ui/button';
 
@@ -21,11 +21,6 @@ export function Navbar() {
                     </Button>
                     <Button variant="ghost" asChild>
                         <Link href="/create">{translations.nav.create}</Link>
-                    </Button>
-                    <Button variant="ghost" asChild>
-                        <Link href="/calculator" className="flex items-center gap-1">
-                           <Calculator className="h-4 w-4" /> {translations.nav.calculator}
-                        </Link>
                     </Button>
                 </nav>
                 <div className="flex flex-1 items-center justify-end space-x-2">

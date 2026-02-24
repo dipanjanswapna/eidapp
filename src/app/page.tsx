@@ -3,9 +3,6 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { useLanguage } from '@/contexts/language-context';
 import ConfettiBackground from '@/components/confetti-background';
-import { SalamiCard } from '@/components/salami-card';
-import type { SalamiProfile } from '@/lib/types';
-import { Calculator } from 'lucide-react';
 
 export default function Home() {
   const { translations, language } = useLanguage();
@@ -27,12 +24,6 @@ export default function Home() {
         <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
           <Button asChild size="lg">
             <Link href="/create">{translations.home.ctaButton}</Link>
-          </Button>
-          <Button asChild size="lg" variant="secondary">
-            <Link href="/calculator">
-                <Calculator className="mr-2 h-5 w-5"/>
-                {translations.nav.calculator}
-            </Link>
           </Button>
         </div>
       </div>
