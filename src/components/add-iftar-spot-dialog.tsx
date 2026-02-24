@@ -97,9 +97,9 @@ export default function AddIftarSpotDialog({ onSpotAdded }: AddIftarSpotDialogPr
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button className="fixed bottom-6 right-6 z-[1000] h-14 w-14 rounded-full shadow-lg lg:bottom-10 lg:right-10">
-          <Plus className="h-6 w-6" />
-          <span className="sr-only">{translations.iftar.addSpotButton}</span>
+        <Button>
+          <Plus className="mr-2 h-4 w-4" />
+          {translations.iftar.addSpotButton}
         </Button>
       </DialogTrigger>
       <DialogContent className="max-h-[90vh] max-w-lg overflow-y-auto">

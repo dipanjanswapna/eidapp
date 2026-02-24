@@ -4,7 +4,7 @@ import { useLanguage } from '@/contexts/language-context';
 import { IftarSpot, FoodType, foodTypes } from '@/lib/types';
 import { getIftarSpotsAction } from '@/lib/actions';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Loader2, AlertCircle, BadgeCheck } from 'lucide-react';
 import AddIftarSpotDialog from './add-iftar-spot-dialog';
 import dynamic from 'next/dynamic';
@@ -83,43 +83,55 @@ export default function IftarSpotsClient() {
 
   return (
     <div className="relative h-full w-full">
-      <Card className="absolute top-4 left-1/2 z-[1000] w-[90vw] max-w-3xl -translate-x-1/2 transform rounded-full shadow-lg">
-        <CardContent className="p-1">
-          <ScrollArea className="w-full whitespace-nowrap rounded-full">
-            <div className="flex items-center space-x-1 p-1">
-              <Button
-                variant={selectedFilter === 'all' ? 'default' : 'ghost'}
-                size="sm"
-                className="shrink-0 rounded-full"
-                onClick={() => setSelectedFilter('all')}
-              >
-                {translations.iftar.filter.all}
-              </Button>
-              <Button
-                variant={selectedFilter === 'verified' ? 'default' : 'ghost'}
-                size="sm"
-                className="shrink-0 rounded-full"
-                onClick={() => setSelectedFilter('verified')}
-              >
-                <BadgeCheck className="mr-2 h-4 w-4" />
-                {translations.iftar.filter.verified}
-              </Button>
-              {foodTypes.map((food) => (
+      <div className="absolute top-4 left-1/2 z-[1000] w-[90vw] max-w-4xl -translate-x-1/2 transform space-y-4">
+        <Card>
+          <CardHeader className="p-4 text-center">
+            <CardTitle>{translations.iftar.addSpotDialog.title}</CardTitle>
+            <CardDescription>{translations.iftar.addSpotDialog.description}</CardDescription>
+          </CardHeader>
+          <CardFooter className="justify-center p-4 pt-0">
+            <AddIftarSpotDialog onSpotAdded={handleSpotAdded} />
+          </CardFooter>
+        </Card>
+
+        <Card className="rounded-full shadow-lg">
+          <CardContent className="p-1">
+            <ScrollArea className="w-full whitespace-nowrap rounded-full">
+              <div className="flex items-center space-x-1 p-1">
                 <Button
-                  key={food}
-                  variant={selectedFilter === food ? 'default' : 'ghost'}
+                  variant={selectedFilter === 'all' ? 'default' : 'ghost'}
                   size="sm"
                   className="shrink-0 rounded-full"
-                  onClick={() => setSelectedFilter(food)}
+                  onClick={() => setSelectedFilter('all')}
                 >
-                  {translations.iftar.foodTypes[food]}
+                  {translations.iftar.filter.all}
                 </Button>
-              ))}
-            </div>
-            <ScrollBar orientation="horizontal" className="h-2" />
-          </ScrollArea>
-        </CardContent>
-      </Card>
+                <Button
+                  variant={selectedFilter === 'verified' ? 'default' : 'ghost'}
+                  size="sm"
+                  className="shrink-0 rounded-full"
+                  onClick={() => setSelectedFilter('verified')}
+                >
+                  <BadgeCheck className="mr-2 h-4 w-4" />
+                  {translations.iftar.filter.verified}
+                </Button>
+                {foodTypes.map((food) => (
+                  <Button
+                    key={food}
+                    variant={selectedFilter === food ? 'default' : 'ghost'}
+                    size="sm"
+                    className="shrink-0 rounded-full"
+                    onClick={() => setSelectedFilter(food)}
+                  >
+                    {translations.iftar.foodTypes[food]}
+                  </Button>
+                ))}
+              </div>
+              <ScrollBar orientation="horizontal" className="h-2" />
+            </ScrollArea>
+          </CardContent>
+        </Card>
+      </div>
 
       <div className="h-full w-full">
         {isLoading && <MapLoadingSkeleton />}
@@ -131,8 +143,6 @@ export default function IftarSpotsClient() {
         )}
         {!isLoading && !error && <IftarMap spots={displayedSpots} onVote={handleVote} />}
       </div>
-
-      <AddIftarSpotDialog onSpotAdded={handleSpotAdded} />
     </div>
   );
 }
