@@ -483,5 +483,3 @@ export const translations = {
 };
 
 export type Translation = typeof translations;
-
-    
