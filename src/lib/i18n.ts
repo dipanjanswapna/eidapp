@@ -90,7 +90,7 @@ export const translations = {
      calculator: {
       title: 'Eid Salami Calculator',
       description:
-        'Find out your salami potential based on your relationship status, profession & income!',
+        'This Ramadan, find out your salami potential based on your relationship status, profession & income!',
       form: {
         name: {
           label: 'Your Name',
@@ -134,7 +134,7 @@ export const translations = {
         },
         income: {
           label: 'Monthly Income (BDT)',
-          placeholder: 'e.g., 25000',
+          placeholder: 'I have no money, give me money...',
         },
         submitButton: 'Calculate My Salami',
       },
@@ -158,19 +158,19 @@ export const translations = {
           bigBrother: "Official Big Brother"
         },
         salamiLogic: {
-          '0-1000': "100% Receivable",
-          '1001-5000': '90% Receivable',
-          '5001-10000': '80% Receivable',
-          '10001-15000': '50/50 Chance',
-          '15001-20000': '30% (You should give)',
-          '20001-30000': '-50% (You must give)',
-          '30001-50000': '-80% (You must give)',
-          '50001-100000': '-100% (You are rich)',
-          '100001+': '-500% (Sponsor)',
+          '0-1000': "Full Salami Receivable",
+          '1001-5000': 'Salami: 90% Receivable',
+          '5001-10000': 'Salami: 80% Receivable',
+          '10001-15000': 'Salami: 50/50',
+          '15001-20000': 'Salami: 30% (To Give)',
+          '20001-30000': 'Salami: -50% (Must Give)',
+          '30001-50000': 'Salami: -80% (Definitely)',
+          '50001-100000': 'Salami: -100% (Rich)',
+          '100001+': 'Salami: -500% (Sponsor)',
         },
         conditions: {
           low_income:
-            'Condition: This receipt grants the right to collect the said amount in cash from the pockets of elder brothers at a 100% discount.',
+            'Condition: The amount stated in this receipt will be collected in cash from the pockets of elder brothers at a 100% discount.',
           medium_income:
             'Condition: Considering the financial situation, elder brothers can pay this salami in 15-year easy installments.',
           high_income:
@@ -197,17 +197,17 @@ export const translations = {
             "You are the 'Eid Moon'! Not salami, you are obliged to be the 'salami sponsor' for the whole area.",
         },
         relationshipVerdict: {
-            single: 'Single is king! Pocket full, tension nil.',
-            in_a_relationship: 'Salami will come via bKash, and go out as a gift!',
-            engaged: 'You have a 100% chance of going bankrupt giving salami to your in-laws.',
-            married: 'Your salami is now your spouse/child\'s property.',
-            has_crush: 'A simple "Hi" is your salami.',
-            divorced: 'You need to rebuild your life and pocket—so demand double salami!',
+            single: 'Single is king! Pocket full, tension nil. Your only job is to collect salami.',
+            in_a_relationship: 'Salami will come via bKash, and go out as a gift! Prepare your pocket.',
+            engaged: 'You have a 100% chance of going bankrupt giving salami to your in-laws. Start saving!',
+            married: 'Your salami is now your spouse/child\'s property. You are just a medium.',
+            has_crush: 'A simple "Hi" is your salami. Don\'t expect more!',
+            divorced: 'You need to rebuild your life and pocket—so demand double salami from everyone!',
             secret_relation: 'Secret relationships are expensive! Get backup salami from elder brothers before you get caught.',
         },
         professionFooter: {
           doctor_male: 'Before wielding a scalpel in the operating theater, wield one on your elder brothers\' pockets! Upon seeing this receipt, they are obligated to give salami without any anesthesia.',
-          doctor_female: 'You\'ve written many prescriptions, now write a "salami dose" for yourself. If the brothers-in-law don\'t give salami, all their Eid sweets are forbidden!',
+          doctor_female: 'You\'ve written many prescriptions, now write a "salami dose" for yourself. If brothers-in-law don\'t give salami, all their Eid sweets are forbidden!',
           engineer_male: 'Your income\'s structural design is quite robust, but the pocket seems to be asking for liquidation! Elder brothers, please provide salami according to your load-bearing capacity.',
           engineer_female: 'A new blueprint for collecting salami has been prepared. If brothers-in-law don\'t clear the payment upon seeing this receipt, all your plans will be cancelled!',
           govt_job_holder_male: 'According to government protocol, giving salami to juniors is now your constitutional duty. This receipt shall be considered an "official gazette"!',
@@ -224,6 +224,10 @@ export const translations = {
           businessman_female: 'Business profit or loss, giving salami is mandatory! Making the young ones happy on Eid is also a big investment.',
           expat_worker_male: 'You are a remittance warrior! Add a little salami with your dollars or riyals, the Eid of the young ones back home will become colorful.',
           expat_worker_female: 'You are a remittance warrior! Add a little salami with your dollars or riyals, the Eid of the young ones back home will become colorful.',
+          student_male: 'Your only job this Eid is to collect salami. Use this receipt to show your elders that it\'s your right!',
+          student_female: 'Your only job this Eid is to collect salami. Use this receipt to show your elders that it\'s your right!',
+          unemployed_male: 'Since you have no income, this receipt is a legal document to demand sympathy salami from everyone.',
+          unemployed_female: 'Since you have no income, this receipt is a legal document to demand sympathy salami from everyone.',
         },
         relationshipFooter: {
           single_male: 'If this receipt is shown to an elder brother or brother-in-law, they are obliged to pay. Remember, an unmarried man with an empty pocket is a sign of youth degradation!',
@@ -334,7 +338,7 @@ export const translations = {
     calculator: {
       title: 'ঈদ সালামি ক্যালকুলেটর',
       description:
-        'আপনার সম্পর্ক, পেশা এবং আয়ের উপর ভিত্তি করে আপনার সালামি সম্ভাবনা জানুন!',
+        'এই রমজানে, আপনার সম্পর্ক, পেশা এবং আয়ের উপর ভিত্তি করে আপনার সালামি সম্ভাবনা জানুন!',
       form: {
         name: {
           label: 'আপনার নাম',
@@ -378,7 +382,7 @@ export const translations = {
         },
         income: {
           label: 'মাসিক আয় (টাকা)',
-          placeholder: 'যেমন, ২৫০০০',
+          placeholder: 'টাকা নাই, টাকা দিন...',
         },
         submitButton: 'আমার সালামি ক্যালকুলেট করুন',
       },
@@ -441,12 +445,12 @@ export const translations = {
             'আপনি তো মূর্তমান বিরিয়ানি! সালামি না, আপনি পুরো এলাকার ঈদ স্পন্সর হতে বাধ্য।',
         },
         relationshipVerdict: {
-            single: 'সিঙ্গেল ইজ কিং! পকেট ফুল, টেনশন নীল।',
-            in_a_relationship: 'সালামি আসবে বিকাশ হয়ে, চলে যাবে গিফট হয়ে!',
-            engaged: 'আপনি এখন বড় হয়ে গেছেন! শ্বশুরবাড়িতে সালামি দিতে দিতে দেউলিয়া হওয়ার চান্স ১০০%।',
-            married: 'সালামি পাওয়ার দিন শেষ, আপনার সালামি এখন আপনার বউ/বাচ্চার সম্পদ।',
-            has_crush: 'সালামি চাই না, শুধু ইনবক্সে একটা রিপ্লাই চাই!',
-            divorced: 'নতুন করে জীবন আর পকেট—দুটোই গোছাতে হবে, তাই ডাবল সালামি দাবি করুন!',
+            single: 'সিঙ্গেল ইজ কিং! পকেট ফুল, টেনশন নীল। আপনার একমাত্র কাজ সালামি আদায় করা।',
+            in_a_relationship: 'সালামি আসবে বিকাশ হয়ে, চলে যাবে গিফট হয়ে! পকেট প্রস্তুত রাখুন।',
+            engaged: 'শ্বশুরবাড়িতে সালামি দিতে দিতে আপনার দেউলিয়া হওয়ার চান্স ১০০%। এখন থেকেই সঞ্চয় শুরু করুন।',
+            married: 'আপনার সালামি এখন আপনার বউ/বাচ্চার সম্পদ। আপনি শুধু একজন মাধ্যম।',
+            has_crush: 'একটা সিম্পল "Hi"-ই আপনার সালামি। এর বেশি আশা করবেন না!',
+            divorced: 'নতুন করে জীবন আর পকেট—দুটোই গোছাতে হবে, তাই সবার থেকে ডাবল সালামি দাবি করুন!',
             secret_relation: 'গোপন সম্পর্কের খরচ অনেক! ধরা পড়ার আগেই বড় ভাইদের থেকে সালামি নিয়ে ব্যাকআপ রাখুন।',
         },
         professionFooter: {
@@ -468,6 +472,10 @@ export const translations = {
           businessman_female: 'ব্যবসার লাভ-লোকসান যা-ই হোক, সালামি দেওয়া বাধ্যতামূলক! ঈদের দিনে ছোটদের খুশি করাও একটা বড় বিনিয়োগ।',
           expat_worker_male: 'আপনি তো রেমিট্যান্স যোদ্ধা! আপনার ডলার বা রিয়ালের সাথে এবার একটু সালামি যোগ করুন, দেশের ছোটদের ঈদটা রঙিন হয়ে উঠবে।',
           expat_worker_female: 'আপনি তো রেমিট্যান্স যোদ্ধা! আপনার ডলার বা রিয়ালের সাথে এবার একটু সালামি যোগ করুন, দেশের ছোটদের ঈদটা রঙিন হয়ে উঠবে।',
+          student_male: 'ঈদে আপনার একমাত্র কাজ হলো সালামি আদায় করা। এই রশিদটি ব্যবহার করে বড়দের দেখিয়ে দিন যে এটা আপনার অধিকার!',
+          student_female: 'ঈদে আপনার একমাত্র কাজ হলো সালামি আদায় করা। এই রশিদটি ব্যবহার করে বড়দের দেখিয়ে দিন যে এটা আপনার অধিকার!',
+          unemployed_male: 'যেহেতু আয় নেই, তাই সহানুভূতি সালামি আদায়ের জন্য এই রশিদটি একটি লিগ্যাল ডকুমেন্ট হিসেবে গণ্য হবে।',
+          unemployed_female: 'যেহেতু আয় নেই, তাই সহানুভূতি সালামি আদায়ের জন্য এই রশিদটি একটি লিগ্যাল ডকুমেন্ট হিসেবে গণ্য হবে।',
         },
         relationshipFooter: {
           single_male: 'এই রশিদ বড় ভাই বা দুলাভাইকে দেখালে টাকা দিতে বাধ্য থাকিবেন। মনে রাখবেন, অবিবাহিত ছেলেদের পকেট খালি থাকা মানেই দেশের যুবসমাজের অবক্ষয়!',

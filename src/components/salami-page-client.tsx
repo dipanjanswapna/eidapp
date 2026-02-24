@@ -172,7 +172,7 @@ export default function SalamiPageClient({ profile, initialWishes }: SalamiPageC
             </CardHeader>
             <CardContent>
                 {wishes.length > 0 ? (
-                    <ul className="space-y-4 h-64 overflow-y-auto pr-2">
+                    <ul className="space-y-4 pr-2">
                         {wishes.map(wish => (
                             <li key={wish.id} className="rounded-lg border bg-secondary/50 p-4">
                                 <p className='text-foreground'>" {wish.message} "</p>

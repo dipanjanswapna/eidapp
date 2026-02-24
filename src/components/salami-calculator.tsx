@@ -7,7 +7,6 @@ import { Button } from '@/components/ui/button';
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -42,8 +41,8 @@ export default function SalamiCalculator() {
     profession: z.enum([
         'student','unemployed','job_holder','govt_job_holder','doctor','engineer','teacher','freelancer','businessman','expat_worker','gen_z','retired_awami_leaguer'
     ]),
-    monthlyIncome: z.string().refine(val => !isNaN(parseInt(val, 10)), {
-        message: "Must be a number"
+    monthlyIncome: z.string().refine(val => !isNaN(parseInt(val, 10)) && parseInt(val, 10) >= 0, {
+        message: "Must be a valid number"
     }).optional(),
   });
 
@@ -57,9 +56,6 @@ export default function SalamiCalculator() {
       monthlyIncome: '0',
     },
   });
-
-  const profession = form.watch('profession');
-  const isJobHolder = profession === 'job_holder' || profession === 'govt_job_holder' || profession === 'doctor' || profession === 'engineer' || profession === 'teacher' || profession === 'freelancer' || profession === 'businessman' || profession === 'expat_worker';
 
   function onSubmit(values: z.infer<typeof formSchema>) {
     setIsSubmitting(true);
@@ -167,21 +163,19 @@ export default function SalamiCalculator() {
               )}
             />
 
-            {isJobHolder && (
-                 <FormField
-                    control={form.control}
-                    name="monthlyIncome"
-                    render={({ field }) => (
-                        <FormItem>
-                        <FormLabel>{translations.calculator.form.income.label}</FormLabel>
-                        <FormControl>
-                            <Input type="number" placeholder={translations.calculator.form.income.placeholder} {...field} />
-                        </FormControl>
-                        <FormMessage />
-                        </FormItem>
-                    )}
-                />
-            )}
+            <FormField
+              control={form.control}
+              name="monthlyIncome"
+              render={({ field }) => (
+                  <FormItem>
+                  <FormLabel>{translations.calculator.form.income.label}</FormLabel>
+                  <FormControl>
+                      <Input type="number" placeholder={translations.calculator.form.income.placeholder} {...field} />
+                  </FormControl>
+                  <FormMessage />
+                  </FormItem>
+              )}
+            />
 
             <Button type="submit" className="w-full" size="lg" disabled={isSubmitting}>
               {isSubmitting ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : null}
