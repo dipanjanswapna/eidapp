@@ -22,7 +22,7 @@ export function Navbar() {
   ];
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-primary">
+    <header className="sticky top-0 z-50 w-full overflow-hidden bg-primary">
       <div className="container mx-auto flex h-16 items-center px-4">
         {/* Left side: Brand */}
         <div className="flex flex-1 items-center justify-start">
