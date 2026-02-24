@@ -3,12 +3,18 @@
 import Link from 'next/link';
 import { Facebook, Linkedin } from 'lucide-react';
 import { useLanguage } from '@/contexts/language-context';
+import { usePathname } from 'next/navigation';
 
 export function Footer() {
   const { language } = useLanguage();
+  const pathname = usePathname();
   const text = language === 'bn' 
     ? "EidVibe, প্রাংগনের ইকোসিস্টেমের একটি মজার পণ্য" 
     : "EidVibe, a fun product of Prangon's ecosystem";
+
+  if (pathname === '/iftar') {
+    return null;
+  }
 
   return (
     <footer className="bg-muted text-muted-foreground">
