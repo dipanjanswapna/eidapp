@@ -14,8 +14,9 @@ import {
     serverTimestamp,
     orderBy,
     Timestamp,
+    increment,
 } from 'firebase/firestore';
-import type { NGLUser, NGLMessage, EidCard } from './types';
+import type { NGLUser, NGLMessage, EidCard, IftarSpot, FoodType } from './types';
 
 // This config is used for server-side actions
 const firebaseConfig = {
@@ -190,4 +191,42 @@ export async function markEidCardAsPaid(cardId: string): Promise<void> {
     await updateDoc(docRef, {
         isPaid: true,
     });
+}
+
+
+// Iftar Spot Finder
+const iftarSpotsCollection = collection(db, 'iftar_spots');
+
+export async function addIftarSpot(spotData: Omit<IftarSpot, 'id' | 'createdAt' | 'likes' | 'dislikes'>): Promise<string> {
+    const newSpotData = {
+        ...spotData,
+        likes: 0,
+        dislikes: 0,
+        createdAt: serverTimestamp(),
+    };
+    const docRef = await addDoc(iftarSpotsCollection, newSpotData);
+    return docRef.id;
+}
+
+export async function getIftarSpots(foodType: FoodType | 'all'): Promise<IftarSpot[]> {
+    const twentyFourHoursAgo = Timestamp.fromMillis(Date.now() - 24 * 60 * 60 * 1000);
+    
+    let q;
+    if (foodType === 'all') {
+        q = query(iftarSpotsCollection, where('createdAt', '>=', twentyFourHoursAgo), orderBy('createdAt', 'desc'));
+    } else {
+        q = query(iftarSpotsCollection, where('createdAt', '>=', twentyFourHoursAgo), where('foodType', '==', foodType), orderBy('createdAt', 'desc'));
+    }
+
+    const querySnapshot = await getDocs(q);
+    return querySnapshot.docs.map(doc => convertTimestamps({ id: doc.id, ...doc.data() }) as IftarSpot);
+}
+
+export async function voteOnSpot(spotId: string, voteType: 'like' | 'dislike'): Promise<void> {
+    const docRef = doc(db, 'iftar_spots', spotId);
+    if (voteType === 'like') {
+        await updateDoc(docRef, { likes: increment(1) });
+    } else {
+        await updateDoc(docRef, { dislikes: increment(1) });
+    }
 }

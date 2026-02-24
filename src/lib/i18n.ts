@@ -8,6 +8,7 @@ export const translations = {
       ngl: 'Eid Letter',
       eidWheel: 'Lucky Wheel',
       eidCard: 'Eid Card',
+      iftar: 'Iftar Spots'
     },
     home: {
       title: 'Digital Salami, Festive Fun!',
@@ -436,6 +437,67 @@ export const translations = {
         'Salami Queen/King: You are today\'s highest Salami recipient!',
       ],
     },
+    iftar: {
+      title: 'Iftar & Sehri Spot Finder',
+      description: 'Find free Iftar and Sehri spots near you, shared by the community.',
+      addSpotButton: 'Add New Spot',
+      filter: {
+        label: 'Filter by Food',
+        all: 'All',
+      },
+      map: {
+        loading: 'Loading map...',
+        noSpots: 'No spots found for the selected filter. Try another one!',
+        popup: {
+          verifiedBy: 'Verified by',
+          people: 'people',
+          isFake: 'Fake spot?',
+          vote: 'Vote',
+        }
+      },
+      addSpotDialog: {
+        title: 'Add a New Iftar/Sehri Spot',
+        description: 'Help the community by sharing a spot. Your entry will be live for 24 hours.',
+        masjidName: {
+          label: 'Mosque/Spot Name',
+          placeholder: 'e.g., Baitul Mukarram Mosque'
+        },
+        area: {
+          label: 'Area / Neighborhood',
+          placeholder: 'e.g., Paltan, Dhaka'
+        },
+        foodType: {
+          label: 'Food Type',
+          placeholder: 'Select food type'
+        },
+        otherFoodType: {
+          label: 'Specify Other Food',
+          placeholder: 'e.g., Fruits, Juice'
+        },
+        location: {
+          label: 'Location',
+          description: 'Click on the map to set location or use your current location.',
+          useCurrentLocation: 'Use My Current Location',
+        },
+        submitButton: 'Add Spot',
+        submitting: 'Adding...',
+        success: 'Spot added successfully!',
+        error: 'Failed to add spot. Please try again.'
+      },
+      foodTypes: {
+        'kacchi-biryani': 'Kacchi Biryani',
+        'tehari': 'Tehari',
+        'khichuri': 'Khichuri (Bhuna/Patla)',
+        'polao-korma': 'Polao & Korma',
+        'beef-roti': 'Beef & Roti/Rice',
+        'chicken-biryani': 'Chicken Biryani/Roast',
+        'mutton': 'Mutton',
+        'haleem-jilapi': 'Haleem & Jilapi',
+        'mixed-iftar': 'Mixed Iftar (Chickpeas, etc.)',
+        'sehri-thali': 'Sehri Special Thali',
+        'others': 'Others'
+      }
+    }
   },
   bn: {
     nav: {
@@ -446,6 +508,7 @@ export const translations = {
       ngl: 'ঈদের চিঠি',
       eidWheel: 'লাকি হুইল',
       eidCard: 'ঈদ কার্ড',
+      iftar: 'ইফতার স্পট'
     },
     home: {
       title: 'ডিজিটাল সালামি, উৎসবের আমেজ!',
@@ -874,6 +937,67 @@ export const translations = {
         'সালামি কুইন/কিং: আজকের সর্বোচ্চ সালামি প্রাপক আপনিই!',
       ],
     },
+    iftar: {
+      title: 'ইফতার ও সেহরি স্পট ফাইন্ডার',
+      description: 'আপনার কাছাকাছি বিনামূল্যে ইফতার এবং সেহরির স্পট খুঁজুন, যা কমিউনিটির দ্বারা শেয়ার করা হয়েছে।',
+      addSpotButton: 'নতুন স্পট যোগ করুন',
+      filter: {
+        label: 'খাবার দিয়ে ফিল্টার করুন',
+        all: 'সব',
+      },
+      map: {
+        loading: 'ম্যাপ লোড হচ্ছে...',
+        noSpots: 'নির্বাচিত ফিল্টারের জন্য কোনো স্পট পাওয়া যায়নি। অন্য একটি চেষ্টা করুন!',
+        popup: {
+          verifiedBy: 'যাচাই করেছেন',
+          people: 'জন',
+          isFake: 'ভুয়া স্পট?',
+          vote: 'ভোট দিন',
+        }
+      },
+      addSpotDialog: {
+        title: 'একটি নতুন ইফতার/সেহরি স্পট যোগ করুন',
+        description: 'একটি স্পট শেয়ার করে কমিউনিটিকে সাহায্য করুন। আপনার এন্ট্রি ২৪ ঘণ্টা লাইভ থাকবে।',
+        masjidName: {
+          label: 'মসজিদ/স্পটের নাম',
+          placeholder: 'যেমন, বায়তুল মোকাররম মসজিদ'
+        },
+        area: {
+          label: 'এলাকা/মহল্লা',
+          placeholder: 'যেমন, পল্টন, ঢাকা'
+        },
+        foodType: {
+          label: 'খাবারের ধরণ',
+          placeholder: 'খাবারের ধরণ নির্বাচন করুন'
+        },
+        otherFoodType: {
+          label: 'অন্যান্য খাবারের নাম উল্লেখ করুন',
+          placeholder: 'যেমন, ফল, জুস'
+        },
+        location: {
+          label: 'অবস্থান',
+          description: 'অবস্থান সেট করতে ম্যাপে ক্লিক করুন অথবা আপনার বর্তমান অবস্থান ব্যবহার করুন।',
+          useCurrentLocation: 'আমার বর্তমান অবস্থান ব্যবহার করুন',
+        },
+        submitButton: 'স্পট যোগ করুন',
+        submitting: 'যোগ করা হচ্ছে...',
+        success: 'স্পট সফলভাবে যোগ করা হয়েছে!',
+        error: 'স্পট যোগ করতে ব্যর্থ হয়েছে। অনুগ্রহ করে আবার চেষ্টা করুন।'
+      },
+      foodTypes: {
+        'kacchi-biryani': 'কাচ্চি বিরিয়ানি',
+        'tehari': 'তেহারি',
+        'khichuri': 'খিচুড়ি (ভুনা/পাতলা)',
+        'polao-korma': 'পোলাও ও কোরমা',
+        'beef-roti': 'গরুর মাংস ও রুটি/ভাত',
+        'chicken-biryani': 'চিকেন বিরিয়ানি/রোস্ট',
+        'mutton': 'খাসির মাংস',
+        'haleem-jilapi': 'হালিম ও জিলাপি',
+        'mixed-iftar': 'মিশ্র ইফতার (ছোলা, পিয়াজু ইত্যাদি)',
+        'sehri-thali': 'সেহরি স্পেশাল থালি',
+        'others': 'অন্যান্য'
+      }
+    }
   },
 };
 

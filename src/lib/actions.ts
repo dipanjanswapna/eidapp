@@ -1,9 +1,9 @@
 'use server';
 
 import { z } from "zod";
-import { addNGLUser, verifyNGLUserPin, addNGLMessage, getNGLMessagesByUsername, addReplyToNGLMessage, addEidCard, markEidCardAsPaid } from "./db";
+import { addNGLUser, verifyNGLUserPin, addNGLMessage, getNGLMessagesByUsername, addReplyToNGLMessage, addEidCard, markEidCardAsPaid, addIftarSpot, getIftarSpots, voteOnSpot as voteOnIftarSpotDb } from "./db";
 import { redirect } from "next/navigation";
-import type { NGLUser, NGLMessage } from "./types";
+import type { NGLUser, NGLMessage, IftarSpot, FoodType } from "./types";
 import { revalidatePath } from "next/cache";
 
 // NGL Actions
@@ -110,4 +110,35 @@ export async function confirmEidCardPaymentAction(cardId: string) {
     } catch(error) {
         return { success: false, error: (error as Error).message };
     }
+}
+
+// Iftar Spot Actions
+const foodTypes = ['kacchi-biryani', 'tehari', 'khichuri', 'polao-korma', 'beef-roti', 'chicken-biryani', 'mutton', 'haleem-jilapi', 'mixed-iftar', 'sehri-thali', 'others'] as const;
+
+const addIftarSpotSchema = z.object({
+    masjidName: z.string().min(3, "Masjid name must be at least 3 characters."),
+    area: z.string().min(3, "Area must be at least 3 characters."),
+    foodType: z.enum(foodTypes),
+    otherFoodTypeName: z.string().optional(),
+    latitude: z.number(),
+    longitude: z.number(),
+});
+
+export async function addIftarSpotAction(values: z.infer<typeof addIftarSpotSchema>) {
+    const validatedFields = addIftarSpotSchema.safeParse(values);
+    if (!validatedFields.success) {
+        console.error(validatedFields.error.flatten().fieldErrors)
+        throw new Error("Invalid spot data.");
+    }
+    await addIftarSpot(validatedFields.data);
+    revalidatePath("/iftar");
+}
+
+export async function getIftarSpotsAction(foodType: FoodType | 'all'): Promise<IftarSpot[]> {
+    return await getIftarSpots(foodType);
+}
+
+export async function voteOnIftarSpotAction(spotId: string, voteType: 'like' | 'dislike') {
+    await voteOnIftarSpotDb(spotId, voteType);
+    revalidatePath("/iftar");
 }

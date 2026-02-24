@@ -24,5 +24,12 @@ service cloud.firestore {
       allow create, read;
       allow update, delete: if false;
     }
+
+    // Iftar spots can be read and created by anyone.
+    // Updates are restricted to only the likes and dislikes fields.
+    match /iftar_spots/{spotId} {
+      allow read, create;
+      allow update: if request.resource.data.diff(resource.data).affectedKeys().hasOnly(['likes', 'dislikes']);
+    }
   }
 }

@@ -28,4 +28,20 @@ export type EidCard = {
   targetAmount?: number;
   isPaid?: boolean;
   createdAt: Date;
-}
+};
+
+export const foodTypes = ['kacchi-biryani', 'tehari', 'khichuri', 'polao-korma', 'beef-roti', 'chicken-biryani', 'mutton', 'haleem-jilapi', 'mixed-iftar', 'sehri-thali', 'others'] as const;
+export type FoodType = typeof foodTypes[number];
+
+export type IftarSpot = {
+  id: string;
+  masjidName: string;
+  area: string;
+  foodType: FoodType;
+  otherFoodTypeName?: string;
+  latitude: number;
+  longitude: number;
+  likes: number;
+  dislikes: number;
+  createdAt: Date;
+};

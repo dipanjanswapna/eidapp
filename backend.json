@@ -44,6 +44,23 @@
         "createdAt": { "type": "string", "format": "date-time" }
       },
       "required": ["recipientName", "message", "theme", "createdAt"]
+    },
+    "iftarSpot": {
+      "title": "Iftar/Sehri Spot",
+      "description": "A user-submitted spot for Iftar or Sehri.",
+      "type": "object",
+      "properties": {
+        "masjidName": { "type": "string" },
+        "area": { "type": "string" },
+        "foodType": { "type": "string", "enum": ["kacchi-biryani", "tehari", "khichuri", "polao-korma", "beef-roti", "chicken-biryani", "mutton", "haleem-jilapi", "mixed-iftar", "sehri-thali", "others"] },
+        "otherFoodTypeName": { "type": "string" },
+        "latitude": { "type": "number" },
+        "longitude": { "type": "number" },
+        "likes": { "type": "number" },
+        "dislikes": { "type": "number" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["masjidName", "area", "foodType", "latitude", "longitude", "likes", "dislikes", "createdAt"]
     }
   },
   "auth": {
@@ -61,6 +78,10 @@
     "/eid_cards/{cardId}": {
         "schema": { "$ref": "#/entities/eidCard" },
         "description": "User-generated digital Eid cards."
+    },
+    "/iftar_spots/{spotId}": {
+      "schema": { "$ref": "#/entities/iftarSpot" },
+      "description": "User-submitted Iftar and Sehri spots, valid for 24 hours."
     }
   }
 }
