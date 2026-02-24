@@ -1,3 +1,4 @@
+'use server';
 import { initializeApp, getApps, getApp } from 'firebase/app';
 import { 
     getFirestore, 
@@ -169,11 +170,15 @@ export async function getNGLMessagesByUsername(username: string): Promise<NGLMes
     const messagesCollection = collection(db, 'ngl_messages');
     const q = query(
         messagesCollection, 
-        where('receiverUsername', '==', username.toLowerCase()),
-        orderBy('createdAt', 'desc')
+        where('receiverUsername', '==', username.toLowerCase())
     );
     const querySnapshot = await getDocs(q);
-    return querySnapshot.docs.map(doc => convertTimestamps({ id: doc.id, ...doc.data() }) as NGLMessage);
+    const messages = querySnapshot.docs.map(doc => convertTimestamps({ id: doc.id, ...doc.data() }) as NGLMessage);
+
+    // Sort messages by creation date in descending order
+    messages.sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime());
+
+    return messages;
 }
 
 export async function addReplyToNGLMessage(messageId: string, reply: string): Promise<NGLMessage> {
