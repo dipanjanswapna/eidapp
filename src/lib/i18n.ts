@@ -3,7 +3,7 @@ export const translations = {
     nav: {
       home: 'Home',
       calculator: 'Salami Calculator',
-      brand: 'EidVibe',
+      brand: 'EidVibe (ঈদ ভাইব)',
       register: 'Register',
       ngl: 'Eid Letter',
       eidWheel: 'Lucky Wheel',
@@ -11,7 +11,7 @@ export const translations = {
       iftar: 'Iftar Spots'
     },
     home: {
-      title: 'EidVibe: Make Your Eid More Colorful!',
+      title: 'EidVibe (ঈদ ভাইব): Make Your Eid More Colorful!',
       subtitle:
         'This Eid, boost your joy with all features in one place. Send anonymous messages, create custom colorful Salami receipts, or find free Iftar and Sehri spots on the map—everything is now on EidVibe!',
       ctaButton: 'Create Your Salami Card',
@@ -376,6 +376,7 @@ export const translations = {
           description:
             'Let your friends know where to send you secret Eid letters!',
           shareButton: 'Share Link',
+          copyButton: 'Copy Link',
           linkCopied: 'Link Copied!',
         },
         noMessages: 'No Eid letters yet. Share your link to get some!',
@@ -509,7 +510,7 @@ export const translations = {
     nav: {
       home: 'হোম',
       calculator: 'সালামি ক্যালকুলেটর',
-      brand: 'ঈদ ভাইব',
+      brand: 'ঈদ ভাইব (EidVibe)',
       register: 'নিবন্ধন করুন',
       ngl: 'ঈদের চিঠি',
       eidWheel: 'লাকি হুইল',
@@ -882,6 +883,7 @@ export const translations = {
           description:
             'বন্ধুদের জানিয়ে দিন কোথায় আপনাকে গোপন ঈদের চিঠি পাঠাতে হবে!',
           shareButton: 'লিঙ্ক শেয়ার করুন',
+          copyButton: 'লিঙ্ক কপি করুন',
           linkCopied: 'লিঙ্ক কপি করা হয়েছে!',
         },
         noMessages: 'এখনও কোনো ঈদের চিঠি নেই। কিছু পেতে আপনার লিঙ্ক শেয়ার করুন!',
