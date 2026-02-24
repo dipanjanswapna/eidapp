@@ -12,7 +12,7 @@ type CardProps = {
 export default function NGLReplyAndShareCard({ user, message }: CardProps) {
     const { language, translations: t } = useLanguage();
     
-    const senderTag = t.ngl.send.senderTag.options[message.senderTag as keyof typeof t.ngl.send.senderTag.options];
+    const senderTag = t.ngl.send.senderTag.options[message.senderTag as keyof typeof t.en.ngl.send.senderTag.options];
     
     const footerText = language === 'bn' 
         ? "আপনিও এমন গোপন চিঠি পেতে চান? ভিজিট করুন monotorongo.com"
@@ -24,7 +24,7 @@ export default function NGLReplyAndShareCard({ user, message }: CardProps) {
                 <div className="absolute inset-0 bg-[url('/receipt-bg.svg')] bg-center opacity-5"></div>
                 
                 <div className="relative text-center mb-6">
-                    <h1 className="text-lg sm:text-2xl font-bold text-gray-800">{language === 'bn' ? 'ঈদের চিঠি - উত্তরসহ' : 'Secret Eid Message - With Reply'}</h1>
+                    <h1 className="text-lg sm:text-2xl font-bold text-gray-800">{language === 'bn' ? 'ঈদের চিঠি' : 'Secret Eid Message'}</h1>
                     <p className="text-xs sm:text-sm text-gray-500">@{user.username}</p>
                 </div>
 
