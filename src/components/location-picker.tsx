@@ -7,14 +7,6 @@ import { Button } from './ui/button';
 import { LocateFixed } from 'lucide-react';
 import { useLanguage } from '@/contexts/language-context';
 
-// Fix for default icon not showing in Next.js
-delete (L.Icon.Default.prototype as any)._getIconUrl;
-L.Icon.Default.mergeOptions({
-  iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png').default.src,
-  iconUrl: require('leaflet/dist/images/marker-icon.png').default.src,
-  shadowUrl: require('leaflet/dist/images/marker-shadow.png').default.src,
-});
-
 const LocationMarker = ({
   position,
   setPosition,
@@ -41,6 +33,17 @@ export default function LocationPicker({
   const dhakaPosition: LatLngExpression = [23.8103, 90.4125];
   const [position, setPosition] = useState<LatLngExpression | null>(null);
   const mapRef = useState<L.Map | null>(null);
+
+  useEffect(() => {
+    // Fix for default icon not showing in Next.js.
+    // This needs to run only on the client.
+    delete (L.Icon.Default.prototype as any)._getIconUrl;
+    L.Icon.Default.mergeOptions({
+      iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png').default.src,
+      iconUrl: require('leaflet/dist/images/marker-icon.png').default.src,
+      shadowUrl: require('leaflet/dist/images/marker-shadow.png').default.src,
+    });
+  }, []);
 
   useEffect(() => {
     if (position && 'lat' in position && 'lng' in position) {
