@@ -4,6 +4,8 @@ export const translations = {
       home: 'Home',
       create: 'Create Card',
       calculator: 'Salami Calculator',
+      brand: 'Mon Torongo',
+      register: 'Register',
     },
     home: {
       title: 'Digital Salami, Festive Fun!',
@@ -87,7 +89,7 @@ export const translations = {
         noWishes: 'No wishes yet. Be the first one!',
       },
     },
-     calculator: {
+    calculator: {
       title: 'Eid Salami Calculator',
       description:
         'This Ramadan, find out your salami potential based on your relationship status, profession & income!',
@@ -154,11 +156,11 @@ export const translations = {
         footerDisclaimer:
           'Disclaimer: This calculation is for fun and not to be taken seriously.',
         specialTitles: {
-          salamiQueen: "Salami Queen",
-          bigBrother: "Official Big Brother"
+          salamiQueen: 'Salami Queen',
+          bigBrother: 'Official Big Brother',
         },
         salamiLogic: {
-          '0-1000': "Full Salami Receivable",
+          '0-1000': 'Full Salami Receivable',
           '1001-5000': 'Salami: 90% Receivable',
           '5001-10000': 'Salami: 80% Receivable',
           '10001-15000': 'Salami: 50/50',
@@ -197,53 +199,94 @@ export const translations = {
             "You are the 'Eid Moon'! Not salami, you are obliged to be the 'salami sponsor' for the whole area.",
         },
         relationshipVerdict: {
-            single: 'Single is king! Pocket full, tension nil. Your only job is to collect salami.',
-            in_a_relationship: 'Salami will come via bKash, and go out as a gift! Prepare your pocket.',
-            engaged: 'You have a 100% chance of going bankrupt giving salami to your in-laws. Start saving!',
-            married: 'Your salami is now your spouse/child\'s property. You are just a medium.',
-            has_crush: 'A simple "Hi" is your salami. Don\'t expect more!',
-            divorced: 'You need to rebuild your life and pocket—so demand double salami from everyone!',
-            secret_relation: 'Secret relationships are expensive! Get backup salami from elder brothers before you get caught.',
+          single: 'Single is king! Pocket full, tension nil. Your only job is to collect salami.',
+          in_a_relationship:
+            'Salami will come via bKash, and go out as a gift! Prepare your pocket.',
+          engaged:
+            'You have a 100% chance of going bankrupt giving salami to your in-laws. Start saving!',
+          married:
+            'Your salami is now your spouse/child\'s property. You are just a medium.',
+          has_crush: 'A simple "Hi" is your salami. Don\'t expect more!',
+          divorced:
+            'You need to rebuild your life and pocket—so demand double salami from everyone!',
+          secret_relation:
+            'Secret relationships are expensive! Get backup salami from elder brothers before you get caught.',
         },
         professionFooter: {
-          doctor_male: 'Before wielding a scalpel in the operating theater, wield one on your elder brothers\' pockets! Upon seeing this receipt, they are obligated to give salami without any anesthesia.',
-          doctor_female: 'You\'ve written many prescriptions, now write a "salami dose" for yourself. If brothers-in-law don\'t give salami, all their Eid sweets are forbidden!',
-          engineer_male: 'Your income\'s structural design is quite robust, but the pocket seems to be asking for liquidation! Elder brothers, please provide salami according to your load-bearing capacity.',
-          engineer_female: 'A new blueprint for collecting salami has been prepared. If brothers-in-law don\'t clear the payment upon seeing this receipt, all your plans will be cancelled!',
-          govt_job_holder_male: 'According to government protocol, giving salami to juniors is now your constitutional duty. This receipt shall be considered an "official gazette"!',
-          govt_job_holder_female: 'Don\'t let the salami file get stuck in red tape! Elder brothers, quickly provide salami to your cute sister from the "development fund".',
-          freelancer_male: 'The dollar rate has soared, now "withdraw" some local currency from your elder brothers. Upon seeing this receipt, they are obligated to send salami directly to your account.',
-          freelancer_female: 'When cuteness and work are both professional, the salami should be premium too. If brothers-in-law are stingy, a report will be filed against your freelancing ID!',
-          gen_z_male: 'To keep the vibe right, you need cash in your pocket. Elder brothers, send money to this QR code without being "sus", or you\'ll be turned into a meme and made viral!',
-          gen_z_female: 'No "aesthetic" Eid picture can be taken without salami. Brothers-in-law, open your pockets quickly, otherwise you will be cropped out of all my pictures!',
-          retired_awami_leaguer_male: 'Enough with politics, now make a new deal (salami) with the young ones. If you don\'t provide salami according to this receipt, elder brothers will be "exempted" from the Eid grounds!',
-          retired_awami_leaguer_female: 'Salami is our democratic right! Elder brothers, do not abuse your power and quickly fulfill the demand of this receipt.',
-          teacher_male: 'Elder brothers, please come out of the class and give the salami. If this receipt is disobeyed, a complaint homework will be assigned in your name!',
-          teacher_female: 'Giving salami is now an obligatory subject for you. If brothers-in-law don\'t want to fail, they must provide cash immediately.',
-          businessman_male: 'Business profit or loss, giving salami is mandatory! Making the young ones happy on Eid is also a big investment.',
-          businessman_female: 'Business profit or loss, giving salami is mandatory! Making the young ones happy on Eid is also a big investment.',
-          expat_worker_male: 'You are a remittance warrior! Add a little salami with your dollars or riyals, the Eid of the young ones back home will become colorful.',
-          expat_worker_female: 'You are a remittance warrior! Add a little salami with your dollars or riyals, the Eid of the young ones back home will become colorful.',
-          student_male: 'Your only job this Eid is to collect salami. Use this receipt to show your elders that it\'s your right!',
-          student_female: 'Your only job this Eid is to collect salami. Use this receipt to show your elders that it\'s your right!',
-          unemployed_male: 'Since you have no income, this receipt is a legal document to demand sympathy salami from everyone.',
-          unemployed_female: 'Since you have no income, this receipt is a legal document to demand sympathy salami from everyone.',
+          doctor_male:
+            'Before wielding a scalpel in the operating theater, wield one on your elder brothers\' pockets! Upon seeing this receipt, they are obligated to give salami without any anesthesia.',
+          doctor_female:
+            'You\'ve written many prescriptions, now write a "salami dose" for yourself. If brothers-in-law don\'t give salami, all their Eid sweets are forbidden!',
+          engineer_male:
+            'Your income\'s structural design is quite robust, but the pocket seems to be asking for liquidation! Elder brothers, please provide salami according to your load-bearing capacity.',
+          engineer_female:
+            'A new blueprint for collecting salami has been prepared. If brothers-in-law don\'t clear the payment upon seeing this receipt, all your plans will be cancelled!',
+          govt_job_holder_male:
+            'According to government protocol, giving salami to juniors is now your constitutional duty. This receipt shall be considered an "official gazette"!',
+          govt_job_holder_female:
+            'Don\'t let the salami file get stuck in red tape! Elder brothers, quickly provide salami to your cute sister from the "development fund".',
+          freelancer_male:
+            'The dollar rate has soared, now "withdraw" some local currency from your elder brothers. Upon seeing this receipt, they are obligated to send salami directly to your account.',
+          freelancer_female:
+            'When cuteness and work are both professional, the salami should be premium too. If brothers-in-law are stingy, a report will be filed against your freelancing ID!',
+          gen_z_male:
+            'To keep the vibe right, you need cash in your pocket. Elder brothers, send money to this QR code without being "sus", or you\'ll be turned into a meme and made viral!',
+          gen_z_female:
+            'No "aesthetic" Eid picture can be taken without salami. Brothers-in-law, open your pockets quickly, otherwise you will be cropped out of all my pictures!',
+          retired_awami_leaguer_male:
+            'Enough with politics, now make a new deal (salami) with the young ones. If you don\'t provide salami according to this receipt, elder brothers will be "exempted" from the Eid grounds!',
+          retired_awami_leaguer_female:
+            'Salami is our democratic right! Elder brothers, do not abuse your power and quickly fulfill the demand of this receipt.',
+          teacher_male:
+            'Elder brothers, please come out of the class and give the salami. If this receipt is disobeyed, a complaint homework will be assigned in your name!',
+          teacher_female:
+            'Giving salami is now an obligatory subject for you. If brothers-in-law don\'t want to fail, they must provide cash immediately.',
+          businessman_male:
+            'Business profit or loss, giving salami is mandatory! Making the young ones happy on Eid is also a big investment.',
+          businessman_female:
+            'Business profit or loss, giving salami is mandatory! Making the young ones happy on Eid is also a big investment.',
+          expat_worker_male:
+            'You are a remittance warrior! Add a little salami with your dollars or riyals, the Eid of the young ones back home will become colorful.',
+          expat_worker_female:
+            'You are a remittance warrior! Add a little salami with your dollars or riyals, the Eid of the young ones back home will become colorful.',
+          student_male:
+            'Your only job this Eid is to collect salami. Use this receipt to show your elders that it\'s your right!',
+          student_female:
+            'Your only job this Eid is to collect salami. Use this receipt to show your elders that it\'s your right!',
+          unemployed_male:
+            'Since you have no income, this receipt is a legal document to demand sympathy salami from everyone.',
+          unemployed_female:
+            'Since you have no income, this receipt is a legal document to demand sympathy salami from everyone.',
         },
         relationshipFooter: {
-          single_male: 'If this receipt is shown to an elder brother or brother-in-law, they are obliged to pay. Remember, an unmarried man with an empty pocket is a sign of youth degradation!',
-          single_female: 'Elder brothers or brothers-in-law, beware! If you don\'t give salami upon seeing this receipt, only cardamom will be allocated for you in the Eid biryani pot!',
-          in_a_relationship_male: 'It is mandatory to buy a gift for your girlfriend. So, elder brothers, please assist in this romantic mission by providing the amount mentioned in this receipt.',
-          in_a_relationship_female: "Your boyfriend might be stingy, but an elder brother or brother-in-law being stingy is a grave crime. Get the blessings of your cute sister by giving salami quickly.",
-          engaged_male: 'Send this receipt to your future brother-in-law. If he doesn\'t pay the salami, the "gate holding" fee on the wedding day will be doubled!',
-          engaged_female: 'Send this receipt to your future brother-in-law. If he doesn\'t pay the salami, the "gate holding" fee on the wedding day will be doubled!',
-          married_male: "Your own pocket is occupied by in-laws and wife! Show this receipt to your elders-in-law and collect from the emergency fund.",
-          married_female: 'The husband gives money all year, but salami from elder brothers and brothers-in-law has a special prestige. Quickly take cash out of your pocket.',
-          has_crush_male: 'You need salami to groom yourself before showing your crush your new dress. Elder brothers, please don\'t embarrass me in front of my crush!',
-          has_crush_female: 'You need salami to groom yourself before showing your crush your new dress. Elder brothers, please don\'t embarrass me in front of my crush!',
-          divorced_male: 'Walking alone is tough, but a full pocket makes the path colorful. Elder brothers, please provide a start-up salami for a new life!',
-          divorced_female: 'To get back on your feet, salami is essential. As soon as this receipt is shown, elder brothers are obliged to provide party money!',
-          secret_relation_male: 'Funds are needed for a secret mission. Elder brothers are obliged to pay upon seeing this receipt without any questions!',
-          secret_relation_female: 'Funds are needed to make the secret mission successful. Elder brothers are obliged to pay upon seeing this receipt without any questions!',
+          single_male:
+            'If this receipt is shown to an elder brother or brother-in-law, they are obliged to pay. Remember, an unmarried man with an empty pocket is a sign of youth degradation!',
+          single_female:
+            'Elder brothers or brothers-in-law, beware! If you don\'t give salami upon seeing this receipt, only cardamom will be allocated for you in the Eid biryani pot!',
+          in_a_relationship_male:
+            'It is mandatory to buy a gift for your girlfriend. So, elder brothers, please assist in this romantic mission by providing the amount mentioned in this receipt.',
+          in_a_relationship_female:
+            'Your boyfriend might be stingy, but an elder brother or brother-in-law being stingy is a grave crime. Get the blessings of your cute sister by giving salami quickly.',
+          engaged_male:
+            'Send this receipt to your future brother-in-law. If he doesn\'t pay the salami, the "gate holding" fee on the wedding day will be doubled!',
+          engaged_female:
+            'Send this receipt to your future brother-in-law. If he doesn\'t pay the salami, the "gate holding" fee on the wedding day will be doubled!',
+          married_male:
+            'Your own pocket is occupied by in-laws and wife! Show this receipt to your elders-in-law and collect from the emergency fund.',
+          married_female:
+            'The husband gives money all year, but salami from elder brothers and brothers-in-law has a special prestige. Quickly take cash out of your pocket.',
+          has_crush_male:
+            'You need salami to groom yourself before showing your crush your new dress. Elder brothers, please don\'t embarrass me in front of my crush!',
+          has_crush_female:
+            'You need salami to groom yourself before showing your crush your new dress. Elder brothers, please don\'t embarrass me in front of my crush!',
+          divorced_male:
+            'Walking alone is tough, but a full pocket makes the path colorful. Elder brothers, please provide a start-up salami for a new life!',
+          divorced_female:
+            'To get back on your feet, salami is essential. As soon as this receipt is shown, elder brothers are obliged to provide party money!',
+          secret_relation_male:
+            'Funds are needed for a secret mission. Elder brothers are obliged to pay upon seeing this receipt without any questions!',
+          secret_relation_female:
+            'Funds are needed to make the secret mission successful. Elder brothers are obliged to pay upon seeing this receipt without any questions!',
         },
       },
     },
@@ -253,6 +296,8 @@ export const translations = {
       home: 'হোম',
       create: 'কার্ড তৈরি করুন',
       calculator: 'সালামি ক্যালকুলেটর',
+      brand: 'মন তরঙ্গ',
+      register: 'নিবন্ধন করুন',
     },
     home: {
       title: 'ডিজিটাল সালামি, উৎসবের আমেজ!',
@@ -402,11 +447,11 @@ export const translations = {
         footerDisclaimer:
           'বিশেষ দ্রষ্টব্য: এই গণনাটি শুধুমাত্র মজার জন্য এবং এটিকে গুরুত্ব সহকারে নেওয়ার কিছু নেই।',
         specialTitles: {
-          salamiQueen: "সালামি কুইন",
-          bigBrother: "অফিসিয়াল বড় ভাই"
+          salamiQueen: 'সালামি কুইন',
+          bigBrother: 'অফিসিয়াল বড় ভাই',
         },
         salamiLogic: {
-          '0-1000': "পুরো সালামি প্রাপ্য",
+          '0-1000': 'পুরো সালামি প্রাপ্য',
           '1001-5000': 'সালামি: ৯০% পাবেন',
           '5001-10000': 'সালামি: ৮০% পাবেন',
           '10001-15000': 'সালামি: ৫০/৫০',
@@ -422,7 +467,7 @@ export const translations = {
           medium_income:
             'শর্ত: আর্থিক অবস্থার কথা বিবেচনা করিয়া বড় ভাইরা ১৫ বছরের কিস্তিতে এই সালামি পরিশোধ করিতে পারিবেন।',
           high_income:
-            'শর্ত: বড় ভাইদের পকেট যেহেতু উপচে পড়িতেছে, তাই সালামি না দিলে ৫০% চাঁদা হিসেবে এই অর্থ আদায় করা হইবে।',
+            'শর্ত: যেহেতু বড় ভাইদের পকেট উপচে পড়িতেছে, তাই সালামি না দিলে ৫০% চাঁদা হিসেবে এই অর্থ আদায় করা হইবে।',
         },
         incomeMessages: {
           '0-1000':
@@ -445,53 +490,94 @@ export const translations = {
             'আপনি তো মূর্তমান বিরিয়ানি! সালামি না, আপনি পুরো এলাকার ঈদ স্পন্সর হতে বাধ্য।',
         },
         relationshipVerdict: {
-            single: 'সিঙ্গেল ইজ কিং! পকেট ফুল, টেনশন নীল। আপনার একমাত্র কাজ সালামি আদায় করা।',
-            in_a_relationship: 'সালামি আসবে বিকাশ হয়ে, চলে যাবে গিফট হয়ে! পকেট প্রস্তুত রাখুন।',
-            engaged: 'শ্বশুরবাড়িতে সালামি দিতে দিতে আপনার দেউলিয়া হওয়ার চান্স ১০০%। এখন থেকেই সঞ্চয় শুরু করুন।',
-            married: 'আপনার সালামি এখন আপনার বউ/বাচ্চার সম্পদ। আপনি শুধু একজন মাধ্যম।',
-            has_crush: 'একটা সিম্পল "Hi"-ই আপনার সালামি। এর বেশি আশা করবেন না!',
-            divorced: 'নতুন করে জীবন আর পকেট—দুটোই গোছাতে হবে, তাই সবার থেকে ডাবল সালামি দাবি করুন!',
-            secret_relation: 'গোপন সম্পর্কের খরচ অনেক! ধরা পড়ার আগেই বড় ভাইদের থেকে সালামি নিয়ে ব্যাকআপ রাখুন।',
+          single: 'সিঙ্গেল ইজ কিং! পকেট ফুল, টেনশন নীল। আপনার একমাত্র কাজ সালামি আদায় করা।',
+          in_a_relationship:
+            'সালামি আসবে বিকাশ হয়ে, চলে যাবে গিফট হয়ে! পকেট প্রস্তুত রাখুন।',
+          engaged:
+            'শ্বশুরবাড়িতে সালামি দিতে দিতে আপনার দেউলিয়া হওয়ার চান্স ১০০%। এখন থেকেই সঞ্চয় শুরু করুন।',
+          married:
+            'আপনার সালামি এখন আপনার বউ/বাচ্চার সম্পদ। আপনি শুধু একজন মাধ্যম।',
+          has_crush: 'একটা সিম্পল "Hi"-ই আপনার সালামি। এর বেশি আশা করবেন না!',
+          divorced:
+            'নতুন করে জীবন আর পকেট—দুটোই গোছাতে হবে, তাই সবার থেকে ডাবল সালামি দাবি করুন!',
+          secret_relation:
+            'গোপন সম্পর্কের খরচ অনেক! ধরা পড়ার আগেই বড় ভাইদের থেকে সালামি নিয়ে ব্যাকআপ রাখুন।',
         },
         professionFooter: {
-          doctor_male: 'অপারেশন থিয়েটারে কাঁচি চালানোর আগে বড় ভাইদের পকেটে কাঁচি চালান! এই রশিদ দেখা মাত্রই বড় ভাইরা \'অ্যানেস্থেশিয়া\' ছাড়াই সালামি দিতে বাধ্য থাকিবেন।',
-          doctor_female: 'অনেক তো প্রেসক্রিপশন লিখলেন, এবার নিজের জন্য একটা \'সালামি ডোজ\' লিখে ফেলুন। দুলাভাইরা সালামি না দিলে ঈদের দিন তাদের সব মিষ্টি খাওয়া নিষেধ!',
-          engineer_male: 'আপনার ইনকামের স্ট্রাকচারাল ডিজাইন বেশ মজবুত, কিন্তু পকেটটা কেন জানি লিকুইডেশন চাচ্ছে! বড় ভাইরা দয়া করে লোড বিয়ারিং ক্যাপাসিটি অনুযায়ী সালামি দিন।',
-          engineer_female: 'সালামি আদায়ের জন্য নতুন ব্লু-প্রিন্ট তৈরি করা হয়েছে। দুলাভাইরা এই রশিদ দেখা মাত্রই পেমেন্ট ক্লিয়ার না করলে আপনার সব প্ল্যান বাতিল করা হবে!',
-          govt_job_holder_male: 'সরকারি প্রটোকল অনুযায়ী ছোটদের সালামি দেওয়া এখন আপনার সাংবিধানিক দায়িত্ব। এই রশিদটি একটি \'অফিসিয়াল গ্যাজেট\' হিসেবে গণ্য হইবে!',
-          govt_job_holder_female: 'সালামি পেতে ফাইল যেন লাল ফিতায় আটকে না থাকে! বড় ভাইরা অতি দ্রুত \'উন্নয়ন তহবিল\' থেকে কিউট বোনকে সালামি প্রদান করুন।',
-          freelancer_male: 'ডলারের রেট তো অনেক বাড়লো, এবার বড় ভাইদের থেকে কিছু দেশি টাকা \'উইথড্র\' করুন। এই রশিদটি দেখালে তারা আপনার অ্যাকাউন্টে সরাসরি সালামি পাঠাতে বাধ্য থাকিবেন।',
-          freelancer_female: 'কিউটনেস আর কাজ—দুটোই যখন প্রফেশনাল, তখন সালামিটাও হওয়া চাই প্রিমিয়াম। দুলাভাইরা কিপটেমি করলে আপনার ফ্রিল্যান্সিং আইডিতে রিপোর্ট মারা হবে!',
-          gen_z_male: 'ভাইব ঠিক রাখতে পকেটে নগদ দরকার। বড় ভাইরা \'স্লুই\' না মেরে এই কিউআর কোডে টাকা পাঠান, না হলে আপনাদের মেম বানিয়ে ভাইরাল করা হবে!',
-          gen_z_female: 'সালামি ছাড়া ঈদের কোনো \'অ্যাস্থেটিক\' ছবি উঠবে না। দুলাভাইরা দ্রুত পকেট খুলুন, অন্যথায় আপনার সব ছবি থেকে আপনাকে ক্রপ করে ফেলা হবে!',
-          retired_awami_leaguer_male: 'পলিটিক্স অনেক হলো, এবার ছোটদের দাবি মেনে নিন। এই রশিদ অনুযায়ী সালামি না দিলে বড় ভাইদের ঈদের মাঠ থেকে \'অব্যাহতি\' দেওয়া হইবে!',
-          retired_awami_leaguer_female: 'সালামি আমাদের গণতান্ত্রিক অধিকার! বড় ভাইরা ক্ষমতার অপব্যবহার না করে দ্রুত এই রশিদের দাবি পূরণ করুন।',
-          teacher_male: 'বড় ভাইরা দয়া করে ক্লাসের বাইরে এসে সালামিটা দিয়ে যান। এই রশিদ অমান্য করলে আপনাদের নামে নালিশের হোমওয়ার্ক দেওয়া হবে!',
-          teacher_female: 'সালামি দেওয়াটা এখন আপনার জন্য একটি অবলিগেটরি সাবজেক্ট। দুলাভাইরা ফেল করতে না চাইলে এখনই নগদ অর্থ প্রদান করুন।',
-          businessman_male: 'ব্যবসার লাভ-লোকসান যা-ই হোক, সালামি দেওয়া বাধ্যতামূলক! ঈদের দিনে ছোটদের খুশি করাও একটা বড় বিনিয়োগ।',
-          businessman_female: 'ব্যবসার লাভ-লোকসান যা-ই হোক, সালামি দেওয়া বাধ্যতামূলক! ঈদের দিনে ছোটদের খুশি করাও একটা বড় বিনিয়োগ।',
-          expat_worker_male: 'আপনি তো রেমিট্যান্স যোদ্ধা! আপনার ডলার বা রিয়ালের সাথে এবার একটু সালামি যোগ করুন, দেশের ছোটদের ঈদটা রঙিন হয়ে উঠবে।',
-          expat_worker_female: 'আপনি তো রেমিট্যান্স যোদ্ধা! আপনার ডলার বা রিয়ালের সাথে এবার একটু সালামি যোগ করুন, দেশের ছোটদের ঈদটা রঙিন হয়ে উঠবে।',
-          student_male: 'ঈদে আপনার একমাত্র কাজ হলো সালামি আদায় করা। এই রশিদটি ব্যবহার করে বড়দের দেখিয়ে দিন যে এটা আপনার অধিকার!',
-          student_female: 'ঈদে আপনার একমাত্র কাজ হলো সালামি আদায় করা। এই রশিদটি ব্যবহার করে বড়দের দেখিয়ে দিন যে এটা আপনার অধিকার!',
-          unemployed_male: 'যেহেতু আয় নেই, তাই সহানুভূতি সালামি আদায়ের জন্য এই রশিদটি একটি লিগ্যাল ডকুমেন্ট হিসেবে গণ্য হবে।',
-          unemployed_female: 'যেহেতু আয় নেই, তাই সহানুভূতি সালামি আদায়ের জন্য এই রশিদটি একটি লিগ্যাল ডকুমেন্ট হিসেবে গণ্য হবে।',
+          doctor_male:
+            'অপারেশন থিয়েটারে কাঁচি চালানোর আগে বড় ভাইদের পকেটে কাঁচি চালান! এই রশিদ দেখা মাত্রই বড় ভাইরা \'অ্যানেস্থেশিয়া\' ছাড়াই সালামি দিতে বাধ্য থাকিবেন।',
+          doctor_female:
+            'অনেক তো প্রেসক্রিপশন লিখলেন, এবার নিজের জন্য একটা \'সালামি ডোজ\' লিখে ফেলুন। দুলাভাইরা সালামি না দিলে ঈদের দিন তাদের সব মিষ্টি খাওয়া নিষেধ!',
+          engineer_male:
+            'আপনার ইনকামের স্ট্রাকচারাল ডিজাইন বেশ মজবুত, কিন্তু পকেটটা কেন জানি লিকুইডেশন চাচ্ছে! বড় ভাইরা দয়া করে লোড বিয়ারিং ক্যাপাসিটি অনুযায়ী সালামি দিন।',
+          engineer_female:
+            'সালামি আদায়ের জন্য নতুন ব্লু-প্রিন্ট তৈরি করা হয়েছে। দুলাভাইরা এই রশিদ দেখা মাত্রই পেমেন্ট ক্লিয়ার না করলে আপনার সব প্ল্যান বাতিল করা হবে!',
+          govt_job_holder_male:
+            'সরকারি প্রটোকল অনুযায়ী ছোটদের সালামি দেওয়া এখন আপনার সাংবিধানিক দায়িত্ব। এই রশিদটি একটি \'অফিসিয়াল গ্যাজেট\' হিসেবে গণ্য হইবে!',
+          govt_job_holder_female:
+            'সালামি পেতে ফাইল যেন লাল ফিতায় আটকে না থাকে! বড় ভাইরা অতি দ্রুত \'উন্নয়ন তহবিল\' থেকে কিউট বোনকে সালামি প্রদান করুন।',
+          freelancer_male:
+            'ডলারের রেট তো অনেক বাড়লো, এবার বড় ভাইদের থেকে কিছু দেশি টাকা \'উইথড্র\' করুন। এই রশিদটি দেখালে তারা আপনার অ্যাকাউন্টে সরাসরি সালামি পাঠাতে বাধ্য থাকিবেন।',
+          freelancer_female:
+            'কিউটনেস আর কাজ—দুটোই যখন প্রফেশনাল, তখন সালামিটাও হওয়া চাই প্রিমিয়াম। দুলাভাইরা কিপটেমি করলে আপনার ফ্রিল্যান্সিং আইডিতে রিপোর্ট মারা হবে!',
+          gen_z_male:
+            'ভাইব ঠিক রাখতে পকেটে নগদ দরকার। বড় ভাইরা \'স্লুই\' না মেরে এই কিউআর কোডে টাকা পাঠান, না হলে আপনাদের মেম বানিয়ে ভাইরাল করা হবে!',
+          gen_z_female:
+            'সালামি ছাড়া ঈদের কোনো \'অ্যাস্থেটিক\' ছবি উঠবে না। দুলাভাইরা দ্রুত পকেট খুলুন, অন্যথায় আপনার সব ছবি থেকে আপনাকে ক্রপ করে ফেলা হবে!',
+          retired_awami_leaguer_male:
+            'পলিটিক্স অনেক হলো, এবার ছোটদের দাবি মেনে নিন। এই রশিদ অনুযায়ী সালামি না দিলে বড় ভাইদের ঈদের মাঠ থেকে \'অব্যাহতি\' দেওয়া হইবে!',
+          retired_awami_leaguer_female:
+            'সালামি আমাদের গণতান্ত্রিক অধিকার! বড় ভাইরা ক্ষমতার অপব্যবহার না করে দ্রুত এই রশিদের দাবি পূরণ করুন।',
+          teacher_male:
+            'বড় ভাইরা দয়া করে ক্লাসের বাইরে এসে সালামিটা দিয়ে যান। এই রশিদ অমান্য করলে আপনাদের নামে নালিশের হোমওয়ার্ক দেওয়া হবে!',
+          teacher_female:
+            'সালামি দেওয়াটা এখন আপনার জন্য একটি অবলিগেটরি সাবজেক্ট। দুলাভাইরা ফেল করতে না চাইলে এখনই নগদ অর্থ প্রদান করুন।',
+          businessman_male:
+            'ব্যবসার লাভ-লোকসান যা-ই হোক, সালামি দেওয়া বাধ্যতামূলক! ঈদের দিনে ছোটদের খুশি করাও একটা বড় বিনিয়োগ।',
+          businessman_female:
+            'ব্যবসার লাভ-লোকসান যা-ই হোক, সালামি দেওয়া বাধ্যতামূলক! ঈদের দিনে ছোটদের খুশি করাও একটা বড় বিনিয়োগ।',
+          expat_worker_male:
+            'আপনি তো রেমিট্যান্স যোদ্ধা! আপনার ডলার বা রিয়ালের সাথে এবার একটু সালামি যোগ করুন, দেশের ছোটদের ঈদটা রঙিন হয়ে উঠবে।',
+          expat_worker_female:
+            'আপনি তো রেমিট্যান্স যোদ্ধা! আপনার ডলার বা রিয়ালের সাথে এবার একটু সালামি যোগ করুন, দেশের ছোটদের ঈদটা রঙিন হয়ে উঠবে।',
+          student_male:
+            'ঈদে আপনার একমাত্র কাজ হলো সালামি আদায় করা। এই রশিদটি ব্যবহার করে বড়দের দেখিয়ে দিন যে এটা আপনার অধিকার!',
+          student_female:
+            'ঈদে আপনার একমাত্র কাজ হলো সালামি আদায় করা। এই রশিদটি ব্যবহার করে বড়দের দেখিয়ে দিন যে এটা আপনার অধিকার!',
+          unemployed_male:
+            'যেহেতু আয় নেই, তাই সহানুভূতি সালামি আদায়ের জন্য এই রশিদটি একটি লিগ্যাল ডকুমেন্ট হিসেবে গণ্য হবে।',
+          unemployed_female:
+            'যেহেতু আয় নেই, তাই সহানুভূতি সালামি আদায়ের জন্য এই রশিদটি একটি লিগ্যাল ডকুমেন্ট হিসেবে গণ্য হবে।',
         },
         relationshipFooter: {
-          single_male: 'এই রশিদ বড় ভাই বা দুলাভাইকে দেখালে টাকা দিতে বাধ্য থাকিবেন। মনে রাখবেন, অবিবাহিত ছেলেদের পকেট খালি থাকা মানেই দেশের যুবসমাজের অবক্ষয়!',
-          single_female: 'বড় ভাই বা দুলাভাইরা সাবধান! এই রশিদ দেখা মাত্রই সালামি না দিলে ঈদের বিরিয়ানির হাড়িতে আপনার জন্য শুধু এলাচ বরাদ্দ থাকবে!',
-          in_a_relationship_male: 'আপনার গার্লফ্রেন্ডের জন্য গিফট কেনা ফরজ। তাই বড় ভাইরা দয়া করে এই রশিদে উল্লিখিত টাকা প্রদান করে রোমান্টিক মিশনে সহায়তা করুন।',
-          in_a_relationship_female: "বয়ফ্রেন্ড কিপটা হতে পারে, কিন্তু বড় ভাই বা দুলাভাই কিপটা হওয়া মানেই ঘোর অপরাধ। অতি দ্রুত সালামি দিয়ে কিউট বোনের দোয়া নিন।",
-          engaged_male: 'হবু দুলাভাইকে এই রশিদটি পাঠান। সালামি না দিলে বিয়ের দিন দরজায় দাঁড়ানোর \'গেট ধরা\' ফি দ্বিগুণ করা হইবে!',
-          engaged_female: 'হবু দুলাভাইকে এই রশিদটি পাঠান। সালামি না দিলে বিয়ের দিন দরজায় দাঁড়ানোর \'গেট ধরা\' ফি দ্বিগুণ করা হইবে!',
-          married_male: "নিজের পকেট তো শ্যালক-শ্যালিকা আর বউয়ের দখলে! এই রশিদ দেখিয়ে শ্বশুরবাড়ির মুরুব্বিদের থেকে ইমার্জেন্সি ফান্ড আদায় করুন।",
-          married_female: 'স্বামী তো সারা বছর টাকা দেয়ই, কিন্তু বড় ভাই ও দুলাভাইদের সালামির আলাদা আভিজাত্য আছে। দ্রুত পকেট থেকে নগদ অর্থ বের করুন।',
-          has_crush_male: 'ক্রাশকে ড্রেস দেখানোর আগে নিজেকে পরিপাটি করতে সালামি প্রয়োজন। বড় ভাইরা দয়া করে ক্রাশের সামনে ছোট করবেন না!',
-          has_crush_female: 'ক্রাশকে ড্রেস দেখানোর আগে নিজেকে পরিপাটি করতে সালামি প্রয়োজন। বড় ভাইরা দয়া করে ক্রাশের সামনে ছোট করবেন না!',
-          divorced_male: 'একলা পথে চলা কঠিন, পকেট গরম থাকলে পথ হবে রঙিন। বড় ভাইরা দয়া করে নতুন জীবনের জন্য স্টার্ট-আপ সালামি দিন!',
-          divorced_female: 'নতুন করে ঘুরে দাঁড়াতে সালামি অতি জরুরি; এই রশিদ দেখা মাত্রই বড় ভাইরা ফুর্তি করার টাকা দিতে বাধ্য থাকিবেন!',
-          secret_relation_male: 'গোপন মিশনের গোপন খরচ মেটাতে সালামি প্রয়োজন। বড় ভাইরা দয়া করে প্রশ্ন না করে এই রশিদ অনুযায়ী পেমেন্ট করুন!',
-          secret_relation_female: 'গোপন মিশন সফল করতে ফান্ড প্রয়োজন; এই রশিদ দেখালে বড় ভাইরা প্রশ্ন ছাড়াই সালামি দিতে বাধ্য থাকিবেন!',
+          single_male:
+            'এই রশিদ বড় ভাই বা দুলাভাইকে দেখালে টাকা দিতে বাধ্য থাকিবেন। মনে রাখবেন, অবিবাহিত ছেলেদের পকেট খালি থাকা মানেই দেশের যুবসমাজের অবক্ষয়!',
+          single_female:
+            'বড় ভাই বা দুলাভাইরা সাবধান! এই রশিদ দেখা মাত্রই সালামি না দিলে ঈদের বিরিয়ানির হাড়িতে আপনার জন্য শুধু এলাচ বরাদ্দ থাকবে!',
+          in_a_relationship_male:
+            'আপনার গার্লফ্রেন্ডের জন্য গিফট কেনা ফরজ। তাই বড় ভাইরা দয়া করে এই রশিদে উল্লিখিত টাকা প্রদান করে রোমান্টিক মিশনে সহায়তা করুন।',
+          in_a_relationship_female:
+            'বয়ফ্রেন্ড কিপটা হতে পারে, কিন্তু বড় ভাই বা দুলাভাই কিপটা হওয়া মানেই ঘোর অপরাধ। অতি দ্রুত সালামি দিয়ে কিউট বোনের দোয়া নিন।',
+          engaged_male:
+            'হবু দুলাভাইকে এই রশিদটি পাঠান। সালামি না দিলে বিয়ের দিন দরজায় দাঁড়ানোর \'গেট ধরা\' ফি দ্বিগুণ করা হইবে!',
+          engaged_female:
+            'হবু দুলাভাইকে এই রশিদটি পাঠান। সালামি না দিলে বিয়ের দিন দরজায় দাঁড়ানোর \'গেট ধরা\' ফি দ্বিগুণ করা হইবে!',
+          married_male:
+            'নিজের পকেট তো শ্যালক-শ্যালিকা আর বউয়ের দখলে! এই রশিদ দেখিয়ে শ্বশুরবাড়ির মুরুব্বিদের থেকে ইমার্জেন্সি ফান্ড আদায় করুন।',
+          married_female:
+            'স্বামী তো সারা বছর টাকা দেয়ই, কিন্তু বড় ভাই ও দুলাভাইদের সালামির আলাদা আভিজাত্য আছে। দ্রুত পকেট থেকে নগদ অর্থ বের করুন।',
+          has_crush_male:
+            'ক্রাশকে ড্রেস দেখানোর আগে নিজেকে পরিপাটি করতে সালামি প্রয়োজন। বড় ভাইরা দয়া করে ক্রাশের সামনে ছোট করবেন না!',
+          has_crush_female:
+            'ক্রাশকে ড্রেস দেখানোর আগে নিজেকে পরিপাটি করতে সালামি প্রয়োজন। বড় ভাইরা দয়া করে ক্রাশের সামনে ছোট করবেন না!',
+          divorced_male:
+            'একলা পথে চলা কঠিন, পকেট গরম থাকলে পথ হবে রঙিন। বড় ভাইরা দয়া করে নতুন জীবনের জন্য স্টার্ট-আপ সালামি দিন!',
+          divorced_female:
+            'নতুন করে ঘুরে দাঁড়াতে সালামি অতি জরুরি; এই রশিদ দেখা মাত্রই বড় ভাইরা ফুর্তি করার টাকা দিতে বাধ্য থাকিবেন!',
+          secret_relation_male:
+            'গোপন মিশনের গোপন খরচ মেটাতে সালামি প্রয়োজন। বড় ভাইরা দয়া করে প্রশ্ন না করে এই রশিদ অনুযায়ী পেমেন্ট করুন!',
+          secret_relation_female:
+            'গোপন মিশন সফল করতে ফান্ড প্রয়োজন; এই রশিদ দেখালে বড় ভাইরা প্রশ্ন ছাড়াই সালামি দিতে বাধ্য থাকিবেন!',
         },
       },
     },

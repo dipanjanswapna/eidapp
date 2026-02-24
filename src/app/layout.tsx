@@ -5,7 +5,7 @@ import { Toaster } from '@/components/ui/toaster';
 import { Navbar } from '@/components/navbar';
 
 export const metadata: Metadata = {
-  title: 'Eid-E-Salami',
+  title: 'মন তরঙ্গ',
   description: 'A viral web app for Ramadan and Eid.',
 };
 
