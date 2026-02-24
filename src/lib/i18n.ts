@@ -444,6 +444,7 @@ export const translations = {
       filter: {
         label: 'Filter by Food',
         all: 'All',
+        verified: 'Verified Spots',
       },
       map: {
         loading: 'Loading map...',
@@ -944,6 +945,7 @@ export const translations = {
       filter: {
         label: 'খাবার দিয়ে ফিল্টার করুন',
         all: 'সব',
+        verified: 'নিশ্চিত স্পট',
       },
       map: {
         loading: 'ম্যাপ লোড হচ্ছে...',

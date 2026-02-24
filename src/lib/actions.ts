@@ -134,8 +134,8 @@ export async function addIftarSpotAction(values: z.infer<typeof addIftarSpotSche
     revalidatePath("/iftar");
 }
 
-export async function getIftarSpotsAction(foodType: FoodType | 'all'): Promise<IftarSpot[]> {
-    return await getIftarSpots(foodType);
+export async function getIftarSpotsAction(): Promise<IftarSpot[]> {
+    return await getIftarSpots();
 }
 
 export async function voteOnIftarSpotAction(spotId: string, voteType: 'like' | 'dislike') {

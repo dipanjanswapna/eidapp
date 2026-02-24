@@ -208,18 +208,18 @@ export async function addIftarSpot(spotData: Omit<IftarSpot, 'id' | 'createdAt' 
     return docRef.id;
 }
 
-export async function getIftarSpots(foodType: FoodType | 'all'): Promise<IftarSpot[]> {
+export async function getIftarSpots(): Promise<IftarSpot[]> {
     const twentyFourHoursAgo = Timestamp.fromMillis(Date.now() - 24 * 60 * 60 * 1000);
     
-    let q;
-    if (foodType === 'all') {
-        q = query(iftarSpotsCollection, where('createdAt', '>=', twentyFourHoursAgo), orderBy('createdAt', 'desc'));
-    } else {
-        q = query(iftarSpotsCollection, where('createdAt', '>=', twentyFourHoursAgo), where('foodType', '==', foodType), orderBy('createdAt', 'desc'));
-    }
-
+    const q = query(iftarSpotsCollection, where('createdAt', '>=', twentyFourHoursAgo));
+    
     const querySnapshot = await getDocs(q);
-    return querySnapshot.docs.map(doc => convertTimestamps({ id: doc.id, ...doc.data() }) as IftarSpot);
+    const spots = querySnapshot.docs.map(doc => convertTimestamps({ id: doc.id, ...doc.data() }) as IftarSpot);
+    
+    // Sort by createdAt descending by default on server
+    spots.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+
+    return spots;
 }
 
 export async function voteOnSpot(spotId: string, voteType: 'like' | 'dislike'): Promise<void> {
