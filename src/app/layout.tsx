@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 import { LanguageProvider } from '@/contexts/language-context';
 import { Toaster } from '@/components/ui/toaster';
+import { Navbar } from '@/components/navbar';
 
 export const metadata: Metadata = {
   title: 'Eid-E-Salami',
@@ -23,6 +24,7 @@ export default function RootLayout({
       <body className="font-body antialiased">
         <LanguageProvider>
           <div className="flex min-h-screen flex-col">
+            <Navbar />
             <main className="flex-1">{children}</main>
           </div>
           <Toaster />
