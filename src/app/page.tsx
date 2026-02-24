@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useLanguage } from '@/contexts/language-context';
 import ConfettiBackground from '@/components/confetti-background';
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
-import { ArrowRight, Calculator, Mail, Star, CreditCard } from 'lucide-react';
+import { ArrowRight, Calculator, Mail, Star, CreditCard, MapPin } from 'lucide-react';
 
 export default function Home() {
   const { translations, language } = useLanguage();
@@ -12,18 +12,18 @@ export default function Home() {
   const homeFeatures = {
     en: [
         {
+          title: "Iftar Spots",
+          description: "Find free Iftar and Sehri spots near you, shared by the community.",
+          link: "/iftar",
+          icon: <MapPin className="mb-4 h-10 w-10 text-primary" />,
+          cta: "Find Spots",
+        },
+        {
           title: "Salami Calculator",
           description: "A fun tool to calculate your potential Salami earnings based on your profile. Just for laughs!",
           link: "/calculator",
           icon: <Calculator className="mb-4 h-10 w-10 text-primary" />,
           cta: "Calculate Now",
-        },
-        {
-          title: "Eid Letter",
-          description: "Receive secret anonymous messages from your friends and share your replies with a cool card.",
-          link: "/ngl/create",
-          icon: <Mail className="mb-4 h-10 w-10 text-primary" />,
-          cta: "Create Inbox",
         },
         {
           title: "Eid Lucky Wheel",
@@ -33,14 +33,28 @@ export default function Home() {
           cta: "Spin the Wheel",
         },
         {
-          title: "Eid Card Generator",
+          title: "Eid Card",
           description: "Design and send beautiful, personalized digital Eid cards to your friends and family.",
           link: "/eid-card/create",
           icon: <CreditCard className="mb-4 h-10 w-10 text-primary" />,
           cta: "Create Card",
         },
+        {
+          title: "Eid Letter",
+          description: "Receive secret anonymous messages from your friends and share your replies with a cool card.",
+          link: "/ngl/create",
+          icon: <Mail className="mb-4 h-10 w-10 text-primary" />,
+          cta: "Create Inbox",
+        },
     ],
     bn: [
+        {
+          title: "ইফতার স্পট",
+          description: "আপনার কাছাকাছি বিনামূল্যে ইফতার এবং সেহরির স্পট খুঁজুন, যা কমিউনিটি দ্বারা শেয়ার করা হয়েছে।",
+          link: "/iftar",
+          icon: <MapPin className="mb-4 h-10 w-10 text-primary" />,
+          cta: "স্পট খুঁজুন",
+        },
         {
           title: "সালামি ক্যালকুলেটর",
           description: "আপনার প্রোফাইলের উপর ভিত্তি করে আপনার সম্ভাব্য সালামি আয়ের পরিমাণ গণনা করার একটি মজার টুল। শুধু হাসির জন্য!",
@@ -49,30 +63,30 @@ export default function Home() {
           cta: "হিসাব করুন",
         },
         {
-          title: "ঈদের চিঠি",
-          description: "আপনার বন্ধুদের কাছ থেকে বেনামে গোপন বার্তা গ্রহণ করুন এবং একটি আকর্ষণীয় কার্ডের মাধ্যমে উত্তর শেয়ার করুন।",
-          link: "/ngl/create",
-          icon: <Mail className="mb-4 h-10 w-10 text-primary" />,
-          cta: "ইনবক্স তৈরি করুন",
-        },
-        {
-          title: "ঈদ লাকি হুইল",
+          title: "লাকি হুইল",
           description: "চাকা ঘুরিয়ে আপনার ঈদের প্ল্যান জানুন! বন্ধুদের সাথে আপনার ফলাফল শেয়ার করুন।",
           link: "/eid-wheel",
           icon: <Star className="mb-4 h-10 w-10 text-primary" />,
           cta: "চাকা ঘোরান",
         },
         {
-          title: "ঈদ কার্ড জেনারেটর",
+          title: "ঈদ কার্ড",
           description: "আপনার বন্ধু এবং পরিবারের জন্য সুন্দর, ব্যক্তিগত ডিজিটাল ঈদ কার্ড ডিজাইন এবং পাঠান।",
           link: "/eid-card/create",
           icon: <CreditCard className="mb-4 h-10 w-10 text-primary" />,
           cta: "কার্ড তৈরি করুন",
         },
+        {
+          title: "ঈদের চিঠি",
+          description: "আপনার বন্ধুদের কাছ থেকে বেনামে গোপন বার্তা গ্রহণ করুন এবং একটি আকর্ষণীয় কার্ডের মাধ্যমে উত্তর শেয়ার করুন।",
+          link: "/ngl/create",
+          icon: <Mail className="mb-4 h-10 w-10 text-primary" />,
+          cta: "ইনবক্স তৈরি করুন",
+        },
     ]
   };
 
-  const featureCards = homeFeatures[language].sort(() => .5 - Math.random()).slice(0, 3);
+  const featureCards = homeFeatures[language];
 
 
   return (
