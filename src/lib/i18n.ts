@@ -30,6 +30,14 @@ export const translations = {
         placeholder: 'e.g., 018000000001',
       },
     },
+    salamiPage: {
+        payment: {
+            title: 'Send Salami',
+            description: 'Make their Eid even more special!',
+            sendVia: 'Send via',
+            copied: 'Number Copied!',
+        },
+    },
     eidCard: {
       create: {
         title: 'Create an Eid Card',
@@ -48,7 +56,11 @@ export const translations = {
           'bright-red': 'Bright Red',
           'golden-yellow': 'Golden Yellow',
         },
-        submitButton: 'Generate Card',
+        targetAmount: {
+            label: 'Target Salami Amount (Optional)',
+            placeholder: 'e.g., 500',
+        },
+        submitButton: 'Generate Salami Invoice',
       },
       display: {
         title: 'A Special Eid Card For You',
@@ -65,6 +77,14 @@ export const translations = {
             sharing: 'Sharing...',
             shareError: 'Could not share image automatically. Link copied to clipboard.',
         },
+        invoiceTitle: 'Official Salami Invoice',
+        targetAmount: 'Target Amount',
+        status: 'Status',
+        unpaid: 'Unpaid',
+        paid: 'PAID',
+        confirmPayment: 'Confirm Payment',
+        paymentConfirmed: 'Payment Confirmed!',
+        paymentError: 'Could not confirm payment.',
       }
     },
     calculator: {
@@ -449,6 +469,14 @@ export const translations = {
         placeholder: 'যেমন, ০১৮০০০০০০০০১',
       },
     },
+    salamiPage: {
+        payment: {
+            title: 'সালামি পাঠান',
+            description: 'তার ঈদকে আরও বিশেষ করে তুলুন!',
+            sendVia: 'এর মাধ্যমে পাঠান',
+            copied: 'নম্বর কপি করা হয়েছে!',
+        },
+    },
     eidCard: {
       create: {
         title: 'ঈদ কার্ড তৈরি করুন',
@@ -467,7 +495,11 @@ export const translations = {
           'bright-red': 'উজ্জ্বল লাল',
           'golden-yellow': 'সোনালী হলুদ',
         },
-        submitButton: 'কার্ড তৈরি করুন',
+        targetAmount: {
+            label: 'সালামির লক্ষ্যমাত্রা (ঐচ্ছিক)',
+            placeholder: 'যেমন, ৫০০',
+        },
+        submitButton: 'সালামি ইনভয়েস তৈরি করুন',
       },
       display: {
         title: 'আপনার জন্য একটি বিশেষ ঈদ কার্ড',
@@ -484,6 +516,14 @@ export const translations = {
             sharing: 'শেয়ার হচ্ছে...',
             shareError: 'ছবি স্বয়ংক্রিয়ভাবে শেয়ার করা যায়নি। লিঙ্ক ক্লিপবোর্ডে কপি করা হয়েছে।',
         },
+        invoiceTitle: 'অফিসিয়াল সালামি ইনভয়েস',
+        targetAmount: 'লক্ষ্যমাত্রা',
+        status: 'স্ট্যাটাস',
+        unpaid: 'অপরিশোধিত',
+        paid: 'পরিশোধিত',
+        confirmPayment: 'পেমেন্ট নিশ্চিত করুন',
+        paymentConfirmed: 'পেমেন্ট নিশ্চিত হয়েছে!',
+        paymentError: 'পেমেন্ট নিশ্চিত করা যায়নি।',
       }
     },
     calculator: {

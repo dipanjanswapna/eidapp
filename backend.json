@@ -39,6 +39,8 @@
         "bkashNumber": { "type": "string" },
         "nagadNumber": { "type": "string" },
         "rocketNumber": { "type": "string" },
+        "targetAmount": { "type": "number" },
+        "isPaid": { "type": "boolean" },
         "createdAt": { "type": "string", "format": "date-time" }
       },
       "required": ["recipientName", "message", "theme", "createdAt"]

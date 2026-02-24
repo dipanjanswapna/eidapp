@@ -149,15 +149,32 @@ export async function addReplyToNGLMessage(messageId: string, reply: string): Pr
 
 
 // Eid Card
-export async function addEidCard(cardData: Omit<EidCard, 'id' | 'createdAt'>): Promise<string> {
+export async function addEidCard(cardData: {
+    recipientName: string;
+    message: string;
+    theme: 'royal-blue' | 'bright-red' | 'golden-yellow';
+    bkashNumber?: string;
+    nagadNumber?: string;
+    rocketNumber?: string;
+    targetAmount?: string;
+}): Promise<string> {
     const cardsCollection = collection(db, 'eid_cards');
+    
+    const amount = cardData.targetAmount ? parseInt(cardData.targetAmount, 10) : undefined;
+    if (amount !== undefined && (isNaN(amount) || amount < 0)) {
+        throw new Error("Invalid target amount.");
+    }
+
     const newCardData = {
         ...cardData,
+        targetAmount: amount,
+        isPaid: false,
         createdAt: serverTimestamp(),
     };
     const docRef = await addDoc(cardsCollection, newCardData);
     return docRef.id;
 }
+
 
 export async function getEidCardById(cardId: string): Promise<EidCard | null> {
     const docRef = doc(db, 'eid_cards', cardId);
@@ -166,4 +183,11 @@ export async function getEidCardById(cardId: string): Promise<EidCard | null> {
         return convertTimestamps({ id: docSnap.id, ...docSnap.data() }) as EidCard;
     }
     return null;
+}
+
+export async function markEidCardAsPaid(cardId: string): Promise<void> {
+    const docRef = doc(db, 'eid_cards', cardId);
+    await updateDoc(docRef, {
+        isPaid: true,
+    });
 }

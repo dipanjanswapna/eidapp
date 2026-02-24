@@ -1,9 +1,10 @@
 'use server';
 
 import { z } from "zod";
-import { addNGLUser, verifyNGLUserPin, addNGLMessage, getNGLMessagesByUsername, addReplyToNGLMessage, addEidCard } from "./db";
+import { addNGLUser, verifyNGLUserPin, addNGLMessage, getNGLMessagesByUsername, addReplyToNGLMessage, addEidCard, markEidCardAsPaid } from "./db";
 import { redirect } from "next/navigation";
 import type { NGLUser, NGLMessage } from "./types";
+import { revalidatePath } from "next/cache";
 
 // NGL Actions
 const createNGLProfileSchema = z.object({
@@ -84,6 +85,9 @@ const createEidCardSchema = z.object({
     bkashNumber: z.string().optional(),
     nagadNumber: z.string().optional(),
     rocketNumber: z.string().optional(),
+    targetAmount: z.string().optional().refine(val => !val || /^\d+$/.test(val), {
+        message: "Amount must be a positive number.",
+    }),
 });
 
 export async function createEidCardAction(values: z.infer<typeof createEidCardSchema>) {
@@ -96,4 +100,14 @@ export async function createEidCardAction(values: z.infer<typeof createEidCardSc
     const cardId = await addEidCard(validatedFields.data);
   
     redirect(`/eid-card/${cardId}`);
+}
+
+export async function confirmEidCardPaymentAction(cardId: string) {
+    try {
+        await markEidCardAsPaid(cardId);
+        revalidatePath(`/eid-card/${cardId}`);
+        return { success: true };
+    } catch(error) {
+        return { success: false, error: (error as Error).message };
+    }
 }

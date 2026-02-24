@@ -25,5 +25,7 @@ export type EidCard = {
   bkashNumber?: string;
   nagadNumber?: string;
   rocketNumber?: string;
+  targetAmount?: number;
+  isPaid?: boolean;
   createdAt: Date;
 }

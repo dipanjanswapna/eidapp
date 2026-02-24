@@ -33,6 +33,9 @@ export default function EidCardCreateForm() {
     bkashNumber: z.string().optional(),
     nagadNumber: z.string().optional(),
     rocketNumber: z.string().optional(),
+    targetAmount: z.string().optional().refine(val => !val || /^\d+$/.test(val), {
+        message: "Amount must be a positive number.",
+    }),
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -125,6 +128,21 @@ export default function EidCardCreateForm() {
                 </FormItem>
               )}
             />
+            
+            <FormField
+              control={form.control}
+              name="targetAmount"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>{translations.eidCard.create.targetAmount.label}</FormLabel>
+                  <FormControl>
+                    <Input type="number" placeholder={translations.eidCard.create.targetAmount.placeholder} {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
 
             <FormField
               control={form.control}

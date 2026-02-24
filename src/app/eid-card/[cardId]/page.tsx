@@ -2,7 +2,6 @@ import { notFound } from 'next/navigation';
 import { getEidCardById } from '@/lib/db';
 import ConfettiBackground from '@/components/confetti-background';
 import { EidCardDisplay } from '@/components/eid-card-display';
-import { EidCardClientControls } from '@/components/eid-card-client-controls';
 import type { Metadata } from 'next';
 
 type EidCardPageProps = {
@@ -50,10 +49,7 @@ export default async function EidCardPage({ params }: EidCardPageProps) {
     <div className="relative min-h-screen w-full">
       <ConfettiBackground />
       <div className="container relative z-10 mx-auto max-w-2xl px-4 py-12">
-        <div id="eid-card-container" className="mb-8">
-            <EidCardDisplay card={card} />
-        </div>
-        <EidCardClientControls card={card} />
+        <EidCardDisplay card={card} />
       </div>
     </div>
   );
