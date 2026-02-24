@@ -47,10 +47,11 @@ export default function IftarSpotsClient() {
     fetchSpots();
   }, [fetchSpots]);
 
+  const isVerified = (spot: IftarSpot) => spot.likes > spot.dislikes;
+
   useEffect(() => {
     let spotsToDisplay = [...allSpots];
-    const isVerified = (spot: IftarSpot) => spot.likes > spot.dislikes;
-
+    
     if (selectedFilter === 'verified') {
       spotsToDisplay = spotsToDisplay.filter(isVerified);
     } else if (selectedFilter !== 'all') {
@@ -84,7 +85,7 @@ export default function IftarSpotsClient() {
 
   return (
     <div className="relative h-full w-full">
-      <div className="absolute top-4 left-1/2 z-[1000] w-[90vw] max-w-4xl -translate-x-1/2 transform space-y-4">
+      <div className="absolute top-4 left-1/2 z-[1000] w-[90vw] max-w-4xl -translate-x-1/2 transform">
         <Card className="rounded-full shadow-lg">
           <CardContent className="p-1">
             <ScrollArea className="w-full whitespace-nowrap rounded-full">
@@ -134,7 +135,8 @@ export default function IftarSpotsClient() {
         )}
         {!isLoading && !error && <IftarMap spots={displayedSpots} onVote={handleVote} />}
       </div>
-      <div className="absolute bottom-4 left-1/2 z-[1000] -translate-x-1/2 transform">
+      
+      <div className="absolute bottom-4 right-4 z-[1000]">
         <AddIftarSpotDialog onSpotAdded={handleSpotAdded} />
       </div>
     </div>
