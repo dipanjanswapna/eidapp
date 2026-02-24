@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useLanguage } from '@/contexts/language-context';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
 import { useRouter } from 'next/navigation';
 import { ArrowRight, Ticket, Triangle } from 'lucide-react';
@@ -54,9 +54,6 @@ export default function EidWheel() {
           .wheel {
             transition: transform 5s cubic-bezier(0.25, 0.1, 0.25, 1);
           }
-          .wheel-segment {
-            clip-path: polygon(50% 50%, 100% 0, 100% 100%);
-          }
         `}</style>
         
         <Triangle 
@@ -65,37 +62,47 @@ export default function EidWheel() {
         />
 
         <div 
-          className="wheel absolute h-full w-full rounded-full border-4 border-accent overflow-hidden"
-          style={{ transform: `rotate(${rotation}deg)` }}
-        >
-          {wheelOptions.map((option, index) => (
-            <div
-              key={index}
-              className="absolute h-1/2 w-1/2 origin-bottom-left"
-              style={{
-                transform: `rotate(${index * anglePerOption}deg)`,
-              }}
-            >
+          className="wheel absolute h-full w-full rounded-full border-4 border-accent"
+          style={{ 
+            transform: `rotate(${rotation}deg)`,
+            background: `conic-gradient(
+              ${wheelOptions.map((_, index) => {
+                const color = index % 2 === 0 ? 'hsla(220, 71%, 45%, 0.1)' : 'hsl(105, 33%, 95%)';
+                const start = index * anglePerOption;
+                const end = start + anglePerOption;
+                return `${color} ${start}deg ${end}deg`;
+              }).join(', ')}
+            )`
+          }}
+        />
+        
+        <div className="labels pointer-events-none absolute inset-0">
+          {wheelOptions.map((option, index) => {
+             const angle = index * anglePerOption + (anglePerOption / 2);
+             const labelStyle = {
+               transform: `rotate(${angle}deg) translate(90px)`,
+             };
+              if (typeof window !== 'undefined' && window.innerWidth >= 640) {
+                 labelStyle.transform = `rotate(${angle}deg) translate(115px)`;
+              }
+
+             const textStyle = {
+               transform: `rotate(-90deg)`,
+             }
+            return (
               <div
-                className={cn(
-                  "wheel-segment flex h-full w-full items-center justify-center text-center",
-                  index % 2 === 0 ? 'bg-primary/10' : 'bg-background'
-                )}
+                key={index}
+                className="absolute top-1/2 left-1/2"
+                style={labelStyle}
               >
-                <span 
-                  className="transform text-sm font-semibold"
-                  style={{ 
-                    transform: `rotate(${anglePerOption / 2 - 90}deg) translate(30%, -50%)`,
-                    width: '80%', 
-                    display: 'block'
-                  }}
-                >
-                  {option.split(':')[0]}
-                </span>
+                  <span className="block w-max -translate-x-1/2 text-center text-[10px] font-semibold text-foreground/80 sm:text-xs" style={textStyle}>
+                     {option.split(':')[0]}
+                  </span>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
+
 
         <div className="absolute flex h-20 w-20 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-lg">
           <Ticket className="h-10 w-10" />
