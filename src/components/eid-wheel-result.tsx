@@ -103,7 +103,7 @@ export default function EidWheelResult({ name, result }: EidWheelResultProps) {
                 <div className="relative mt-8 flex items-center justify-between">
                      <div className="text-xs text-gray-500 flex items-center gap-1">
                         <Waves className="h-4 w-4" />
-                        <span>monotorongo.com</span>
+                        <span>EidVibe</span>
                     </div>
                     <div className="text-right">
                         <p className="text-sm font-bold text-gray-700">Eid Mubarak!</p>

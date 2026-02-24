@@ -6,8 +6,8 @@ import { Navbar } from '@/components/navbar';
 import { FirebaseClientProvider } from '@/firebase/client-provider';
 
 export const metadata: Metadata = {
-  title: 'মন তরঙ্গ',
-  description: 'A viral web app for Ramadan and Eid.',
+  title: 'EidVibe (ঈদ ভাইব)',
+  description: 'এবারের ঈদে আপনার আনন্দকে বাড়িয়ে দিতে আমরা নিয়ে এলাম সব ফিচার এক জায়গায়। নাম গোপন রেখে বন্ধুদের মেসেজ পাঠানো, কাস্টম কালারফুল সালামি রশিদ তৈরি করা, কিংবা ম্যাপে ফ্রিতে ইফতার ও সেহরি স্পট খুঁজে পাওয়া—সবই হবে এখন EidVibe-এ!',
 };
 
 export default function RootLayout({

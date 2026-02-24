@@ -16,8 +16,8 @@ export default function NGLReplyAndShareCard({ user, message }: CardProps) {
     const senderTag = t.ngl.send.senderTag.options[message.senderTag as keyof typeof t.en.ngl.send.senderTag.options];
     
     const footerText = language === 'bn' 
-        ? "আপনিও এমন গোপন চিঠি পেতে চান? ভিজিট করুন monotorongo.com"
-        : "Want to get secret letters like this? Visit monotorongo.com";
+        ? "আপনিও এমন গোপন চিঠি পেতে চান? ভিজিট করুন EidVibe"
+        : "Want to get secret letters like this? Visit EidVibe";
 
     return (
         <div className="bg-white p-2 sm:p-4 rounded-lg">
@@ -50,7 +50,7 @@ export default function NGLReplyAndShareCard({ user, message }: CardProps) {
                 <div className="relative mt-8 flex items-center justify-end">
                      <div className="text-xs text-gray-500 flex items-center gap-1">
                         <Waves className="h-4 w-4" />
-                        <span>monotorongo.com</span>
+                        <span>EidVibe</span>
                     </div>
                 </div>
 

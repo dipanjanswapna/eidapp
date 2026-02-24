@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: NGLProfilePageProps): Promise
   }
 
   const title = `Send anonymous messages to ${user.name}!`;
-  const description = `Send secret anonymous messages to ${user.name} (@${user.username}) on Mon Torongo.`;
+  const description = `Send secret anonymous messages to ${user.name} (@${user.username}) on EidVibe.`;
 
   return {
     title,

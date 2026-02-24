@@ -75,7 +75,7 @@ export function EidCardDisplay({ card: initialCard }: { card: EidCard }) {
             ];
             await navigator.share({
                 title: `A special Eid card for ${card.recipientName}!`,
-                text: `Check out this Eid card I made on Mon Torongo!`,
+                text: `Check out this Eid card I made on EidVibe!`,
                 files: filesArray,
             });
         } else {
@@ -201,7 +201,7 @@ export function EidCardDisplay({ card: initialCard }: { card: EidCard }) {
             <div className="text-xs text-gray-500">
               Generated on: {new Date(card.createdAt).toLocaleDateString()}
             </div>
-            <p className="text-sm font-bold text-gray-700">monotorongo.com</p>
+            <p className="text-sm font-bold text-gray-700">EidVibe</p>
           </div>
         </div>
       </div>

@@ -3,7 +3,7 @@ export const translations = {
     nav: {
       home: 'Home',
       calculator: 'Salami Calculator',
-      brand: 'Mon Torongo',
+      brand: 'EidVibe',
       register: 'Register',
       ngl: 'Eid Letter',
       eidWheel: 'Lucky Wheel',
@@ -11,9 +11,9 @@ export const translations = {
       iftar: 'Iftar Spots'
     },
     home: {
-      title: 'Digital Salami, Festive Fun!',
+      title: 'EidVibe: Make Your Eid More Colorful!',
       subtitle:
-        'This Eid, have fun with our digital tools like the Salami Calculator and Eid Letter. Make this Eid unforgettable.',
+        'This Eid, boost your joy with all features in one place. Send anonymous messages, create custom colorful Salami receipts, or find free Iftar and Sehri spots on the map—everything is now on EidVibe!',
       ctaButton: 'Create Your Salami Card',
       calculatorCtaButton: 'Salami Calculator',
     },
@@ -300,7 +300,7 @@ export const translations = {
           label: 'Choose a Username',
           placeholder: 'e.g., anik_ahmed',
           description:
-            'This will be your unique link: monotorongo.com/ngl/{username}',
+            'This will be your unique link: eidvibe.app/ngl/{username}',
         },
         pin: {
           label: 'Set a 4-6 digit PIN',
@@ -509,7 +509,7 @@ export const translations = {
     nav: {
       home: 'হোম',
       calculator: 'সালামি ক্যালকুলেটর',
-      brand: 'মন তরঙ্গ',
+      brand: 'ঈদ ভাইব',
       register: 'নিবন্ধন করুন',
       ngl: 'ঈদের চিঠি',
       eidWheel: 'লাকি হুইল',
@@ -517,9 +517,9 @@ export const translations = {
       iftar: 'ইফতার স্পট'
     },
     home: {
-      title: 'ডিজিটাল সালামি, উৎসবের আমেজ!',
+      title: 'ঈদ ভাইব (EidVibe): আপনার ঈদ হোক আরও রঙিন!',
       subtitle:
-        'এই ঈদে, সালামি ক্যালকুলেটর এবং ঈদের চিঠির মতো আমাদের ডিজিটাল সরঞ্জামগুলির সাথে মজা করুন। এই ঈদকে অবিস্মরণীয় করে তুলুন।',
+        'এবারের ঈদে আপনার আনন্দকে বাড়িয়ে দিতে আমরা নিয়ে এলাম সব ফিচার এক জায়গায়। নাম গোপন রেখে বন্ধুদের মেসেজ পাঠানো, কাস্টম কালারফুল সালামি রশিদ তৈরি করা, কিংবা ম্যাপে ফ্রিতে ইফতার ও সেহরি স্পট খুঁজে পাওয়া—সবই হবে এখন EidVibe-এ!',
       ctaButton: 'আপনার সালামি কার্ড তৈরি করুন',
       calculatorCtaButton: 'সালামি ক্যালকুলেটর',
     },
@@ -806,7 +806,7 @@ export const translations = {
           label: 'একটি ব্যবহারকারীর নাম বাছুন',
           placeholder: 'যেমন, anik_ahmed',
           description:
-            'এটি আপনার ইউনিক লিঙ্ক হবে: monotorongo.com/ngl/{username}',
+            'এটি আপনার ইউনিক লিঙ্ক হবে: eidvibe.app/ngl/{username}',
         },
         pin: {
           label: '৪-৬ সংখ্যার একটি পিন সেট করুন',

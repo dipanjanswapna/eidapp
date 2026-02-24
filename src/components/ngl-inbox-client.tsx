@@ -79,7 +79,7 @@ export function NGLInboxClient({ user, pin }: { user: NGLUser, pin: string }) {
     setIsDownloading(true);
     html2canvas(shareCardRef.current, { scale: 2, useCORS: true, backgroundColor: null }).then(canvas => {
       const link = document.createElement('a');
-      link.download = `monotorongo-reply-${currentMessage?.id}.png`;
+      link.download = `eidvibe-reply-${currentMessage?.id}.png`;
       link.href = canvas.toDataURL('image/png');
       link.click();
       setIsDownloading(false);
@@ -101,7 +101,7 @@ export function NGLInboxClient({ user, pin }: { user: NGLUser, pin: string }) {
     if (navigator.share) {
         navigator.share({
             title: `Send me anonymous messages!`,
-            text: `Send me secret Eid letters on Mon Torongo!`,
+            text: `Send me secret Eid letters on EidVibe!`,
             url: shareUrl,
         }).catch(err => {
             console.error("Share failed", err);
