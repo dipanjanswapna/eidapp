@@ -1,3 +1,5 @@
+'use client';
+
 import Link from 'next/link';
 import { Facebook, Linkedin } from 'lucide-react';
 import { useLanguage } from '@/contexts/language-context';
