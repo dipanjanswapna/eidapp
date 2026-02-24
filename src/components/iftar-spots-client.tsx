@@ -1,14 +1,15 @@
 'use client';
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { useLanguage } from '@/contexts/language-context';
 import { IftarSpot, FoodType, foodTypes } from '@/lib/types';
-import { getIftarSpotsAction } from '@/lib/actions';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
 import { Loader2, AlertCircle, BadgeCheck } from 'lucide-react';
 import AddIftarSpotDialog from './add-iftar-spot-dialog';
 import dynamic from 'next/dynamic';
 import { ScrollArea, ScrollBar } from './ui/scroll-area';
+import { useFirestore, useCollection } from '@/firebase';
+import { collection, query, where, Timestamp } from 'firebase/firestore';
+import { Card, CardContent } from './ui/card';
 
 const IftarMap = dynamic(() => import('@/components/iftar-map'), {
   ssr: false,
@@ -23,35 +24,37 @@ const MapLoadingSkeleton = () => (
 
 export default function IftarSpotsClient() {
   const { translations } = useLanguage();
-  const [allSpots, setAllSpots] = useState<IftarSpot[]>([]);
+  const firestore = useFirestore();
+
+  const spotsQuery = useMemo(() => {
+    if (!firestore) return null;
+    const twentyFourHoursAgo = Timestamp.fromMillis(Date.now() - 24 * 60 * 60 * 1000);
+    return query(collection(firestore, 'iftar_spots'), where('createdAt', '>=', twentyFourHoursAgo));
+  }, [firestore]);
+
+  const { data: allSpotsFromHook, isLoading, error } = useCollection<IftarSpot>(spotsQuery);
+
   const [displayedSpots, setDisplayedSpots] = useState<IftarSpot[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
   const [selectedFilter, setSelectedFilter] = useState<FoodType | 'all' | 'verified'>('all');
-  const [error, setError] = useState<string | null>(null);
-
-  const fetchSpots = useCallback(async () => {
-    setIsLoading(true);
-    setError(null);
-    try {
-      const fetchedSpots = await getIftarSpotsAction();
-      setAllSpots(fetchedSpots);
-    } catch (err) {
-      console.error(err);
-      setError('Failed to load spots. Please try again later.');
-    } finally {
-      setIsLoading(false);
-    }
-  }, []);
-
-  useEffect(() => {
-    fetchSpots();
-  }, [fetchSpots]);
 
   const isVerified = (spot: IftarSpot) => spot.likes > spot.dislikes;
 
   useEffect(() => {
-    let spotsToDisplay = [...allSpots];
+    if (!allSpotsFromHook) {
+        setDisplayedSpots([]);
+        return;
+    };
     
+    // Filter out spots where endTime has passed
+    const now = new Date();
+    const currentTime = `${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}`;
+    let spotsToDisplay = allSpotsFromHook.filter(spot => {
+        if (!spot.endTime) {
+            return true;
+        }
+        return spot.endTime > currentTime;
+    });
+
     if (selectedFilter === 'verified') {
       spotsToDisplay = spotsToDisplay.filter(isVerified);
     } else if (selectedFilter !== 'all') {
@@ -63,7 +66,7 @@ export default function IftarSpotsClient() {
       const bIsVerified = isVerified(b);
 
       if (aIsVerified && !bIsVerified) return -1;
-      if (!aIsVerified && bIsVerified) return 1;
+      if (!bIsVerified && aIsVerified) return 1;
 
       if (a.likes !== b.likes) {
         return b.likes - a.likes;
@@ -73,14 +76,10 @@ export default function IftarSpotsClient() {
     });
 
     setDisplayedSpots(sortedSpots);
-  }, [allSpots, selectedFilter]);
+  }, [allSpotsFromHook, selectedFilter]);
 
   const handleSpotAdded = () => {
-    fetchSpots();
-  };
-
-  const handleVote = () => {
-    fetchSpots();
+    // No need to do anything here, useCollection will update the spots list automatically.
   };
 
   return (
@@ -130,10 +129,10 @@ export default function IftarSpotsClient() {
         {error && !isLoading && (
           <div className="flex h-full w-full flex-col items-center justify-center bg-destructive/10 text-destructive">
             <AlertCircle className="h-12 w-12" />
-            <p className="mt-4 text-lg font-semibold">{error}</p>
+            <p className="mt-4 text-lg font-semibold">{'Failed to load spots. Please try again later.'}</p>
           </div>
         )}
-        {!isLoading && !error && <IftarMap spots={displayedSpots} onVote={handleVote} />}
+        {!isLoading && !error && <IftarMap spots={displayedSpots} />}
       </div>
       
       <div className="absolute bottom-4 right-4 z-[1000]">

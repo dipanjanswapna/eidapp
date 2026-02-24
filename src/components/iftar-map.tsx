@@ -21,7 +21,6 @@ L.Icon.Default.mergeOptions({
 
 type IftarMapProps = {
   spots: IftarSpot[];
-  onVote: () => void;
 };
 
 function ChangeView({ center }: { center: [number, number] }) {
@@ -30,7 +29,7 @@ function ChangeView({ center }: { center: [number, number] }) {
   return null;
 }
 
-export default function IftarMap({ spots, onVote }: IftarMapProps) {
+export default function IftarMap({ spots }: IftarMapProps) {
   const { translations } = useLanguage();
   const { toast } = useToast();
   const [votedSpots, setVotedSpots] = useState<Record<string, 'like' | 'dislike'>>({});
@@ -53,7 +52,6 @@ export default function IftarMap({ spots, onVote }: IftarMapProps) {
       const newVotedSpots = { ...votedSpots, [spotId]: voteType };
       setVotedSpots(newVotedSpots);
       localStorage.setItem('votedSpots', JSON.stringify(newVotedSpots));
-      onVote();
       toast({ title: 'Vote Counted', description: 'Thank you for your feedback!' });
     } catch (error) {
       toast({ variant: 'destructive', title: 'Error', description: 'Failed to record vote.' });

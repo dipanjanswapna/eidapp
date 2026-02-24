@@ -21,4 +21,6 @@ export {
   useFirestore,
 } from './provider';
 
+export { useCollection } from './firestore/use-collection';
+
 export { FirebaseClientProvider } from './client-provider';
