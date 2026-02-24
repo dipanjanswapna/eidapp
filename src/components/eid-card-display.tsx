@@ -2,12 +2,13 @@
 
 import type { EidCard } from '@/lib/types';
 import { useLanguage } from '@/contexts/language-context';
-import { Stamp, Copy, Send, Loader2 } from 'lucide-react';
+import { Stamp, Copy, Send, Loader2, Download, Share2 } from 'lucide-react';
 import { Button } from './ui/button';
 import { useToast } from '@/hooks/use-toast';
 import { confirmEidCardPaymentAction } from '@/lib/actions';
 import { useState } from 'react';
 import Confetti from 'react-confetti';
+import html2canvas from 'html2canvas';
 
 export function EidCardDisplay({ card: initialCard }: { card: EidCard }) {
   const { translations } = useLanguage();
@@ -15,6 +16,8 @@ export function EidCardDisplay({ card: initialCard }: { card: EidCard }) {
   const [card, setCard] = useState(initialCard);
   const [isConfirming, setIsConfirming] = useState(false);
   const [showConfetti, setShowConfetti] = useState(false);
+  const [isDownloading, setIsDownloading] = useState(false);
+  const [isSharing, setIsSharing] = useState(false);
 
   const copyToClipboard = (text: string, type: string) => {
     navigator.clipboard.writeText(text);
@@ -34,6 +37,68 @@ export function EidCardDisplay({ card: initialCard }: { card: EidCard }) {
     }
     setIsConfirming(false);
   };
+  
+  const handleDownload = () => {
+    const cardElement = document.getElementById('eid-card-container');
+    if (!cardElement) return;
+
+    setIsDownloading(true);
+    html2canvas(cardElement, { scale: 2, useCORS: true, backgroundColor: '#FFFFFF' }).then(canvas => {
+        const link = document.createElement('a');
+        link.download = `eid-card-${card.id}.png`;
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+        setIsDownloading(false);
+    }).catch(err => {
+        console.error(err);
+        toast({ variant: 'destructive', title: 'Error', description: 'Could not generate image.' });
+        setIsDownloading(false);
+    })
+  };
+
+  const handleShare = async () => {
+    setIsSharing(true);
+    const cardElement = document.getElementById('eid-card-container');
+    
+    if (cardElement && navigator.share) {
+      try {
+        const canvas = await html2canvas(cardElement, { scale: 2, useCORS: true, backgroundColor: '#FFFFFF' });
+        const blob = await new Promise<Blob | null>((resolve) => canvas.toBlob(resolve, 'image/png'));
+        
+        if (blob) {
+            const filesArray = [
+                new File([blob], `eid-card-${card.id}.png`, {
+                type: 'image/png',
+                lastModified: new Date().getTime(),
+                }),
+            ];
+            await navigator.share({
+                title: `A special Eid card for ${card.recipientName}!`,
+                text: `Check out this Eid card I made on Mon Torongo!`,
+                files: filesArray,
+            });
+        } else {
+            throw new Error("Canvas to Blob conversion failed");
+        }
+      } catch (error) {
+        console.error('Sharing failed:', error);
+        navigator.clipboard.writeText(window.location.href);
+        toast({
+          title: translations.eidCard.display.share.linkCopied,
+          description: translations.eidCard.display.share.shareError,
+        });
+      } finally {
+        setIsSharing(false);
+      }
+    } else {
+        navigator.clipboard.writeText(window.location.href);
+        toast({
+          title: translations.eidCard.display.share.linkCopied,
+        });
+        setIsSharing(false);
+    }
+  };
+
 
   const hasPaymentInfo = card.bkashNumber || card.nagadNumber || card.rocketNumber;
 
@@ -138,6 +203,16 @@ export function EidCardDisplay({ card: initialCard }: { card: EidCard }) {
             <p className="text-sm font-bold text-gray-700">monotorongo.com</p>
           </div>
         </div>
+      </div>
+      <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <Button onClick={handleDownload} disabled={isDownloading} className="w-full" size="lg">
+            {isDownloading ? <Loader2 className="mr-2 h-5 w-5 animate-spin" /> : <Download className="mr-2 h-5 w-5" />}
+            {translations.eidCard.display.share.downloadButton}
+        </Button>
+        <Button onClick={handleShare} disabled={isSharing} className="w-full" size="lg" variant="outline">
+            {isSharing ? <Loader2 className="mr-2 h-5 w-5 animate-spin" /> : <Share2 className="mr-2 h-5 w-5" />}
+            {translations.eidCard.display.share.shareButton}
+        </Button>
       </div>
     </>
   );
