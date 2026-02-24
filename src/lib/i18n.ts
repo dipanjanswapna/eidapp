@@ -170,7 +170,7 @@ export const translations = {
         },
         conditions: {
           low_income:
-            'Condition: The amount stated in this receipt will be collected in cash from the pockets of elder brothers at a 100% discount.',
+            'Condition: If this receipt is disobeyed and salami is not provided, your Eid invitation will be considered cancelled.',
           medium_income:
             'Condition: Considering the financial situation, elder brothers can pay this salami in 15-year easy installments.',
           high_income:
@@ -418,7 +418,7 @@ export const translations = {
         },
         conditions: {
           low_income:
-            'শর্ত: এই রশিদের বর্ণিত টাকার পরিমাণ ১০০% ডিসকাউন্টে বড় ভাইদের পকেট হইতে নগদ আদায় করা হইবে।',
+            'শর্ত: এই রশিদ অমান্য করিলে এবং সালামি প্রদান না করিলে, আপনার ঈদের দাওয়াত বাতিল বলিয়া গণ্য হইবে।',
           medium_income:
             'শর্ত: আর্থিক অবস্থার কথা বিবেচনা করিয়া বড় ভাইরা ১৫ বছরের কিস্তিতে এই সালামি পরিশোধ করিতে পারিবেন।',
           high_income:
