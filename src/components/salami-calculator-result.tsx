@@ -15,6 +15,17 @@ type SalamiCalculatorResultProps = {
     onReset: () => void;
 }
 
+function getIncomeBracket(income: number): keyof typeof translations.en.calculator.result.income_results {
+    if (income <= 1000) return 'range_0_1000';
+    if (income <= 5000) return 'range_1001_5000';
+    if (income <= 10000) return 'range_5001_10000';
+    if (income <= 20000) return 'range_10001_20000';
+    if (income <= 50000) return 'range_20001_50000';
+    if (income <= 100000) return 'range_50001_100000';
+    return 'range_100001_plus';
+}
+
+
 export default function SalamiCalculatorResult({ result, onReset }: SalamiCalculatorResultProps) {
     const { translations } = useLanguage();
     const { toast } = useToast();
@@ -38,12 +49,17 @@ export default function SalamiCalculatorResult({ result, onReset }: SalamiCalcul
         return () => window.removeEventListener('resize', handleResize);
     }, []);
 
-    const { name, relationshipStatus, gender, profession } = result;
+    const { name, relationshipStatus, gender, profession, monthlyIncome } = result;
     
     let resultData;
     let statusText;
+    const income = parseInt(monthlyIncome || '0');
 
-    if (profession && profession !== 'none') {
+    if (profession === 'job_holder' && income > 0) {
+        const incomeBracket = getIncomeBracket(income);
+        resultData = translations.calculator.result.income_results[incomeBracket];
+        statusText = `${translations.calculator.profession.options.job_holder} (${monthlyIncome} Tk)`;
+    } else if (profession && profession !== 'none') {
         const professionKey = profession as keyof typeof translations.calculator.result.profession_results;
         resultData = translations.calculator.result.profession_results[professionKey];
         statusText = translations.calculator.profession.options[professionKey];
@@ -162,7 +178,7 @@ export default function SalamiCalculatorResult({ result, onReset }: SalamiCalcul
                         </div>
                         <div className="space-y-3 text-base text-amber-900">
                             <div className="flex justify-between"><span className="font-semibold">{translations.form.name.label}:</span><span>{name}</span></div>
-                            <div className="flex justify-between"><span className="font-semibold">{statusText}:</span><span>{profession && profession !== 'none' ? translations.calculator.profession.options[profession as keyof typeof translations.calculator.profession.options] : translations.calculator.relationship.options[relationshipStatus as keyof typeof translations.calculator.relationship.options]}</span></div>
+                            <div className="flex justify-between"><span className="font-semibold">{statusText}:</span><span>{profession && profession !== 'none' && profession !== 'job_holder' ? translations.calculator.profession.options[profession as keyof typeof translations.calculator.profession.options] : (profession !== 'job_holder' ? translations.calculator.relationship.options[relationshipStatus as keyof typeof translations.calculator.relationship.options] : '')}</span></div>
                             <div className="flex justify-between items-center"><span className="font-semibold">{translations.calculator.result.probabilityLabel}:</span><span className="text-2xl font-bold text-primary bg-primary/10 px-3 py-1 rounded">{resultData.prob}</span></div>
                             <div className="p-3 bg-amber-500/10 rounded-md text-center">
                                 <p className="font-semibold text-amber-900">{translations.calculator.result.message.replace('{message}', resultData.title)}</p>
@@ -190,7 +206,7 @@ export default function SalamiCalculatorResult({ result, onReset }: SalamiCalcul
 
                  <CardFooter className="flex-col sm:flex-row gap-2 pt-6 p-0">
                     <Button onClick={handleDownload} disabled={isDownloading} className="w-full">
-                        <Download className="mr-2 h-4 w-4" />
+                        {isDownloading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Download className="mr-2 h-4 w-4" />}
                         {translations.calculator.result.rashid.downloadButton}
                     </Button>
                      <Button onClick={handleShare} variant="secondary" className="w-full" disabled={isSharing}>

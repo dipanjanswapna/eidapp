@@ -29,8 +29,8 @@ import SalamiCalculatorResult from './salami-calculator-result';
 
 type RelationshipStatus = 'single' | 'in_relationship' | 'engaged' | 'married' | 'crush';
 type Gender = 'male' | 'female';
-type Profession = 'student' | 'unemployed' | 'job_holder' | 'businessman' | 'none';
-type MonthlyIncome = 'none' | 'low' | 'medium' | 'high';
+type Profession = 'student' | 'unemployed' | 'job_holder' | 'businessman' | 'doctor' | 'engineer' | 'teacher' | 'govt_job' | 'freelancer' | 'rickshaw_puller' | 'day_laborer' | 'expatriate' | 'gen_z' | 'retired_politician' | 'others' | 'none';
+type MonthlyIncome = string;
 
 export type CalculatorResultData = {
     name: string;
@@ -49,8 +49,8 @@ export default function SalamiCalculator() {
     name: z.string().min(2, translations.form.errors.name.min),
     relationshipStatus: z.enum(['single', 'in_relationship', 'engaged', 'married', 'crush']),
     gender: z.enum(['male', 'female']),
-    profession: z.enum(['student', 'unemployed', 'job_holder', 'businessman', 'none']).optional(),
-    monthlyIncome: z.enum(['none', 'low', 'medium', 'high']).optional(),
+    profession: z.enum(['student', 'unemployed', 'job_holder', 'businessman', 'doctor', 'engineer', 'teacher', 'govt_job', 'freelancer', 'rickshaw_puller', 'day_laborer', 'expatriate', 'gen_z', 'retired_politician', 'others', 'none']).optional(),
+    monthlyIncome: z.string().optional(),
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -60,7 +60,7 @@ export default function SalamiCalculator() {
       relationshipStatus: 'single',
       gender: 'male',
       profession: 'none',
-      monthlyIncome: 'none',
+      monthlyIncome: '',
     },
   });
   
@@ -79,7 +79,7 @@ export default function SalamiCalculator() {
         relationshipStatus: values.relationshipStatus as RelationshipStatus,
         gender: values.gender as Gender,
         profession: (showExtraFields ? values.profession : 'none') || 'none',
-        monthlyIncome: (showExtraFields && values.profession === 'job_holder' ? values.monthlyIncome : 'none') || 'none',
+        monthlyIncome: (showExtraFields && values.profession === 'job_holder' ? values.monthlyIncome : '') || '',
     };
     
     setResult(resultData);
@@ -192,6 +192,17 @@ export default function SalamiCalculator() {
                           <SelectItem value="unemployed">{translations.calculator.profession.options.unemployed}</SelectItem>
                           <SelectItem value="job_holder">{translations.calculator.profession.options.job_holder}</SelectItem>
                           <SelectItem value="businessman">{translations.calculator.profession.options.businessman}</SelectItem>
+                          <SelectItem value="doctor">{translations.calculator.profession.options.doctor}</SelectItem>
+                          <SelectItem value="engineer">{translations.calculator.profession.options.engineer}</SelectItem>
+                          <SelectItem value="teacher">{translations.calculator.profession.options.teacher}</SelectItem>
+                          <SelectItem value="govt_job">{translations.calculator.profession.options.govt_job}</SelectItem>
+                          <SelectItem value="freelancer">{translations.calculator.profession.options.freelancer}</SelectItem>
+                          <SelectItem value="rickshaw_puller">{translations.calculator.profession.options.rickshaw_puller}</SelectItem>
+                          <SelectItem value="day_laborer">{translations.calculator.profession.options.day_laborer}</SelectItem>
+                          <SelectItem value="expatriate">{translations.calculator.profession.options.expatriate}</SelectItem>
+                          <SelectItem value="gen_z">{translations.calculator.profession.options.gen_z}</SelectItem>
+                          <SelectItem value="retired_politician">{translations.calculator.profession.options.retired_politician}</SelectItem>
+                          <SelectItem value="others">{translations.calculator.profession.options.others}</SelectItem>
                         </SelectContent>
                       </Select>
                       <FormMessage />
@@ -206,18 +217,9 @@ export default function SalamiCalculator() {
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel>{translations.calculator.monthlyIncome.label}</FormLabel>
-                        <Select onValueChange={field.onChange} defaultValue={field.value || 'none'}>
-                          <FormControl>
-                            <SelectTrigger>
-                              <SelectValue placeholder={translations.calculator.monthlyIncome.placeholder} />
-                            </SelectTrigger>
-                          </FormControl>
-                          <SelectContent>
-                            <SelectItem value="low">{translations.calculator.monthlyIncome.options.low}</SelectItem>
-                            <SelectItem value="medium">{translations.calculator.monthlyIncome.options.medium}</SelectItem>
-                            <SelectItem value="high">{translations.calculator.monthlyIncome.options.high}</SelectItem>
-                          </SelectContent>
-                        </Select>
+                        <FormControl>
+                          <Input type="number" placeholder={translations.calculator.monthlyIncome.placeholder} {...field} />
+                        </FormControl>
                         <FormMessage />
                       </FormItem>
                     )}
