@@ -2,40 +2,21 @@
 
 import { NGLMessage, NGLUser } from "@/lib/types";
 import { useLanguage } from "@/contexts/language-context";
-import { Stamp, MessageSquare, CornerDownRight, Waves } from "lucide-react";
-import { translations } from "@/lib/i18n";
+import { MessageSquare, CornerDownRight, Waves } from "lucide-react";
 
 type CardProps = {
     user: NGLUser;
     message: NGLMessage;
 }
 
-const getFooterMessage = (user: NGLUser, lang: 'en' | 'bn') => {
-    type ProfessionFooterKey = keyof typeof translations.en.calculator.results.professionFooter;
-    // Handle 'other' gender case by defaulting to 'male' string if specific one is not available
-    const gender = (user.gender === 'male' || user.gender === 'female') ? user.gender : 'male';
-    const professionFooterKey = `${user.profession}_${gender}` as ProfessionFooterKey;
-    const professionFooters = translations[lang].calculator.results.professionFooter;
-
-    if (professionFooterKey in professionFooters) {
-      return professionFooters[professionFooterKey];
-    }
-    
-    // Fallback message if a specific one isn't found
-    const professionKey = user.profession as keyof typeof translations.en.calculator.form.profession.options;
-    const profession = translations[lang].calculator.form.profession.options[professionKey] || user.profession;
-    
-    if (lang === 'bn') {
-        return `একজন ${profession} এর পক্ষ থেকে উত্তর। ঈদের শুভেচ্ছা! সালামিটা পাঠিয়ে দিয়েন।`;
-    }
-    return `A reply from a ${profession}. Happy Eid! Don't forget to send the salami.`;
-}
-
 export default function NGLReplyAndShareCard({ user, message }: CardProps) {
     const { language, translations: t } = useLanguage();
     
     const senderTag = t.ngl.send.senderTag.options[message.senderTag as keyof typeof t.ngl.send.senderTag.options];
-    const footerText = getFooterMessage(user, language);
+    
+    const footerText = language === 'bn' 
+        ? "আপনিও এমন গোপন চিঠি পেতে চান? ভিজিট করুন monotorongo.com"
+        : "Want to get secret letters like this? Visit monotorongo.com";
 
     return (
         <div className="bg-white p-2 sm:p-4 rounded-lg">
@@ -65,16 +46,10 @@ export default function NGLReplyAndShareCard({ user, message }: CardProps) {
                     </div>
                 </div>
 
-                <div className="relative mt-8 flex items-center justify-between">
+                <div className="relative mt-8 flex items-center justify-end">
                      <div className="text-xs text-gray-500 flex items-center gap-1">
                         <Waves className="h-4 w-4" />
                         <span>monotorongo.com</span>
-                    </div>
-                    <div className="relative">
-                        <Stamp className="h-20 w-20 sm:h-24 sm:w-24 text-primary opacity-80" />
-                        <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 -rotate-12 text-base sm:text-lg font-bold text-primary-foreground">
-                            {t.calculator.results.approved}
-                        </span>
                     </div>
                 </div>
 
