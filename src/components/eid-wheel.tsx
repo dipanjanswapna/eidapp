@@ -7,7 +7,7 @@ import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
 import { useRouter } from 'next/navigation';
-import { ArrowRight, Ticket } from 'lucide-react';
+import { ArrowRight, Ticket, Triangle } from 'lucide-react';
 
 export default function EidWheel() {
   const { translations } = useLanguage();
@@ -49,7 +49,7 @@ export default function EidWheel() {
         <p className="mt-2 text-lg text-muted-foreground">{translations.eidWheel.description}</p>
       </div>
 
-      <div className="relative flex h-[300px] w-[300px] items-center justify-center sm:h-[400px] sm:w-[400px]">
+      <div className="relative flex h-[350px] w-[350px] items-center justify-center sm:h-[450px] sm:w-[450px]">
         <style jsx>{`
           .wheel {
             transition: transform 5s cubic-bezier(0.25, 0.1, 0.25, 1);
@@ -59,8 +59,13 @@ export default function EidWheel() {
           }
         `}</style>
         
+        <Triangle 
+          className="absolute top-[-15px] z-10 h-8 w-8 text-accent fill-accent drop-shadow-lg" 
+          style={{ transform: 'rotate(180deg)' }}
+        />
+
         <div 
-          className="wheel absolute h-full w-full rounded-full border-4 border-accent"
+          className="wheel absolute h-full w-full rounded-full border-4 border-accent overflow-hidden"
           style={{ transform: `rotate(${rotation}deg)` }}
         >
           {wheelOptions.map((option, index) => (
@@ -73,13 +78,17 @@ export default function EidWheel() {
             >
               <div
                 className={cn(
-                  "wheel-segment flex h-full w-full items-center justify-end overflow-hidden pr-2 text-right",
+                  "wheel-segment flex h-full w-full items-center justify-center text-center",
                   index % 2 === 0 ? 'bg-primary/10' : 'bg-background'
                 )}
               >
                 <span 
-                  className="-rotate-45 transform text-xs font-semibold"
-                  style={{ transform: `rotate(${anglePerOption/2 - 90}deg) translate(-10%, -50%)`, width: '150%' }}
+                  className="transform text-sm font-semibold"
+                  style={{ 
+                    transform: `rotate(${anglePerOption / 2 - 90}deg) translate(30%, -50%)`,
+                    width: '80%', 
+                    display: 'block'
+                  }}
                 >
                   {option.split(':')[0]}
                 </span>
@@ -88,7 +97,6 @@ export default function EidWheel() {
           ))}
         </div>
 
-        <div className="absolute top-[-15px] z-10 h-0 w-0 border-x-[15px] border-x-transparent border-b-[30px] border-b-accent" />
         <div className="absolute flex h-20 w-20 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-lg">
           <Ticket className="h-10 w-10" />
         </div>
