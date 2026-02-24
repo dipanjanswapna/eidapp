@@ -1,14 +1,6 @@
-import dynamic from 'next/dynamic';
-import { Loader2 } from 'lucide-react';
+'use client';
 
-const IftarSpotsClient = dynamic(() => import('@/components/iftar-spots-client'), {
-  ssr: false,
-  loading: () => (
-    <div className="flex h-full w-full items-center justify-center bg-muted">
-      <Loader2 className="h-8 w-8 animate-spin text-primary" />
-    </div>
-  ),
-});
+import IftarSpotsClient from '@/components/iftar-spots-client';
 
 export default function IftarSpotsPage() {
   return (
