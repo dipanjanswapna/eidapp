@@ -62,45 +62,41 @@ export default function EidWheel() {
         />
 
         <div 
-          className="wheel absolute h-full w-full rounded-full border-4 border-accent"
+          className="wheel pointer-events-none absolute h-full w-full rounded-full border-8 border-primary/10"
           style={{ 
             transform: `rotate(${rotation}deg)`,
-            background: `conic-gradient(
-              ${wheelOptions.map((_, index) => {
-                const color = index % 2 === 0 ? 'hsla(220, 71%, 45%, 0.1)' : 'hsl(105, 33%, 95%)';
-                const start = index * anglePerOption;
-                const end = start + anglePerOption;
-                return `${color} ${start}deg ${end}deg`;
-              }).join(', ')}
-            )`
           }}
-        />
-        
-        <div className="labels pointer-events-none absolute inset-0">
-          {wheelOptions.map((option, index) => {
-             const angle = index * anglePerOption + (anglePerOption / 2);
-             const labelStyle = {
-               transform: `rotate(${angle}deg) translate(90px)`,
-             };
-              if (typeof window !== 'undefined' && window.innerWidth >= 640) {
-                 labelStyle.transform = `rotate(${angle}deg) translate(115px)`;
-              }
+        >
+           <div 
+              className="absolute h-full w-full rounded-full"
+              style={{
+                background: `conic-gradient(
+                  ${wheelOptions.map((_, index) => {
+                    const color = index % 2 === 0 ? 'hsla(var(--primary), 0.05)' : 'transparent';
+                    const start = index * anglePerOption;
+                    const end = start + anglePerOption;
+                    return `${color} ${start}deg ${end}deg`;
+                  }).join(', ')}
+                )`
+              }}
+            />
 
-             const textStyle = {
-               transform: `rotate(-90deg)`,
-             }
-            return (
-              <div
-                key={index}
-                className="absolute top-1/2 left-1/2"
-                style={labelStyle}
-              >
-                  <span className="block w-max -translate-x-1/2 text-center text-[10px] font-semibold text-foreground/80 sm:text-xs" style={textStyle}>
-                     {option.split(':')[0]}
-                  </span>
-              </div>
-            );
-          })}
+            {wheelOptions.map((option, index) => {
+                const angle = index * anglePerOption + (anglePerOption / 2);
+                const isFlipped = angle > 90 && angle < 270;
+                
+                return (
+                    <div
+                        key={index}
+                        className="absolute flex h-full w-full justify-center"
+                        style={{ transform: `rotate(${angle}deg)` }}
+                    >
+                        <span style={{ transform: `rotate(${isFlipped ? 180 : 0}deg)`}} className="mt-4 block max-w-[80px] text-center text-[10px] font-semibold text-foreground/80 sm:mt-6 sm:text-xs">
+                           {option.split(':')[0]}
+                        </span>
+                    </div>
+                );
+            })}
         </div>
 
 
