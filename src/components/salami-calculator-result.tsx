@@ -198,15 +198,15 @@ export default function SalamiCalculatorResult({
     <>
     {isClient && <Confetti recycle={false} numberOfPieces={400} />}
     <div className="container relative z-10 mx-auto max-w-2xl px-4 py-12">
-        <div id="salami-receipt" className="bg-white p-2">
-            <div className="relative border-2 border-dashed border-gray-400 bg-gray-50 p-6 shadow-lg">
+        <div id="salami-receipt" className="bg-white p-2 sm:p-4">
+            <div className="relative border-2 border-dashed border-gray-400 bg-gray-50 p-4 sm:p-6 shadow-lg">
                 <div className="absolute inset-0 bg-[url('/receipt-bg.svg')] bg-center opacity-5"></div>
                 <div className="relative text-center">
-                <h1 className="text-2xl font-bold text-gray-800">{translations.calculator.results.title}</h1>
-                <p className="text-sm text-gray-500">{translations.calculator.results.serial}: {Date.now()}</p>
+                <h1 className="text-xl sm:text-2xl font-bold text-gray-800">{translations.calculator.results.title}</h1>
+                <p className="text-xs sm:text-sm text-gray-500">{translations.calculator.results.serial}: {Date.now()}</p>
                 </div>
                 
-                <div className="relative my-6 grid grid-cols-2 gap-4 text-sm">
+                <div className="relative my-6 grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
                     <div>
                         <p className="font-semibold text-gray-600">{translations.calculator.results.name}</p>
                         <p className="text-gray-800">{name}</p>
@@ -227,20 +227,20 @@ export default function SalamiCalculatorResult({
 
                 <div className="relative text-center">
                     <p className="font-semibold text-gray-600">{translations.calculator.results.verdict}</p>
-                    <p className="mt-1 text-lg italic text-gray-800">&ldquo;{verdict}&rdquo;</p>
+                    <p className="mt-1 text-base sm:text-lg italic text-gray-800">&ldquo;{verdict}&rdquo;</p>
                 </div>
 
                 <div className="relative mt-6 flex flex-col items-center justify-center gap-6">
                     {specialTitle && (
-                        <div className="flex items-center gap-2 rounded-full bg-accent/20 px-4 py-1 text-accent-foreground">
-                            <Award className="h-5 w-5" />
+                        <div className="flex items-center gap-2 rounded-full bg-accent/20 px-3 py-1 text-xs sm:px-4 sm:text-sm text-accent-foreground">
+                            <Award className="h-4 w-4 sm:h-5 sm:w-5" />
                             <p className="font-semibold">{specialTitle}</p>
                         </div>
                     )}
                     
                     <div className="relative">
-                        <Stamp className="h-28 w-28 text-red-500/80" />
-                        <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 -rotate-12 text-2xl font-bold text-white">
+                        <Stamp className="h-24 w-24 sm:h-28 sm:w-28 text-red-500/80" />
+                        <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 -rotate-12 text-xl sm:text-2xl font-bold text-white">
                             {translations.calculator.results.approved}
                         </span>
                     </div>
