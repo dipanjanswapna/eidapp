@@ -22,6 +22,9 @@ export function Navbar() {
                     <Button variant="ghost" asChild>
                         <Link href="/create">{translations.nav.create}</Link>
                     </Button>
+                     <Button variant="ghost" asChild>
+                        <Link href="/calculator">{translations.nav.calculator}</Link>
+                    </Button>
                 </nav>
                 <div className="flex flex-1 items-center justify-end space-x-2">
                     <LanguageToggle />

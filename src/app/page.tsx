@@ -25,6 +25,9 @@ export default function Home() {
           <Button asChild size="lg">
             <Link href="/create">{translations.home.ctaButton}</Link>
           </Button>
+          <Button asChild size="lg" variant="outline">
+            <Link href="/calculator">{translations.home.calculatorCtaButton}</Link>
+          </Button>
         </div>
       </div>
     </div>
