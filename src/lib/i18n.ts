@@ -6,7 +6,7 @@ export const translations = {
       calculator: 'Salami Calculator',
       brand: 'Mon Torongo',
       register: 'Register',
-      ngl: 'Secret Messages'
+      ngl: 'Eid Letter'
     },
     home: {
       title: 'Digital Salami, Festive Fun!',
@@ -293,7 +293,7 @@ export const translations = {
     },
     ngl: {
         create: {
-            title: "Create Your Secret Message Inbox",
+            title: "Create Your Eid Letter Inbox",
             description: "Set a username and PIN to receive anonymous messages.",
             name: {
                 label: "Your Name",
@@ -338,10 +338,10 @@ export const translations = {
             createLink: "Don't have an inbox? Create one now!",
         },
         send: {
-            title: "Send a Secret Message to",
+            title: "Send an Eid Letter to",
             subtitle: "Your identity will be kept secret.",
             message: {
-                placeholder: "Write your secret message here...",
+                placeholder: "Write your Eid letter here...",
             },
             senderTag: {
                 label: "Choose a secret identity (optional)",
@@ -362,12 +362,12 @@ export const translations = {
                     'colleague': 'Colleague',
                 }
             },
-            submitButton: "Send Secretly",
-            success: "Your secret message has been sent!",
+            submitButton: "Send Letter",
+            success: "Your Eid letter has been sent!",
         },
         inbox: {
-            title: "Your Secret Inbox",
-            noMessages: "No secret messages yet. Share your link to get some!",
+            title: "Your Eid Letter Inbox",
+            noMessages: "No Eid letters yet. Share your link to get some!",
             replyButton: "Reply & Share",
             repliedStatus: "Replied",
             replyModal: {
@@ -396,7 +396,7 @@ export const translations = {
       calculator: 'সালামি ক্যালকুলেটর',
       brand: 'মন তরঙ্গ',
       register: 'নিবন্ধন করুন',
-      ngl: 'গোপন বার্তা'
+      ngl: 'ঈদের চিঠি'
     },
     home: {
       title: 'ডিজিটাল সালামি, উৎসবের আমেজ!',
@@ -682,7 +682,7 @@ export const translations = {
     },
     ngl: {
         create: {
-            title: "আপনার গোপন বার্তা ইনবক্স তৈরি করুন",
+            title: "আপনার ঈদের চিঠি ইনবক্স তৈরি করুন",
             description: "গোপন বার্তা পেতে একটি ব্যবহারকারীর নাম এবং পিন সেট করুন।",
             name: {
                 label: "আপনার নাম",
@@ -727,10 +727,10 @@ export const translations = {
             createLink: "ইনবক্স নেই? এখনই তৈরি করুন!",
         },
         send: {
-            title: "একটি গোপন বার্তা পাঠান",
+            title: "একটি ঈদের চিঠি পাঠান",
             subtitle: "আপনার পরিচয় গোপন রাখা হবে।",
             message: {
-                placeholder: "আপনার গোপন বার্তা এখানে লিখুন...",
+                placeholder: "আপনার ঈদের চিঠি এখানে লিখুন...",
             },
             senderTag: {
                 label: "একটি গোপন পরিচয় চয়ন করুন (ঐচ্ছিক)",
@@ -751,12 +751,12 @@ export const translations = {
                     'colleague': 'সহকর্মী',
                 }
             },
-            submitButton: "গোপনে পাঠান",
-            success: "আপনার গোপন বার্তা পাঠানো হয়েছে!",
+            submitButton: "চিঠি পাঠান",
+            success: "আপনার ঈদের চিঠি পাঠানো হয়েছে!",
         },
         inbox: {
-            title: "আপনার গোপন ইনবক্স",
-            noMessages: "এখনও কোনো গোপন বার্তা নেই। কিছু পেতে আপনার লিঙ্ক শেয়ার করুন!",
+            title: "আপনার ঈদের চিঠির ইনবক্স",
+            noMessages: "এখনও কোনো ঈদের চিঠি নেই। কিছু পেতে আপনার লিঙ্ক শেয়ার করুন!",
             replyButton: "উত্তর দিন ও শেয়ার করুন",
             repliedStatus: "উত্তর দেওয়া হয়েছে",
             replyModal: {

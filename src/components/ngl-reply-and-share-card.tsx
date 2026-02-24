@@ -33,7 +33,7 @@ export default function NGLReplyAndShareCard({ user, message }: CardProps) {
                 <div className="absolute inset-0 bg-[url('/receipt-bg.svg')] bg-center opacity-5"></div>
                 
                 <div className="relative text-center mb-6">
-                    <h1 className="text-xl sm:text-2xl font-bold text-gray-800">{language === 'bn' ? 'গোপন ঈদ বার্তা - উত্তরসহ' : 'Secret Eid Message - With Reply'}</h1>
+                    <h1 className="text-xl sm:text-2xl font-bold text-gray-800">{language === 'bn' ? 'ঈদের চিঠি - উত্তরসহ' : 'Secret Eid Message - With Reply'}</h1>
                     <p className="text-xs sm:text-sm text-gray-500">@{user.username}</p>
                 </div>
 
