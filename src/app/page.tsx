@@ -5,17 +5,7 @@ import { useLanguage } from '@/contexts/language-context';
 import ConfettiBackground from '@/components/confetti-background';
 import { SalamiCard } from '@/components/salami-card';
 import type { SalamiProfile } from '@/lib/types';
-
-const dummyProfile: SalamiProfile = {
-  id: '1',
-  slug: 'dummy',
-  userName: 'Anik',
-  salamiMessage: 'টাকা দিয়ে ভালোবাসা হয় না, কিন্তু সালামি দিয়ে হয়!',
-  cardTheme: 'Funny',
-  bkashNumber: '',
-  nagadNumber: '',
-  createdAt: new Date(),
-};
+import { Calculator } from 'lucide-react';
 
 export default function Home() {
   const { translations, language } = useLanguage();
@@ -31,18 +21,19 @@ export default function Home() {
         >
           {translations.home.title}
         </h1>
-        <p className="mx-auto mt-6 max-w-2xl text-lg text-foreground/80 md:text-xl">
+        <p className="mx-auto mt-6 max-w-3xl text-lg text-foreground/80 md:text-xl">
           {translations.home.subtitle}
         </p>
-        <div className="mt-10 flex items-center justify-center gap-x-6">
+        <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
           <Button asChild size="lg">
             <Link href="/create">{translations.home.ctaButton}</Link>
           </Button>
-        </div>
-        <div className="mt-16 flex justify-center">
-            <div className="w-full max-w-md scale-90 transform-gpu transition-transform duration-500 hover:scale-95">
-                <SalamiCard profile={dummyProfile} />
-            </div>
+          <Button asChild size="lg" variant="secondary">
+            <Link href="/calculator">
+                <Calculator className="mr-2 h-5 w-5"/>
+                {translations.nav.calculator}
+            </Link>
+          </Button>
         </div>
       </div>
     </div>
