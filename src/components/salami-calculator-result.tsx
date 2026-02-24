@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/contexts/language-context";
 import type { CalculatorResultData } from "./salami-calculator";
 import Link from "next/link";
-import { ArrowLeft, Gift, Download, Share2 } from "lucide-react";
+import { ArrowLeft, Gift, Download, Share2, Award } from "lucide-react";
 import Confetti from "react-confetti";
 import { useState, useEffect } from "react";
 import html2canvas from "html2canvas";
@@ -58,7 +58,7 @@ export default function SalamiCalculatorResult({ result, onReset }: SalamiCalcul
         if (rashidElement) {
             html2canvas(rashidElement, { allowTaint: true, useCORS: true, scale: 2 }).then(canvas => {
                 const link = document.createElement('a');
-                link.download = `salami-rashid-${name.toLowerCase().replace(' ', '-')}.png`;
+                link.download = `salami-receipt-${name.toLowerCase().replace(' ', '-')}.png`;
                 link.href = canvas.toDataURL('image/png');
                 link.click();
                 setIsDownloading(false);
@@ -96,33 +96,43 @@ export default function SalamiCalculatorResult({ result, onReset }: SalamiCalcul
         <>
             {showConfetti && <Confetti width={windowSize.width} height={windowSize.height} recycle={false} numberOfPieces={400} />}
             <div className="w-full space-y-4">
-                <div id="salami-rashid" className="bg-slate-50 border-2 border-dashed border-slate-300 p-6 rounded-lg relative overflow-hidden">
-                    <div className="text-center mb-4 border-b-2 border-dashed pb-4">
-                        <h2 className="text-2xl font-bold text-primary">{translations.calculator.result.rashid.title}</h2>
-                        <p className="text-sm text-muted-foreground">
-                            {translations.calculator.result.rashid.serial.replace('{serial}', serialNumber)}
-                        </p>
-                    </div>
-                    <div className="space-y-3 text-sm">
-                        <div className="flex justify-between"><span className="font-semibold">{translations.form.name.label}:</span><span>{name}</span></div>
-                        <div className="flex justify-between"><span className="font-semibold">{translations.calculator.relationship.label}:</span><span>{statusText}</span></div>
-                        <div className="flex justify-between"><span className="font-semibold">{translations.calculator.result.probabilityLabel}:</span><span className="font-bold text-primary">{resultData.prob}</span></div>
-                         <div className="p-3 bg-primary/10 rounded-md text-center">
-                            <p className="font-semibold text-primary">{translations.calculator.result.message.replace('{message}', resultData.title)}</p>
+                <div id="salami-rashid" className="bg-[#f7f3e9] border-2 border-dashed border-amber-800/30 p-6 rounded-lg relative overflow-hidden font-mono shadow-lg">
+                    <Gift className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-48 w-48 text-amber-500/10" />
+                    <div className="relative z-10">
+                        <div className="text-center mb-4 border-b-2 border-dashed border-amber-800/30 pb-4">
+                            <h2 className="text-3xl font-bold text-amber-900 tracking-wider">{translations.calculator.result.rashid.title}</h2>
+                            <p className="text-sm text-amber-800/70">
+                                {translations.calculator.result.rashid.serial.replace('{serial}', serialNumber)}
+                            </p>
                         </div>
-                        {specialTitle && (
-                            <div className="p-3 bg-accent/20 rounded-md text-center">
-                                <p className="font-semibold text-accent-foreground">{translations.calculator.result.specialTitle.replace('{title}', specialTitle)}</p>
+                        <div className="space-y-3 text-base text-amber-900">
+                            <div className="flex justify-between"><span className="font-semibold">{translations.form.name.label}:</span><span>{name}</span></div>
+                            <div className="flex justify-between"><span className="font-semibold">{translations.calculator.relationship.label}:</span><span>{statusText}</span></div>
+                            <div className="flex justify-between items-center"><span className="font-semibold">{translations.calculator.result.probabilityLabel}:</span><span className="text-2xl font-bold text-primary bg-primary/10 px-3 py-1 rounded">{resultData.prob}</span></div>
+                            <div className="p-3 bg-amber-500/10 rounded-md text-center">
+                                <p className="font-semibold text-amber-900">{translations.calculator.result.message.replace('{message}', resultData.title)}</p>
                             </div>
-                        )}
-                    </div>
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transform">
-                        <div className="border-4 border-green-500 text-green-500 rounded-full w-40 h-40 flex items-center justify-center -rotate-12 opacity-20">
-                            <span className="text-3xl font-black tracking-widest">{translations.calculator.result.rashid.approved}</span>
+                            {specialTitle && (
+                                <div className="p-3 bg-accent/20 rounded-md text-center flex items-center justify-center gap-2">
+                                     <Award className="h-5 w-5 text-accent-foreground" />
+                                    <p className="font-semibold text-accent-foreground">{translations.calculator.result.specialTitle.replace('{title}', specialTitle)}</p>
+                                </div>
+                            )}
+                        </div>
+                        
+                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transform">
+                            <div className="border-8 border-green-600 text-green-600 rounded-full w-48 h-48 flex items-center justify-center -rotate-[15deg] opacity-20 font-black">
+                                <span className="text-5xl tracking-widest leading-none">{translations.calculator.result.rashid.approved}</span>
+                            </div>
+                        </div>
+
+                        <div className="mt-8 pt-4 border-t-2 border-dashed border-amber-800/30 text-center text-xs text-amber-800/80 italic">
+                             <p>{translations.calculator.result.rashid.disclaimer}</p>
+                             <p className="font-bold mt-2">{translations.calculator.result.rashid.condition}</p>
                         </div>
                     </div>
-                    <p className="text-center text-xs text-muted-foreground mt-6 italic">{translations.calculator.result.rashid.disclaimer}</p>
                 </div>
+
                  <CardFooter className="flex-col sm:flex-row gap-2 pt-6 p-0">
                     <Button onClick={handleDownload} disabled={isDownloading} className="w-full">
                         <Download className="mr-2 h-4 w-4" />
@@ -133,6 +143,7 @@ export default function SalamiCalculatorResult({ result, onReset }: SalamiCalcul
                         {translations.salamiPage.share.shareButton}
                     </Button>
                 </CardFooter>
+
                  <CardFooter className="flex-col gap-4 pt-2 p-0">
                     <Button asChild size="lg" className="w-full">
                         <Link href="/create">{translations.calculator.result.createButton}</Link>
