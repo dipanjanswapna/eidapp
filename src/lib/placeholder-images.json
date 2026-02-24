@@ -1,3 +1,28 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "funny-card-bg",
+      "description": "Abstract colorful background for a funny themed card",
+      "imageUrl": "https://images.unsplash.com/photo-1659905323699-7d7c8e0328d5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxhYnN0cmFjdCUyMGNvbG9yZnVsfGVufDB8fHx8MTc3MTg2MzM5OXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "abstract colorful"
+    },
+    {
+      "id": "cute-card-bg",
+      "description": "Soft pastel background for a cute themed card",
+      "imageUrl": "https://images.unsplash.com/photo-1641767600565-133a20b326f2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8cGFzdGVsJTIwYWJzdHJhY3R8ZW58MHx8fHwxNzcxODM4NDEzfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "pastel abstract"
+    },
+    {
+      "id": "traditional-card-bg",
+      "description": "Elegant pattern background for a traditional themed card",
+      "imageUrl": "https://images.unsplash.com/photo-1550537687-c91072c4792d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxpc2xhbWljJTIwcGF0dGVybnxlbnwwfHx8fDE3NzE5MzcwMzF8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "islamic pattern"
+    },
+    {
+      "id": "user-avatar-placeholder",
+      "description": "Placeholder for user avatar",
+      "imageUrl": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxwZXJzb24lMjBwb3J0cmFpdHxlbnwwfHx8fDE3NzE5MzY2Mzd8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "person portrait"
+    }
+  ]
 }
