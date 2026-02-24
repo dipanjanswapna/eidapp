@@ -1,5 +1,4 @@
 import SalamiCalculator from '@/components/salami-calculator';
-import { useLanguage } from '@/contexts/language-context';
 
 export default function SalamiCalculatorPage() {
   return (
