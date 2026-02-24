@@ -21,8 +21,10 @@ type SalamiCalculatorResultProps = {
 type RelationshipStatusKey = keyof (typeof translations.en.calculator.form.relationship.options);
 type ProfessionKey = keyof (typeof translations.en.calculator.form.profession.options);
 type IncomeMessagesKey = keyof (typeof translations.en.calculator.results.incomeMessages);
+type SalamiLogicKey = keyof (typeof translations.en.calculator.results.salamiLogic);
 type RelationshipFooterKey = keyof (typeof translations.en.calculator.results.relationshipFooter);
-type ProfessionMessagesKey = keyof (typeof translations.en.calculator.results.professionMessages);
+type ProfessionFooterKey = keyof (typeof translations.en.calculator.results.professionFooter);
+
 
 export default function SalamiCalculatorResult({
   name,
@@ -49,9 +51,9 @@ export default function SalamiCalculatorResult({
     let footerMessage = '';
     let conditions = '';
 
-    const isJobHolder = profession === 'job_holder' || profession === 'govt_job_holder';
+    const isJobHolder = profession !== 'student' && profession !== 'unemployed';
 
-    // Income-based logic
+    // Income-based logic for job holders
     if (isJobHolder) {
         let incomeKey: IncomeMessagesKey = '0-1000';
         if (income <= 1000) incomeKey = '0-1000';
@@ -65,68 +67,71 @@ export default function SalamiCalculatorResult({
         else incomeKey = '100001+';
 
         verdict = translations.calculator.results.incomeMessages[incomeKey];
+        salamiLogic = translations.calculator.results.salamiLogic[incomeKey as SalamiLogicKey];
 
-         const professionMessages = translations.calculator.results.professionMessages;
-        if (profession in professionMessages) {
-             verdict = professionMessages[profession as ProfessionMessagesKey]
-        }
-
-        if(income <= 15000) salamiLogic = '50/50 Chance'
-        else salamiLogic = 'You Should Give Salami!';
-        
-    } else {
-        // Relationship-based logic for non-jobholders
+    } else { // Logic for students and unemployed
         switch (relationshipStatus) {
             case 'single':
                 salamiLogic = '99% Chance to get';
-                verdict = 'Single is king! Pocket full, tension nil.';
+                verdict = translations.calculator.results.relationshipVerdict.single;
                 break;
             case 'in_a_relationship':
                 salamiLogic = '50/50 Chance';
-                verdict = 'Salami will come via bKash, and go out as a gift!';
+                verdict = translations.calculator.results.relationshipVerdict.in_a_relationship;
                 break;
             case 'engaged':
                 salamiLogic = '0% Chance to get';
-                verdict = 'You have a 100% chance of going bankrupt giving salami to your in-laws.';
+                verdict = translations.calculator.results.relationshipVerdict.engaged;
                 break;
             case 'married':
                 salamiLogic = '-100% (Give Salami)';
-                verdict = 'Your salami is now your spouse/child\'s property.';
+                verdict = translations.calculator.results.relationshipVerdict.married;
                 break;
             case 'has_crush':
                 salamiLogic = 'Like a lottery';
-                verdict = 'A simple "Hi" is your salami.';
+                verdict = translations.calculator.results.relationshipVerdict.has_crush;
                 break;
             case 'divorced':
                 salamiLogic = '150% Chance to get';
-                 verdict = 'You need to rebuild your life and pocket—so demand double salami!';
+                 verdict = translations.calculator.results.relationshipVerdict.divorced;
                 break;
              case 'secret_relation':
                 salamiLogic = 'Funds needed!';
-                verdict = 'Secret relationships are expensive! Get backup salami from elder brothers before you get caught.';
+                verdict = translations.calculator.results.relationshipVerdict.secret_relation;
                 break;
         }
     }
     
     // Gender-based special titles
     if (gender === 'female' && (relationshipStatus === 'in_a_relationship' || relationshipStatus === 'engaged' || relationshipStatus === 'married')) {
-        specialTitle = 'Salami Queen';
+        specialTitle = translations.calculator.results.specialTitles.salamiQueen;
     }
      if (gender === 'male' && income > 20000) {
-        specialTitle = 'Official Big Brother';
+        specialTitle = translations.calculator.results.specialTitles.bigBrother;
     }
 
 
-    // Footer message logic
-    const relationshipFooterKey = `${relationshipStatus}_${gender}` as RelationshipFooterKey;
-    if (relationshipFooterKey in translations.calculator.results.relationshipFooter) {
-      footerMessage = translations.calculator.results.relationshipFooter[relationshipFooterKey];
-    }
-
-    if (isJobHolder) {
-        conditions = income > 30000 ? translations.calculator.results.conditions.high_income : translations.calculator.results.conditions.low_income;
+    // Footer message logic (Profession > Relationship)
+    const professionFooterKey = `${profession}_${gender}` as ProfessionFooterKey;
+    const professionFooters = translations.calculator.results.professionFooter;
+    if (professionFooterKey in professionFooters) {
+      footerMessage = professionFooters[professionFooterKey];
     } else {
+        const relationshipFooterKey = `${relationshipStatus}_${gender}` as RelationshipFooterKey;
+        const relationshipFooters = translations.calculator.results.relationshipFooter;
+        if (relationshipFooterKey in relationshipFooters) {
+          footerMessage = relationshipFooters[relationshipFooterKey];
+        }
+    }
+
+
+    // Conditions logic based on income
+    if (income <= 10000) {
         conditions = translations.calculator.results.conditions.low_income;
+    } else if (income <= 30000) {
+        conditions = translations.calculator.results.conditions.medium_income;
+    } else {
+        conditions = translations.calculator.results.conditions.high_income;
     }
 
 
@@ -265,3 +270,5 @@ export default function SalamiCalculatorResult({
     </>
   );
 }
+
+    
