@@ -23,7 +23,7 @@ export function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 w-full bg-primary">
-      <div className="container relative flex h-16 items-center justify-between">
+      <div className="container relative flex h-16 items-center justify-between px-4">
         {/* Left side: Brand */}
         <Link href="/" className="flex items-center space-x-2 text-primary-foreground">
           <Waves className="h-7 w-7" />
@@ -31,7 +31,7 @@ export function Navbar() {
         </Link>
 
         {/* Center: Desktop Nav */}
-        <nav className="hidden absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 items-center gap-1 rounded-full bg-white/10 p-1 md:flex">
+        <nav className="absolute left-1/2 top-1/2 hidden -translate-x-1/2 -translate-y-1/2 items-center gap-1 rounded-full bg-white/10 p-1 md:flex">
           {navLinks.map((link) => (
             <Link
               key={link.href}
