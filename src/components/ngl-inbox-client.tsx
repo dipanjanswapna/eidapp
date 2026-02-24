@@ -3,16 +3,17 @@ import { useEffect, useState, useRef } from 'react';
 import { NGLMessage, NGLUser } from '@/lib/types';
 import { getNGLMessagesAction, replyToMessageAction } from '@/lib/actions';
 import { useToast } from '@/hooks/use-toast';
-import { Loader2, MessageCircle, Send, LogOut } from 'lucide-react';
+import { Loader2, MessageCircle, LogOut } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
 import { useLanguage } from '@/contexts/language-context';
 import { formatDistanceToNow } from 'date-fns';
 import { Button } from './ui/button';
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from './ui/dialog';
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from './ui/dialog';
 import { Textarea } from './ui/textarea';
 import NGLReplyAndShareCard from './ngl-reply-and-share-card';
 import html2canvas from 'html2canvas';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 export function NGLInboxClient({ user, pin }: { user: NGLUser, pin: string }) {
   const { translations } = useLanguage();
