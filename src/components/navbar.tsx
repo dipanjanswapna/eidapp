@@ -23,15 +23,17 @@ export function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 w-full bg-primary">
-      <div className="container mx-auto relative flex h-16 items-center justify-between px-4">
+      <div className="container mx-auto flex h-16 items-center px-4">
         {/* Left side: Brand */}
-        <Link href="/" className="flex items-center space-x-2 text-primary-foreground">
-          <Waves className="h-7 w-7" />
-          <span className="text-xl font-bold">{translations.nav.brand}</span>
-        </Link>
+        <div className="flex flex-1 items-center justify-start">
+          <Link href="/" className="flex items-center space-x-2 text-primary-foreground">
+            <Waves className="h-7 w-7" />
+            <span className="text-xl font-bold">{translations.nav.brand}</span>
+          </Link>
+        </div>
 
         {/* Center: Desktop Nav */}
-        <nav className="absolute left-1/2 top-1/2 hidden -translate-x-1/2 -translate-y-1/2 items-center gap-1 rounded-full bg-white/10 p-1 md:flex">
+        <nav className="hidden items-center gap-1 rounded-full bg-white/10 p-1 md:flex">
           {navLinks.map((link) => (
             <Link
               key={link.href}
@@ -47,7 +49,7 @@ export function Navbar() {
         </nav>
 
         {/* Right side: Actions + Mobile Menu */}
-        <div className="flex items-center gap-2">
+        <div className="flex flex-1 items-center justify-end gap-2">
           <div className="hidden md:flex items-center gap-2">
             <LanguageToggle />
             <Button asChild className="rounded-full bg-background font-semibold text-primary shadow-sm hover:bg-background/90">
