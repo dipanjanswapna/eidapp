@@ -1,0 +1,80 @@
+{
+  "entities": {
+    "salamiProfile": {
+      "title": "Salami Profile",
+      "description": "Represents a user's Salami page profile.",
+      "type": "object",
+      "properties": {
+        "slug": { "type": "string" },
+        "userName": { "type": "string" },
+        "salamiMessage": { "type": "string" },
+        "cardTheme": { "type": "string", "enum": ["Funny", "Cute", "Traditional"] },
+        "bkashNumber": { "type": "string" },
+        "nagadNumber": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["slug", "userName", "salamiMessage", "cardTheme", "createdAt"]
+    },
+    "wish": {
+      "title": "Salami Wish",
+      "description": "A wish sent to a Salami profile.",
+      "type": "object",
+      "properties": {
+        "slug": { "type": "string" },
+        "author": { "type": "string" },
+        "message": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["slug", "author", "message", "createdAt"]
+    },
+    "nglUser": {
+      "title": "NGL User",
+      "description": "An NGL user profile.",
+      "type": "object",
+      "properties": {
+        "username": { "type": "string" },
+        "pin": { "type": "string" },
+        "name": { "type": "string" },
+        "gender": { "type": "string", "enum": ["male", "female", "other"] },
+        "profession": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["username", "pin", "name", "gender", "profession", "createdAt"]
+    },
+    "nglMessage": {
+      "title": "NGL Message",
+      "description": "An anonymous message sent to an NGL user.",
+      "type": "object",
+      "properties": {
+        "receiverUsername": { "type": "string" },
+        "senderTag": { "type": "string" },
+        "message": { "type": "string" },
+        "isReplied": { "type": "boolean" },
+        "reply": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["receiverUsername", "senderTag", "message", "isReplied", "createdAt"]
+    }
+  },
+  "auth": {
+    "providers": []
+  },
+  "firestore": {
+    "/profiles/{slug}": {
+      "schema": { "$ref": "#/entities/salamiProfile" },
+      "description": "Salami user profiles, with the slug as the document ID."
+    },
+    "/profiles/{slug}/wishes/{wishId}": {
+        "schema": { "$ref": "#/entities/wish" },
+        "description": "Wishes for a specific salami profile."
+    },
+    "/ngl_users/{username}": {
+        "schema": { "$ref": "#/entities/nglUser" },
+        "description": "NGL user profiles, with the username as the document ID."
+    },
+    "/ngl_messages/{messageId}": {
+        "schema": { "$ref": "#/entities/nglMessage" },
+        "description": "All NGL messages."
+    }
+  }
+}

@@ -1,80 +1,136 @@
+import { initializeApp, getApps, getApp } from 'firebase/app';
+import { 
+    getFirestore, 
+    collection, 
+    doc, 
+    addDoc, 
+    setDoc, 
+    getDoc, 
+    getDocs, 
+    query, 
+    where, 
+    updateDoc,
+    serverTimestamp,
+    orderBy,
+    Timestamp,
+} from 'firebase/firestore';
 import type { SalamiProfile, Wish, NGLUser, NGLMessage } from './types';
 
-// In-memory store for Salami profiles and wishes
-const profiles: SalamiProfile[] = [
-    {
-        id: '1',
-        slug: 'example-anik',
-        userName: 'Anik',
-        salamiMessage: 'বড় হয়েছি মানে এই নয় যে সালামি পাবো না!',
-        cardTheme: 'Funny',
-        bkashNumber: '01700000000',
-        nagadNumber: '01800000000',
-        createdAt: new Date(),
-    }
-];
-const wishes: Record<string, Wish[]> = {
-    'example-anik': [
-        { id: '1', slug: 'example-anik', author: 'Boro Bhai', message: 'Ei ne, eid er jonne.', createdAt: new Date(Date.now() - 1000 * 60 * 5) },
-        { id: '2', slug: 'example-anik', author: 'Apu', message: 'Happy Eid!', createdAt: new Date(Date.now() - 1000 * 60 * 2) },
-    ]
+// This config is used for server-side actions
+const firebaseConfig = {
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+  databaseURL: process.env.NEXT_PUBLIC_FIREBASE_DATABASE_URL,
+  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+  measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
 };
 
-let profileIdCounter = profiles.length + 1;
-let wishIdCounter = 3;
+
+// Initialize Firebase
+const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
+const db = getFirestore(app);
+
+// Helper to convert Firestore timestamps to Date objects in nested objects/arrays
+const convertTimestamps = (data: any): any => {
+    if (data instanceof Timestamp) {
+        return data.toDate();
+    }
+    if (Array.isArray(data)) {
+        return data.map(convertTimestamps);
+    }
+    if (typeof data === 'object' && data !== null) {
+        const newObj: { [key: string]: any } = {};
+        for (const key in data) {
+            newObj[key] = convertTimestamps(data[key]);
+        }
+        return newObj;
+    }
+    return data;
+};
+
 
 export async function addProfile(profileData: Omit<SalamiProfile, 'id' | 'createdAt'>): Promise<SalamiProfile> {
-  const newProfile: SalamiProfile = {
+  const newProfileData = {
     ...profileData,
-    id: String(profileIdCounter++),
-    createdAt: new Date(),
+    createdAt: serverTimestamp(),
   };
-  profiles.push(newProfile);
-  return newProfile;
+  const docRef = doc(db, 'profiles', profileData.slug);
+  await setDoc(docRef, newProfileData);
+  return {
+    ...profileData,
+    id: docRef.id,
+    createdAt: new Date(), // Return a local date for immediate use
+  };
 }
 
 export async function getProfileBySlug(slug: string): Promise<SalamiProfile | undefined> {
-  return profiles.find((p) => p.slug === slug);
+  const docRef = doc(db, 'profiles', slug);
+  const docSnap = await getDoc(docRef);
+
+  if (docSnap.exists()) {
+    const data = docSnap.data();
+    // Pass the whole document data to convertTimestamps
+    return convertTimestamps({ id: docSnap.id, ...data }) as SalamiProfile;
+  }
+  return undefined;
 }
 
 export async function addWish(slug: string, wishData: Omit<Wish, 'id'|'slug'|'createdAt'>): Promise<Wish> {
-  if (!wishes[slug]) {
-    wishes[slug] = [];
-  }
-  const newWish: Wish = {
+  const wishesCollection = collection(db, 'profiles', slug, 'wishes');
+  const newWishData = {
     ...wishData,
-    id: String(wishIdCounter++),
+    slug,
+    createdAt: serverTimestamp(),
+  };
+  const docRef = await addDoc(wishesCollection, newWishData);
+  return {
+    ...wishData,
+    id: docRef.id,
     slug,
     createdAt: new Date(),
   };
-  wishes[slug].push(newWish);
-  return newWish;
 }
 
 export async function getWishesBySlug(slug: string): Promise<Wish[]> {
-  return (wishes[slug] || []).sort((a,b) => b.createdAt.getTime() - a.createdAt.getTime());
+  const wishesCollection = collection(db, 'profiles', slug, 'wishes');
+  const q = query(wishesCollection, orderBy('createdAt', 'desc'));
+  const querySnapshot = await getDocs(q);
+  return querySnapshot.docs.map(doc => convertTimestamps({ id: doc.id, ...doc.data() }) as Wish);
 }
 
-// In-memory store for NGL (Anonymous Messaging)
-const nglUsers: NGLUser[] = [];
-const nglMessages: NGLMessage[] = [];
-let nglMessageIdCounter = 1;
-
+// NGL (Anonymous Messaging)
 export async function findNGLUserByUsername(username: string): Promise<NGLUser | undefined> {
-    return nglUsers.find(u => u.username.toLowerCase() === username.toLowerCase());
+    const docRef = doc(db, 'ngl_users', username.toLowerCase());
+    const docSnap = await getDoc(docRef);
+    if(docSnap.exists()){
+        return convertTimestamps(docSnap.data() as NGLUser);
+    }
+    return undefined;
 }
 
 export async function addNGLUser(userData: Omit<NGLUser, 'createdAt'>): Promise<NGLUser> {
-    const existingUser = await findNGLUserByUsername(userData.username);
-    if(existingUser) {
+    const lowerCaseUsername = userData.username.toLowerCase();
+    const docRef = doc(db, 'ngl_users', lowerCaseUsername);
+    const docSnap = await getDoc(docRef);
+    if(docSnap.exists()) {
         throw new Error('Username already exists. Please choose another one.');
     }
-    const newUser: NGLUser = {
+    
+    const newUserData = {
         ...userData,
+        username: lowerCaseUsername, // store lowercase username
+        createdAt: serverTimestamp(),
+    };
+    await setDoc(docRef, newUserData);
+    
+    return {
+        ...userData,
+        username: lowerCaseUsername,
         createdAt: new Date(),
     };
-    nglUsers.push(newUser);
-    return newUser;
 }
 
 export async function verifyNGLUserPin(username: string, pin: string): Promise<NGLUser | null> {
@@ -90,29 +146,48 @@ export async function addNGLMessage(receiverUsername: string, messageData: { sen
     if (!user) {
         throw new Error('User not found.');
     }
-    const newMessage: NGLMessage = {
+    const messagesCollection = collection(db, 'ngl_messages');
+    const newMessageData = {
         ...messageData,
-        id: String(nglMessageIdCounter++),
-        receiverUsername,
+        receiverUsername: receiverUsername.toLowerCase(),
+        isReplied: false,
+        reply: '',
+        createdAt: serverTimestamp(),
+    };
+    const docRef = await addDoc(messagesCollection, newMessageData);
+
+    return {
+        id: docRef.id,
+        receiverUsername: receiverUsername.toLowerCase(),
         isReplied: false,
         createdAt: new Date(),
+        ...messageData,
     };
-    nglMessages.push(newMessage);
-    return newMessage;
 }
 
 export async function getNGLMessagesByUsername(username: string): Promise<NGLMessage[]> {
-    return nglMessages
-        .filter(m => m.receiverUsername.toLowerCase() === username.toLowerCase())
-        .sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime());
+    const messagesCollection = collection(db, 'ngl_messages');
+    const q = query(
+        messagesCollection, 
+        where('receiverUsername', '==', username.toLowerCase()),
+        orderBy('createdAt', 'desc')
+    );
+    const querySnapshot = await getDocs(q);
+    return querySnapshot.docs.map(doc => convertTimestamps({ id: doc.id, ...doc.data() }) as NGLMessage);
 }
 
 export async function addReplyToNGLMessage(messageId: string, reply: string): Promise<NGLMessage> {
-    const messageIndex = nglMessages.findIndex(m => m.id === messageId);
-    if (messageIndex === -1) {
-        throw new Error('Message not found.');
+    const docRef = doc(db, 'ngl_messages', messageId);
+    
+    await updateDoc(docRef, {
+        reply: reply,
+        isReplied: true,
+    });
+    
+    const updatedDocSnap = await getDoc(docRef);
+    if(!updatedDocSnap.exists()) {
+        throw new Error('Message not found after update.');
     }
-    nglMessages[messageIndex].reply = reply;
-    nglMessages[messageIndex].isReplied = true;
-    return nglMessages[messageIndex];
+
+    return convertTimestamps({ id: updatedDocSnap.id, ...updatedDocSnap.data() }) as NGLMessage;
 }

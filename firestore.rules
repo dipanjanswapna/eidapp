@@ -1,0 +1,30 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Salami profiles and wishes are public
+    match /profiles/{slug} {
+      allow read, create;
+      
+      match /wishes/{wishId} {
+        allow read, create;
+      }
+    }
+    
+    // NGL user profiles can be created by anyone.
+    // Reading should be handled carefully due to the PIN.
+    // For this prototype, we allow reads, but in a production app,
+    // the PIN should be stored separately and securely.
+    // Server-side actions are the primary gatekeeper for sensitive data.
+    match /ngl_users/{username} {
+      allow read, create;
+    }
+    
+    // NGL messages can be created by anyone.
+    // Reading and updating is restricted and should only happen through trusted server-side code (Firebase Functions or server actions).
+    match /ngl_messages/{messageId} {
+      allow create;
+      allow read, update, delete: if false; // Prevent client-side access
+    }
+  }
+}
