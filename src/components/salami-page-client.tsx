@@ -72,7 +72,7 @@ export default function SalamiPageClient({ profile, initialWishes }: SalamiPageC
     setIsDownloading(true);
     const cardElement = document.getElementById('salami-card-container');
     if (cardElement) {
-        html2canvas(cardElement, { allowTaint: true, useCORS: true }).then(canvas => {
+        html2canvas(cardElement, { allowTaint: true, useCORS: true, scale: 2 }).then(canvas => {
             const link = document.createElement('a');
             link.download = `salami-card-${profile.slug}.png`;
             link.href = canvas.toDataURL('image/png');
@@ -127,7 +127,7 @@ export default function SalamiPageClient({ profile, initialWishes }: SalamiPageC
             <div>
               <h3 className="mb-2 font-semibold">bKash</h3>
               <div className="flex flex-col gap-2 sm:flex-row">
-                <a href={`bkash://sendmoney?receiver=${profile.bkashNumber}`} className="flex-1">
+                <a href={`intent://#Intent;scheme=bkash;package=com.bKash.customerapp;S.number=${profile.bkashNumber};end`} className="flex-1">
                     <Button className="w-full" variant="outline"><Send className="mr-2 h-4 w-4" />{translations.salamiPage.payment.sendVia} bKash</Button>
                 </a>
                 <Button onClick={() => copyToClipboard(profile.bkashNumber!, 'bKash Number')} variant="secondary" className="sm:w-auto"><Copy className="mr-2 h-4 w-4" />{profile.bkashNumber}</Button>
@@ -138,7 +138,7 @@ export default function SalamiPageClient({ profile, initialWishes }: SalamiPageC
             <div>
               <h3 className="mb-2 font-semibold">Nagad</h3>
                <div className="flex flex-col gap-2 sm:flex-row">
-                <a href={`nagad://sendmoney?receiver=${profile.nagadNumber}`} className="flex-1">
+                <a href={`intent://sendmoney?number=${profile.nagadNumber}#Intent;scheme=nagad;package=com.nagad.mobileapp;end`} className="flex-1">
                     <Button className="w-full" variant="outline"><Send className="mr-2 h-4 w-4" />{translations.salamiPage.payment.sendVia} Nagad</Button>
                 </a>
                 <Button onClick={() => copyToClipboard(profile.nagadNumber!, 'Nagad Number')} variant="secondary" className="sm:w-auto"><Copy className="mr-2 h-4 w-4" />{profile.nagadNumber}</Button>
