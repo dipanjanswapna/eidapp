@@ -19,8 +19,10 @@ function getIncomeBracket(income: number): keyof typeof translations.en.calculat
     if (income <= 1000) return 'range_0_1000';
     if (income <= 5000) return 'range_1001_5000';
     if (income <= 10000) return 'range_5001_10000';
-    if (income <= 20000) return 'range_10001_20000';
-    if (income <= 50000) return 'range_20001_50000';
+    if (income <= 15000) return 'range_10001_15000';
+    if (income <= 20000) return 'range_15001_20000';
+    if (income <= 30000) return 'range_20001_30000';
+    if (income <= 50000) return 'range_30001_50000';
     if (income <= 100000) return 'range_50001_100000';
     return 'range_100001_plus';
 }
@@ -91,11 +93,11 @@ export default function SalamiCalculatorResult({ result, onReset }: SalamiCalcul
         }
     }
     
-    if (profession === 'student' || profession === 'unemployed' || (profession === 'job_holder' && income <= 0)) {
-        conditionText = translations.calculator.result.rashid.dynamic_conditions.low_income;
+    if (profession === 'student' || profession === 'unemployed' || (profession === 'job_holder' && income <= 10000)) {
+        conditionText = translations.calculator.result.rashid.dynamic_conditions.low_income_new;
     } else if (income > 50000) {
-        conditionText = translations.calculator.result.rashid.dynamic_conditions.high_income;
-    } else if (income > 0) {
+        conditionText = translations.calculator.result.rashid.dynamic_conditions.high_income_new;
+    } else if (income > 10000) {
         conditionText = translations.calculator.result.rashid.dynamic_conditions.mid_income;
     }
 

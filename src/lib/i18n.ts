@@ -182,6 +182,8 @@ export const translations = {
                 low_income: 'The amount in this receipt will be collected from the elders\' pockets at a 100% discount.',
                 mid_income: 'Considering the financial situation, elder brothers can pay this Salami in 15-year installments.',
                 high_income: 'Since the elder brothers\' pockets are overflowing, if Salami is not given, 50% will be collected as a donation.',
+                low_income_new: "Showing this receipt to an elder brother or brother-in-law makes them obligated to pay, otherwise the Eid feast invitation will be cancelled on a 15-year installment plan!",
+                high_income_new: "This receipt shall be considered an 'official order' to collect dues at a 50% discount from the pockets of brothers-in-law or elder brothers."
             }
         },
         statuses: {
@@ -240,26 +242,28 @@ export const translations = {
                 message: "Where is the Eid profit? If you don't give salami, the 'Miser Businessman' badge will be hung on your profile!",
                 title: "Salami depends on business"
             },
-            doctor: { prob: "-500%", message: "No time to see patients, where is the time to give Salami? Write 'blessings' in the prescription for the youngers.", title: "Digital Prescription Giver" },
-            engineer: { prob: "-300%", message: "The day ends calculating rods and cement on site. The salami budget has been cast on the roof of the house!", title: "Big Brother of the Site" },
-            teacher: { prob: "-100%", message: "Pocket is empty from hearing students say 'Sir, give salami'. Now it's time to take salami!", title: "Salami Receiving Teacher" },
+            doctor: { prob: "-500%", message: "No time to see patients, where is the time to give Salami? Write 'blessings' in the prescription for the youngers.", title: "Income is good, now write the Salami prescription and quickly open the dispensary (your pocket)!" },
+            engineer: { prob: "-300%", message: "The day ends calculating rods and cement on site. The salami budget has been cast on the roof of the house!", title: "Seeing your income structure, it seems you can take the Salami load. Start giving Salami in 15-year installments!" },
+            teacher: { prob: "-100%", message: "Pocket is empty from hearing students say 'Sir, give salami'. Now it's time to take salami!", title: "Your Salami calculation is quite tough. Allocate Salami for the students right now with a 50% discount." },
             govt_job: { prob: "-400%", message: "Eid is over while looking at files. The salami will be given with next month's salary.", title: "Government Salami Officer" },
-            freelancer: { prob: "Client's payment pending", message: "If the client pays, there will be salami, otherwise a 'will give later' message will be forwarded.", title: "Brother waiting for Upwork" },
+            freelancer: { prob: "Client's payment pending", message: "If the client pays, there will be salami, otherwise a 'will give later' message will be forwarded.", title: "The dollar rate is high! Now make the local kids happy with some BDT, or your ID will be reported!" },
             rickshaw_puller: { prob: "150%", message: "I want more salami than what I earn from paddling all day! I need rest on Eid day.", title: "Eid's Special Passenger" },
             day_laborer: { prob: "200%", message: "Who will give salami if I work on Eid day too? Today is a holiday! Salami must be collected.", title: "Day Laborer on Holiday" },
             expatriate: { prob: "Depends on Remittance", message: "Convert dollars to taka and send salami, otherwise you will be called a 'stingy expatriate'!", title: "Remittance Warrior" },
-            gen_z: { prob: "Depends on Followers", message: "If you go viral, salami will come, otherwise only 'seen' will increase.", title: "TikTok Star" },
+            gen_z: { prob: "Depends on Followers", message: "If you go viral, salami will come, otherwise only 'seen' will increase.", title: "Forget income, if the vibe is right, the Salami must also be 'aesthetic'! Pay by scanning the QR code." },
             retired_politician: { prob: "Depends on Pension", message: "Retired from politics, but not from salami! Joy Bangla, where is the salami?", title: "Retired Leader" },
             others: { prob: "50/50", message: "Your status is unknown, so the possibility of salami is also cloudy.", title: "Mystery Person" }
         },
         income_results: {
-            range_0_1000: { prob: "-10%", message: "Does this salary run a household? Think about yourself before giving salami!", title: "Limited Income Job Holder" },
-            range_1001_5000: { prob: "-20%", message: "How will the month go if you give salami with tea and cigarette money?", title: "Struggling Household" },
-            range_5001_10000: { prob: "-50%", message: "The youngers will be happy if you give them 500 taka.", title: "Middle Class Big Brother" },
-            range_10001_20000: { prob: "-100%", message: "It's your age to give salami now. Take money out of your pocket.", title: "Official Salami Giver" },
-            range_20001_50000: { prob: "-200%", message: "Your juniors are looking at you. Don't disappoint them!", title: "Big Brother of the Area" },
-            range_50001_100000: { prob: "-500%", message: "The 'stingy' title is waiting for you if you don't give salami.", title: "Rich Job Holder" },
-            range_100001_plus: { prob: "-1000%", message: "What's the use of keeping your money in the bank? Distribute it among the youngers!", title: "Banker of the Area" }
+            range_0_1000: { prob: "100%", title: "Seeing your condition, even the mosque's charity box weeps! Grab an elder brother, Eid won't happen without Salami." },
+            range_1001_5000: { prob: "90%", title: "Expenses are higher than income! Showing this receipt makes your brother-in-law obligated to give 'sympathy Salami'." },
+            range_5001_10000: { prob: "80%", title: "Condition is so-so, but the month won't go on without Salami. Demand a 'pocket money booster' from elders." },
+            range_10001_15000: { prob: "50/50", title: "You are on the borderline now! If you ask for Salami, they'll call you 'stingy', and if you give, your pocket will be empty. Give Salami in 15-year installments!" },
+            range_15001_20000: { prob: "-30%", title: "Income is good! Time to act like a 'big brother'. If you don't give Salami, the young ones will make you viral with a 'stingy' badge." },
+            range_20001_30000: { prob: "-50%", title: "Dreaming of getting Salami as a job holder? Pay your dues with a 50% discount now and warm the pockets of the young ones!" },
+            range_30001_50000: { prob: "-80%", title: "You are now a pro-freelancer or a government officer! If you don't give Salami, a 'hooligan squad' will be sent after you." },
+            range_50001_100000: { prob: "-100%", title: "Your pocket is blessed, Mashallah! If you don't give Salami, the entire amount will be confiscated as 'income tax'." },
+            range_100001_plus: { prob: "-500%", title: "You are the 'Eid Moon'! Not Salami, you are obligated to be the 'Salami Sponsor' for the whole area." }
         },
         special_titles: {
           girl_special: {
@@ -454,6 +458,8 @@ export const translations = {
                 low_income: 'এই রশিদে বর্ণিত টাকার পরিমাণ ১০০% ডিসকাউন্টে বড় ভাইদের পকেট হইতে নগদ আদায় করা হইবে।',
                 mid_income: 'আর্থিক অবস্থার কথা বিবেচনা করিয়া বড় ভাইরা ১৫ বছরের কিস্তিতে এই সালামি পরিশোধ করিতে পারিবেন।',
                 high_income: 'বড় ভাইদের পকেট যেহেতু উপচে পড়িতেছে, তাই সালামি না দিলে ৫০% চাঁদা হিসেবে এই অর্থ আদায় করা হইবে।',
+                low_income_new: 'এই রশিদ বড় ভাই বা দুলাভাইকে দেখালে টাকা দিতে বাধ্য থাকিবেন, অন্যথায় ১৫ বছরের কিস্তিতে ঈদের দাওয়াত বাতিল!',
+                high_income_new: 'এই রশিদ দুলাভাই বা বড় ভাইদের পকেট থেকে ৫০% ছাড়ে চাঁদা আদায়ের \'অফিসিয়াল অর্ডার\' হিসেবে গণ্য হইবে।'
             }
         },
         statuses: {
@@ -512,26 +518,28 @@ export const translations = {
                 message: "ঈদের প্রফিট কোথায়? সালামি না দিলে কিন্তু 'কিপটা ব্যবসায়ী' ব্যাজ আপনার প্রোফাইলে ঝুলিয়ে দেওয়া হবে!",
                 title: "ব্যবসার উপর সালামি"
             },
-            doctor: { prob: "-৫০০%", message: "রোগী দেখার সময় নেই, সালামি দেওয়ার সময় কই? ছোটদেরকে প্রেসক্রিপশনে 'দোয়া' লিখে দিন।", title: "ডিজিটাল প্রেসক্রিপশন দাতা" },
-            engineer: { prob: "-৩০০%", message: "সাইটে রড-সিমেন্টের হিসাব করতে করতেই দিন শেষ। সালামির বাজেট তো বাড়ির ছাদে ঢালাই হয়ে গেছে!", title: "সাইটের বড় ভাই" },
-            teacher: { prob: "-১০০%", message: "ছাত্র-ছাত্রীদের 'স্যার, সালামি দেন' শুনতে শুনতে পকেট খালি। এবার সালামি নেওয়ার পালা!", title: "সালামি গ্রহীতা শিক্ষক" },
+            doctor: { prob: "-৫০০%", message: "রোগী দেখার সময় নেই, সালামি দেওয়ার সময় কই? ছোটদেরকে প্রেসক্রিপশনে 'দোয়া' লিখে দিন।", title: "আয় তো ভালোই, এবার সালামির প্রেসক্রিপশনটা লিখে ফেলুন এবং দ্রুত ডিসপেন্সারি (পকেট) খুলুন!" },
+            engineer: { prob: "-৩০০%", message: "সাইটে রড-সিমেন্টের হিসাব করতে করতেই দিন শেষ। সালামির বাজেট তো বাড়ির ছাদে ঢালাই হয়ে গেছে!", title: "আয়ের স্ট্রাকচার দেখে মনে হচ্ছে সালামির লোড নিতে পারবেন। ১৫ বছরের কিস্তিতে সালামি দেওয়া শুরু করুন!" },
+            teacher: { prob: "-১০০%", message: "ছাত্র-ছাত্রীদের 'স্যার, সালামি দেন' শুনতে শুনতে পকেট খালি। এবার সালামি নেওয়ার পালা!", title: "আপনার সালামির হিসাবটা বেশ কঠিন। ছাত্রছাত্রীদের জন্য এখনই ৫০% ডিসকাউন্টে সালামি বরাদ্দ করুন।" },
             govt_job: { prob: "-৪০০%", message: "ফাইল দেখতে দেখতে ঈদ শেষ। সালামিটা अगले महीने की Salary के साथ दे दिया जाएगा।", title: "সরকারী সালামি অফিসার" },
-            freelancer: { prob: "ক্লায়েন্ট পেমেন্ট পেন্ডিং", message: "ক্লায়েন্ট পেমেন্ট দিলে সালামি হবে, নয়তো 'পরে দেবো' মেসেজ ফরোয়ার্ড হবে।", title: "Upwork-এর আশায় থাকা ভাই" },
+            freelancer: { prob: "ক্লায়েন্ট পেমেন্ট পেন্ডিং", message: "ক্লায়েন্ট পেমেন্ট দিলে সালামি হবে, নয়তো 'পরে দেবো' মেসেজ ফরোয়ার্ড হবে।", title: "ডলারের রেট তো চড়া! এবার দেশি টাকাতে ছোটদের খুশি করুন, নইলে আইডি রিপোর্ট করা হবে!" },
             rickshaw_puller: { prob: "১৫০%", message: "সারাদিন প্যাডেল মেরে যা পাই, তার চেয়ে বেশি সালামি চাই! ঈদের দিনে তো রেস্ট দরকার।", title: "ঈদের স্পেশাল যাত্রী" },
             day_laborer: { prob: "২০০%", message: "ঈদের দিনেও কাজ করলে সালামি কে দেবে? আজ ছুটি! সালামি আদায় হবেই।", title: "ছুটিতে থাকা দিনমজুর" },
             expatriate: { prob: "রেমিট্যান্সের উপর নির্ভরশীল", message: "ডলারকে টাকায় কনভার্ট করে সালামি পাঠান, নয়তো 'কিপটা প্রবাসী' বলে ডাকা হবে!", title: "রেমিট্যান্স যোদ্ধা" },
-            gen_z: { prob: "ফলোয়ারের উপর নির্ভরশীল", message: "ভাইরাল হতে পারলে সালামি আসবে, নয়তো শুধু 'সিন' বাড়বে।", title: "টিকটক স্টার" },
+            gen_z: { prob: "ফলোয়ারের উপর নির্ভরশীল", message: "ভাইরাল হতে পারলে সালামি আসবে, নয়তো শুধু 'সিন' বাড়বে।", title: "ইনকামের কথা বাদ দিন, ভাইব ঠিক থাকলে সালামিও 'অ্যাস্থেটিক' হতে হবে! কিউআর কোড স্ক্যান করে টাকা দিন।" },
             retired_politician: { prob: "পেনশনের উপর নির্ভরশীল", message: "রাজনীতি থেকে অবসর নিলেও সালামি থেকে অবসর নেই! জয় বাংলা, সালামি কই?", title: "অবসরপ্রাপ্ত নেতা" },
             others: { prob: "৫০/৫০", message: "আপনার স্ট্যাটাস अज्ञात, তাই সালামির সম্ভাবনাও মেঘে ঢাকা।", title: "রহস্য মানব" }
         },
         income_results: {
-            range_0_1000: { prob: "-১০%", message: "এই বেতনে সংসার চলে? সালামি দেওয়ার আগে নিজের কথা ভাবুন!", title: "সীমিত আয়ের চাকরিজীবী" },
-            range_1001_5000: { prob: "-২০%", message: "চা-সিগারেটের খরচ দিয়ে সালামি দিলে মাস চলবে কীভাবে?", title: "টানাটানির সংসার" },
-            range_5001_10000: { prob: "-৫০%", message: "ছোটদেরকে ৫০০ টাকা ধরিয়ে দিলেই খুশি থাকবে।", title: "মিডল ক্লাস বড় ভাই" },
-            range_10001_20000: { prob: "-১০০%", message: "আপনার এখন সালামি দেওয়ার বয়স। পকেট থেকে টাকা বের করুন।", title: "অফিসিয়াল সালামি দাতা" },
-            range_20001_50000: { prob: "-২০০%", message: "আপনার জুনিয়ররা আপনার দিকেই তাকিয়ে আছে। হতাশ করবেন না!", title: "এলাকার বড় ভাই" },
-            range_50001_100000: { prob: "-৫০০%", message: "আপনার জন্য 'কিপটা' উপাধি অপেক্ষা করছে যদি সালামি না দেন।", title: "বড়লোক চাকরিজীবী" },
-            range_100001_plus: { prob: "-১০০০০%", message: "আপনার টাকা ব্যাংকে রেখে কী লাভ? ছোটদের মাঝে বিলিয়ে দিন!", title: "এলাকার 'ব্যাংকার'" }
+            range_0_1000: { prob: "১০০%", title: "আপনার অবস্থা দেখে তো মসজিদের লিল্লা বোর্ডিংও কাঁদে! বড় ভাইকে ধরুন, সালামি ছাড়া ঈদ হবে না।" },
+            range_1001_5000: { prob: "৯০%", title: "আয়ের চেয়ে ব্যয় বেশি! এই রশিদ দেখালে দুলাভাই অবশ্যই 'সহানুভূতি সালামি' দিতে বাধ্য থাকিবেন।" },
+            range_5001_10000: { prob: "৮০%", title: "অবস্থা মোটামুটি, তবে সালামি ছাড়া মাস চলবে না। বড়দের কাছ থেকে 'পকেট মানি বুস্টার' দাবি করুন।" },
+            range_10001_15000: { prob: "৫০/৫০", title: "আপনি এখন বর্ডারলাইনে! সালামি নিতে গেলে 'কিপটা' বলবে, আর দিতে গেলে পকেট ফাঁকা হবে। ১৫ বছরের কিস্তিতে সালামি দিন!" },
+            range_15001_20000: { prob: "-৩০%", title: "আয় তো ভালোই! এখন 'বড় ভাই' সাজবার সময়। সালামি না দিলে কিন্তু ছোটরা 'কিপটা' ব্যাজ দিয়ে ভাইরাল করে দেবে।" },
+            range_20001_30000: { prob: "-৫০%", title: "চাকরিজীবী হয়ে সালামি পাওয়ার স্বপ্ন? এখনই ৫০% ছাড়ে চাঁদা দিন আর ছোটদের পকেট গরম করুন!" },
+            range_30001_50000: { prob: "-৮০%", title: "আপনি এখন প্রো-ফ্রিল্যান্সার বা সরকারি কর্মকর্তা! সালামি না দিলে পিছনে 'বিচ্ছু বাহিনী' লাগিয়ে দেওয়া হবে।" },
+            range_50001_100000: { prob: "-১০০%", title: "আপনার পকেট তো মাশাআল্লাহ! সালামি না দিলে 'ইনকাম ট্যাক্স' হিসেবে পুরো সালামি বাজেয়াপ্ত করা হইবে।" },
+            range_100001_plus: { prob: "-৫০০%", title: "আপনি তো 'ঈদের চাঁদ'! সালামি না, আপনি পুরো এলাকার 'সালামি স্পন্সর' হতে বাধ্য থাকিবেন।" }
         },
         special_titles: {
           girl_special: {
