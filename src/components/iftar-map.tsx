@@ -6,7 +6,7 @@ import { IftarSpot, FoodType } from '@/lib/types';
 import { useLanguage } from '@/contexts/language-context';
 import { Button } from './ui/button';
 import { ThumbsUp, ThumbsDown } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { voteOnIftarSpotAction } from '@/lib/actions';
 import { useToast } from '@/hooks/use-toast';
 
@@ -33,11 +33,14 @@ function ChangeView({ center }: { center: [number, number] }) {
 export default function IftarMap({ spots, onVote }: IftarMapProps) {
   const { translations } = useLanguage();
   const { toast } = useToast();
-  const [votedSpots, setVotedSpots] = useState<Record<string, 'like' | 'dislike'>>(() => {
-    if (typeof window === 'undefined') return {};
+  const [votedSpots, setVotedSpots] = useState<Record<string, 'like' | 'dislike'>>({});
+
+  useEffect(() => {
     const saved = localStorage.getItem('votedSpots');
-    return saved ? JSON.parse(saved) : {};
-  });
+    if (saved) {
+      setVotedSpots(JSON.parse(saved));
+    }
+  }, []);
 
   const handleVote = async (spotId: string, voteType: 'like' | 'dislike') => {
     if (votedSpots[spotId]) {

@@ -214,9 +214,18 @@ export async function getIftarSpots(): Promise<IftarSpot[]> {
     const q = query(iftarSpotsCollection, where('createdAt', '>=', twentyFourHoursAgo));
     
     const querySnapshot = await getDocs(q);
-    const spots = querySnapshot.docs.map(doc => convertTimestamps({ id: doc.id, ...doc.data() }) as IftarSpot);
+    const spotsFromDb = querySnapshot.docs.map(doc => convertTimestamps({ id: doc.id, ...doc.data() }) as IftarSpot);
+
+    const now = new Date();
+    const currentTime = `${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}`;
+
+    const spots = spotsFromDb.filter(spot => {
+        if (!spot.endTime) {
+            return true;
+        }
+        return spot.endTime > currentTime;
+    });
     
-    // Sort by createdAt descending by default on server
     spots.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
 
     return spots;

@@ -122,6 +122,7 @@ const addIftarSpotSchema = z.object({
     otherFoodTypeName: z.string().optional(),
     latitude: z.number(),
     longitude: z.number(),
+    endTime: z.string().regex(/^([01]\d|2[0-3]):([0-5]\d)$/, "Invalid time format. Use HH:MM.").optional().or(z.literal('')),
 });
 
 export async function addIftarSpotAction(values: z.infer<typeof addIftarSpotSchema>) {

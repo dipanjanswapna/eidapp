@@ -51,6 +51,7 @@ export default function AddIftarSpotDialog({ onSpotAdded }: AddIftarSpotDialogPr
     otherFoodTypeName: z.string().optional(),
     latitude: z.number(),
     longitude: z.number(),
+    endTime: z.string().regex(/^([01]\d|2[0-3]):([0-5]\d)$/, "Invalid time format. Use HH:MM.").optional().or(z.literal('')),
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -58,6 +59,7 @@ export default function AddIftarSpotDialog({ onSpotAdded }: AddIftarSpotDialogPr
     defaultValues: {
       masjidName: '',
       area: '',
+      endTime: '',
     },
   });
 
@@ -174,6 +176,20 @@ export default function AddIftarSpotDialog({ onSpotAdded }: AddIftarSpotDialogPr
                 )}
               />
             )}
+             <FormField
+              control={form.control}
+              name="endTime"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>{translations.iftar.addSpotDialog.endTime.label}</FormLabel>
+                  <FormControl>
+                    <Input type="time" {...field} placeholder={translations.iftar.addSpotDialog.endTime.placeholder} />
+                  </FormControl>
+                  <FormDescription>{translations.iftar.addSpotDialog.endTime.description}</FormDescription>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
             <FormField
               control={form.control}
               name="latitude"

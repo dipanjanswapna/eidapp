@@ -49,16 +49,17 @@ export default function IftarSpotsClient() {
 
   useEffect(() => {
     let spotsToDisplay = [...allSpots];
+    const isVerified = (spot: IftarSpot) => spot.likes > spot.dislikes;
 
     if (selectedFilter === 'verified') {
-      spotsToDisplay = spotsToDisplay.filter((spot) => spot.likes >= 60);
+      spotsToDisplay = spotsToDisplay.filter(isVerified);
     } else if (selectedFilter !== 'all') {
       spotsToDisplay = spotsToDisplay.filter((spot) => spot.foodType === selectedFilter);
     }
 
     const sortedSpots = spotsToDisplay.sort((a, b) => {
-      const aIsVerified = a.likes >= 60;
-      const bIsVerified = b.likes >= 60;
+      const aIsVerified = isVerified(a);
+      const bIsVerified = isVerified(b);
 
       if (aIsVerified && !bIsVerified) return -1;
       if (!aIsVerified && bIsVerified) return 1;
@@ -84,15 +85,9 @@ export default function IftarSpotsClient() {
   return (
     <div className="relative h-full w-full">
       <div className="absolute top-4 left-1/2 z-[1000] w-[90vw] max-w-4xl -translate-x-1/2 transform space-y-4">
-        <Card>
-          <CardHeader className="p-4 text-center">
-            <CardTitle>{translations.iftar.addSpotDialog.title}</CardTitle>
-            <CardDescription>{translations.iftar.addSpotDialog.description}</CardDescription>
-          </CardHeader>
-          <CardFooter className="justify-center p-4 pt-0">
-            <AddIftarSpotDialog onSpotAdded={handleSpotAdded} />
-          </CardFooter>
-        </Card>
+        <div className="flex justify-center">
+          <AddIftarSpotDialog onSpotAdded={handleSpotAdded} />
+        </div>
 
         <Card className="rounded-full shadow-lg">
           <CardContent className="p-1">

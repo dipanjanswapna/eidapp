@@ -480,6 +480,11 @@ export const translations = {
           description: 'Click on the map to set location or use your current location.',
           useCurrentLocation: 'Use My Current Location',
         },
+        endTime: {
+            label: 'Food Available Until (Optional)',
+            description: 'Time when food distribution ends (24h format).',
+            placeholder: 'HH:MM e.g., 18:30',
+        },
         submitButton: 'Add Spot',
         submitting: 'Adding...',
         success: 'Spot added successfully!',
@@ -980,6 +985,11 @@ export const translations = {
           label: 'অবস্থান',
           description: 'অবস্থান সেট করতে ম্যাপে ক্লিক করুন অথবা আপনার বর্তমান অবস্থান ব্যবহার করুন।',
           useCurrentLocation: 'আমার বর্তমান অবস্থান ব্যবহার করুন',
+        },
+        endTime: {
+            label: 'খাবার পাওয়া যাবে (ঐচ্ছিক)',
+            description: 'কখন খাবার বিতরণ শেষ হবে (২৪ঘন্টা ফরম্যাট)।',
+            placeholder: 'HH:MM যেমন, ১৮:৩০',
         },
         submitButton: 'স্পট যোগ করুন',
         submitting: 'যোগ করা হচ্ছে...',

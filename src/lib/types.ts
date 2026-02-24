@@ -44,4 +44,5 @@ export type IftarSpot = {
   likes: number;
   dislikes: number;
   createdAt: Date;
+  endTime?: string;
 };
