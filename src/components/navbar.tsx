@@ -19,6 +19,7 @@ export function Navbar() {
     { href: '/', label: translations.nav.home },
     { href: '/create', label: translations.nav.create },
     { href: '/calculator', label: translations.nav.calculator },
+    { href: '/ngl/inbox', label: translations.nav.ngl },
   ];
 
   return (
@@ -40,7 +41,7 @@ export function Navbar() {
               href={link.href}
               className={cn(
                 'rounded-full px-4 py-1.5 text-sm font-medium text-primary-foreground transition-colors hover:bg-white/20',
-                pathname === link.href && 'bg-background text-primary hover:bg-background/90'
+                pathname.startsWith(link.href) && link.href !== '/' || pathname === link.href ? 'bg-background text-primary hover:bg-background/90' : ''
               )}
             >
               {link.label}
@@ -53,7 +54,7 @@ export function Navbar() {
           <div className="hidden md:flex items-center gap-2">
             <LanguageToggle />
             <Button asChild className="rounded-full bg-background font-semibold text-primary shadow-sm hover:bg-background/90">
-              <Link href="/create">
+              <Link href="/ngl/create">
                 {translations.nav.register}
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
@@ -81,7 +82,7 @@ export function Navbar() {
                    <div className="mt-4 flex flex-col gap-4">
                      <LanguageToggle />
                       <Button asChild className="w-full rounded-full bg-background font-semibold text-primary shadow-sm hover:bg-background/90">
-                        <Link href="/create">
+                        <Link href="/ngl/create">
                           {translations.nav.register}
                           <ArrowRight className="ml-2 h-4 w-4" />
                         </Link>

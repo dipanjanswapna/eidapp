@@ -1,6 +1,6 @@
-import type { SalamiProfile, Wish } from './types';
+import type { SalamiProfile, Wish, NGLUser, NGLMessage } from './types';
 
-// In-memory store
+// In-memory store for Salami profiles and wishes
 const profiles: SalamiProfile[] = [
     {
         id: '1',
@@ -53,4 +53,66 @@ export async function addWish(slug: string, wishData: Omit<Wish, 'id'|'slug'|'cr
 
 export async function getWishesBySlug(slug: string): Promise<Wish[]> {
   return (wishes[slug] || []).sort((a,b) => b.createdAt.getTime() - a.createdAt.getTime());
+}
+
+// In-memory store for NGL (Anonymous Messaging)
+const nglUsers: NGLUser[] = [];
+const nglMessages: NGLMessage[] = [];
+let nglMessageIdCounter = 1;
+
+export async function findNGLUserByUsername(username: string): Promise<NGLUser | undefined> {
+    return nglUsers.find(u => u.username.toLowerCase() === username.toLowerCase());
+}
+
+export async function addNGLUser(userData: Omit<NGLUser, 'createdAt'>): Promise<NGLUser> {
+    const existingUser = await findNGLUserByUsername(userData.username);
+    if(existingUser) {
+        throw new Error('Username already exists. Please choose another one.');
+    }
+    const newUser: NGLUser = {
+        ...userData,
+        createdAt: new Date(),
+    };
+    nglUsers.push(newUser);
+    return newUser;
+}
+
+export async function verifyNGLUserPin(username: string, pin: string): Promise<NGLUser | null> {
+    const user = await findNGLUserByUsername(username);
+    if (user && user.pin === pin) {
+        return user;
+    }
+    return null;
+}
+
+export async function addNGLMessage(receiverUsername: string, messageData: { senderTag: string, message: string }): Promise<NGLMessage> {
+    const user = await findNGLUserByUsername(receiverUsername);
+    if (!user) {
+        throw new Error('User not found.');
+    }
+    const newMessage: NGLMessage = {
+        ...messageData,
+        id: String(nglMessageIdCounter++),
+        receiverUsername,
+        isReplied: false,
+        createdAt: new Date(),
+    };
+    nglMessages.push(newMessage);
+    return newMessage;
+}
+
+export async function getNGLMessagesByUsername(username: string): Promise<NGLMessage[]> {
+    return nglMessages
+        .filter(m => m.receiverUsername.toLowerCase() === username.toLowerCase())
+        .sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime());
+}
+
+export async function addReplyToNGLMessage(messageId: string, reply: string): Promise<NGLMessage> {
+    const messageIndex = nglMessages.findIndex(m => m.id === messageId);
+    if (messageIndex === -1) {
+        throw new Error('Message not found.');
+    }
+    nglMessages[messageIndex].reply = reply;
+    nglMessages[messageIndex].isReplied = true;
+    return nglMessages[messageIndex];
 }

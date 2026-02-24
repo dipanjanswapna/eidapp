@@ -6,6 +6,7 @@ export const translations = {
       calculator: 'Salami Calculator',
       brand: 'Mon Torongo',
       register: 'Register',
+      ngl: 'Secret Messages'
     },
     home: {
       title: 'Digital Salami, Festive Fun!',
@@ -290,6 +291,103 @@ export const translations = {
         },
       },
     },
+    ngl: {
+        create: {
+            title: "Create Your Secret Message Inbox",
+            description: "Set a username and PIN to receive anonymous messages.",
+            name: {
+                label: "Your Name",
+                placeholder: "e.g., Anik Ahmed",
+            },
+            username: {
+                label: "Choose a Username",
+                placeholder: "e.g., anik_ahmed",
+                description: "This will be your unique link: monotorongo.com/ngl/{username}",
+            },
+            pin: {
+                label: "Set a 4-6 digit PIN",
+                placeholder: "e.g., 1234",
+                description: "You'll use this to log in. Don't forget it!",
+            },
+            gender: {
+                label: "Gender",
+                male: "Male",
+                female: "Female",
+                other: "Other"
+            },
+            profession: {
+                label: "Profession",
+                placeholder: "Select your profession",
+            },
+            submitButton: "Create My Inbox",
+            success: "Inbox created successfully! You can now log in."
+        },
+        login: {
+            title: "Access Your Inbox",
+            description: "Enter your username and PIN to read your messages.",
+            username: {
+                label: "Username",
+                placeholder: "Your unique username",
+            },
+            pin: {
+                label: "PIN",
+                placeholder: "Your secret PIN",
+            },
+            submitButton: "Login",
+            error: "Invalid username or PIN.",
+            createLink: "Don't have an inbox? Create one now!",
+        },
+        send: {
+            title: "Send a Secret Message to",
+            subtitle: "Your identity will be kept secret.",
+            message: {
+                placeholder: "Write your secret message here...",
+            },
+            senderTag: {
+                label: "Choose a secret identity (optional)",
+                placeholder: "Select a tag",
+                options: {
+                    'anonymous': 'Anonymous',
+                    'boro_bhai': 'Kipta Boro Bhai',
+                    'boro_apu': 'Affectionate Apu',
+                    'choto_bhai': 'Naughty Choto Bhai',
+                    'choto_bon': 'Cute Choto Bon',
+                    'shalika': 'Bicchu Shalika',
+                    'crush': 'Secret Crush',
+                    'ex': 'An Ex',
+                    'friend': 'A Friend',
+                    'batchmate': 'Batchmate',
+                    'senior': 'Senior',
+                    'junior': 'Junior',
+                    'colleague': 'Colleague',
+                }
+            },
+            submitButton: "Send Secretly",
+            success: "Your secret message has been sent!",
+        },
+        inbox: {
+            title: "Your Secret Inbox",
+            noMessages: "No secret messages yet. Share your link to get some!",
+            replyButton: "Reply & Share",
+            repliedStatus: "Replied",
+            replyModal: {
+                title: "Reply to this message",
+                reply: {
+                    placeholder: "Write your reply...",
+                },
+                submitButton: "Confirm & Preview Share Card"
+            },
+            shareModal: {
+                title: "Share to Your Story",
+                description: "Download this card and share it on your social media!",
+                downloadButton: "Download Card",
+                shareButton: "Share",
+                sharing: "Sharing...",
+                shareError: "Could not share automatically. Link copied!",
+            },
+            logout: "Logout",
+        },
+    }
   },
   bn: {
     nav: {
@@ -298,6 +396,7 @@ export const translations = {
       calculator: 'সালামি ক্যালকুলেটর',
       brand: 'মন তরঙ্গ',
       register: 'নিবন্ধন করুন',
+      ngl: 'গোপন বার্তা'
     },
     home: {
       title: 'ডিজিটাল সালামি, উৎসবের আমেজ!',
@@ -523,7 +622,7 @@ export const translations = {
           gen_z_male:
             'ভাইব ঠিক রাখতে পকেটে নগদ দরকার। বড় ভাইরা \'স্লুই\' না মেরে এই কিউআর কোডে টাকা পাঠান, না হলে আপনাদের মেম বানিয়ে ভাইরাল করা হবে!',
           gen_z_female:
-            'সালামি ছাড়া ঈদের কোনো \'অ্যাস্থেটিক\' ছবি উঠবে না। দুলাভাইরা দ্রুত পকেট খুলুন, অন্যথায় আপনার সব ছবি থেকে আপনাকে ক্রপ করে ফেলা হবে!',
+            'নো \'অ্যাস্থেটিক\' ঈদ পিকচার সালামি ছাড়া উঠবে না। দুলাভাইরা দ্রুত পকেট খুলুন, অন্যথায় আপনার সব ছবি থেকে আপনাকে ক্রপ করে ফেলা হবে!',
           retired_awami_leaguer_male:
             'পলিটিক্স অনেক হলো, এবার ছোটদের দাবি মেনে নিন। এই রশিদ অনুযায়ী সালামি না দিলে বড় ভাইদের ঈদের মাঠ থেকে \'অব্যাহতি\' দেওয়া হইবে!',
           retired_awami_leaguer_female:
@@ -581,6 +680,103 @@ export const translations = {
         },
       },
     },
+    ngl: {
+        create: {
+            title: "আপনার গোপন বার্তা ইনবক্স তৈরি করুন",
+            description: "গোপন বার্তা পেতে একটি ব্যবহারকারীর নাম এবং পিন সেট করুন।",
+            name: {
+                label: "আপনার নাম",
+                placeholder: "যেমন, অনিক আহমেদ",
+            },
+            username: {
+                label: "একটি ব্যবহারকারীর নাম বাছুন",
+                placeholder: "যেমন, anik_ahmed",
+                description: "এটি আপনার ইউনিক লিঙ্ক হবে: monotorongo.com/ngl/{username}",
+            },
+            pin: {
+                label: "৪-৬ সংখ্যার একটি পিন সেট করুন",
+                placeholder: "যেমন, ১২৩৪",
+                description: "এটি দিয়ে আপনাকে লগইন করতে হবে। ভুলে যাবেন না!",
+            },
+            gender: {
+                label: "লিঙ্গ",
+                male: "ছেলে",
+                female: "মেয়ে",
+                other: "অন্যান্য"
+            },
+            profession: {
+                label: "পেশা",
+                placeholder: "আপনার পেশা নির্বাচন করুন",
+            },
+            submitButton: "আমার ইনবক্স তৈরি করুন",
+            success: "ইনবক্স সফলভাবে তৈরি হয়েছে! আপনি এখন লগইন করতে পারেন।"
+        },
+        login: {
+            title: "আপনার ইনবক্সে প্রবেশ করুন",
+            description: "আপনার বার্তা পড়তে ব্যবহারকারীর নাম এবং পিন লিখুন।",
+            username: {
+                label: "ব্যবহারকারীর নাম",
+                placeholder: "আপনার ইউনিক ব্যবহারকারীর নাম",
+            },
+            pin: {
+                label: "পিন",
+                placeholder: "আপনার গোপন পিন",
+            },
+            submitButton: "লগইন করুন",
+            error: "ভুল ব্যবহারকারীর নাম বা পিন।",
+            createLink: "ইনবক্স নেই? এখনই তৈরি করুন!",
+        },
+        send: {
+            title: "একটি গোপন বার্তা পাঠান",
+            subtitle: "আপনার পরিচয় গোপন রাখা হবে।",
+            message: {
+                placeholder: "আপনার গোপন বার্তা এখানে লিখুন...",
+            },
+            senderTag: {
+                label: "একটি গোপন পরিচয় চয়ন করুন (ঐচ্ছিক)",
+                placeholder: "একটি ট্যাগ নির্বাচন করুন",
+                options: {
+                    'anonymous': 'নাম প্রকাশে অনিচ্ছুক',
+                    'boro_bhai': 'কিপটা বড় ভাই',
+                    'boro_apu': 'দরদী আপু',
+                    'choto_bhai': 'ফাউল ছোট ভাই',
+                    'choto_bon': 'কিউট ছোট বোন',
+                    'shalika': 'বিচ্ছু শ্যালিকা',
+                    'crush': 'গোপন ক্রাশ',
+                    'ex': 'একজন প্রাক্তন',
+                    'friend': 'একজন বন্ধু',
+                    'batchmate': 'ব্যাচমেট',
+                    'senior': 'সিনিয়র',
+                    'junior': 'জুনিয়র',
+                    'colleague': 'সহকর্মী',
+                }
+            },
+            submitButton: "গোপনে পাঠান",
+            success: "আপনার গোপন বার্তা পাঠানো হয়েছে!",
+        },
+        inbox: {
+            title: "আপনার গোপন ইনবক্স",
+            noMessages: "এখনও কোনো গোপন বার্তা নেই। কিছু পেতে আপনার লিঙ্ক শেয়ার করুন!",
+            replyButton: "উত্তর দিন ও শেয়ার করুন",
+            repliedStatus: "উত্তর দেওয়া হয়েছে",
+            replyModal: {
+                title: "এই বার্তার উত্তর দিন",
+                reply: {
+                    placeholder: "আপনার উত্তর লিখুন...",
+                },
+                submitButton: "নিশ্চিত করুন এবং শেয়ার কার্ড দেখুন"
+            },
+            shareModal: {
+                title: "আপনার স্টোরিতে শেয়ার করুন",
+                description: "এই কার্ডটি ডাউনলোড করুন এবং আপনার সোশ্যাল মিডিয়াতে শেয়ার করুন!",
+                downloadButton: "কার্ড ডাউনলোড করুন",
+                shareButton: "শেয়ার করুন",
+                sharing: "শেয়ার হচ্ছে...",
+                shareError: "স্বয়ংক্রিয়ভাবে শেয়ার করা যায়নি। লিঙ্ক কপি করা হয়েছে!",
+            },
+            logout: "লগআউট",
+        },
+    }
   },
 };
 
