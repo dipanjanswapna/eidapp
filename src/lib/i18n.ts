@@ -87,9 +87,9 @@ export const translations = {
       },
     },
     calculator: {
-      title: 'Salami Calculator: Relationship Edition',
+      title: 'Salami Calculator: Advanced Edition',
       description:
-        'Find out your Salami probability this Eid based on your relationship status!',
+        'Find out your Salami probability this Eid based on your relationship status, profession and more!',
       name: {
         label: 'Your Name',
         placeholder: 'e.g., Anik Ahmed',
@@ -112,14 +112,32 @@ export const translations = {
           female: 'Girl',
         },
       },
+      profession: {
+        label: 'Profession',
+        placeholder: 'Select your profession',
+        options: {
+            student: 'Student',
+            unemployed: 'Unemployed',
+            job_holder: 'Job Holder',
+            businessman: 'Businessman',
+        },
+      },
+      monthlyIncome: {
+          label: 'Monthly Income (For Job Holders)',
+          placeholder: 'Select your income range',
+          options: {
+              low: 'Tk 20,000 - 50,000',
+              medium: 'Tk 50,001 - 1,00,000',
+              high: 'Tk 1,00,000+',
+          },
+      },
       calculateButton: 'Calculate Salami Probability',
       calculating: 'Calculating...',
       result: {
         title: 'Congratulations, {name}!',
         subtitle:
-          "Based on your status as '{status}', here is your Salami forecast:",
+          "Based on your profile, here is your Salami forecast:",
         probabilityLabel: 'Salami Probability',
-        probability: 'Salami Probability: {prob}',
         message: 'Viral Message: "{message}"',
         specialTitle: 'Special Title: {title}',
         createButton: 'Create Your Salami Demand Link',
@@ -143,7 +161,7 @@ export const translations = {
           married: 'Married',
           crush: 'Have a Crush',
         },
-        results: {
+        relationship_results: {
           single: {
             prob: '99%',
             message: "Elders still see you as a 'kid'.",
@@ -170,6 +188,30 @@ export const translations = {
             message: "Getting a 'Hi' is a Salami in itself.",
             title: "Don't want Salami, just want a reply in the inbox!",
           },
+        },
+        profession_results: {
+            student: {
+                prob: '99%',
+                message: "Income is nil, so salami is your last hope! Show respect to elders to get salami.",
+                title: "Salami is my birthright!"
+            },
+            unemployed: {
+                prob: '100%',
+                message: "Seeing your situation, you deserve double salami with firni! Share the link with crying emojis.",
+                title: "Sympathy Salami Candidate"
+            },
+            job_holder: {
+                prob: '-200%',
+                message: "You are a 'Boro Bhai' now. Forget about getting salami, remember your bKash PIN and empty your pocket for the youngers!",
+                title: "Official Salami Provider"
+            },
+            businessman: {
+                prob: 'Depends on Profit',
+                message: "Where is the Eid profit? If you don't give salami, the 'Miser Businessman' badge will be hung on your profile!",
+                title: "Salami depends on business"
+            }
+        },
+        special_titles: {
           girl_special: {
             title: 'Salami Queen',
           },
@@ -267,9 +309,9 @@ export const translations = {
       },
     },
     calculator: {
-      title: 'ঈদ সালামি ক্যালকুলেটর: রিলেশনশিপ সংস্করণ',
+      title: 'ঈদ সালামি ক্যালকুলেটর: অ্যাডভান্সড সংস্করণ',
       description:
-        'আপনার রিলেশনশিপ স্ট্যাটাস অনুযায়ী এই ঈদে আপনার সালামি পাওয়ার সম্ভাবনা জানুন!',
+        'আপনার রিলেশনশিপ স্ট্যাটাস, পেশা এবং আরও অনেক কিছুর উপর ভিত্তি করে এই ঈদে আপনার সালামি পাওয়ার সম্ভাবনা জানুন!',
       name: {
         label: 'আপনার নাম',
         placeholder: 'যেমন, অনিক আহমেদ',
@@ -292,14 +334,32 @@ export const translations = {
           female: 'মেয়ে',
         },
       },
+      profession: {
+        label: 'পেশা',
+        placeholder: 'আপনার পেশা নির্বাচন করুন',
+        options: {
+            student: 'ছাত্র',
+            unemployed: 'বেকার',
+            job_holder: 'চাকরিজীবী',
+            businessman: 'ব্যবসায়ী',
+        },
+      },
+      monthlyIncome: {
+          label: 'মাসিক আয় (চাকরিজীবীদের জন্য)',
+          placeholder: 'আপনার আয়ের পরিসর নির্বাচন করুন',
+          options: {
+              low: '২০,০০০ - ৫০,০০০ টাকা',
+              medium: '৫০,০০১ - ১,০০,০০০ টাকা',
+              high: '১,০০,০০০+ টাকা',
+          },
+      },
       calculateButton: 'সালামি সম্ভাবনা গণনা করুন',
       calculating: 'গণনা করা হচ্ছে...',
       result: {
         title: 'অভিনন্দন, {name}!',
         subtitle:
-          "আপনার স্ট্যাটাস '{status}' অনুযায়ী, আপনার সালামি পূর্বাভাস:",
+          "আপনার প্রোফাইল অনুযায়ী, আপনার সালামি পূর্বাভাস:",
         probabilityLabel: 'সালামি পাওয়ার সম্ভাবনা',
-        probability: 'সালামি পাওয়ার সম্ভাবনা: {prob}',
         message: 'ভাইরাল মেসেজ: "{message}"',
         specialTitle: 'বিশেষ টাইটেল: {title}',
         createButton: 'আপনার সালামি ডিমান্ড লিঙ্ক তৈরি করুন',
@@ -323,7 +383,7 @@ export const translations = {
           married: 'বিবাহিত',
           crush: 'ক্রাশ আছে',
         },
-        results: {
+        relationship_results: {
           single: {
             prob: '৯৯%',
             message: "কারণ বড়রা এখনো আপনাকে 'বাচ্চা' মনে করে।",
@@ -348,8 +408,32 @@ export const translations = {
           crush: {
             prob: 'লটারির মতো',
             message: "একটি 'হাই' পেলেই সালামি সার্থক।",
-            title: 'সালামি চাই না, শুধু ইনবক্সে একটা রিপ্লাই চাই!',
+            title: "সালামি চাই না, শুধু ইনবক্সে একটা রিপ্লাই চাই!",
           },
+        },
+        profession_results: {
+            student: {
+                prob: '৯৯%',
+                message: "আয় নাই, তাই সালামিই আপনার শেষ ভরসা! মুরুব্বিদের সাদা চুল দেখে মায়া জাগিয়ে সালাম দিন।",
+                title: "সালামি আমার অধিকার!"
+            },
+            unemployed: {
+                prob: '১০০%',
+                message: "আপনার অবস্থা দেখে ফিরনির সাথে সালামিও ডাবল হওয়ার কথা! কান্নাকাটির ইমোজি দিয়ে লিঙ্ক শেয়ার করুন।",
+                title: "সহানুভূতি সালামি প্রার্থী"
+            },
+            job_holder: {
+                prob: '-২০০%',
+                message: "আপনি এখন 'বড় ভাই'। সালামি পাওয়ার স্বপ্ন বাদ দিয়ে বিকাশের পিন মনে করুন এবং ছোটদের জন্য পকেট খালি করুন!",
+                title: "অফিসিয়াল সালামি দাতা"
+            },
+            businessman: {
+                prob: 'লাভের উপর নির্ভরশীল',
+                message: "ঈদের প্রফিট কোথায়? সালামি না দিলে কিন্তু 'কিপটা ব্যবসায়ী' ব্যাজ আপনার প্রোফাইলে ঝুলিয়ে দেওয়া হবে!",
+                title: "ব্যবসার উপর সালামি"
+            }
+        },
+        special_titles: {
           girl_special: {
             title: 'সালামি কুইন',
           },

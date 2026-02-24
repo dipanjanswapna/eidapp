@@ -37,19 +37,27 @@ export default function SalamiCalculatorResult({ result, onReset }: SalamiCalcul
         return () => window.removeEventListener('resize', handleResize);
     }, []);
 
-
-    const { name, relationshipStatus, gender } = result;
-    const statusKey = relationshipStatus as keyof typeof translations.calculator.result.results;
+    const { name, relationshipStatus, gender, profession } = result;
     
-    const resultData = translations.calculator.result.results[statusKey];
-    const statusText = translations.calculator.result.statuses[statusKey];
+    let resultData;
+    let statusText;
 
-    let specialTitle = null;
-    if(gender === 'female' && (statusKey === 'single' || statusKey === 'in_relationship')){
-        specialTitle = translations.calculator.result.results.girl_special.title;
+    if (profession && profession !== 'none') {
+        const professionKey = profession as keyof typeof translations.calculator.result.profession_results;
+        resultData = translations.calculator.result.profession_results[professionKey];
+        statusText = translations.calculator.profession.options[professionKey];
+    } else {
+        const statusKey = relationshipStatus as keyof typeof translations.calculator.result.relationship_results;
+        resultData = translations.calculator.result.relationship_results[statusKey];
+        statusText = translations.calculator.result.statuses[statusKey];
     }
-    if(gender === 'male' && statusKey === 'married'){
-        specialTitle = translations.calculator.result.results.boy_special.title;
+    
+    let specialTitle = null;
+    if(gender === 'female' && (relationshipStatus === 'single' || relationshipStatus === 'in_relationship')){
+        specialTitle = translations.calculator.result.special_titles.girl_special.title;
+    }
+    if(gender === 'male' && relationshipStatus === 'married'){
+        specialTitle = translations.calculator.result.special_titles.boy_special.title;
     }
 
     const handleDownload = () => {
@@ -107,7 +115,7 @@ export default function SalamiCalculatorResult({ result, onReset }: SalamiCalcul
                         </div>
                         <div className="space-y-3 text-base text-amber-900">
                             <div className="flex justify-between"><span className="font-semibold">{translations.form.name.label}:</span><span>{name}</span></div>
-                            <div className="flex justify-between"><span className="font-semibold">{translations.calculator.relationship.label}:</span><span>{statusText}</span></div>
+                            <div className="flex justify-between"><span className="font-semibold">{statusText}:</span><span>{profession && profession !== 'none' ? translations.calculator.profession.options[profession as keyof typeof translations.calculator.profession.options] : translations.calculator.relationship.options[relationshipStatus as keyof typeof translations.calculator.relationship.options]}</span></div>
                             <div className="flex justify-between items-center"><span className="font-semibold">{translations.calculator.result.probabilityLabel}:</span><span className="text-2xl font-bold text-primary bg-primary/10 px-3 py-1 rounded">{resultData.prob}</span></div>
                             <div className="p-3 bg-amber-500/10 rounded-md text-center">
                                 <p className="font-semibold text-amber-900">{translations.calculator.result.message.replace('{message}', resultData.title)}</p>

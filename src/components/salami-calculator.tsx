@@ -29,11 +29,15 @@ import SalamiCalculatorResult from './salami-calculator-result';
 
 type RelationshipStatus = 'single' | 'in_relationship' | 'engaged' | 'married' | 'crush';
 type Gender = 'male' | 'female';
+type Profession = 'student' | 'unemployed' | 'job_holder' | 'businessman' | 'none';
+type MonthlyIncome = 'none' | 'low' | 'medium' | 'high';
 
 export type CalculatorResultData = {
     name: string;
     relationshipStatus: RelationshipStatus;
     gender: Gender;
+    profession: Profession;
+    monthlyIncome: MonthlyIncome;
 }
 
 export default function SalamiCalculator() {
@@ -45,6 +49,8 @@ export default function SalamiCalculator() {
     name: z.string().min(2, translations.form.errors.name.min),
     relationshipStatus: z.enum(['single', 'in_relationship', 'engaged', 'married', 'crush']),
     gender: z.enum(['male', 'female']),
+    profession: z.enum(['student', 'unemployed', 'job_holder', 'businessman', 'none']).optional(),
+    monthlyIncome: z.enum(['none', 'low', 'medium', 'high']).optional(),
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -53,15 +59,30 @@ export default function SalamiCalculator() {
       name: '',
       relationshipStatus: 'single',
       gender: 'male',
+      profession: 'none',
+      monthlyIncome: 'none',
     },
   });
+  
+  const watchedRelationshipStatus = form.watch('relationshipStatus');
+  const watchedProfession = form.watch('profession');
+  const showExtraFields = watchedRelationshipStatus === 'single' || watchedRelationshipStatus === 'crush';
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsCalculating(true);
     setResult(null);
     // Simulate calculation time for animation
     await new Promise(resolve => setTimeout(resolve, 1500));
-    setResult(values as CalculatorResultData);
+    
+    const resultData: CalculatorResultData = {
+        name: values.name,
+        relationshipStatus: values.relationshipStatus as RelationshipStatus,
+        gender: values.gender as Gender,
+        profession: (showExtraFields ? values.profession : 'none') || 'none',
+        monthlyIncome: (showExtraFields && values.profession === 'job_holder' ? values.monthlyIncome : 'none') || 'none',
+    };
+    
+    setResult(resultData);
     setIsCalculating(false);
   }
 
@@ -151,6 +172,59 @@ export default function SalamiCalculator() {
                 </FormItem>
               )}
             />
+
+            {showExtraFields && (
+              <>
+                <FormField
+                  control={form.control}
+                  name="profession"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>{translations.calculator.profession.label}</FormLabel>
+                      <Select onValueChange={field.onChange} defaultValue={field.value || 'none'}>
+                        <FormControl>
+                          <SelectTrigger>
+                            <SelectValue placeholder={translations.calculator.profession.placeholder} />
+                          </SelectTrigger>
+                        </FormControl>
+                        <SelectContent>
+                          <SelectItem value="student">{translations.calculator.profession.options.student}</SelectItem>
+                          <SelectItem value="unemployed">{translations.calculator.profession.options.unemployed}</SelectItem>
+                          <SelectItem value="job_holder">{translations.calculator.profession.options.job_holder}</SelectItem>
+                          <SelectItem value="businessman">{translations.calculator.profession.options.businessman}</SelectItem>
+                        </SelectContent>
+                      </Select>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                
+                {watchedProfession === 'job_holder' && (
+                  <FormField
+                    control={form.control}
+                    name="monthlyIncome"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>{translations.calculator.monthlyIncome.label}</FormLabel>
+                        <Select onValueChange={field.onChange} defaultValue={field.value || 'none'}>
+                          <FormControl>
+                            <SelectTrigger>
+                              <SelectValue placeholder={translations.calculator.monthlyIncome.placeholder} />
+                            </SelectTrigger>
+                          </FormControl>
+                          <SelectContent>
+                            <SelectItem value="low">{translations.calculator.monthlyIncome.options.low}</SelectItem>
+                            <SelectItem value="medium">{translations.calculator.monthlyIncome.options.medium}</SelectItem>
+                            <SelectItem value="high">{translations.calculator.monthlyIncome.options.high}</SelectItem>
+                          </SelectContent>
+                        </Select>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                )}
+              </>
+            )}
             
             <Button type="submit" className="w-full" size="lg" disabled={isCalculating}>
               {isCalculating ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Calculator className="mr-2 h-4 w-4" />}
