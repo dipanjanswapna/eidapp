@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useLanguage } from '@/contexts/language-context';
 import ConfettiBackground from '@/components/confetti-background';
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
-import { ArrowRight, Calculator, CreditCard, Mail } from 'lucide-react';
+import { ArrowRight, Calculator, CreditCard, Mail, Star } from 'lucide-react';
 
 export default function Home() {
   const { translations, language } = useLanguage();
@@ -32,6 +32,13 @@ export default function Home() {
           icon: <Mail className="mb-4 h-10 w-10 text-primary" />,
           cta: "Create Inbox",
         },
+        {
+          title: "Eid Lucky Wheel",
+          description: "Spin the wheel to find out your unique Eid plan! A fun activity to share with friends.",
+          link: "/eid-wheel",
+          icon: <Star className="mb-4 h-10 w-10 text-primary" />,
+          cta: "Spin the Wheel",
+        },
     ],
     bn: [
         {
@@ -55,6 +62,13 @@ export default function Home() {
           icon: <Mail className="mb-4 h-10 w-10 text-primary" />,
           cta: "ইনবক্স তৈরি করুন",
         },
+        {
+          title: "ঈদ লাকি হুইল",
+          description: "চাকা ঘুরিয়ে আপনার ঈদের প্ল্যান জানুন! বন্ধুদের সাথে আপনার ফলাফল শেয়ার করুন।",
+          link: "/eid-wheel",
+          icon: <Star className="mb-4 h-10 w-10 text-primary" />,
+          cta: "চাকা ঘোরান",
+        },
     ]
   };
 
@@ -76,7 +90,7 @@ export default function Home() {
           {translations.home.subtitle}
         </p>
         
-        <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
           {featureCards.map((feature, index) => (
             <Card key={index} className="flex flex-col text-left transition-transform duration-300 hover:scale-105 hover:shadow-xl">
                 <CardHeader>

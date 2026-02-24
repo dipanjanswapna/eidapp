@@ -6,7 +6,8 @@ export const translations = {
       calculator: 'Salami Calculator',
       brand: 'Mon Torongo',
       register: 'Register',
-      ngl: 'Eid Letter'
+      ngl: 'Eid Letter',
+      eidWheel: 'Lucky Wheel',
     },
     home: {
       title: 'Digital Salami, Festive Fun!',
@@ -292,112 +293,153 @@ export const translations = {
       },
     },
     ngl: {
-        create: {
-            title: "Create Your Eid Letter Inbox",
-            description: "Set a username and PIN to receive anonymous messages.",
-            name: {
-                label: "Your Name",
-                placeholder: "e.g., Anik Ahmed",
-            },
-            username: {
-                label: "Choose a Username",
-                placeholder: "e.g., anik_ahmed",
-                description: "This will be your unique link: monotorongo.com/ngl/{username}",
-            },
-            pin: {
-                label: "Set a 4-6 digit PIN",
-                placeholder: "e.g., 1234",
-                description: "You'll use this to log in. Don't forget it!",
-            },
-            gender: {
-                label: "Gender",
-                male: "Male",
-                female: "Female",
-                other: "Other"
-            },
-            profession: {
-                label: "Profession",
-                placeholder: "Select your profession",
-            },
-            submitButton: "Create My Inbox",
-            success: "Inbox created successfully! You can now log in."
+      create: {
+        title: 'Create Your Eid Letter Inbox',
+        description: 'Set a username and PIN to receive anonymous messages.',
+        name: {
+          label: 'Your Name',
+          placeholder: 'e.g., Anik Ahmed',
         },
-        login: {
-            title: "Access Your Inbox",
-            description: "Enter your username and PIN to read your messages.",
-            username: {
-                label: "Username",
-                placeholder: "Your unique username",
-            },
-            pin: {
-                label: "PIN",
-                placeholder: "Your secret PIN",
-            },
-            submitButton: "Login",
-            error: "Invalid username or PIN.",
-            createLink: "Don't have an inbox? Create one now!",
+        username: {
+          label: 'Choose a Username',
+          placeholder: 'e.g., anik_ahmed',
+          description:
+            'This will be your unique link: monotorongo.com/ngl/{username}',
         },
-        send: {
-            title: "Send an Eid Letter to",
-            subtitle: "Your identity will be kept secret.",
-            message: {
-                placeholder: "Send me a secret Eid message or a Salami request!",
-            },
-            senderTag: {
-                label: "Choose a secret identity (optional)",
-                placeholder: "Select a tag",
-                options: {
-                    'anonymous': 'Anonymous',
-                    'boro_bhai': 'Kipta Boro Bhai',
-                    'boro_apu': 'Affectionate Apu',
-                    'choto_bhai': 'Naughty Choto Bhai',
-                    'choto_bon': 'Cute Choto Bon',
-                    'shalika': 'Bicchu Shalika',
-                    'crush': 'Secret Crush',
-                    'ex': 'An Ex',
-                    'friend': 'A Friend',
-                    'batchmate': 'Batchmate',
-                    'senior': 'Senior',
-                    'junior': 'Junior',
-                    'colleague': 'Colleague',
-                }
-            },
-            submitButton: "Send Letter",
-            success: {
-                title: "Message Sent!",
-                description: "Want to create your own inbox to receive secret messages?",
-                cta: "Create Your Inbox"
-            },
+        pin: {
+          label: 'Set a 4-6 digit PIN',
+          placeholder: 'e.g., 1234',
+          description: "You'll use this to log in. Don't forget it!",
         },
-        inbox: {
-            title: "Your Eid Letter Inbox",
-            share: {
-                title: "Share Your Link",
-                description: "Let your friends know where to send you secret Eid letters!",
-                shareButton: "Share Link",
-                linkCopied: "Link Copied!"
-            },
-            noMessages: "No Eid letters yet. Share your link to get some!",
-            replyButton: "Reply & Share",
-            repliedStatus: "Replied",
-            replyModal: {
-                title: "Reply to this message",
-                reply: {
-                    placeholder: "Write your reply...",
-                },
-                submitButton: "Confirm & Preview Share Card"
-            },
-            shareModal: {
-                title: "Share to Your Story",
-                description: "Download this card and share it on your social media!",
-                downloadButton: "Download Card",
-                shareButton: "Share",
-                sharing: "Sharing...",
-                shareError: "Could not share automatically. Link copied!",
-            },
-            logout: "Logout",
+        gender: {
+          label: 'Gender',
+          male: 'Male',
+          female: 'Female',
+          other: 'Other',
         },
-    }
+        profession: {
+          label: 'Profession',
+          placeholder: 'Select your profession',
+        },
+        submitButton: 'Create My Inbox',
+        success: 'Inbox created successfully! You can now log in.',
+      },
+      login: {
+        title: 'Access Your Inbox',
+        description: 'Enter your username and PIN to read your messages.',
+        username: {
+          label: 'Username',
+          placeholder: 'Your unique username',
+        },
+        pin: {
+          label: 'PIN',
+          placeholder: 'Your secret PIN',
+        },
+        submitButton: 'Login',
+        error: 'Invalid username or PIN.',
+        createLink: "Don't have an inbox? Create one now!",
+      },
+      send: {
+        title: 'Send an Eid Letter to',
+        subtitle: 'Your identity will be kept secret.',
+        message: {
+          placeholder: 'Send me a secret Eid message or a Salami request!',
+        },
+        senderTag: {
+          label: 'Choose a secret identity (optional)',
+          placeholder: 'Select a tag',
+          options: {
+            anonymous: 'Anonymous',
+            boro_bhai: 'Kipta Boro Bhai',
+            boro_apu: 'Affectionate Apu',
+            choto_bhai: 'Naughty Choto Bhai',
+            choto_bon: 'Cute Choto Bon',
+            shalika: 'Bicchu Shalika',
+            crush: 'Secret Crush',
+            ex: 'An Ex',
+            friend: 'A Friend',
+            batchmate: 'Batchmate',
+            senior: 'Senior',
+            junior: 'Junior',
+            colleague: 'Colleague',
+          },
+        },
+        submitButton: 'Send Letter',
+        success: {
+          title: 'Message Sent!',
+          description:
+            'Want to create your own inbox to receive secret messages?',
+          cta: 'Create Your Inbox',
+        },
+      },
+      inbox: {
+        title: 'Your Eid Letter Inbox',
+        share: {
+          title: 'Share Your Link',
+          description:
+            'Let your friends know where to send you secret Eid letters!',
+          shareButton: 'Share Link',
+          linkCopied: 'Link Copied!',
+        },
+        noMessages: 'No Eid letters yet. Share your link to get some!',
+        replyButton: 'Reply & Share',
+        repliedStatus: 'Replied',
+        replyModal: {
+          title: 'Reply to this message',
+          reply: {
+            placeholder: 'Write your reply...',
+          },
+          submitButton: 'Confirm & Preview Share Card',
+        },
+        shareModal: {
+          title: 'Share to Your Story',
+          description:
+            'Download this card and share it on your social media!',
+          downloadButton: 'Download Card',
+          shareButton: 'Share',
+          sharing: 'Sharing...',
+          shareError: 'Could not share automatically. Link copied!',
+        },
+        logout: 'Logout',
+      },
+    },
+    eidWheel: {
+      title: 'Eid Planning Lucky Wheel',
+      description: 'Spin the wheel to find out your Eid plan! Share your result with friends.',
+      spinButton: 'Spin the Wheel',
+      name: {
+        label: 'Your Name',
+        placeholder: 'Enter your name to spin',
+      },
+      results: {
+        title: "Official Eid Plan",
+        resultFor: "Result for",
+        plan: "Your Eid Plan",
+        downloadButton: "Download Plan",
+        shareButton: "Share Plan",
+        sharing: "Sharing...",
+        shareError: "Could not share image, link copied to clipboard.",
+        footerDisclaimer: "Disclaimer: This wheel is for fun and not to be taken seriously.",
+        backButton: "Spin Again",
+      },
+      options: [
+        'Salami Collection: Spend the day emptying elders\' pockets.',
+        'Biryani Dinner: Devour at least 3 plates of biryani.',
+        'Bed Relaxation: Sleep in until noon, even on Eid day.',
+        'Hangout Time: Go for a bike ride around the city with friends.',
+        'Guest Management: Keep all the little guests at home busy.',
+        'Salami Distribution: Today, you have to give Salami to the young ones from your pocket.',
+        'Chat with Crush: The perfect opportunity to message your crush today.',
+        'Kitchen Help: Help your mom make shemai or payesh.',
+        'Photoshoot Session: Take 100 photos wearing your new panjabi/dress.',
+        'Movie Marathon: Stay up all night watching all the new Eid dramas.',
+        'Invitation Feast: Go to relatives\' houses and eat to your heart\'s content.',
+        'Old Memories: Hang out with your school friends.',
+        'Single Eid: Listen to music alone with headphones.',
+        'Long Drive: Go out for a drive in the drizzling rain.',
+        'Salami Queen/King: You are today\'s highest Salami recipient!',
+      ],
+    },
   },
   bn: {
     nav: {
@@ -406,7 +448,8 @@ export const translations = {
       calculator: 'সালামি ক্যালকুলেটর',
       brand: 'মন তরঙ্গ',
       register: 'নিবন্ধন করুন',
-      ngl: 'ঈদের চিঠি'
+      ngl: 'ঈদের চিঠি',
+      eidWheel: 'লাকি হুইল',
     },
     home: {
       title: 'ডিজিটাল সালামি, উৎসবের আমেজ!',
@@ -691,112 +734,153 @@ export const translations = {
       },
     },
     ngl: {
-        create: {
-            title: "আপনার ঈদের চিঠি ইনবক্স তৈরি করুন",
-            description: "গোপন বার্তা পেতে একটি ব্যবহারকারীর নাম এবং পিন সেট করুন।",
-            name: {
-                label: "আপনার নাম",
-                placeholder: "যেমন, অনিক আহমেদ",
-            },
-            username: {
-                label: "একটি ব্যবহারকারীর নাম বাছুন",
-                placeholder: "যেমন, anik_ahmed",
-                description: "এটি আপনার ইউনিক লিঙ্ক হবে: monotorongo.com/ngl/{username}",
-            },
-            pin: {
-                label: "৪-৬ সংখ্যার একটি পিন সেট করুন",
-                placeholder: "যেমন, ১২৩৪",
-                description: "এটি দিয়ে আপনাকে লগইন করতে হবে। ভুলে যাবেন না!",
-            },
-            gender: {
-                label: "লিঙ্গ",
-                male: "ছেলে",
-                female: "মেয়ে",
-                other: "অন্যান্য"
-            },
-            profession: {
-                label: "পেশা",
-                placeholder: "আপনার পেশা নির্বাচন করুন",
-            },
-            submitButton: "আমার ইনবক্স তৈরি করুন",
-            success: "ইনবক্স সফলভাবে তৈরি হয়েছে! আপনি এখন লগইন করতে পারেন।"
+      create: {
+        title: 'আপনার ঈদের চিঠি ইনবক্স তৈরি করুন',
+        description: 'গোপন বার্তা পেতে একটি ব্যবহারকারীর নাম এবং পিন সেট করুন।',
+        name: {
+          label: 'আপনার নাম',
+          placeholder: 'যেমন, অনিক আহমেদ',
         },
-        login: {
-            title: "আপনার ইনবক্সে প্রবেশ করুন",
-            description: "আপনার বার্তা পড়তে ব্যবহারকারীর নাম এবং পিন লিখুন।",
-            username: {
-                label: "ব্যবহারকারীর নাম",
-                placeholder: "আপনার ইউনিক ব্যবহারকারীর নাম",
-            },
-            pin: {
-                label: "পিন",
-                placeholder: "আপনার গোপন পিন",
-            },
-            submitButton: "লগইন করুন",
-            error: "ভুল ব্যবহারকারীর নাম বা পিন।",
-            createLink: "ইনবক্স নেই? এখনই তৈরি করুন!",
+        username: {
+          label: 'একটি ব্যবহারকারীর নাম বাছুন',
+          placeholder: 'যেমন, anik_ahmed',
+          description:
+            'এটি আপনার ইউনিক লিঙ্ক হবে: monotorongo.com/ngl/{username}',
         },
-        send: {
-            title: "একটি ঈদের চিঠি পাঠান",
-            subtitle: "আপনার পরিচয় গোপন রাখা হবে।",
-            message: {
-                placeholder: "আমাকে একটি গোপন ঈদ বার্তা বা সালামি আবদার পাঠান!",
-            },
-            senderTag: {
-                label: "একটি গোপন পরিচয় চয়ন করুন (ঐচ্ছিক)",
-                placeholder: "একটি ট্যাগ নির্বাচন করুন",
-                options: {
-                    'anonymous': 'নাম প্রকাশে অনিচ্ছুক',
-                    'boro_bhai': 'কিপটা বড় ভাই',
-                    'boro_apu': 'দরদী আপু',
-                    'choto_bhai': 'ফাউল ছোট ভাই',
-                    'choto_bon': 'কিউট ছোট বোন',
-                    'shalika': 'বিচ্ছু শ্যালিকা',
-                    'crush': 'গোপন ক্রাশ',
-                    'ex': 'একজন প্রাক্তন',
-                    'friend': 'একজন বন্ধু',
-                    'batchmate': 'ব্যাচমেট',
-                    'senior': 'সিনিয়র',
-                    'junior': 'জুনিয়র',
-                    'colleague': 'সহকর্মী',
-                }
-            },
-            submitButton: "চিঠি পাঠান",
-            success: {
-                title: "বার্তা পাঠানো হয়েছে!",
-                description: "আপনিও কি গোপন বার্তা পাওয়ার জন্য নিজের ইনবক্স তৈরি করতে চান?",
-                cta: "ইনবক্স তৈরি করুন"
-            },
+        pin: {
+          label: '৪-৬ সংখ্যার একটি পিন সেট করুন',
+          placeholder: 'যেমন, ১২৩৪',
+          description: 'এটি দিয়ে আপনাকে লগইন করতে হবে। ভুলে যাবেন না!',
         },
-        inbox: {
-            title: "আপনার ঈদের চিঠির ইনবক্স",
-            share: {
-                title: "আপনার লিঙ্ক শেয়ার করুন",
-                description: "বন্ধুদের জানিয়ে দিন কোথায় আপনাকে গোপন ঈদের চিঠি পাঠাতে হবে!",
-                shareButton: "লিঙ্ক শেয়ার করুন",
-                linkCopied: "লিঙ্ক কপি করা হয়েছে!"
-            },
-            noMessages: "এখনও কোনো ঈদের চিঠি নেই। কিছু পেতে আপনার লিঙ্ক শেয়ার করুন!",
-            replyButton: "উত্তর দিন ও শেয়ার করুন",
-            repliedStatus: "উত্তর দেওয়া হয়েছে",
-            replyModal: {
-                title: "এই বার্তার উত্তর দিন",
-                reply: {
-                    placeholder: "আপনার উত্তর লিখুন...",
-                },
-                submitButton: "নিশ্চিত করুন এবং শেয়ার কার্ড দেখুন"
-            },
-            shareModal: {
-                title: "আপনার স্টোরিতে শেয়ার করুন",
-                description: "এই কার্ডটি ডাউনলোড করুন এবং আপনার সোশ্যাল মিডিয়াতে শেয়ার করুন!",
-                downloadButton: "কার্ড ডাউনলোড করুন",
-                shareButton: "শেয়ার করুন",
-                sharing: "শেয়ার হচ্ছে...",
-                shareError: "স্বয়ংক্রিয়ভাবে শেয়ার করা যায়নি। লিঙ্ক কপি করা হয়েছে!",
-            },
-            logout: "লগআউট",
+        gender: {
+          label: 'লিঙ্গ',
+          male: 'ছেলে',
+          female: 'মেয়ে',
+          other: 'অন্যান্য',
         },
-    }
+        profession: {
+          label: 'পেশা',
+          placeholder: 'আপনার পেশা নির্বাচন করুন',
+        },
+        submitButton: 'আমার ইনবক্স তৈরি করুন',
+        success: 'ইনবক্স সফলভাবে তৈরি হয়েছে! আপনি এখন লগইন করতে পারেন।',
+      },
+      login: {
+        title: 'আপনার ইনবক্সে প্রবেশ করুন',
+        description: 'আপনার বার্তা পড়তে ব্যবহারকারীর নাম এবং পিন লিখুন।',
+        username: {
+          label: 'ব্যবহারকারীর নাম',
+          placeholder: 'আপনার ইউনিক ব্যবহারকারীর নাম',
+        },
+        pin: {
+          label: 'পিন',
+          placeholder: 'আপনার গোপন পিন',
+        },
+        submitButton: 'লগইন করুন',
+        error: 'ভুল ব্যবহারকারীর নাম বা পিন।',
+        createLink: 'ইনবক্স নেই? এখনই তৈরি করুন!',
+      },
+      send: {
+        title: 'একটি ঈদের চিঠি পাঠান',
+        subtitle: 'আপনার পরিচয় গোপন রাখা হবে।',
+        message: {
+          placeholder: 'আমাকে একটি গোপন ঈদ বার্তা বা সালামি আবদার পাঠান!',
+        },
+        senderTag: {
+          label: 'একটি গোপন পরিচয় চয়ন করুন (ঐচ্ছিক)',
+          placeholder: 'একটি ট্যাগ নির্বাচন করুন',
+          options: {
+            anonymous: 'নাম প্রকাশে অনিচ্ছুক',
+            boro_bhai: 'কিপটা বড় ভাই',
+            boro_apu: 'দরদী আপু',
+            choto_bhai: 'ফাউল ছোট ভাই',
+            choto_bon: 'কিউট ছোট বোন',
+            shalika: 'বিচ্ছু শ্যালিকা',
+            crush: 'গোপন ক্রাশ',
+            ex: 'একজন প্রাক্তন',
+            friend: 'একজন বন্ধু',
+            batchmate: 'ব্যাচমেট',
+            senior: 'সিনিয়র',
+            junior: 'জুনিয়র',
+            colleague: 'সহকর্মী',
+          },
+        },
+        submitButton: 'চিঠি পাঠান',
+        success: {
+          title: 'বার্তা পাঠানো হয়েছে!',
+          description:
+            'আপনিও কি গোপন বার্তা পাওয়ার জন্য নিজের ইনবক্স তৈরি করতে চান?',
+          cta: 'ইনবক্স তৈরি করুন',
+        },
+      },
+      inbox: {
+        title: 'আপনার ঈদের চিঠির ইনবক্স',
+        share: {
+          title: 'আপনার লিঙ্ক শেয়ার করুন',
+          description:
+            'বন্ধুদের জানিয়ে দিন কোথায় আপনাকে গোপন ঈদের চিঠি পাঠাতে হবে!',
+          shareButton: 'লিঙ্ক শেয়ার করুন',
+          linkCopied: 'লিঙ্ক কপি করা হয়েছে!',
+        },
+        noMessages: 'এখনও কোনো ঈদের চিঠি নেই। কিছু পেতে আপনার লিঙ্ক শেয়ার করুন!',
+        replyButton: 'উত্তর দিন ও শেয়ার করুন',
+        repliedStatus: 'উত্তর দেওয়া হয়েছে',
+        replyModal: {
+          title: 'এই বার্তার উত্তর দিন',
+          reply: {
+            placeholder: 'আপনার উত্তর লিখুন...',
+          },
+          submitButton: 'নিশ্চিত করুন এবং শেয়ার কার্ড দেখুন',
+        },
+        shareModal: {
+          title: 'আপনার স্টোরিতে শেয়ার করুন',
+          description:
+            'এই কার্ডটি ডাউনলোড করুন এবং আপনার সোশ্যাল মিডিয়াতে শেয়ার করুন!',
+          downloadButton: 'কার্ড ডাউনলোড করুন',
+          shareButton: 'শেয়ার করুন',
+          sharing: 'শেয়ার হচ্ছে...',
+          shareError: 'স্বয়ংক্রিয়ভাবে শেয়ার করা যায়নি। লিঙ্ক কপি করা হয়েছে!',
+        },
+        logout: 'লগআউট',
+      },
+    },
+    eidWheel: {
+      title: 'ঈদ প্ল্যানিং লাকি হুইল',
+      description: 'চাকা ঘুরিয়ে আপনার ঈদের প্ল্যান জানুন! বন্ধুদের সাথে আপনার ফলাফল শেয়ার করুন।',
+      spinButton: 'চাকা ঘোরান',
+      name: {
+        label: 'আপনার নাম',
+        placeholder: 'ঘোরানোর জন্য আপনার নাম লিখুন',
+      },
+      results: {
+        title: "অফিসিয়াল ঈদ প্ল্যান",
+        resultFor: "এর জন্য ফলাফল",
+        plan: "আপনার ঈদের প্ল্যান",
+        downloadButton: "প্ল্যান ডাউনলোড করুন",
+        shareButton: "প্ল্যান শেয়ার করুন",
+        sharing: "শেয়ার করা হচ্ছে...",
+        shareError: "ছবি শেয়ার করা যায়নি, লিঙ্ক ক্লিপবোর্ডে কপি করা হয়েছে।",
+        footerDisclaimer: "বিশেষ দ্রষ্টব্য: এই চাকাটি শুধুমাত্র মজার জন্য এবং এটিকে গুরুত্ব সহকারে নেওয়ার কিছু নেই।",
+        backButton: "আবার ঘোরান",
+      },
+      options: [
+        'সালামি কালেকশন: আজ সারাদিন শুধু বড়দের পকেট কাটা।',
+        'বিরিয়ানি ডিনার: অন্তত ৩ প্লেট বিরিয়ানি সাবাড় করা।',
+        'বিছানা বিলাস: ঈদের দিনও দুপুর পর্যন্ত লম্বা ঘুম।',
+        'ঘুরতে যাওয়া: বন্ধুদের সাথে বাইক নিয়ে শহর ভ্রমণ।',
+        'মেহমান সামলানো: বাসার সব পিচ্চি মেহমানদের বিজি রাখা।',
+        'সালামি ডিস্ট্রিবিউশন: আজ আপনার পকেট থেকে ছোটদের সালামি দিতে হবে।',
+        'ক্রাশের সাথে চ্যাট: আজ ক্রাশকে নক দেওয়ার মোক্ষম সুযোগ।',
+        'রান্নাঘরে হেল্প: আম্মুকে সেমাই বা পায়েস বানাতে সাহায্য করা।',
+        'ফটোশুট সেশন: নতুন পাঞ্জাবি/ড্রেস পরে ১০০টি ছবি তোলা।',
+        'মুভি ম্যারাথন: সারারাত জেগে ঈদের নতুন সব নাটক দেখা।',
+        'দাওয়াত খাওয়া: আত্মীয়দের বাসায় গিয়ে পেট পুরে খাওয়া।',
+        'পুরানো স্মৃতি: স্কুলের বন্ধুদের সাথে আড্ডা দেওয়া।',
+        'সিঙ্গেল ঈদ: একা একা হেডফোন লাগিয়ে গান শোনা।',
+        'লং ড্রাইভে যাওয়া: ঝমঝম বৃষ্টির মধ্যে ঘুরতে বের হওয়া।',
+        'সালামি কুইন/কিং: আজকের সর্বোচ্চ সালামি প্রাপক আপনিই!',
+      ],
+    },
   },
 };
 
