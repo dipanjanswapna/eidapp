@@ -22,7 +22,7 @@ export function NGLSendMessageForm({ username }: { username: string }) {
   const { toast } = useToast();
 
   const formSchema = z.object({
-    message: z.string().min(1, translations.salamiPage.wishForm.errorDescription),
+    message: z.string().min(1, translations.ngl.send.message.error),
     senderTag: z.string(),
   });
 

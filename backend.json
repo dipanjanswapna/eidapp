@@ -1,32 +1,5 @@
 {
   "entities": {
-    "salamiProfile": {
-      "title": "Salami Profile",
-      "description": "Represents a user's Salami page profile.",
-      "type": "object",
-      "properties": {
-        "slug": { "type": "string" },
-        "userName": { "type": "string" },
-        "salamiMessage": { "type": "string" },
-        "cardTheme": { "type": "string", "enum": ["Funny", "Cute", "Traditional"] },
-        "bkashNumber": { "type": "string" },
-        "nagadNumber": { "type": "string" },
-        "createdAt": { "type": "string", "format": "date-time" }
-      },
-      "required": ["slug", "userName", "salamiMessage", "cardTheme", "createdAt"]
-    },
-    "wish": {
-      "title": "Salami Wish",
-      "description": "A wish sent to a Salami profile.",
-      "type": "object",
-      "properties": {
-        "slug": { "type": "string" },
-        "author": { "type": "string" },
-        "message": { "type": "string" },
-        "createdAt": { "type": "string", "format": "date-time" }
-      },
-      "required": ["slug", "author", "message", "createdAt"]
-    },
     "nglUser": {
       "title": "NGL User",
       "description": "An NGL user profile.",
@@ -60,14 +33,6 @@
     "providers": []
   },
   "firestore": {
-    "/profiles/{slug}": {
-      "schema": { "$ref": "#/entities/salamiProfile" },
-      "description": "Salami user profiles, with the slug as the document ID."
-    },
-    "/profiles/{slug}/wishes/{wishId}": {
-        "schema": { "$ref": "#/entities/wish" },
-        "description": "Wishes for a specific salami profile."
-    },
     "/ngl_users/{username}": {
         "schema": { "$ref": "#/entities/nglUser" },
         "description": "NGL user profiles, with the username as the document ID."

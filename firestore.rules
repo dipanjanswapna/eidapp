@@ -2,15 +2,6 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
     
-    // Salami profiles and wishes are public
-    match /profiles/{slug} {
-      allow read, create;
-      
-      match /wishes/{wishId} {
-        allow read, create;
-      }
-    }
-    
     // NGL user profiles can be created by anyone.
     // Reading should be handled carefully due to the PIN.
     // For this prototype, we allow reads, but in a production app,

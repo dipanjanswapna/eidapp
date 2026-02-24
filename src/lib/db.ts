@@ -15,7 +15,7 @@ import {
     orderBy,
     Timestamp,
 } from 'firebase/firestore';
-import type { SalamiProfile, Wish, NGLUser, NGLMessage } from './types';
+import type { NGLUser, NGLMessage } from './types';
 
 // This config is used for server-side actions
 const firebaseConfig = {
@@ -51,56 +51,6 @@ const convertTimestamps = (data: any): any => {
     }
     return data;
 };
-
-
-export async function addProfile(profileData: Omit<SalamiProfile, 'id' | 'createdAt'>): Promise<SalamiProfile> {
-  const newProfileData = {
-    ...profileData,
-    createdAt: serverTimestamp(),
-  };
-  const docRef = doc(db, 'profiles', profileData.slug);
-  await setDoc(docRef, newProfileData);
-  return {
-    ...profileData,
-    id: docRef.id,
-    createdAt: new Date(), // Return a local date for immediate use
-  };
-}
-
-export async function getProfileBySlug(slug: string): Promise<SalamiProfile | undefined> {
-  const docRef = doc(db, 'profiles', slug);
-  const docSnap = await getDoc(docRef);
-
-  if (docSnap.exists()) {
-    const data = docSnap.data();
-    // Pass the whole document data to convertTimestamps
-    return convertTimestamps({ id: docSnap.id, ...data }) as SalamiProfile;
-  }
-  return undefined;
-}
-
-export async function addWish(slug: string, wishData: Omit<Wish, 'id'|'slug'|'createdAt'>): Promise<Wish> {
-  const wishesCollection = collection(db, 'profiles', slug, 'wishes');
-  const newWishData = {
-    ...wishData,
-    slug,
-    createdAt: serverTimestamp(),
-  };
-  const docRef = await addDoc(wishesCollection, newWishData);
-  return {
-    ...wishData,
-    id: docRef.id,
-    slug,
-    createdAt: new Date(),
-  };
-}
-
-export async function getWishesBySlug(slug: string): Promise<Wish[]> {
-  const wishesCollection = collection(db, 'profiles', slug, 'wishes');
-  const q = query(wishesCollection, orderBy('createdAt', 'desc'));
-  const querySnapshot = await getDocs(q);
-  return querySnapshot.docs.map(doc => convertTimestamps({ id: doc.id, ...doc.data() }) as Wish);
-}
 
 // NGL (Anonymous Messaging)
 export async function findNGLUserByUsername(username: string): Promise<NGLUser | undefined> {

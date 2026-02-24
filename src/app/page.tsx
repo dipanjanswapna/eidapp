@@ -4,20 +4,13 @@ import Link from 'next/link';
 import { useLanguage } from '@/contexts/language-context';
 import ConfettiBackground from '@/components/confetti-background';
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
-import { ArrowRight, Calculator, CreditCard, Mail, Star } from 'lucide-react';
+import { ArrowRight, Calculator, Mail, Star } from 'lucide-react';
 
 export default function Home() {
   const { translations, language } = useLanguage();
   
   const homeFeatures = {
     en: [
-        {
-          title: "Create Salami Card",
-          description: "Design and share a unique digital card to collect Salami from friends and family this Eid.",
-          link: "/create",
-          icon: <CreditCard className="mb-4 h-10 w-10 text-primary" />,
-          cta: "Create Card",
-        },
         {
           title: "Salami Calculator",
           description: "A fun tool to calculate your potential Salami earnings based on your profile. Just for laughs!",
@@ -41,13 +34,6 @@ export default function Home() {
         },
     ],
     bn: [
-        {
-          title: "কার্ড তৈরি করুন",
-          description: "এই ঈদে বন্ধুদের এবং পরিবারের কাছ থেকে সালামি সংগ্রহ করতে একটি অনন্য ডিজিটাল কার্ড ডিজাইন করুন ও শেয়ার করুন।",
-          link: "/create",
-          icon: <CreditCard className="mb-4 h-10 w-10 text-primary" />,
-          cta: "কার্ড তৈরি করুন",
-        },
         {
           title: "সালামি ক্যালকুলেটর",
           description: "আপনার প্রোফাইলের উপর ভিত্তি করে আপনার সম্ভাব্য সালামি আয়ের পরিমাণ গণনা করার একটি মজার টুল। শুধু হাসির জন্য!",
@@ -90,7 +76,7 @@ export default function Home() {
           {translations.home.subtitle}
         </p>
         
-        <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           {featureCards.map((feature, index) => (
             <Card key={index} className="flex flex-col text-left transition-transform duration-300 hover:scale-105 hover:shadow-xl">
                 <CardHeader>

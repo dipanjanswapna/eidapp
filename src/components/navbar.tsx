@@ -18,7 +18,6 @@ export function Navbar() {
 
   const navLinks = [
     { href: '/', label: translations.nav.home },
-    { href: '/create', label: translations.nav.create },
     { href: '/calculator', label: translations.nav.calculator },
     { href: '/eid-wheel', label: translations.nav.eidWheel },
     { href: '/ngl/inbox', label: translations.nav.ngl },
