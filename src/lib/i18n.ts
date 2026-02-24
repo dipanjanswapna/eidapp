@@ -3,7 +3,7 @@ export const translations = {
     nav: {
       home: 'Home',
       calculator: 'Salami Calculator',
-      brand: 'EidVibe (ঈদ ভাইব)',
+      brand: 'EidVibe',
       register: 'Register',
       ngl: 'Eid Letter',
       eidWheel: 'Lucky Wheel',
@@ -11,7 +11,7 @@ export const translations = {
       iftar: 'Iftar Spots'
     },
     home: {
-      title: 'EidVibe (ঈদ ভাইব): Make Your Eid More Colorful!',
+      title: 'EidVibe: Make Your Eid More Colorful!',
       subtitle:
         'This Eid, boost your joy with all features in one place. Send anonymous messages, create custom colorful Salami receipts, or find free Iftar and Sehri spots on the map—everything is now on EidVibe!',
       ctaButton: 'Create Your Salami Card',
@@ -510,7 +510,7 @@ export const translations = {
     nav: {
       home: 'হোম',
       calculator: 'সালামি ক্যালকুলেটর',
-      brand: 'ঈদ ভাইব (EidVibe)',
+      brand: 'EidVibe',
       register: 'নিবন্ধন করুন',
       ngl: 'ঈদের চিঠি',
       eidWheel: 'লাকি হুইল',
@@ -518,7 +518,7 @@ export const translations = {
       iftar: 'ইফতার স্পট'
     },
     home: {
-      title: 'ঈদ ভাইব (EidVibe): আপনার ঈদ হোক আরও রঙিন!',
+      title: 'EidVibe: আপনার ঈদ হোক আরও রঙিন!',
       subtitle:
         'এবারের ঈদে আপনার আনন্দকে বাড়িয়ে দিতে আমরা নিয়ে এলাম সব ফিচার এক জায়গায়। নাম গোপন রেখে বন্ধুদের মেসেজ পাঠানো, কাস্টম কালারফুল সালামি রশিদ তৈরি করা, কিংবা ম্যাপে ফ্রিতে ইফতার ও সেহরি স্পট খুঁজে পাওয়া—সবই হবে এখন EidVibe-এ!',
       ctaButton: 'আপনার সালামি কার্ড তৈরি করুন',
@@ -843,14 +843,14 @@ export const translations = {
         createLink: 'ইনবক্স নেই? এখনই তৈরি করুন!',
       },
       send: {
-        title: 'একটি ঈদের চিঠি পাঠান',
-        subtitle: 'আপনার পরিচয় গোপন রাখা হবে।',
+        title: 'Send an Eid Letter to',
+        subtitle: 'Your identity will be kept secret.',
         message: {
           placeholder: 'আমাকে একটি গোপন ঈদ বার্তা বা সালামি আবদার পাঠান!',
           error: 'বার্তা খালি রাখা যাবে না।',
         },
         senderTag: {
-          label: 'একটি গোপন পরিচয় চয়ন করুন (ঐচ্ছিক)',
+          label: 'Choose a secret identity (optional)',
           placeholder: 'একটি ট্যাগ নির্বাচন করুন',
           options: {
             anonymous: 'নাম প্রকাশে অনিচ্ছুক',
@@ -946,70 +946,70 @@ export const translations = {
       ],
     },
     iftar: {
-      title: 'ইফতার ও সেহরি স্পট ফাইন্ডার',
-      description: 'আপনার কাছাকাছি বিনামূল্যে ইফতার এবং সেহরির স্পট খুঁজুন, যা কমিউনিটির দ্বারা শেয়ার করা হয়েছে।',
-      addSpotButton: 'নতুন স্পট যোগ করুন',
+      title: 'Iftar & Sehri Spot Finder',
+      description: 'Find free Iftar and Sehri spots near you, shared by the community.',
+      addSpotButton: 'Add New Spot',
       filter: {
-        label: 'খাবার দিয়ে ফিল্টার করুন',
-        all: 'সব',
-        verified: 'নিশ্চিত স্পট',
+        label: 'Filter by Food',
+        all: 'All',
+        verified: 'Verified Spots',
       },
       map: {
-        loading: 'ম্যাপ লোড হচ্ছে...',
-        noSpots: 'নির্বাচিত ফিল্টারের জন্য কোনো স্পট পাওয়া যায়নি। অন্য একটি চেষ্টা করুন!',
+        loading: 'Loading map...',
+        noSpots: 'No spots found for the selected filter. Try another one!',
         popup: {
-          verifiedBy: 'যাচাই করেছেন',
-          people: 'জন',
-          isFake: 'ভুয়া স্পট?',
-          vote: 'ভোট দিন',
+          verifiedBy: 'Verified by',
+          people: 'people',
+          isFake: 'Fake spot?',
+          vote: 'Vote',
         }
       },
       addSpotDialog: {
-        title: 'একটি নতুন ইফতার/সেহরি স্পট যোগ করুন',
-        description: 'একটি স্পট শেয়ার করে কমিউনিটিকে সাহায্য করুন। আপনার এন্ট্রি ২৪ ঘণ্টা লাইভ থাকবে।',
+        title: 'Add a New Iftar/Sehri Spot',
+        description: 'Help the community by sharing a spot. Your entry will be live for 24 hours.',
         masjidName: {
-          label: 'মসজিদ/স্পটের নাম',
-          placeholder: 'যেমন, বায়তুল মোকাররম মসজিদ'
+          label: 'Mosque/Spot Name',
+          placeholder: 'e.g., Baitul Mukarram Mosque'
         },
         area: {
-          label: 'এলাকা/মহল্লা',
-          placeholder: 'যেমন, পল্টন, ঢাকা'
+          label: 'Area / Neighborhood',
+          placeholder: 'e.g., Paltan, Dhaka'
         },
         foodType: {
-          label: 'খাবারের ধরণ',
-          placeholder: 'খাবারের ধরণ নির্বাচন করুন'
+          label: 'Food Type',
+          placeholder: 'Select food type'
         },
         otherFoodType: {
-          label: 'অন্যান্য খাবারের নাম উল্লেখ করুন',
-          placeholder: 'যেমন, ফল, জুস'
+          label: 'Specify Other Food',
+          placeholder: 'e.g., Fruits, Juice'
         },
         location: {
-          label: 'অবস্থান',
-          description: 'অবস্থান সেট করতে ম্যাপে ক্লিক করুন অথবা আপনার বর্তমান অবস্থান ব্যবহার করুন।',
-          useCurrentLocation: 'আমার বর্তমান অবস্থান ব্যবহার করুন',
+          label: 'Location',
+          description: 'Click on the map to set location or use your current location.',
+          useCurrentLocation: 'Use My Current Location',
         },
         endTime: {
-            label: 'খাবার পাওয়া যাবে (ঐচ্ছিক)',
-            description: 'কখন খাবার বিতরণ শেষ হবে (২৪ঘন্টা ফরম্যাট)।',
-            placeholder: 'HH:MM যেমন, ১৮:৩০',
+            label: 'Food Available Until (Optional)',
+            description: 'Time when food distribution ends (24h format).',
+            placeholder: 'HH:MM e.g., 18:30',
         },
-        submitButton: 'স্পট যোগ করুন',
-        submitting: 'যোগ করা হচ্ছে...',
-        success: 'স্পট সফলভাবে যোগ করা হয়েছে!',
-        error: 'স্পট যোগ করতে ব্যর্থ হয়েছে। অনুগ্রহ করে আবার চেষ্টা করুন।'
+        submitButton: 'Add Spot',
+        submitting: 'Adding...',
+        success: 'Spot added successfully!',
+        error: 'Failed to add spot. Please try again.'
       },
       foodTypes: {
-        'kacchi-biryani': 'কাচ্চি বিরিয়ানি',
-        'tehari': 'তেহারি',
-        'khichuri': 'খিচুড়ি (ভুনা/পাতলা)',
-        'polao-korma': 'পোলাও ও কোরমা',
-        'beef-roti': 'গরুর মাংস ও রুটি/ভাত',
-        'chicken-biryani': 'চিকেন বিরিয়ানি/রোস্ট',
-        'mutton': 'খাসির মাংস',
-        'haleem-jilapi': 'হালিম ও জিলাপি',
-        'mixed-iftar': 'মিশ্র ইফতার (ছোলা, পিয়াজু ইত্যাদি)',
-        'sehri-thali': 'সেহরি স্পেশাল থালি',
-        'others': 'অন্যান্য'
+        'kacchi-biryani': 'Kacchi Biryani',
+        'tehari': 'Tehari',
+        'khichuri': 'Khichuri (Bhuna/Patla)',
+        'polao-korma': 'Polao & Korma',
+        'beef-roti': 'Beef & Roti/Rice',
+        'chicken-biryani': 'Chicken Biryani/Roast',
+        'mutton': 'Mutton',
+        'haleem-jilapi': 'Haleem & Jilapi',
+        'mixed-iftar': 'Mixed Iftar (Chickpeas, etc.)',
+        'sehri-thali': 'Sehri Special Thali',
+        'others': 'Others'
       }
     }
   },

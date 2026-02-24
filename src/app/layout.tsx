@@ -7,10 +7,10 @@ import { FirebaseClientProvider } from '@/firebase/client-provider';
 import { Footer } from '@/components/footer';
 
 const siteUrl = 'https://eidvibe.vercel.app';
-const title = 'EidVibe (ঈদ ভাইব) - Your Ultimate Eid Companion';
+const title = 'EidVibe - Your Ultimate Eid Companion';
 const description = 'Celebrate Eid with EidVibe! Create anonymous NGL-style messages, calculate Salami, spin the lucky wheel for fun, find Iftar spots, and send beautiful Eid cards. All your Eid fun in one place.';
 const keywords = [
-    'Eid', 'EidVibe', 'ঈদ ভাইব', 'Salami Calculator', 'Eid Card', 'Anonymous Messages', 'NGL', 'Iftar Spots', 'Ramadan', 'Eid Mubarak', 'সালামি ক্যালকুলেটর', 'ঈদ কার্ড', 'গোপন চিঠি', 'ইফতার স্পট'
+    'Eid', 'EidVibe', 'Salami Calculator', 'Eid Card', 'Anonymous Messages', 'NGL', 'Iftar Spots', 'Ramadan', 'Eid Mubarak', 'সালামি ক্যালকুলেটর', 'ঈদ কার্ড', 'গোপন চিঠি', 'ইফতার স্পট'
 ];
 const ogImageUrl = 'https://images.unsplash.com/photo-1619525492451-a36543b3425f?w=1200&q=80';
 
