@@ -4,7 +4,7 @@ import { useLanguage } from '@/contexts/language-context';
 import { IftarSpot, FoodType, foodTypes } from '@/lib/types';
 import { getIftarSpotsAction } from '@/lib/actions';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { Loader2, AlertCircle, BadgeCheck } from 'lucide-react';
 import AddIftarSpotDialog from './add-iftar-spot-dialog';
 import dynamic from 'next/dynamic';
@@ -85,10 +85,6 @@ export default function IftarSpotsClient() {
   return (
     <div className="relative h-full w-full">
       <div className="absolute top-4 left-1/2 z-[1000] w-[90vw] max-w-4xl -translate-x-1/2 transform space-y-4">
-        <div className="flex justify-center">
-          <AddIftarSpotDialog onSpotAdded={handleSpotAdded} />
-        </div>
-
         <Card className="rounded-full shadow-lg">
           <CardContent className="p-1">
             <ScrollArea className="w-full whitespace-nowrap rounded-full">
@@ -137,6 +133,9 @@ export default function IftarSpotsClient() {
           </div>
         )}
         {!isLoading && !error && <IftarMap spots={displayedSpots} onVote={handleVote} />}
+      </div>
+      <div className="absolute bottom-4 left-1/2 z-[1000] -translate-x-1/2 transform">
+        <AddIftarSpotDialog onSpotAdded={handleSpotAdded} />
       </div>
     </div>
   );
