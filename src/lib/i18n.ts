@@ -7,6 +7,7 @@ export const translations = {
       register: 'Register',
       ngl: 'Eid Letter',
       eidWheel: 'Lucky Wheel',
+      eidCard: 'Eid Card',
     },
     home: {
       title: 'Digital Salami, Festive Fun!',
@@ -28,6 +29,43 @@ export const translations = {
         label: 'Rocket Number (Optional)',
         placeholder: 'e.g., 018000000001',
       },
+    },
+    eidCard: {
+      create: {
+        title: 'Create an Eid Card',
+        description: 'Design a beautiful, personalized Eid card for your loved ones.',
+        recipient: {
+          label: "Recipient's Name",
+          placeholder: "e.g., Anik Ahmed",
+        },
+        message: {
+          label: 'Personal Message',
+          placeholder: 'Write your heartfelt wishes here...',
+        },
+        theme: {
+          label: 'Choose a Theme',
+          'royal-blue': 'Royal Blue',
+          'bright-red': 'Bright Red',
+          'golden-yellow': 'Golden Yellow',
+        },
+        submitButton: 'Generate Card',
+      },
+      display: {
+        title: 'A Special Eid Card For You',
+        paymentTitle: 'Send Salami',
+        paymentDescription: 'Make their Eid even more special!',
+        sendVia: 'Send via',
+        copied: 'Number Copied!',
+        share: {
+            title: "Share this Card",
+            downloadButton: 'Download Card',
+            shareButton: 'Share Link',
+            directShareButton: 'Share Image',
+            linkCopied: 'Card link copied!',
+            sharing: 'Sharing...',
+            shareError: 'Could not share image automatically. Link copied to clipboard.',
+        },
+      }
     },
     calculator: {
       title: 'Eid Salami Calculator',
@@ -388,6 +426,7 @@ export const translations = {
       register: 'নিবন্ধন করুন',
       ngl: 'ঈদের চিঠি',
       eidWheel: 'লাকি হুইল',
+      eidCard: 'ঈদ কার্ড',
     },
     home: {
       title: 'ডিজিটাল সালামি, উৎসবের আমেজ!',
@@ -409,6 +448,43 @@ export const translations = {
         label: 'রকেট নম্বর (ঐচ্ছিক)',
         placeholder: 'যেমন, ০১৮০০০০০০০০১',
       },
+    },
+    eidCard: {
+      create: {
+        title: 'ঈদ কার্ড তৈরি করুন',
+        description: 'আপনার প্রিয়জনের জন্য একটি সুন্দর, ব্যক্তিগত ঈদ কার্ড ডিজাইন করুন।',
+        recipient: {
+          label: "প্রাপকের নাম",
+          placeholder: "যেমন, অনিক আহমেদ",
+        },
+        message: {
+          label: 'ব্যক্তিগত বার্তা',
+          placeholder: 'এখানে আপনার আন্তরিক শুভেচ্ছা লিখুন...',
+        },
+        theme: {
+          label: 'একটি থিম নির্বাচন করুন',
+          'royal-blue': 'রাজকীয় নীল',
+          'bright-red': 'উজ্জ্বল লাল',
+          'golden-yellow': 'সোনালী হলুদ',
+        },
+        submitButton: 'কার্ড তৈরি করুন',
+      },
+      display: {
+        title: 'আপনার জন্য একটি বিশেষ ঈদ কার্ড',
+        paymentTitle: 'সালামি পাঠান',
+        paymentDescription: 'তার ঈদকে আরও বিশেষ করে তুলুন!',
+        sendVia: 'এর মাধ্যমে পাঠান',
+        copied: 'নম্বর কপি করা হয়েছে!',
+        share: {
+            title: "এই কার্ডটি শেয়ার করুন",
+            downloadButton: 'কার্ড ডাউনলোড করুন',
+            shareButton: 'লিঙ্ক শেয়ার করুন',
+            directShareButton: 'ছবি শেয়ার করুন',
+            linkCopied: 'কার্ডের লিঙ্ক কপি করা হয়েছে!',
+            sharing: 'শেয়ার হচ্ছে...',
+            shareError: 'ছবি স্বয়ংক্রিয়ভাবে শেয়ার করা যায়নি। লিঙ্ক ক্লিপবোর্ডে কপি করা হয়েছে।',
+        },
+      }
     },
     calculator: {
       title: 'ঈদ সালামি ক্যালকুলেটর',

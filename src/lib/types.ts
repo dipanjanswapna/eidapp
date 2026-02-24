@@ -16,3 +16,14 @@ export type NGLMessage = {
   reply?: string;
   createdAt: Date;
 };
+
+export type EidCard = {
+  id: string;
+  recipientName: string;
+  message: string;
+  theme: 'royal-blue' | 'bright-red' | 'golden-yellow';
+  bkashNumber?: string;
+  nagadNumber?: string;
+  rocketNumber?: string;
+  createdAt: Date;
+}

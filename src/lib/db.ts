@@ -15,7 +15,7 @@ import {
     orderBy,
     Timestamp,
 } from 'firebase/firestore';
-import type { NGLUser, NGLMessage } from './types';
+import type { NGLUser, NGLMessage, EidCard } from './types';
 
 // This config is used for server-side actions
 const firebaseConfig = {
@@ -145,4 +145,25 @@ export async function addReplyToNGLMessage(messageId: string, reply: string): Pr
     }
 
     return convertTimestamps({ id: updatedDocSnap.id, ...updatedDocSnap.data() }) as NGLMessage;
+}
+
+
+// Eid Card
+export async function addEidCard(cardData: Omit<EidCard, 'id' | 'createdAt'>): Promise<string> {
+    const cardsCollection = collection(db, 'eid_cards');
+    const newCardData = {
+        ...cardData,
+        createdAt: serverTimestamp(),
+    };
+    const docRef = await addDoc(cardsCollection, newCardData);
+    return docRef.id;
+}
+
+export async function getEidCardById(cardId: string): Promise<EidCard | null> {
+    const docRef = doc(db, 'eid_cards', cardId);
+    const docSnap = await getDoc(docRef);
+    if (docSnap.exists()) {
+        return convertTimestamps({ id: docSnap.id, ...docSnap.data() }) as EidCard;
+    }
+    return null;
 }

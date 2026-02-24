@@ -27,6 +27,21 @@
         "createdAt": { "type": "string", "format": "date-time" }
       },
       "required": ["receiverUsername", "senderTag", "message", "isReplied", "createdAt"]
+    },
+    "eidCard": {
+      "title": "Eid Card",
+      "description": "A digital Eid card with a personal message and payment options.",
+      "type": "object",
+      "properties": {
+        "recipientName": { "type": "string" },
+        "message": { "type": "string" },
+        "theme": { "type": "string", "enum": ["royal-blue", "bright-red", "golden-yellow"] },
+        "bkashNumber": { "type": "string" },
+        "nagadNumber": { "type": "string" },
+        "rocketNumber": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["recipientName", "message", "theme", "createdAt"]
     }
   },
   "auth": {
@@ -40,6 +55,10 @@
     "/ngl_messages/{messageId}": {
         "schema": { "$ref": "#/entities/nglMessage" },
         "description": "All NGL messages."
+    },
+    "/eid_cards/{cardId}": {
+        "schema": { "$ref": "#/entities/eidCard" },
+        "description": "User-generated digital Eid cards."
     }
   }
 }

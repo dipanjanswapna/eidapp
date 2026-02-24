@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useLanguage } from '@/contexts/language-context';
 import ConfettiBackground from '@/components/confetti-background';
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
-import { ArrowRight, Calculator, Mail, Star } from 'lucide-react';
+import { ArrowRight, Calculator, Mail, Star, CreditCard } from 'lucide-react';
 
 export default function Home() {
   const { translations, language } = useLanguage();
@@ -32,6 +32,13 @@ export default function Home() {
           icon: <Star className="mb-4 h-10 w-10 text-primary" />,
           cta: "Spin the Wheel",
         },
+        {
+          title: "Eid Card Generator",
+          description: "Design and send beautiful, personalized digital Eid cards to your friends and family.",
+          link: "/eid-card/create",
+          icon: <CreditCard className="mb-4 h-10 w-10 text-primary" />,
+          cta: "Create Card",
+        },
     ],
     bn: [
         {
@@ -55,10 +62,17 @@ export default function Home() {
           icon: <Star className="mb-4 h-10 w-10 text-primary" />,
           cta: "চাকা ঘোরান",
         },
+        {
+          title: "ঈদ কার্ড জেনারেটর",
+          description: "আপনার বন্ধু এবং পরিবারের জন্য সুন্দর, ব্যক্তিগত ডিজিটাল ঈদ কার্ড ডিজাইন এবং পাঠান।",
+          link: "/eid-card/create",
+          icon: <CreditCard className="mb-4 h-10 w-10 text-primary" />,
+          cta: "কার্ড তৈরি করুন",
+        },
     ]
   };
 
-  const featureCards = homeFeatures[language];
+  const featureCards = homeFeatures[language].sort(() => .5 - Math.random()).slice(0, 3);
 
 
   return (

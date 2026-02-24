@@ -1,7 +1,7 @@
 'use server';
 
 import { z } from "zod";
-import { addNGLUser, verifyNGLUserPin, addNGLMessage, getNGLMessagesByUsername, addReplyToNGLMessage } from "./db";
+import { addNGLUser, verifyNGLUserPin, addNGLMessage, getNGLMessagesByUsername, addReplyToNGLMessage, addEidCard } from "./db";
 import { redirect } from "next/navigation";
 import type { NGLUser, NGLMessage } from "./types";
 
@@ -74,4 +74,26 @@ export async function replyToMessageAction(messageId: string, reply: string, use
     }
 
     return await addReplyToNGLMessage(messageId, reply);
+}
+
+// Eid Card Actions
+const createEidCardSchema = z.object({
+    recipientName: z.string().min(2, "Recipient's name must be at least 2 characters."),
+    message: z.string().min(5, "Message must be at least 5 characters."),
+    theme: z.enum(['royal-blue', 'bright-red', 'golden-yellow']),
+    bkashNumber: z.string().optional(),
+    nagadNumber: z.string().optional(),
+    rocketNumber: z.string().optional(),
+});
+
+export async function createEidCardAction(values: z.infer<typeof createEidCardSchema>) {
+    const validatedFields = createEidCardSchema.safeParse(values);
+
+    if (!validatedFields.success) {
+        return { error: validatedFields.error.flatten().fieldErrors };
+    }
+    
+    const cardId = await addEidCard(validatedFields.data);
+  
+    redirect(`/eid-card/${cardId}`);
 }

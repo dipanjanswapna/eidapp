@@ -17,5 +17,12 @@ service cloud.firestore {
       allow create;
       allow read, update, delete: if false; // Prevent client-side access
     }
+
+    // Eid cards can be created by anyone and are publicly readable.
+    // Updates and deletes are not allowed from the client.
+    match /eid_cards/{cardId} {
+      allow create, read;
+      allow update, delete: if false;
+    }
   }
 }

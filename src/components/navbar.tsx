@@ -20,6 +20,7 @@ export function Navbar() {
     { href: '/', label: translations.nav.home },
     { href: '/calculator', label: translations.nav.calculator },
     { href: '/eid-wheel', label: translations.nav.eidWheel },
+    { href: '/eid-card/create', label: translations.nav.eidCard },
     { href: '/ngl/inbox', label: translations.nav.ngl },
   ];
 
