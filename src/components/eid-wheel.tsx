@@ -5,9 +5,8 @@ import { useLanguage } from '@/contexts/language-context';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { cn } from '@/lib/utils';
 import { useRouter } from 'next/navigation';
-import { ArrowRight, Ticket, Triangle } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 export default function EidWheel() {
   const { translations } = useLanguage();
@@ -20,6 +19,11 @@ export default function EidWheel() {
   const wheelOptions = translations.eidWheel.options;
   const numOptions = wheelOptions.length;
   const anglePerOption = 360 / numOptions;
+  
+  const segmentColors = [
+    '#fde047', '#facc15', '#fbbf24', '#fb923c', '#f97316', '#ef4444', '#fde047', '#facc15', '#fbbf24', '#fb923c', '#f97316', '#ef4444', '#fde047', '#facc15', '#fbbf24'
+  ].slice(0, numOptions);
+
 
   const handleSpin = () => {
     if (!name) {
@@ -29,7 +33,7 @@ export default function EidWheel() {
     setNameError('');
     setIsSpinning(true);
 
-    const randomSpins = Math.floor(Math.random() * 5) + 5; // 5 to 10 full spins
+    const randomSpins = Math.floor(Math.random() * 5) + 5;
     const randomIndex = Math.floor(Math.random() * numOptions);
     const newRotation = rotation + (randomSpins * 360) - (randomIndex * anglePerOption) - (anglePerOption / 2);
     
@@ -39,7 +43,7 @@ export default function EidWheel() {
       setIsSpinning(false);
       const result = wheelOptions[randomIndex];
       router.push(`/eid-wheel/result?name=${encodeURIComponent(name)}&result=${encodeURIComponent(result)}&index=${randomIndex}`);
-    }, 5000); // Corresponds to the animation duration
+    }, 5000);
   };
 
   return (
@@ -56,23 +60,27 @@ export default function EidWheel() {
           }
         `}</style>
         
-        <Triangle 
-          className="absolute top-[-15px] z-10 h-8 w-8 text-accent fill-accent drop-shadow-lg" 
-          style={{ transform: 'rotate(180deg)' }}
+        <div 
+          className="absolute right-[-10px] top-1/2 z-10 h-10 w-5 -translate-y-1/2"
+          style={{
+            clipPath: 'polygon(100% 50%, 0 0, 0 100%)',
+            background: 'white',
+            filter: 'drop-shadow(-2px 2px 2px rgba(0,0,0,0.3))'
+          }}
         />
 
         <div 
-          className="wheel pointer-events-none absolute h-full w-full rounded-full border-8 border-primary/10"
+          className="wheel relative h-full w-full rounded-full"
           style={{ 
             transform: `rotate(${rotation}deg)`,
           }}
         >
            <div 
-              className="absolute h-full w-full rounded-full"
+              className="absolute h-full w-full rounded-full border border-black/20"
               style={{
                 background: `conic-gradient(
-                  ${wheelOptions.map((_, index) => {
-                    const color = index % 2 === 0 ? 'hsla(var(--primary), 0.05)' : 'transparent';
+                  from -${anglePerOption / 2}deg,
+                  ${segmentColors.map((color, index) => {
                     const start = index * anglePerOption;
                     const end = start + anglePerOption;
                     return `${color} ${start}deg ${end}deg`;
@@ -83,25 +91,25 @@ export default function EidWheel() {
 
             {wheelOptions.map((option, index) => {
                 const angle = index * anglePerOption + (anglePerOption / 2);
-                const isFlipped = angle > 90 && angle < 270;
-                
                 return (
                     <div
                         key={index}
-                        className="absolute flex h-full w-full justify-center"
+                        className="pointer-events-none absolute left-0 top-0 flex h-full w-full justify-center"
                         style={{ transform: `rotate(${angle}deg)` }}
                     >
-                        <span style={{ transform: `rotate(${isFlipped ? 180 : 0}deg)`}} className="mt-4 block max-w-[80px] text-center text-[10px] font-semibold text-foreground/80 sm:mt-6 sm:text-xs">
+                        <div
+                            style={{
+                                transform: `translateY(25%) rotate(-90deg)`,
+                            }}
+                            className="origin-center text-center text-[10px] font-bold text-black sm:text-xs"
+                        >
                            {option.split(':')[0]}
-                        </span>
+                        </div>
                     </div>
                 );
             })}
-        </div>
-
-
-        <div className="absolute flex h-20 w-20 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-lg">
-          <Ticket className="h-10 w-10" />
+             <div className="absolute left-1/2 top-1/2 flex h-20 w-20 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white shadow-lg sm:h-24 sm:w-24">
+            </div>
         </div>
       </div>
 
