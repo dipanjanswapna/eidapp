@@ -15,6 +15,7 @@ import html2canvas from 'html2canvas';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { Input } from './ui/input';
+import { ScrollArea } from './ui/scroll-area';
 
 export function NGLInboxClient({ user, pin }: { user: NGLUser, pin: string }) {
   const { translations } = useLanguage();
@@ -211,9 +212,11 @@ export function NGLInboxClient({ user, pin }: { user: NGLUser, pin: string }) {
                     <DialogTitle>{translations.ngl.inbox.shareModal.title}</DialogTitle>
                     <DialogDescription>{translations.ngl.inbox.shareModal.description}</DialogDescription>
                 </DialogHeader>
-                <div className="p-4" ref={shareCardRef}>
-                    {currentMessage && <NGLReplyAndShareCard user={user} message={currentMessage} />}
-                </div>
+                <ScrollArea className="max-h-[60vh] rounded-md">
+                    <div className="p-4" ref={shareCardRef}>
+                        {currentMessage && <NGLReplyAndShareCard user={user} message={currentMessage} />}
+                    </div>
+                </ScrollArea>
                  <div className="flex gap-4">
                     <Button onClick={handleDownload} disabled={isDownloading} className="w-full">
                         {isDownloading ? <Loader2 className="mr-2 h-4 w-4 animate-spin"/> : null}
