@@ -239,7 +239,7 @@ export default function SalamiCalculatorResult({
                     )}
                     
                     <div className="relative">
-                        <Stamp className="h-24 w-24 sm:h-28 sm:w-28 text-red-500/80" />
+                        <Stamp className="h-24 w-24 sm:h-28 sm:w-28 text-primary" />
                         <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 -rotate-12 text-xl sm:text-2xl font-bold text-white">
                             {translations.calculator.results.approved}
                         </span>
