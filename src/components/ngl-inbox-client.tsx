@@ -3,7 +3,7 @@ import { useEffect, useState, useRef } from 'react';
 import { NGLMessage, NGLUser } from '@/lib/types';
 import { getNGLMessagesAction, replyToMessageAction } from '@/lib/actions';
 import { useToast } from '@/hooks/use-toast';
-import { Loader2, MessageCircle, LogOut } from 'lucide-react';
+import { Loader2, MessageCircle, LogOut, Share2 } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
 import { useLanguage } from '@/contexts/language-context';
 import { formatDistanceToNow } from 'date-fns';
@@ -14,6 +14,7 @@ import NGLReplyAndShareCard from './ngl-reply-and-share-card';
 import html2canvas from 'html2canvas';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import { Input } from './ui/input';
 
 export function NGLInboxClient({ user, pin }: { user: NGLUser, pin: string }) {
   const { translations } = useLanguage();
@@ -94,8 +95,51 @@ export function NGLInboxClient({ user, pin }: { user: NGLUser, pin: string }) {
     toast({ title: "Logged out successfully."});
   };
 
+  const handleShare = () => {
+    const shareUrl = `${window.location.origin}/ngl/${user.username}`;
+    if (navigator.share) {
+        navigator.share({
+            title: `Send me anonymous messages!`,
+            text: `Send me secret Eid letters on Mon Torongo!`,
+            url: shareUrl,
+        }).catch(err => {
+            console.error("Share failed", err);
+            toast({
+                variant: 'destructive',
+                title: "Share Failed",
+                description: "Could not share the link automatically.",
+            });
+        });
+    } else {
+        navigator.clipboard.writeText(shareUrl);
+        toast({ title: translations.ngl.inbox.share.linkCopied });
+    }
+  };
+
+  const shareUrl = typeof window !== 'undefined' ? `${window.location.origin}/ngl/${user.username}` : '';
+
   return (
     <div className="container relative z-10 mx-auto max-w-3xl px-4 py-12">
+        <Card className="mb-8">
+            <CardHeader>
+                <CardTitle>{translations.ngl.inbox.share.title}</CardTitle>
+                <CardDescription>{translations.ngl.inbox.share.description}</CardDescription>
+            </CardHeader>
+            <CardContent>
+                <div className="flex flex-col sm:flex-row gap-4">
+                    <Input 
+                        readOnly 
+                        value={shareUrl}
+                        className="bg-muted"
+                    />
+                    <Button onClick={handleShare} className="w-full sm:w-auto shrink-0">
+                        <Share2 className="mr-2 h-4 w-4" />
+                        {translations.ngl.inbox.share.shareButton}
+                    </Button>
+                </div>
+            </CardContent>
+        </Card>
+
         <Card>
             <CardHeader className="flex-row items-center justify-between">
                 <div>

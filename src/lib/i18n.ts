@@ -371,6 +371,12 @@ export const translations = {
         },
         inbox: {
             title: "Your Eid Letter Inbox",
+            share: {
+                title: "Share Your Link",
+                description: "Let your friends know where to send you secret Eid letters!",
+                shareButton: "Share Link",
+                linkCopied: "Link Copied!"
+            },
             noMessages: "No Eid letters yet. Share your link to get some!",
             replyButton: "Reply & Share",
             repliedStatus: "Replied",
@@ -764,6 +770,12 @@ export const translations = {
         },
         inbox: {
             title: "আপনার ঈদের চিঠির ইনবক্স",
+            share: {
+                title: "আপনার লিঙ্ক শেয়ার করুন",
+                description: "বন্ধুদের জানিয়ে দিন কোথায় আপনাকে গোপন ঈদের চিঠি পাঠাতে হবে!",
+                shareButton: "লিঙ্ক শেয়ার করুন",
+                linkCopied: "লিঙ্ক কপি করা হয়েছে!"
+            },
             noMessages: "এখনও কোনো ঈদের চিঠি নেই। কিছু পেতে আপনার লিঙ্ক শেয়ার করুন!",
             replyButton: "উত্তর দিন ও শেয়ার করুন",
             repliedStatus: "উত্তর দেওয়া হয়েছে",
