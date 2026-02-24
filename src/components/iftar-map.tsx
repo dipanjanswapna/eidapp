@@ -8,7 +8,7 @@ import { Button } from './ui/button';
 import { ThumbsUp, ThumbsDown } from 'lucide-react';
 import { useState } from 'react';
 import { voteOnIftarSpotAction } from '@/lib/actions';
-import { useToast } from './ui/use-toast';
+import { useToast } from '@/hooks/use-toast';
 
 // Fix for default icon not showing in Next.js
 delete (L.Icon.Default.prototype as any)._getIconUrl;
