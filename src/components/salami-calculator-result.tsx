@@ -9,6 +9,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { useToast } from '@/hooks/use-toast';
 import Confetti from 'react-confetti';
 import { cn } from '@/lib/utils';
+import Image from 'next/image';
 
 type SalamiCalculatorResultProps = {
   name: string;
@@ -211,8 +212,13 @@ export default function SalamiCalculatorResult({
     {isClient && <Confetti recycle={false} numberOfPieces={400} />}
     <div className="container relative z-10 mx-auto max-w-2xl px-4 py-12">
         <div id="salami-receipt" className="bg-white p-2 sm:p-4">
-            <div className="relative border-2 border-dashed border-gray-400 bg-gray-50 p-4 sm:p-6 shadow-lg">
-                <div className="absolute inset-0 bg-[url('/receipt-bg.svg')] bg-center opacity-5"></div>
+            <div className="relative overflow-hidden rounded-lg border-2 border-dashed border-gray-400 bg-gray-50 p-4 sm:p-6 shadow-lg">
+                <Image
+                    src="https://i.postimg.cc/bJWtCFrB/aesthetic-eid-al-fitr-background-free-vector.jpg"
+                    alt="Receipt background"
+                    fill
+                    className="object-cover opacity-20"
+                />
                 <div className="relative text-center">
                 <h1 className="text-xl sm:text-2xl font-bold text-gray-800">{translations.calculator.results.title}</h1>
                 </div>

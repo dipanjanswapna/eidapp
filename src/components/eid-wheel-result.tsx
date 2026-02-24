@@ -9,6 +9,7 @@ import { useToast } from '@/hooks/use-toast';
 import Confetti from 'react-confetti';
 import { Waves } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 type EidWheelResultProps = {
   name: string;
@@ -86,8 +87,8 @@ export default function EidWheelResult({ name, result }: EidWheelResultProps) {
     {isClient && <Confetti recycle={false} numberOfPieces={400} />}
     <div className="container relative z-10 mx-auto max-w-2xl px-4 py-12">
         <div id="eid-plan-receipt" className="bg-[#FEFDF8] p-2 sm:p-4 rounded-lg">
-            <div className="relative border-4 border-dashed border-yellow-300 bg-yellow-50 p-4 sm:p-6 shadow-lg rounded-lg">
-                <div className="absolute inset-0 bg-[url('/receipt-bg.svg')] bg-center opacity-5"></div>
+            <div className="relative overflow-hidden border-4 border-dashed border-yellow-300 bg-yellow-50 p-4 sm:p-6 shadow-lg rounded-lg">
+                <Image src="https://i.postimg.cc/bJWtCFrB/aesthetic-eid-al-fitr-background-free-vector.jpg" alt="Receipt background" fill className="object-cover opacity-20" />
                 
                 <div className="relative text-center mb-6">
                     <h1 className="text-xl sm:text-2xl font-bold text-gray-800">{translations.eidWheel.results.title}</h1>

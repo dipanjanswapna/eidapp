@@ -3,6 +3,7 @@
 import { NGLMessage, NGLUser } from "@/lib/types";
 import { useLanguage } from "@/contexts/language-context";
 import { MessageSquare, CornerDownRight, Waves } from "lucide-react";
+import Image from "next/image";
 
 type CardProps = {
     user: NGLUser;
@@ -20,8 +21,8 @@ export default function NGLReplyAndShareCard({ user, message }: CardProps) {
 
     return (
         <div className="bg-white p-2 sm:p-4 rounded-lg">
-            <div className="relative border-2 border-dashed border-gray-400 bg-gray-50 p-4 sm:p-6 shadow-lg rounded-lg">
-                <div className="absolute inset-0 bg-[url('/receipt-bg.svg')] bg-center opacity-5"></div>
+            <div className="relative overflow-hidden border-2 border-dashed border-gray-400 bg-gray-50 p-4 sm:p-6 shadow-lg rounded-lg">
+                <Image src="https://i.postimg.cc/bJWtCFrB/aesthetic-eid-al-fitr-background-free-vector.jpg" alt="Receipt background" fill className="object-cover opacity-20" />
                 
                 <div className="relative text-center mb-6">
                     <h1 className="text-lg sm:text-2xl font-bold text-gray-800">{language === 'bn' ? 'ঈদের চিঠি' : 'Secret Eid Message'}</h1>

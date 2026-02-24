@@ -9,6 +9,7 @@ import { confirmEidCardPaymentAction } from '@/lib/actions';
 import { useState } from 'react';
 import Confetti from 'react-confetti';
 import html2canvas from 'html2canvas';
+import Image from 'next/image';
 
 export function EidCardDisplay({ card: initialCard }: { card: EidCard }) {
   const { translations } = useLanguage();
@@ -106,8 +107,8 @@ export function EidCardDisplay({ card: initialCard }: { card: EidCard }) {
     <>
       {showConfetti && <Confetti recycle={false} numberOfPieces={400} />}
       <div id="eid-card-container" className="bg-white p-2 sm:p-4 rounded-lg">
-        <div className="relative border-2 border-dashed border-gray-400 bg-gray-50 p-4 sm:p-6 shadow-lg rounded-lg">
-          <div className="absolute inset-0 bg-[url('/receipt-bg.svg')] bg-center opacity-5"></div>
+        <div className="relative overflow-hidden border-2 border-dashed border-gray-400 bg-gray-50 p-4 sm:p-6 shadow-lg rounded-lg">
+          <Image src="https://i.postimg.cc/bJWtCFrB/aesthetic-eid-al-fitr-background-free-vector.jpg" alt="Receipt background" fill className="object-cover opacity-20" />
           
           <div className="relative text-center">
             <h1 className="text-xl sm:text-2xl font-bold text-gray-800">{translations.eidCard.display.invoiceTitle}</h1>
