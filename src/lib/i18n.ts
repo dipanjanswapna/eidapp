@@ -341,7 +341,7 @@ export const translations = {
             title: "Send an Eid Letter to",
             subtitle: "Your identity will be kept secret.",
             message: {
-                placeholder: "Write your Eid letter here...",
+                placeholder: "Send me a secret Eid message or a Salami request!",
             },
             senderTag: {
                 label: "Choose a secret identity (optional)",
@@ -363,7 +363,11 @@ export const translations = {
                 }
             },
             submitButton: "Send Letter",
-            success: "Your Eid letter has been sent!",
+            success: {
+                title: "Message Sent!",
+                description: "Want to create your own inbox to receive secret messages?",
+                cta: "Create Your Inbox"
+            },
         },
         inbox: {
             title: "Your Eid Letter Inbox",
@@ -730,7 +734,7 @@ export const translations = {
             title: "একটি ঈদের চিঠি পাঠান",
             subtitle: "আপনার পরিচয় গোপন রাখা হবে।",
             message: {
-                placeholder: "আপনার ঈদের চিঠি এখানে লিখুন...",
+                placeholder: "আমাকে একটি গোপন ঈদ বার্তা বা সালামি আবদার পাঠান!",
             },
             senderTag: {
                 label: "একটি গোপন পরিচয় চয়ন করুন (ঐচ্ছিক)",
@@ -752,7 +756,11 @@ export const translations = {
                 }
             },
             submitButton: "চিঠি পাঠান",
-            success: "আপনার ঈদের চিঠি পাঠানো হয়েছে!",
+            success: {
+                title: "বার্তা পাঠানো হয়েছে!",
+                description: "আপনিও কি গোপন বার্তা পাওয়ার জন্য নিজের ইনবক্স তৈরি করতে চান?",
+                cta: "ইনবক্স তৈরি করুন"
+            },
         },
         inbox: {
             title: "আপনার ঈদের চিঠির ইনবক্স",

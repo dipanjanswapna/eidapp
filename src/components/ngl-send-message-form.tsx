@@ -13,6 +13,8 @@ import { sendNGLMessageAction } from '@/lib/actions';
 import { useState } from 'react';
 import { Loader2, Send } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import { ToastAction } from './ui/toast';
+import Link from 'next/link';
 
 export function NGLSendMessageForm({ username }: { username: string }) {
   const { translations } = useLanguage();
@@ -36,7 +38,15 @@ export function NGLSendMessageForm({ username }: { username: string }) {
     setIsSubmitting(true);
     try {
         await sendNGLMessageAction(username, values);
-        toast({ title: translations.ngl.send.success });
+        toast({ 
+            title: translations.ngl.send.success.title,
+            description: translations.ngl.send.success.description,
+            action: (
+                <ToastAction asChild altText={translations.ngl.send.success.cta}>
+                    <Link href="/ngl/create">{translations.ngl.send.success.cta}</Link>
+                </ToastAction>
+            )
+        });
         form.reset();
     } catch(error) {
         toast({ variant: 'destructive', title: 'Error', description: (error as Error).message });
