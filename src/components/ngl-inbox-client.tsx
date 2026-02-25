@@ -34,7 +34,6 @@ export function NGLInboxClient({ user, pin }: { user: NGLUser, pin: string }) {
   
   const [isDownloading, setIsDownloading] = useState(false);
   const [isSharing, setIsSharing] = useState(false);
-  const [canShare, setCanShare] = useState(false);
 
   const shareCardRef = useRef<HTMLDivElement>(null);
 
@@ -51,15 +50,6 @@ export function NGLInboxClient({ user, pin }: { user: NGLUser, pin: string }) {
       }
     };
     fetchMessages();
-    
-    if (typeof navigator !== 'undefined' && navigator.share && navigator.canShare) {
-        // Check if we can share files, as not all share implementations support it.
-        const testFile = new File(['test'], 'test.txt', { type: 'text/plain' });
-        if (navigator.canShare({ files: [testFile] })) {
-            setCanShare(true);
-        }
-    }
-
   }, [user.username, pin, toast]);
 
   const handleReplyClick = (message: NGLMessage) => {
@@ -102,31 +92,37 @@ export function NGLInboxClient({ user, pin }: { user: NGLUser, pin: string }) {
   };
   
     const handleShareStory = async () => {
-    if (!shareCardRef.current || !canShare) return;
+    if (!shareCardRef.current) return;
 
     setIsSharing(true);
     try {
       const canvas = await html2canvas(shareCardRef.current, { scale: 2, useCORS: true, backgroundColor: null });
       const blob = await new Promise<Blob | null>((resolve) => canvas.toBlob(resolve, 'image/png'));
 
-      if (blob) {
-        const filesArray = [
-          new File([blob], `eidvibe-reply-${currentMessage?.id}.png`, {
-            type: 'image/png',
-            lastModified: new Date().getTime(),
-          }),
-        ];
-        if (navigator.canShare({ files: filesArray })) {
-          await navigator.share({
-            title: 'My EidVibe Reply!',
-            files: filesArray,
-          });
-        } else {
-            throw new Error("Cannot share files on this browser.");
-        }
-      } else {
+      if (!blob) {
         throw new Error("Failed to convert card to an image.");
       }
+
+      const filesArray = [
+        new File([blob], `eidvibe-reply-${currentMessage?.id}.png`, {
+          type: 'image/png',
+          lastModified: new Date().getTime(),
+        }),
+      ];
+      
+      if (!navigator.share) {
+        throw new Error("Sharing not supported on this browser.");
+      }
+      
+      if (navigator.canShare && !navigator.canShare({ files: filesArray })) {
+          throw new Error("Sharing files not supported on this browser.");
+      }
+
+      await navigator.share({
+        title: 'My EidVibe Reply!',
+        files: filesArray,
+      });
+
     } catch (error: any) {
       if (error.name !== 'AbortError') {
         toast({
@@ -192,12 +188,10 @@ export function NGLInboxClient({ user, pin }: { user: NGLUser, pin: string }) {
                         <Copy className="mr-2 h-4 w-4" />
                         {translations.ngl.inbox.share.copyButton}
                     </Button>
-                    {canShare && (
-                        <Button onClick={handleShare} className="w-full sm:w-auto shrink-0">
-                            <Share2 className="mr-2 h-4 w-4" />
-                            {translations.ngl.inbox.share.shareButton}
-                        </Button>
-                    )}
+                    <Button onClick={handleShare} className="w-full sm:w-auto shrink-0">
+                        <Share2 className="mr-2 h-4 w-4" />
+                        {translations.ngl.inbox.share.shareButton}
+                    </Button>
                 </div>
             </CardContent>
         </Card>
@@ -283,12 +277,10 @@ export function NGLInboxClient({ user, pin }: { user: NGLUser, pin: string }) {
                         {isDownloading ? <Loader2 className="mr-2 h-4 w-4 animate-spin"/> : <Download className="mr-2 h-4 w-4" />}
                         {translations.ngl.inbox.shareModal.downloadButton}
                     </Button>
-                    {canShare && (
-                        <Button onClick={handleShareStory} disabled={isSharing || isDownloading} className="w-full">
-                            {isSharing ? <Loader2 className="mr-2 h-4 w-4 animate-spin"/> : <Share2 className="mr-2 h-4 w-4" />}
-                            {isSharing ? translations.ngl.inbox.shareModal.sharing : translations.ngl.inbox.shareModal.shareButton}
-                        </Button>
-                    )}
+                    <Button onClick={handleShareStory} disabled={isSharing || isDownloading} className="w-full">
+                        {isSharing ? <Loader2 className="mr-2 h-4 w-4 animate-spin"/> : <Share2 className="mr-2 h-4 w-4" />}
+                        {isSharing ? translations.ngl.inbox.shareModal.sharing : translations.ngl.inbox.shareModal.shareButton}
+                    </Button>
                 </div>
             </DialogContent>
         </Dialog>
