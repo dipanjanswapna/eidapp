@@ -5,6 +5,7 @@ import { useLanguage } from '@/contexts/language-context';
 import ConfettiBackground from '@/components/confetti-background';
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { ArrowRight, Calculator, Mail, Star, CreditCard, MapPin } from 'lucide-react';
+import JusticeTimer from '@/components/justice-timer';
 
 export default function Home() {
   const { translations, language } = useLanguage();
@@ -127,6 +128,7 @@ export default function Home() {
         </div>
 
       </div>
+      <JusticeTimer />
     </div>
   );
 }
