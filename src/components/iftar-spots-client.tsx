@@ -176,7 +176,7 @@ export default function IftarSpotsClient() {
         {!isLoading && !error && <IftarMap spots={displayedSpots} center={mapCenter} zoom={mapZoom} userLocation={currentUserPosition} />}
       </div>
       
-      <div className="absolute bottom-6 right-4 z-[1000] flex flex-col gap-2">
+      <div className="absolute right-4 top-1/2 z-[1000] flex -translate-y-1/2 flex-col gap-2">
         <AddIftarSpotDialog onSpotAdded={handleSpotAdded} />
         <Button variant="secondary" size="icon" onClick={handleGoToCurrentLocation} aria-label={translations.iftar.map.liveLocationButton}>
           <LocateFixed className="h-5 w-5" />
