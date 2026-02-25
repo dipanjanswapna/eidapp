@@ -2,7 +2,7 @@
 import { MapContainer, TileLayer, Marker, useMapEvents, useMap } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import L, { LatLngExpression } from 'leaflet';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { Button } from './ui/button';
 import { LocateFixed } from 'lucide-react';
 import { useLanguage } from '@/contexts/language-context';
@@ -10,9 +10,11 @@ import { useLanguage } from '@/contexts/language-context';
 const LocationMarker = ({
   position,
   setPosition,
+  icon,
 }: {
   position: LatLngExpression | null;
   setPosition: (pos: LatLngExpression) => void;
+  icon: L.Icon;
 }) => {
   const map = useMapEvents({
     click(e) {
@@ -21,7 +23,7 @@ const LocationMarker = ({
     },
   });
 
-  return position === null ? null : <Marker position={position}></Marker>;
+  return position === null ? null : <Marker position={position} icon={icon}></Marker>;
 };
 
 export default function LocationPicker({
@@ -34,16 +36,15 @@ export default function LocationPicker({
   const [position, setPosition] = useState<LatLngExpression | null>(null);
   const mapRef = useState<L.Map | null>(null);
 
-  useEffect(() => {
-    // Fix for default icon not showing in Next.js.
-    // This needs to run only on the client.
-    delete (L.Icon.Default.prototype as any)._getIconUrl;
-    L.Icon.Default.mergeOptions({
-      iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png').default.src,
-      iconUrl: require('leaflet/dist/images/marker-icon.png').default.src,
-      shadowUrl: require('leaflet/dist/images/marker-shadow.png').default.src,
-    });
-  }, []);
+  const defaultIcon = useMemo(() => new L.Icon({
+    iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png').default.src,
+    iconUrl: require('leaflet/dist/images/marker-icon.png').default.src,
+    shadowUrl: require('leaflet/dist/images/marker-shadow.png').default.src,
+    iconSize: [25, 41],
+    iconAnchor: [12, 41],
+    popupAnchor: [1, -34],
+    shadowSize: [41, 41],
+  }), []);
 
   useEffect(() => {
     if (position && 'lat' in position && 'lng' in position) {
@@ -79,7 +80,7 @@ export default function LocationPicker({
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        <LocationMarker position={position} setPosition={setPosition} />
+        <LocationMarker position={position} setPosition={setPosition} icon={defaultIcon} />
       </MapContainer>
       <Button
         type="button"

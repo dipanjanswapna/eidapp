@@ -6,7 +6,7 @@ import { IftarSpot, FoodType } from '@/lib/types';
 import { useLanguage } from '@/contexts/language-context';
 import { Button } from './ui/button';
 import { ThumbsUp, ThumbsDown } from 'lucide-react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { voteOnIftarSpotAction } from '@/lib/actions';
 import { useToast } from '@/hooks/use-toast';
 
@@ -64,16 +64,18 @@ export default function IftarMap({ spots }: IftarMapProps) {
   const [votedSpots, setVotedSpots] = useState<Record<string, 'like' | 'dislike'>>({});
   const [currentUserPosition, setCurrentUserPosition] = useState<[number, number] | null>(null);
 
-  useEffect(() => {
-    // Fix for default icon not showing in Next.js
-    delete (L.Icon.Default.prototype as any)._getIconUrl;
+  const defaultIcon = useMemo(() => new L.Icon({
+    iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png').default.src,
+    iconUrl: require('leaflet/dist/images/marker-icon.png').default.src,
+    shadowUrl: require('leaflet/dist/images/marker-shadow.png').default.src,
+    iconSize: [25, 41],
+    iconAnchor: [12, 41],
+    popupAnchor: [1, -34],
+    shadowSize: [41, 41]
+  }), []);
 
-    L.Icon.Default.mergeOptions({
-      iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png').default.src,
-      iconUrl: require('leaflet/dist/images/marker-icon.png').default.src,
-      shadowUrl: require('leaflet/dist/images/marker-shadow.png').default.src,
-    });
-    
+
+  useEffect(() => {
     const saved = localStorage.getItem('votedSpots');
     if (saved) {
       setVotedSpots(JSON.parse(saved));
@@ -135,7 +137,7 @@ export default function IftarMap({ spots }: IftarMapProps) {
         const isNearby = distance !== null && distance <= 15;
 
         return (
-            <Marker key={spot.id} position={[spot.latitude, spot.longitude]} icon={isNearby ? redIcon : undefined}>
+            <Marker key={spot.id} position={[spot.latitude, spot.longitude]} icon={isNearby ? redIcon : defaultIcon}>
                 <Popup>
                     <div className="space-y-2">
                         <h3 className="font-bold text-lg">{spot.masjidName}</h3>
