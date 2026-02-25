@@ -3,7 +3,7 @@ import { useEffect, useState, useRef } from 'react';
 import { NGLMessage, NGLUser } from '@/lib/types';
 import { getNGLMessagesAction, replyToMessageAction } from '@/lib/actions';
 import { useToast } from '@/hooks/use-toast';
-import { Loader2, MessageCircle, LogOut, Share2, Copy } from 'lucide-react';
+import { Loader2, MessageCircle, LogOut, Share2, Copy, Download } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
 import { useLanguage } from '@/contexts/language-context';
 import { formatDistanceToNow } from 'date-fns';
@@ -33,6 +33,7 @@ export function NGLInboxClient({ user, pin }: { user: NGLUser, pin: string }) {
   const [showShareDialog, setShowShareDialog] = useState(false);
   
   const [isDownloading, setIsDownloading] = useState(false);
+  const [isSharing, setIsSharing] = useState(false);
   const [canShare, setCanShare] = useState(false);
 
   const shareCardRef = useRef<HTMLDivElement>(null);
@@ -51,8 +52,12 @@ export function NGLInboxClient({ user, pin }: { user: NGLUser, pin: string }) {
     };
     fetchMessages();
     
-    if (typeof navigator !== 'undefined' && navigator.share) {
-        setCanShare(true);
+    if (typeof navigator !== 'undefined' && navigator.share && navigator.canShare) {
+        // Check if we can share files, as not all share implementations support it.
+        const testFile = new File(['test'], 'test.txt', { type: 'text/plain' });
+        if (navigator.canShare({ files: [testFile] })) {
+            setCanShare(true);
+        }
     }
 
   }, [user.username, pin, toast]);
@@ -96,6 +101,45 @@ export function NGLInboxClient({ user, pin }: { user: NGLUser, pin: string }) {
     })
   };
   
+    const handleShareStory = async () => {
+    if (!shareCardRef.current || !canShare) return;
+
+    setIsSharing(true);
+    try {
+      const canvas = await html2canvas(shareCardRef.current, { scale: 2, useCORS: true, backgroundColor: null });
+      const blob = await new Promise<Blob | null>((resolve) => canvas.toBlob(resolve, 'image/png'));
+
+      if (blob) {
+        const filesArray = [
+          new File([blob], `eidvibe-reply-${currentMessage?.id}.png`, {
+            type: 'image/png',
+            lastModified: new Date().getTime(),
+          }),
+        ];
+        if (navigator.canShare({ files: filesArray })) {
+          await navigator.share({
+            title: 'My EidVibe Reply!',
+            files: filesArray,
+          });
+        } else {
+            throw new Error("Cannot share files on this browser.");
+        }
+      } else {
+        throw new Error("Failed to convert card to an image.");
+      }
+    } catch (error: any) {
+      if (error.name !== 'AbortError') {
+        toast({
+          variant: 'destructive',
+          title: "Share Failed",
+          description: translations.ngl.inbox.shareModal.shareError,
+        });
+      }
+    } finally {
+      setIsSharing(false);
+    }
+  };
+
   const handleLogout = () => {
     sessionStorage.removeItem(`ngl_pin_${user.username}`);
     router.push('/ngl/inbox');
@@ -234,11 +278,17 @@ export function NGLInboxClient({ user, pin }: { user: NGLUser, pin: string }) {
                         {currentMessage && <NGLReplyAndShareCard user={user} message={currentMessage} />}
                     </div>
                 </ScrollArea>
-                 <div className="flex gap-4">
-                    <Button onClick={handleDownload} disabled={isDownloading} className="w-full">
-                        {isDownloading ? <Loader2 className="mr-2 h-4 w-4 animate-spin"/> : null}
+                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <Button onClick={handleDownload} disabled={isDownloading || isSharing} className="w-full">
+                        {isDownloading ? <Loader2 className="mr-2 h-4 w-4 animate-spin"/> : <Download className="mr-2 h-4 w-4" />}
                         {translations.ngl.inbox.shareModal.downloadButton}
                     </Button>
+                    {canShare && (
+                        <Button onClick={handleShareStory} disabled={isSharing || isDownloading} className="w-full">
+                            {isSharing ? <Loader2 className="mr-2 h-4 w-4 animate-spin"/> : <Share2 className="mr-2 h-4 w-4" />}
+                            {isSharing ? translations.ngl.inbox.shareModal.sharing : translations.ngl.inbox.shareModal.shareButton}
+                        </Button>
+                    )}
                 </div>
             </DialogContent>
         </Dialog>
