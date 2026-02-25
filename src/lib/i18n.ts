@@ -455,6 +455,9 @@ export const translations = {
           people: 'people',
           isFake: 'Fake spot?',
           vote: 'Vote',
+          distance: "Distance:",
+          kmAway: "km away",
+          yourLocation: "You are here"
         }
       },
       addSpotDialog: {
@@ -958,10 +961,13 @@ export const translations = {
         loading: 'Loading map...',
         noSpots: 'No spots found for the selected filter. Try another one!',
         popup: {
-          verifiedBy: 'Verified by',
-          people: 'people',
+          verifiedBy: 'যাচাই করেছেন',
+          people: 'জন',
           isFake: 'Fake spot?',
           vote: 'Vote',
+          distance: "দূরত্ব:",
+          kmAway: "কিমি দূরে",
+          yourLocation: "আপনি এখানে"
         }
       },
       addSpotDialog: {
