@@ -3,13 +3,14 @@ import { useState, useEffect, useMemo } from 'react';
 import { useLanguage } from '@/contexts/language-context';
 import { IftarSpot, FoodType, foodTypes } from '@/lib/types';
 import { Button } from '@/components/ui/button';
-import { Loader2, AlertCircle, BadgeCheck } from 'lucide-react';
+import { Loader2, AlertCircle, BadgeCheck, LocateFixed } from 'lucide-react';
 import AddIftarSpotDialog from './add-iftar-spot-dialog';
 import { ScrollArea, ScrollBar } from './ui/scroll-area';
 import { useFirestore, useCollection } from '@/firebase';
 import { collection, query, where, Timestamp } from 'firebase/firestore';
 import { Card, CardContent } from './ui/card';
 import IftarMap from '@/components/iftar-map';
+import { useToast } from '@/hooks/use-toast';
 
 const MapLoadingSkeleton = () => (
   <div className="flex h-full w-full items-center justify-center bg-muted">
@@ -20,6 +21,7 @@ const MapLoadingSkeleton = () => (
 export default function IftarSpotsClient() {
   const { translations } = useLanguage();
   const firestore = useFirestore();
+  const { toast } = useToast();
 
   const spotsQuery = useMemo(() => {
     if (!firestore) return null;
@@ -32,7 +34,23 @@ export default function IftarSpotsClient() {
   const [displayedSpots, setDisplayedSpots] = useState<IftarSpot[]>([]);
   const [selectedFilter, setSelectedFilter] = useState<FoodType | 'all' | 'verified'>('all');
 
+  const dhakaPosition: [number, number] = [23.8103, 90.4125];
+  const [mapCenter, setMapCenter] = useState<[number, number]>(dhakaPosition);
+  const [mapZoom, setMapZoom] = useState<number>(12);
+  const [currentUserPosition, setCurrentUserPosition] = useState<[number, number] | null>(null);
+
   const isVerified = (spot: IftarSpot) => spot.likes > spot.dislikes;
+
+  useEffect(() => {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+            (position) => {
+                setCurrentUserPosition([position.coords.latitude, position.coords.longitude]);
+            },
+            () => { /* Fail silently on initial load */ }
+        );
+    }
+  }, []);
 
   useEffect(() => {
     if (!allSpotsFromHook) {
@@ -75,6 +93,32 @@ export default function IftarSpotsClient() {
 
   const handleSpotAdded = () => {
     // No need to do anything here, useCollection will update the spots list automatically.
+  };
+
+  const handleGoToCurrentLocation = () => {
+    if (!navigator.geolocation) {
+        toast({
+            variant: 'destructive',
+            title: translations.iftar.map.geolocationNotSupported.title,
+            description: translations.iftar.map.geolocationNotSupported.description,
+        });
+        return;
+    }
+    navigator.geolocation.getCurrentPosition(
+        (position) => {
+            const newCenter: [number, number] = [position.coords.latitude, position.coords.longitude];
+            setCurrentUserPosition(newCenter);
+            setMapCenter(newCenter);
+            setMapZoom(15);
+        },
+        () => {
+            toast({
+                variant: 'destructive',
+                title: translations.iftar.map.locationError.title,
+                description: translations.iftar.map.locationError.description,
+            });
+        }
+    );
   };
 
   return (
@@ -129,11 +173,14 @@ export default function IftarSpotsClient() {
             <p className="mt-4 text-lg font-semibold">{'Failed to load spots. Please try again later.'}</p>
           </div>
         )}
-        {!isLoading && !error && <IftarMap spots={displayedSpots} />}
+        {!isLoading && !error && <IftarMap spots={displayedSpots} center={mapCenter} zoom={mapZoom} userLocation={currentUserPosition} />}
       </div>
       
-      <div className="absolute bottom-6 left-1/2 z-[1000] -translate-x-1/2 transform">
+      <div className="absolute bottom-6 left-1/2 z-[1000] -translate-x-1/2 transform flex items-center gap-2">
         <AddIftarSpotDialog onSpotAdded={handleSpotAdded} />
+        <Button variant="secondary" size="icon" onClick={handleGoToCurrentLocation} aria-label={translations.iftar.map.liveLocationButton}>
+          <LocateFixed className="h-5 w-5" />
+        </Button>
       </div>
     </div>
   );

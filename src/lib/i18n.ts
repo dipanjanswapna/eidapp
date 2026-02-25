@@ -458,6 +458,15 @@ export const translations = {
           distance: "Distance:",
           kmAway: "km away",
           yourLocation: "You are here"
+        },
+        liveLocationButton: 'Go to my location',
+        geolocationNotSupported: {
+          title: 'Geolocation Not Supported',
+          description: 'Your browser does not support geolocation.'
+        },
+        locationError: {
+          title: 'Location Error',
+          description: 'Could not get your location. Please enable location services and try again.'
         }
       },
       addSpotDialog: {
@@ -968,6 +977,15 @@ export const translations = {
           distance: "দূরত্ব:",
           kmAway: "কিমি দূরে",
           yourLocation: "আপনি এখানে"
+        },
+        liveLocationButton: 'আমার অবস্থানে যান',
+        geolocationNotSupported: {
+          title: 'অবস্থান সমর্থিত নয়',
+          description: 'আপনার ব্রাউজার জিওলোকেশন সমর্থন করে না।'
+        },
+        locationError: {
+          title: 'অবস্থান ত্রুটি',
+          description: 'আপনার অবস্থান পাওয়া যায়নি। অনুগ্রহ করে লোকেশন সার্ভিস চালু করে আবার চেষ্টা করুন।'
         }
       },
       addSpotDialog: {

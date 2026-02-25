@@ -12,11 +12,16 @@ import { useToast } from '@/hooks/use-toast';
 
 type IftarMapProps = {
   spots: IftarSpot[];
+  center: [number, number];
+  zoom: number;
+  userLocation: [number, number] | null;
 };
 
-function ChangeView({ center }: { center: [number, number] }) {
+function ChangeView({ center, zoom }: { center: [number, number], zoom: number }) {
   const map = useMap();
-  map.setView(center, map.getZoom());
+  useEffect(() => {
+      map.flyTo(center, zoom);
+  }, [center, zoom, map]);
   return null;
 }
 
@@ -58,12 +63,11 @@ const userLocationIcon = new L.Icon({
 });
 
 
-export default function IftarMap({ spots }: IftarMapProps) {
+export default function IftarMap({ spots, center, zoom, userLocation }: IftarMapProps) {
   const { translations } = useLanguage();
   const { toast } = useToast();
   const [votedSpots, setVotedSpots] = useState<Record<string, 'like' | 'dislike'>>({});
-  const [currentUserPosition, setCurrentUserPosition] = useState<[number, number] | null>(null);
-
+  
   const defaultIcon = useMemo(() => new L.Icon({
     iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png').default.src,
     iconUrl: require('leaflet/dist/images/marker-icon.png').default.src,
@@ -80,23 +84,7 @@ export default function IftarMap({ spots }: IftarMapProps) {
     if (saved) {
       setVotedSpots(JSON.parse(saved));
     }
-    
-    // Get user location
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(
-            (position) => {
-                setCurrentUserPosition([position.coords.latitude, position.coords.longitude]);
-            },
-            () => {
-                toast({
-                    variant: 'destructive',
-                    title: 'Location Error',
-                    description: "Could not get your location. Please enable location services.",
-                });
-            }
-        );
-    }
-  }, [toast]);
+  }, []);
 
   const handleVote = async (spotId: string, voteType: 'like' | 'dislike') => {
     if (votedSpots[spotId]) {
@@ -114,22 +102,20 @@ export default function IftarMap({ spots }: IftarMapProps) {
       toast({ variant: 'destructive', title: 'Error', description: 'Failed to record vote.' });
     }
   };
-  
-  const dhakaPosition: [number, number] = [23.8103, 90.4125];
 
   return (
-    <MapContainer center={dhakaPosition} zoom={12} scrollWheelZoom={true} className="h-full w-full z-0">
-      <ChangeView center={dhakaPosition} />
+    <MapContainer center={center} zoom={zoom} scrollWheelZoom={true} className="h-full w-full z-0">
+      <ChangeView center={center} zoom={zoom} />
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
       {spots.map((spot) => {
         let distance: number | null = null;
-        if (currentUserPosition) {
+        if (userLocation) {
             distance = getDistanceFromLatLonInKm(
-                currentUserPosition[0],
-                currentUserPosition[1],
+                userLocation[0],
+                userLocation[1],
                 spot.latitude,
                 spot.longitude
             );
@@ -181,8 +167,8 @@ export default function IftarMap({ spots }: IftarMapProps) {
             </Marker>
         );
       })}
-      {currentUserPosition && (
-          <Marker position={currentUserPosition} icon={userLocationIcon}>
+      {userLocation && (
+          <Marker position={userLocation} icon={userLocationIcon}>
               <Popup>{translations.iftar.map.popup.yourLocation}</Popup>
           </Marker>
       )}
