@@ -27,7 +27,7 @@ import {
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { addIftarSpotAction } from '@/lib/actions';
 import { useState, useCallback } from 'react';
-import { Loader2 } from 'lucide-react';
+import { Loader2, Plus } from 'lucide-react';
 import { useLanguage } from '@/contexts/language-context';
 import { useToast } from '@/hooks/use-toast';
 import { foodTypes, FoodType } from '@/lib/types';
@@ -99,7 +99,9 @@ export default function AddIftarSpotDialog({ onSpotAdded }: AddIftarSpotDialogPr
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button>{translations.iftar.addSpotButton}</Button>
+        <Button variant="default" size="icon" aria-label={translations.iftar.addSpotButton}>
+          <Plus className="h-5 w-5" />
+        </Button>
       </DialogTrigger>
       <DialogContent className="max-h-[90vh] max-w-lg overflow-y-auto">
         <DialogHeader>

@@ -170,13 +170,13 @@ export default function IftarSpotsClient() {
         {error && !isLoading && (
           <div className="flex h-full w-full flex-col items-center justify-center bg-destructive/10 text-destructive">
             <AlertCircle className="h-12 w-12" />
-            <p className="mt-4 text-lg font-semibold">{'Failed to load spots. Please try again later.'}</p>
+            <p className="mt-4 text-lg font-semibold">{'Failed to load spots. Please try again.'}</p>
           </div>
         )}
         {!isLoading && !error && <IftarMap spots={displayedSpots} center={mapCenter} zoom={mapZoom} userLocation={currentUserPosition} />}
       </div>
       
-      <div className="absolute bottom-6 left-1/2 z-[1000] -translate-x-1/2 transform flex items-center gap-2">
+      <div className="absolute bottom-6 right-4 z-[1000] flex flex-col gap-2">
         <AddIftarSpotDialog onSpotAdded={handleSpotAdded} />
         <Button variant="secondary" size="icon" onClick={handleGoToCurrentLocation} aria-label={translations.iftar.map.liveLocationButton}>
           <LocateFixed className="h-5 w-5" />
