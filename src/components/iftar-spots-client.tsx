@@ -123,7 +123,7 @@ export default function IftarSpotsClient() {
 
   return (
     <div className="relative h-full w-full">
-      <div className="absolute top-4 left-1/2 z-[1000] w-[90vw] max-w-4xl -translate-x-1/2 transform">
+      <div className="absolute top-2 left-1/2 z-[1000] w-[90vw] max-w-4xl -translate-x-1/2 transform">
         <Card className="shadow-lg">
           <CardContent className="p-2">
             <div className="flex items-center justify-between">
