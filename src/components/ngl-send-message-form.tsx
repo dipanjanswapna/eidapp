@@ -102,6 +102,19 @@ export function NGLSendMessageForm({ username }: { username: string }) {
             {isSubmitting ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Send />}
             {translations.ngl.send.submitButton}
           </Button>
+
+          <div className="relative flex items-center justify-center text-sm">
+            <div className="absolute inset-0 flex items-center">
+              <div className="w-full border-t border-muted" />
+            </div>
+            <div className="relative bg-card px-2 text-muted-foreground">
+              {translations.ngl.send.orSeparator}
+            </div>
+          </div>
+
+          <Button variant="outline" className="w-full" asChild>
+            <Link href="/ngl/create">{translations.ngl.send.getYourOwnButton}</Link>
+          </Button>
         </form>
       </Form>
     </CardContent>

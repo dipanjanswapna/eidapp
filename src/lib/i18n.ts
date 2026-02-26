@@ -362,6 +362,8 @@ export const translations = {
           },
         },
         submitButton: 'Send Letter',
+        getYourOwnButton: 'Get your own messages!',
+        orSeparator: 'Or',
         success: {
           title: 'Message Sent!',
           description:
@@ -881,6 +883,8 @@ export const translations = {
           },
         },
         submitButton: 'চিঠি পাঠান',
+        getYourOwnButton: 'আপনার নিজের বার্তা পান!',
+        orSeparator: 'অথবা',
         success: {
           title: 'বার্তা পাঠানো হয়েছে!',
           description:
