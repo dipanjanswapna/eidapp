@@ -21,10 +21,14 @@ import { createNGLProfileAction } from '@/lib/actions';
 import { useState } from 'react';
 import { Loader2 } from 'lucide-react';
 import { RadioGroup, RadioGroupItem } from './ui/radio-group';
+import { useRouter } from 'next/navigation';
+import { useToast } from '@/hooks/use-toast';
 
 export default function NGLCreateForm() {
   const { translations } = useLanguage();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const router = useRouter();
+  const { toast } = useToast();
 
   const formSchema = z.object({
     name: z.string().min(2, "Name must be at least 2 characters."),
@@ -49,7 +53,11 @@ export default function NGLCreateForm() {
     setIsSubmitting(true);
     const result = await createNGLProfileAction(values);
     
-    if (result?.error) {
+    if (result?.success) {
+        localStorage.setItem(`ngl_pin_${result.username}`, values.pin);
+        toast({ title: "Success!", description: translations.ngl.create.success });
+        router.push(`/ngl/inbox/${result.username}`);
+    } else if(result?.error) {
         if(result.error.name) form.setError("name", { type: "server", message: result.error.name[0] });
         if(result.error.username) form.setError("username", { type: "server", message: result.error.username[0] });
         if(result.error.pin) form.setError("pin", { type: "server", message: result.error.pin[0] });

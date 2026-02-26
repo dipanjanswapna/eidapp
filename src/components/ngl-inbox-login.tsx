@@ -31,20 +31,6 @@ export default function NGLInboxLogin() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const { toast } = useToast();
-  
-  const [showSuccess, setShowSuccess] = useState(false);
-
-  useEffect(() => {
-    if (searchParams.get('success') === 'true') {
-        setShowSuccess(true);
-        const timer = setTimeout(() => setShowSuccess(false), 5000);
-        // clean up timer and url
-        return () => {
-            clearTimeout(timer);
-            window.history.replaceState(null, '', '/ngl/inbox');
-        }
-    }
-  }, [searchParams]);
 
   const formSchema = z.object({
     username: z.string().min(1, "Username is required."),
@@ -64,7 +50,7 @@ export default function NGLInboxLogin() {
     try {
         const user = await verifyPinAndGetUserAction(values.username, values.pin);
         if (user) {
-            sessionStorage.setItem(`ngl_pin_${user.username}`, values.pin);
+            localStorage.setItem(`ngl_pin_${user.username}`, values.pin);
             router.push(`/ngl/inbox/${user.username}`);
         } else {
             toast({
@@ -91,15 +77,6 @@ export default function NGLInboxLogin() {
         <CardDescription>{translations.ngl.login.description}</CardDescription>
       </CardHeader>
       <CardContent>
-        {showSuccess && (
-            <Alert className="mb-4 border-green-500 bg-green-50 text-green-800">
-                <CheckCircle2 className="h-4 w-4 !text-green-600" />
-                <AlertTitle>Success!</AlertTitle>
-                <AlertDescription>
-                    {translations.ngl.create.success}
-                </AlertDescription>
-            </Alert>
-        )}
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
             <FormField

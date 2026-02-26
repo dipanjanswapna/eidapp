@@ -28,7 +28,7 @@ export async function createNGLProfileAction(values: z.infer<typeof createNGLPro
         return { error: { username: [(error as Error).message] } };
     }
   
-    redirect(`/ngl/inbox?username=${validatedFields.data.username}&success=true`);
+    return { success: true, username: validatedFields.data.username };
 }
 
 const sendNGLMessageSchema = z.object({

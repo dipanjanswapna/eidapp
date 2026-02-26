@@ -137,7 +137,7 @@ export function NGLInboxClient({ user, pin }: { user: NGLUser, pin: string }) {
   };
 
   const handleLogout = () => {
-    sessionStorage.removeItem(`ngl_pin_${user.username}`);
+    localStorage.removeItem(`ngl_pin_${user.username}`);
     router.push('/ngl/inbox');
     toast({ title: "Logged out successfully."});
   };

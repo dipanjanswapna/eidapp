@@ -17,7 +17,7 @@ export default function NGLInboxPage() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const storedPin = sessionStorage.getItem(`ngl_pin_${username}`);
+    const storedPin = localStorage.getItem(`ngl_pin_${username}`);
     if (!storedPin) {
       toast({ variant: 'destructive', title: 'Authentication failed', description: 'Please login first.' });
       router.push('/ngl/inbox');
@@ -31,7 +31,7 @@ export default function NGLInboxPage() {
         if (userData) {
           setUser(userData);
         } else {
-          sessionStorage.removeItem(`ngl_pin_${username}`);
+          localStorage.removeItem(`ngl_pin_${username}`);
           toast({ variant: 'destructive', title: 'Authentication failed', description: 'Invalid PIN. Please login again.' });
           router.push('/ngl/inbox');
         }
