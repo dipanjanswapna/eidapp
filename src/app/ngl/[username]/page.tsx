@@ -1,10 +1,9 @@
 import { notFound } from 'next/navigation';
 import { findNGLUserByUsername } from '@/lib/db';
 import ConfettiBackground from '@/components/confetti-background';
-import { NGLSendMessageForm } from '@/components/ngl-send-message-form';
-import { Avatar, AvatarFallback } from '@/components/ui/avatar';
-import { Card } from '@/components/ui/card';
 import type { Metadata } from 'next';
+import { NGLUser } from '@/lib/types';
+import NGLProfilePageClient from '@/components/ngl-profile-page-client';
 
 type NGLProfilePageProps = {
   params: {
@@ -48,20 +47,13 @@ export default async function NGLProfilePage({ params }: NGLProfilePageProps) {
     notFound();
   }
 
+  const { pin, ...userWithoutPin } = user;
+
   return (
     <div className="relative min-h-screen w-full">
       <ConfettiBackground />
       <div className="container relative z-10 mx-auto max-w-2xl px-4 py-12">
-        <Card>
-            <div className="flex flex-col items-center p-6 text-center">
-                <Avatar className="h-24 w-24 border-4 border-primary/20 shadow-lg">
-                    <AvatarFallback className="bg-primary/10 text-4xl">{user.name.charAt(0)}</AvatarFallback>
-                </Avatar>
-                <p className="mt-4 text-lg font-semibold text-muted-foreground">@{user.username}</p>
-                <h1 className="mt-2 text-3xl font-bold">Send me anonymous messages!</h1>
-            </div>
-            <NGLSendMessageForm username={user.username} />
-        </Card>
+        <NGLProfilePageClient user={userWithoutPin as NGLUser} />
       </div>
     </div>
   );

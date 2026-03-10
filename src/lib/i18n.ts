@@ -289,6 +289,9 @@ export const translations = {
       },
     },
     ngl: {
+      profile: {
+        inboxButton: 'Go to My Inbox',
+      },
       create: {
         title: 'Create Your Eid Letter Inbox',
         description: 'Set a username and PIN to receive anonymous messages.',
@@ -810,6 +813,9 @@ export const translations = {
       },
     },
     ngl: {
+      profile: {
+        inboxButton: 'আমার ইনবক্সে যান',
+      },
       create: {
         title: 'আপনার ঈদের চিঠি ইনবক্স তৈরি করুন',
         description: 'গোপন বার্তা পেতে একটি ব্যবহারকারীর নাম এবং পিন সেট করুন।',
