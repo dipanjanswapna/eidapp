@@ -818,7 +818,7 @@ export const translations = {
           placeholder: 'যেমন, অনিক আহমেদ',
         },
         username: {
-          label: 'একটি ব্যবহারকারীর নাম বাছুন',
+          label: 'একটি ইউজারনেম বাছুন',
           placeholder: 'যেমন, anik_ahmed',
           description:
             'এটি আপনার ইউনিক লিঙ্ক হবে: https://eidvibe.vercel.app/ngl/{username}',
@@ -845,7 +845,7 @@ export const translations = {
         title: 'আপনার ইনবক্সে প্রবেশ করুন',
         description: 'আপনার বার্তা পড়তে ব্যবহারকারীর নাম এবং পিন লিখুন।',
         username: {
-          label: 'ব্যবহারকারীর নাম',
+          label: 'ব্যবহারকারীর ইউজারনেম',
           placeholder: 'আপনার ইউনিক ব্যবহারকারীর নাম',
         },
         pin: {
