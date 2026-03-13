@@ -13,6 +13,7 @@ import Image from 'next/image';
 import { SalamiQuiz } from '@/lib/types';
 import { getSalamiQuizById } from '@/lib/db';
 import { Skeleton } from './ui/skeleton';
+import { Card } from './ui/card';
 
 type EidWheelResultProps = {
   quizId: string;
