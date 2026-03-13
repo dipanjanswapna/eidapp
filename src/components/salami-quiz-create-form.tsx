@@ -10,7 +10,6 @@ import {
   FormField,
   FormItem,
   FormMessage,
-  FormLabel,
 } from '@/components/ui/form';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
@@ -20,13 +19,14 @@ import { useState } from 'react';
 import { Checkbox } from '@/components/ui/checkbox';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { createSalamiQuizAction } from '@/lib/actions';
-import { Loader2 } from 'lucide-react';
+import { Loader2, Copy, Link as LinkIcon, RotateCcw } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
 export default function SalamiQuizCreateForm() {
   const { translations } = useLanguage();
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [createdQuizId, setCreatedQuizId] = useState<string | null>(null);
   const quizQuestions = translations.salamiQuiz.questions;
 
   const formSchema = z.object({
@@ -45,12 +45,17 @@ export default function SalamiQuizCreateForm() {
     defaultValues: {
       creatorName: '',
       maxSalami: 500,
+      gender: 'male',
       questions: {},
     },
   });
 
   const watchQuestions = form.watch('questions');
   const selectedQuestionIds = Object.keys(watchQuestions);
+  
+  const quizUrl = createdQuizId && typeof window !== 'undefined'
+    ? `${window.location.origin}/salami-quiz/${createdQuizId}`
+    : '';
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsSubmitting(true);
@@ -69,20 +74,73 @@ export default function SalamiQuizCreateForm() {
         questions: formattedQuestions
     });
 
-    if (result?.error) {
+    if (result?.success && result.quizId) {
+        setCreatedQuizId(result.quizId);
+        toast({
+            title: translations.salamiQuiz.form.success.title,
+            description: translations.salamiQuiz.form.success.description,
+        });
+    } else if (result?.error) {
         toast({
             variant: "destructive",
             title: "Error",
             description: "Please check your form for errors."
         })
         if (result.error.questions) {
-             form.setError("questions", { type: "server", message: result.error.questions[0] });
+             form.setError("questions", { type: "server", message: result.error.questions[0] as string });
         }
     }
-    // Redirect is handled by server action
-    
     setIsSubmitting(false);
   }
+  
+  const handleCopy = () => {
+    if (!quizUrl) return;
+    navigator.clipboard.writeText(quizUrl);
+    toast({ title: translations.salamiQuiz.form.success.linkCopied });
+  };
+  
+  const handleReset = () => {
+    form.reset({
+      creatorName: '',
+      maxSalami: 500,
+      gender: 'male',
+      questions: {},
+    });
+    setCreatedQuizId(null);
+  };
+  
+  if (createdQuizId) {
+    return (
+     <Card className="w-full">
+       <CardHeader>
+         <CardTitle>{translations.salamiQuiz.form.linkCreatedTitle}</CardTitle>
+         <CardDescription>{translations.salamiQuiz.form.shareDescription}</CardDescription>
+       </CardHeader>
+       <CardContent className="space-y-4">
+           <div className="flex flex-col sm:flex-row gap-2">
+               <Input readOnly value={quizUrl} className="bg-muted" />
+               <Button onClick={handleCopy} variant="outline" className="w-full sm:w-auto shrink-0">
+                   <Copy className="mr-2 h-4 w-4" />
+                   {translations.salamiQuiz.form.copyButton}
+               </Button>
+           </div>
+           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+               <Button asChild>
+                   <a href={quizUrl} target="_blank" rel="noopener noreferrer">
+                       <LinkIcon className="mr-2 h-4 w-4" />
+                       {translations.salamiQuiz.form.viewQuizButton}
+                   </a>
+               </Button>
+               <Button onClick={handleReset} variant="secondary">
+                   <RotateCcw className="mr-2 h-4 w-4" />
+                   {translations.salamiQuiz.form.createAnotherButton}
+               </Button>
+           </div>
+       </CardContent>
+     </Card>
+   );
+  }
+
 
   return (
     <Card className="w-full">
@@ -99,7 +157,7 @@ export default function SalamiQuizCreateForm() {
                 name="creatorName"
                 render={({ field }) => (
                     <FormItem>
-                    <FormLabel>{translations.salamiQuiz.form.name.label}</FormLabel>
+                    <Label>{translations.salamiQuiz.form.name.label}</Label>
                     <FormControl>
                         <Input placeholder={translations.salamiQuiz.form.name.placeholder} {...field} />
                     </FormControl>
@@ -112,7 +170,7 @@ export default function SalamiQuizCreateForm() {
                 name="maxSalami"
                 render={({ field }) => (
                     <FormItem>
-                    <FormLabel>{translations.salamiQuiz.form.maxSalami.label}</FormLabel>
+                    <Label>{translations.salamiQuiz.form.maxSalami.label}</Label>
                     <FormControl>
                         <Input type="number" placeholder={translations.salamiQuiz.form.maxSalami.placeholder} {...field} />
                     </FormControl>
@@ -127,7 +185,7 @@ export default function SalamiQuizCreateForm() {
               name="gender"
               render={({ field }) => (
                 <FormItem className="space-y-3">
-                  <FormLabel>{translations.salamiQuiz.form.gender.label}</FormLabel>
+                  <Label>{translations.salamiQuiz.form.gender.label}</Label>
                   <FormControl>
                     <RadioGroup
                       onValueChange={field.onChange}
@@ -136,15 +194,15 @@ export default function SalamiQuizCreateForm() {
                     >
                       <FormItem className="flex items-center space-x-2 space-y-0">
                         <FormControl><RadioGroupItem value="male" /></FormControl>
-                        <FormLabel className="font-normal">{translations.salamiQuiz.form.gender.male}</FormLabel>
+                        <Label className="font-normal">{translations.salamiQuiz.form.gender.male}</Label>
                       </FormItem>
                       <FormItem className="flex items-center space-x-2 space-y-0">
                         <FormControl><RadioGroupItem value="female" /></FormControl>
-                        <FormLabel className="font-normal">{translations.salamiQuiz.form.gender.female}</FormLabel>
+                        <Label className="font-normal">{translations.salamiQuiz.form.gender.female}</Label>
                       </FormItem>
                        <FormItem className="flex items-center space-x-2 space-y-0">
                         <FormControl><RadioGroupItem value="other" /></FormControl>
-                        <FormLabel className="font-normal">{translations.salamiQuiz.form.gender.other}</FormLabel>
+                        <Label className="font-normal">{translations.salamiQuiz.form.gender.other}</Label>
                       </FormItem>
                     </RadioGroup>
                   </FormControl>

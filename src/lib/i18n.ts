@@ -551,7 +551,17 @@ export const translations = {
           description: "Check the questions you want to include in your quiz. Then select the correct answer.",
           error: "Please select at least one question."
         },
-        submitButton: "Create My Salami Link 🔗"
+        submitButton: "Create My Salami Link 🔗",
+        success: {
+          title: "Quiz Created!",
+          description: "Your salami quiz is ready to be shared.",
+          linkCopied: "Link copied to clipboard!"
+        },
+        linkCreatedTitle: "Your Quiz Link is Ready!",
+        shareDescription: "Share this link with your friends to start the quiz.",
+        copyButton: "Copy Link",
+        viewQuizButton: "View Quiz",
+        createAnotherButton: "Create Another Quiz"
       },
       player: {
         title: "Salami Quiz by {name}",
@@ -1154,7 +1164,17 @@ export const translations = {
           description: "যে প্রশ্নগুলি আপনার কুইজে রাখতে চান তার পাশে টিক মার্ক দিন। তারপর সঠিক উত্তর নির্বাচন করুন।",
           error: "অনুগ্রহ করে কমপক্ষে একটি প্রশ্ন নির্বাচন করুন।"
         },
-        submitButton: "আমার সালামি লিংক তৈরি করুন 🔗"
+        submitButton: "আমার সালামি লিংক তৈরি করুন 🔗",
+        success: {
+            title: "কুইজ তৈরি হয়েছে!",
+            description: "আপনার সালামি কুইজ এখন শেয়ার করার জন্য প্রস্তুত।",
+            linkCopied: "লিঙ্ক ক্লিপবোর্ডে কপি করা হয়েছে!"
+        },
+        linkCreatedTitle: "আপনার কুইজ লিঙ্ক তৈরি!",
+        shareDescription: "কুইজ শুরু করতে এই লিঙ্কটি আপনার বন্ধুদের সাথে শেয়ার করুন।",
+        copyButton: "লিঙ্ক কপি করুন",
+        viewQuizButton: "কুইজ দেখুন",
+        createAnotherButton: "আরেকটি কুইজ তৈরি করুন"
       },
       player: {
         title: "{name} এর পক্ষ থেকে সালামি কুইজ",

@@ -165,10 +165,13 @@ export async function createSalamiQuizAction(values: z.infer<typeof createSalami
 
     if (!validatedFields.success) {
         console.log(validatedFields.error.flatten().fieldErrors);
-        return { error: validatedFields.error.flatten().fieldErrors };
+        return { success: false, error: validatedFields.error.flatten().fieldErrors };
     }
     
-    const quizId = await addSalamiQuiz(validatedFields.data);
-  
-    redirect(`/salami-quiz/${quizId}`);
+    try {
+        const quizId = await addSalamiQuiz(validatedFields.data);
+        return { success: true, quizId };
+    } catch (e) {
+        return { success: false, error: { form: [(e as Error).message] } };
+    }
 }
