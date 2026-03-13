@@ -44,7 +44,7 @@ export function Navbar() {
               key={link.href}
               href={link.href}
               className={cn(
-                'rounded-full px-4 py-1.5 text-sm font-medium text-primary-foreground transition-colors hover:bg-white/20',
+                'whitespace-nowrap rounded-full px-4 py-1.5 text-sm font-medium text-primary-foreground transition-colors hover:bg-white/20',
                 (pathname.startsWith(link.href) && link.href !== '/') || pathname === link.href ? 'bg-background text-primary hover:bg-background/90' : ''
               )}
             >
