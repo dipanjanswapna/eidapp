@@ -8,7 +8,8 @@ export const translations = {
       ngl: 'Eid Letter',
       eidWheel: 'Lucky Wheel',
       eidCard: 'Eid Card',
-      iftar: 'Iftar Spots'
+      iftar: 'Iftar Spots',
+      salamiQuiz: 'Salami Quiz'
     },
     home: {
       title: 'EidVibe: Make Your Eid More Colorful!',
@@ -521,6 +522,84 @@ export const translations = {
         'sehri-thali': 'Sehri Special Thali',
         'others': 'Others'
       }
+    },
+    salamiQuiz: {
+      create: {
+        title: "Eid Salami Quiz",
+        description: "Give salami to your loved ones in a beautiful and smart way. Answer the questions correctly to get more salami. 💝"
+      },
+      form: {
+        name: {
+          label: "Your Full Name",
+          placeholder: "e.g., Abu Hassan",
+          error: "Name is required."
+        },
+        maxSalami: {
+          label: "Maximum Salami Amount (BDT)",
+          placeholder: "e.g., 500",
+          error: "Salami amount must be greater than 0."
+        },
+        gender: {
+          label: "Select Your Gender",
+          male: "Male",
+          female: "Female",
+          other: "Other",
+          error: "Gender is required."
+        },
+        questions: {
+          label: "Select Questions",
+          description: "Check the questions you want to include in your quiz. Then select the correct answer.",
+          error: "Please select at least one question."
+        },
+        submitButton: "Create My Salami Link 🔗"
+      },
+      player: {
+        title: "Salami Quiz by {name}",
+        description: "Answer the questions to win your salami!",
+        name: {
+          placeholder: "Enter your name to start"
+        },
+        startButton: "Start Quiz",
+        question: "Question",
+        nextButton: "Next",
+        finishButton: "Finish & See Salami"
+      },
+      results: {
+        title: "Salami Quiz Result",
+        result: "Result for {takerName}'s quiz from {creatorName}",
+        score: "You got {score} out of {total} correct!",
+        currency: "BDT",
+        congrats: "Congratulations, {name}!",
+        claim: "Claim your salami from {name} now!",
+        betterLuck: "Better luck next time!",
+        downloadButton: "Download Result",
+        shareButton: "Share Result",
+        sharing: "Sharing...",
+        shareError: "Could not share image automatically. The link has been copied to your clipboard.",
+        backButton: "Create Your Own Quiz"
+      },
+      questions: [
+        { id: "q1", question: "What do I usually do on Eid day?", options: ["Visit everyone's house", "Stay at home", "Take pictures", "Sleep"] },
+        { id: "q2", question: "What is my favorite tea?", options: ["Milk tea", "I don't drink tea", "Black tea", "Whatever I get"] },
+        { id: "q3", question: "What time do I usually go to sleep?", options: ["Between 10-12 AM", "Between 12-2 AM", "Between 2-4 AM", "No specific time"] },
+        { id: "q4", question: "My energy level is highest—", options: ["At night", "In the afternoon", "In the morning", "Before a deadline"] },
+        { id: "q5", question: "My nature is closest to—", options: ["Calm but deep", "Always serious", "Lightly humorous", "Unpredictable"] },
+        { id: "q6", question: "I am more of a—", options: ["Listener", "Speaker", "Observer", "Mixed nature"] },
+        { id: "q7", question: "If I suddenly become quiet, it usually means—", options: ["I'm thinking", "I'm angry", "I'm tired", "I'm analyzing everything"] },
+        { id: "q8", question: "I usually react more to—", options: ["Serious discussions", "Random memes", "Injustice", "Not much at all"] },
+        { id: "q9", question: "I prefer—", options: ["Small circles", "Large groups", "One-on-one conversations", "Online conversations"] },
+        { id: "q10", question: "How is my WhatsApp reply speed?", options: ["Lightning fast", "After 2-3 hours", "The next day", "Depends on the mood"] },
+        { id: "q11", question: "Do I compliment more or roast more?", options: ["Compliment", "Roast", "Both, depending on the situation"] },
+        { id: "q12", question: "What kind of humor do I use the most?", options: ["Dark humor", "Intellectual", "Satire/Sarcastic", "Innocent dad jokes"] },
+        { id: "q13", question: "What color clothes do I usually wear the most?", options: ["Black", "White", "Blue", "Red", "Green", "Maroon/Burgundy", "Beige or light earth tones", "Whatever I find in front of me"] },
+        { id: "q14", question: "What do I usually do when I get angry?", options: ["Become quiet", "Say it directly", "Ignore", "Share memes"] },
+        { id: "q15", question: "What's the first thing that comes to your mind when you see me?", options: ["Smile", "Intelligence", "Friendly vibe", "Beautiful hair"] },
+        { id: "q16", question: "Am I right-handed or left-handed?", options: ["Right-handed", "Left-handed", "Both"] },
+        { id: "q17", question: "What is the real reason for asking for salami from me?", options: ["Money", "Tradition", "Bonding", "Pressure"] },
+        { id: "q18", question: "If I say 'No salami this year', you will—", options: ["Argue", "Emotionally blackmail", "Accept and leave", "Take double next year"] },
+        { id: "q19", question: "What do I prefer more?", options: ["Quiet time", "Deep discussions", "Respect", "Money"] },
+        { id: "q20", question: "Will you treat me after Eid?", options: ["Of course", "Let's see", "No money", "Block me now"] }
+      ]
     }
   },
   bn: {
@@ -532,7 +611,8 @@ export const translations = {
       ngl: 'ঈদের চিঠি',
       eidWheel: 'লাকি হুইল',
       eidCard: 'ঈদ কার্ড',
-      iftar: 'ইফতার স্পট'
+      iftar: 'ইফতার স্পট',
+      salamiQuiz: 'সালামি কুইজ'
     },
     home: {
       title: 'EidVibe: আপনার ঈদ হোক আরও রঙিন!',
@@ -1045,6 +1125,84 @@ export const translations = {
         'sehri-thali': 'Sehri Special Thali',
         'others': 'Others'
       }
+    },
+    salamiQuiz: {
+      create: {
+        title: "ঈদ সালামি কুইজ",
+        description: "একটি সুন্দর এবং স্মার্ট উপায়ে আপনার প্রিয়জনদের সালামি দিন। প্রশ্নের উত্তর সঠিক করলে বেশি সালামি পাবে। 💝"
+      },
+      form: {
+        name: {
+          label: "আপনার সম্পূর্ণ নাম",
+          placeholder: "যেমন: আবু হাসান",
+          error: "নাম আবশ্যক।"
+        },
+        maxSalami: {
+          label: "সর্বোচ্চ সালামির পরিমাণ (টাকা)",
+          placeholder: "যেমন: 500",
+          error: "সালামির পরিমাণ অবশ্যই ১ এর বেশি হতে হবে।"
+        },
+        gender: {
+          label: "আপনার লিঙ্গ নির্বাচন করুন",
+          male: "পুরুষ",
+          female: "মহিলা",
+          other: "অন্যান্য",
+          error: "লিঙ্গ নির্বাচন আবশ্যক।"
+        },
+        questions: {
+          label: "প্রশ্ন নির্বাচন করুন",
+          description: "যে প্রশ্নগুলি আপনার কুইজে রাখতে চান তার পাশে টিক মার্ক দিন। তারপর সঠিক উত্তর নির্বাচন করুন।",
+          error: "অনুগ্রহ করে কমপক্ষে একটি প্রশ্ন নির্বাচন করুন।"
+        },
+        submitButton: "আমার সালামি লিংক তৈরি করুন 🔗"
+      },
+      player: {
+        title: "{name} এর পক্ষ থেকে সালামি কুইজ",
+        description: "আপনার সালামি জিততে প্রশ্নগুলির উত্তর দিন!",
+        name: {
+          placeholder: "শুরু করতে আপনার নাম লিখুন"
+        },
+        startButton: "কুইজ শুরু করুন",
+        question: "প্রশ্ন",
+        nextButton: "পরবর্তী",
+        finishButton: "শেষ করুন এবং সালামি দেখুন"
+      },
+      results: {
+        title: "সালামি কুইজের ফলাফল",
+        result: "{creatorName} এর কুইজে {takerName} এর ফলাফল",
+        score: "আপনি {total} টির মধ্যে {score} টি সঠিক উত্তর দিয়েছেন!",
+        currency: "টাকা",
+        congrats: "অভিনন্দন, {name}!",
+        claim: "এখনই {name} এর কাছ থেকে আপনার সালামি দাবি করুন!",
+        betterLuck: "আগামীবার আরও ভালো হবে!",
+        downloadButton: "ফলাফল ডাউনলোড করুন",
+        shareButton: "ফলাফল শেয়ার করুন",
+        sharing: "শেয়ার করা হচ্ছে...",
+        shareError: "ছবি স্বয়ংক্রিয়ভাবে শেয়ার করা যায়নি। লিঙ্কটি আপনার ক্লিপবোর্ডে কপি করা হয়েছে।",
+        backButton: "আপনার নিজের কুইজ তৈরি করুন"
+      },
+      questions: [
+        { id: "q1", question: "ঈদের দিনে আমি সাধারণত কী করি?", options: ["সবার বাসায় ঘুরি", "বাসায় থাকি", "ছবি তুলি", "ঘুমাই"] },
+        { id: "q2", question: "আমার ফেভারিট চা কোনটি?", options: ["দুধ চা", "চা খাই না", "লাল চা", "যা পাই তাই"] },
+        { id: "q3", question: "আমি সাধারণত কয়টার দিকে ঘুমাতে যাই?", options: ["রাত 10-12 টার মধ্যে", "12-2 টার মধ্যে", "2-4 টার মধ্যে", "নির্দিষ্ট সময় নেই"] },
+        { id: "q4", question: "আমার এনার্জি লেভেল সবচেয়ে বেশি থাকে—", options: ["রাতে", "দুপুরে", "ভোরে", "ডেডলাইনের আগে"] },
+        { id: "q5", question: "আমার স্বভাব কোনটির কাছাকাছি?", options: ["শান্ত কিন্তু গভীর", "সবসময় সিরিয়াস", "হালকা কৌতুকপূর্ণ", "আনপ্রেডিক্টেবল"] },
+        { id: "q6", question: "আমি বেশি—", options: ["শ্রোতা (Listener)", "বক্তা (Speaker)", "পর্যবেক্ষক (Observer)", "মিশ্র স্বভাবের"] },
+        { id: "q7", question: "আমি হঠাৎ চুপ হয়ে গেলে সাধারণত তার মানে—", options: ["ভাবছি", "রাগ করেছি", "ক্লান্ত", "সবকিছু বিশ্লেষণ করছি"] },
+        { id: "q8", question: "আমি সাধারণত বেশি react করি—", options: ["সিরিয়াস আলোচনায়", "র‍্যান্ডম মিমে", "অন্যায় দেখলে", "তেমন কিছুতেই না"] },
+        { id: "q9", question: "আমি বেশি পছন্দ করি—", options: ["ছোট সার্কেল", "বড় গ্রুপ", "একান্তে এক-টু-ওয়ান কথা বলা", "অনলাইন কনভারসেশন"] },
+        { id: "q10", question: "আমার WhatsApp রিপ্লাই স্পিড কেমন?", options: ["বিদ্যুৎগতিতে", "2-3 ঘণ্টা পরে", "পরের দিন", "মুড অনুযায়ী"] },
+        { id: "q11", question: "আমি বেশি compliment দিই নাকি roast করি?", options: ["Compliment", "Roast", "দুটোই পরিস্থিতি অনুযায়ী"] },
+        { id: "q12", question: "আমি কোন ধরনের রসিকতা বেশি করি?", options: ["ডার্ক হিউমার", "ইন্টেলেকচুয়াল", "স্যাটায়ার/সারকাস্টিক", "নিরীহ ড্যাড জোক"] },
+        { id: "q13", question: "আমি সাধারণত কোন রঙের পোশাক বেশি পরি?", options: ["কালো", "সাদা", "নীল", "লাল", "সবুজ", "মেরুন/বারগান্ডি", "বেইজ বা হালকা আর্থ টোন", "সামনে যা পাই"] },
+        { id: "q14", question: "আমি রাগ করলে সাধারণত কী করি?", options: ["চুপ হয়ে যাই", "সরাসরি বলে দিই", "ইগনোর করি", "মিম শেয়ার করি"] },
+        { id: "q15", question: "আমাকে দেখে তোমার প্রথমে কী মনে পড়ে?", options: ["হাসি", "বুদ্ধি", "বন্ধুসুলভ ভাব", "সুন্দর চুল"] },
+        { id: "q16", question: "আমি ডানহাতি না বাঁহাতি?", options: ["ডানহাতি", "বাঁহাতি", "দুটোই"] },
+        { id: "q17", question: "আমার কাছে সালামি চাইতে আসার আসল কারণ কী?", options: ["টাকা", "ট্র্যাডিশন", "বন্ডিং", "চাপ"] },
+        { id: "q18", question: "আমি যদি বলি 'এই বছর সালামি নাই', তুমি—", options: ["তর্ক করবে", "ইমোশনাল ব্ল্যাকমেইল করবে", "মেনে নিয়ে চলে যাবে", "পরের বছর ডাবল নেবে"] },
+        { id: "q19", question: "আমি বেশি কী পছন্দ করি?", options: ["শান্ত সময়", "গভীর আলোচনা", "সম্মান", "টাকা"] },
+        { id: "q20", question: "ঈদের পর আমাকে ট্রিট দেবে?", options: ["অবশ্যই", "দেখা যাক", "টাকা নাই", "Block me now"] }
+      ]
     }
   },
 };

@@ -46,3 +46,19 @@ export type IftarSpot = {
   createdAt: Date;
   endTime?: string;
 };
+
+export type SalamiQuizQuestion = {
+  id: string;
+  question: string;
+  options: string[];
+  correctAnswer: string;
+};
+
+export type SalamiQuiz = {
+  id: string;
+  creatorName: string;
+  maxSalami: number;
+  gender: 'male' | 'female' | 'other';
+  questions: SalamiQuizQuestion[];
+  createdAt: Date;
+};

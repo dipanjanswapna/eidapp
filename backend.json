@@ -61,6 +61,31 @@
         "createdAt": { "type": "string", "format": "date-time" }
       },
       "required": ["masjidName", "area", "foodType", "latitude", "longitude", "likes", "dislikes", "createdAt"]
+    },
+    "salamiQuiz": {
+      "title": "Salami Quiz",
+      "description": "A quiz to determine the amount of salami a person gets.",
+      "type": "object",
+      "properties": {
+        "creatorName": { "type": "string" },
+        "maxSalami": { "type": "number" },
+        "gender": { "type": "string", "enum": ["male", "female", "other"] },
+        "questions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": { "type": "string" },
+              "question": { "type": "string" },
+              "options": { "type": "array", "items": { "type": "string" } },
+              "correctAnswer": { "type": "string" }
+            },
+            "required": ["id", "question", "options", "correctAnswer"]
+          }
+        },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["creatorName", "maxSalami", "gender", "questions", "createdAt"]
     }
   },
   "auth": {
@@ -82,6 +107,10 @@
     "/iftar_spots/{spotId}": {
       "schema": { "$ref": "#/entities/iftarSpot" },
       "description": "User-submitted Iftar and Sehri spots, valid for 24 hours."
+    },
+    "/salami_quizzes/{quizId}": {
+      "schema": { "$ref": "#/entities/salamiQuiz" },
+      "description": "User-generated Salami Quizzes."
     }
   }
 }

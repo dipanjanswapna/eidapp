@@ -31,5 +31,12 @@ service cloud.firestore {
       allow read, create;
       allow update: if request.resource.data.diff(resource.data).affectedKeys().hasOnly(['likes', 'dislikes']);
     }
+
+    // Salami quizzes can be created by anyone and are publicly readable.
+    // Updates and deletes are not allowed from the client.
+    match /salami_quizzes/{quizId} {
+      allow create, read;
+      allow update, delete: if false;
+    }
   }
 }

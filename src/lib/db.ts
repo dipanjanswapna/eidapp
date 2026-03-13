@@ -16,7 +16,7 @@ import {
     Timestamp,
     increment,
 } from 'firebase/firestore';
-import type { NGLUser, NGLMessage, EidCard, IftarSpot, FoodType } from './types';
+import type { NGLUser, NGLMessage, EidCard, IftarSpot, SalamiQuiz, SalamiQuizQuestion } from './types';
 
 // This config is used for server-side actions
 const firebaseConfig = {
@@ -238,4 +238,31 @@ export async function voteOnSpot(spotId: string, voteType: 'like' | 'dislike'): 
     } else {
         await updateDoc(docRef, { dislikes: increment(1) });
     }
+}
+
+
+// Salami Quiz
+export async function addSalamiQuiz(quizData: {
+    creatorName: string;
+    maxSalami: number;
+    gender: 'male' | 'female' | 'other';
+    questions: SalamiQuizQuestion[];
+}): Promise<string> {
+    const quizCollection = collection(db, 'salami_quizzes');
+    
+    const newQuizData = {
+        ...quizData,
+        createdAt: serverTimestamp(),
+    };
+    const docRef = await addDoc(quizCollection, newQuizData);
+    return docRef.id;
+}
+
+export async function getSalamiQuizById(quizId: string): Promise<SalamiQuiz | null> {
+    const docRef = doc(db, 'salami_quizzes', quizId);
+    const docSnap = await getDoc(docRef);
+    if (docSnap.exists()) {
+        return convertTimestamps({ id: docSnap.id, ...docSnap.data() }) as SalamiQuiz;
+    }
+    return null;
 }

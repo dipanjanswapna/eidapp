@@ -1,7 +1,7 @@
 'use server';
 
 import { z } from "zod";
-import { addNGLUser, verifyNGLUserPin, addNGLMessage, getNGLMessagesByUsername, addReplyToNGLMessage, addEidCard, markEidCardAsPaid, addIftarSpot, getIftarSpots, voteOnSpot as voteOnIftarSpotDb } from "./db";
+import { addNGLUser, verifyNGLUserPin, addNGLMessage, getNGLMessagesByUsername, addReplyToNGLMessage, addEidCard, markEidCardAsPaid, addIftarSpot, getIftarSpots, voteOnSpot as voteOnIftarSpotDb, addSalamiQuiz } from "./db";
 import { redirect } from "next/navigation";
 import type { NGLUser, NGLMessage, IftarSpot, FoodType } from "./types";
 import { revalidatePath } from "next/cache";
@@ -15,7 +15,7 @@ const createNGLProfileSchema = z.object({
   profession: z.string().min(1, "Profession is required."),
 });
 
-export async function createNGLProfileAction(values: z.infer<typeof createNGLProfileSchema>) {
+export async function createNGLProfileAction(prevState: any, values: z.infer<typeof createNGLProfileSchema>) {
     const validatedFields = createNGLProfileSchema.safeParse(values);
 
     if (!validatedFields.success) {
@@ -142,4 +142,33 @@ export async function getIftarSpotsAction(): Promise<IftarSpot[]> {
 export async function voteOnIftarSpotAction(spotId: string, voteType: 'like' | 'dislike') {
     await voteOnIftarSpotDb(spotId, voteType);
     revalidatePath("/iftar");
+}
+
+
+// Salami Quiz Actions
+const salamiQuizQuestionSchema = z.object({
+    id: z.string(),
+    question: z.string(),
+    options: z.array(z.string()),
+    correctAnswer: z.string(),
+});
+
+const createSalamiQuizSchema = z.object({
+    creatorName: z.string().min(2, "Name must be at least 2 characters."),
+    maxSalami: z.number().min(1, "Max salami must be at least 1."),
+    gender: z.enum(['male', 'female', 'other']),
+    questions: z.array(salamiQuizQuestionSchema).min(1, "Please select at least one question."),
+});
+
+export async function createSalamiQuizAction(values: z.infer<typeof createSalamiQuizSchema>) {
+    const validatedFields = createSalamiQuizSchema.safeParse(values);
+
+    if (!validatedFields.success) {
+        console.log(validatedFields.error.flatten().fieldErrors);
+        return { error: validatedFields.error.flatten().fieldErrors };
+    }
+    
+    const quizId = await addSalamiQuiz(validatedFields.data);
+  
+    redirect(`/salami-quiz/${quizId}`);
 }

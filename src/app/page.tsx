@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useLanguage } from '@/contexts/language-context';
 import ConfettiBackground from '@/components/confetti-background';
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
-import { ArrowRight, Calculator, Mail, Star, CreditCard, MapPin } from 'lucide-react';
+import { ArrowRight, Calculator, Mail, Star, CreditCard, MapPin, HelpCircle } from 'lucide-react';
 import JusticeTimer from '@/components/justice-timer';
 
 export default function Home() {
@@ -12,6 +12,13 @@ export default function Home() {
   
   const homeFeatures = {
     en: [
+        {
+          title: "Salami Quiz",
+          description: "Create a fun quiz for your loved ones to earn their Salami in a smart way.",
+          link: "/salami-quiz/create",
+          icon: <HelpCircle className="mb-4 h-10 w-10 text-primary" />,
+          cta: "Create Quiz",
+        },
         {
           title: "Iftar Spots",
           description: "Find free Iftar and Sehri spots near you, shared by the community.",
@@ -49,6 +56,13 @@ export default function Home() {
         },
     ],
     bn: [
+        {
+          title: "সালামি কুইজ",
+          description: "আপনার প্রিয়জনদের একটি মজার কুইজের মাধ্যমে সালামি দিন।",
+          link: "/salami-quiz/create",
+          icon: <HelpCircle className="mb-4 h-10 w-10 text-primary" />,
+          cta: "কুইজ তৈরি করুন",
+        },
         {
           title: "ইফতার স্পট",
           description: "আপনার কাছাকাছি বিনামূল্যে ইফতার এবং সেহরির স্পট খুঁজুন, যা কমিউনিটি দ্বারা শেয়ার করা হয়েছে।",
