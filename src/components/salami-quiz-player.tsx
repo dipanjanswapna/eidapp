@@ -7,7 +7,7 @@ import { useLanguage } from '@/contexts/language-context';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
 import { Button } from './ui/button';
 import { RadioGroup, RadioGroupItem } from './ui/radio-group';
-import { FormLabel } from './ui/form';
+import { Label } from './ui/label';
 import { Progress } from './ui/progress';
 import { Input } from './ui/input';
 
@@ -88,7 +88,7 @@ export default function SalamiQuizPlayer({ quiz }: { quiz: SalamiQuiz }) {
           {currentQuestion.options.map(option => (
             <div key={option} className="flex items-center space-x-3 rounded-md border p-4 hover:bg-accent/50 has-[[data-state=checked]]:bg-accent">
               <RadioGroupItem value={option} id={option} />
-              <FormLabel htmlFor={option} className="flex-1 cursor-pointer">{option}</FormLabel>
+              <Label htmlFor={option} className="flex-1 cursor-pointer">{option}</Label>
             </div>
           ))}
         </RadioGroup>

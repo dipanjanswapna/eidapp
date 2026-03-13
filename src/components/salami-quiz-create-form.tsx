@@ -7,12 +7,12 @@ import { Button } from '@/components/ui/button';
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
-  FormLabel,
   FormMessage,
+  FormLabel,
 } from '@/components/ui/form';
+import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { useLanguage } from '@/contexts/language-context';
@@ -154,9 +154,9 @@ export default function SalamiQuizCreateForm() {
             />
 
             <div className="space-y-4">
-                <FormLabel>{translations.salamiQuiz.form.questions.label}</FormLabel>
-                <FormDescription>{translations.salamiQuiz.form.questions.description}</FormDescription>
-                {form.formState.errors.questions && <FormMessage>{form.formState.errors.questions.message}</FormMessage>}
+                <Label>{translations.salamiQuiz.form.questions.label}</Label>
+                <p className="text-sm text-muted-foreground">{translations.salamiQuiz.form.questions.description}</p>
+                {form.formState.errors.questions && <p className="text-sm font-medium text-destructive">{form.formState.errors.questions.message as string}</p>}
                 <div className="space-y-6 pt-4">
                     {quizQuestions.map((q, index) => (
                     <Card key={q.id} className="p-4">
@@ -176,9 +176,9 @@ export default function SalamiQuizCreateForm() {
                             className="mt-1"
                         />
                         <div className="flex-1">
-                            <FormLabel htmlFor={`q-select-${q.id}`} className="font-bold text-base cursor-pointer">
+                            <Label htmlFor={`q-select-${q.id}`} className="font-bold text-base cursor-pointer">
                                 {index + 1}. {q.question}
-                            </FormLabel>
+                            </Label>
                             {selectedQuestionIds.includes(q.id) && (
                             <Controller
                                 control={form.control}
@@ -192,9 +192,9 @@ export default function SalamiQuizCreateForm() {
                                     {q.options.map((option) => (
                                     <FormItem key={option} className="flex items-center space-x-3 space-y-0">
                                         <FormControl>
-                                            <RadioGroupItem value={option} />
+                                            <RadioGroupItem value={option} id={`${q.id}-${option}`} />
                                         </FormControl>
-                                        <FormLabel className="font-normal">{option}</FormLabel>
+                                        <Label htmlFor={`${q.id}-${option}`} className="font-normal cursor-pointer">{option}</Label>
                                     </FormItem>
                                     ))}
                                 </RadioGroup>
